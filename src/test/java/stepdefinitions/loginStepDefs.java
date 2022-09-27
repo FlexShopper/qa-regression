@@ -1,32 +1,45 @@
 package stepdefinitions;
 
-import cucumber.TestContext;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import managers.PageObjectManager;
+import managers.WebDriverManager;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import pageObjects.LoginPage;
 import pageObjects.PasswordPage;
 import pageObjects.ProfileInfoPage;
 
 public class loginStepDefs {
-    TestContext testContext;
+    //TestContext testContext;
     LoginPage loginPage;
     ProfileInfoPage profileInfoPage;
     PasswordPage passwordPage;
+    WebDriver driver;
+    WebDriverManager webDriverManager;
+    PageObjectManager pageObjectManager;
 
     @Given("^User wants to login to the application$")
-    public void user_wants_to_login_to_the_application(TestContext context) {
-        testContext=context;
-        loginPage=testContext.getPageObjectManager().getLoginPage();
+    public void user_wants_to_login_to_the_application() {
+        //testContext=context;
+        webDriverManager=new WebDriverManager();
+        driver=new WebDriverManager().getDriver();
+        pageObjectManager=new PageObjectManager(driver);
+        loginPage=pageObjectManager.getLoginPage();
+        loginPage.getEmailScreen();
+
+        //loginPage=testContext.getPageObjectManager().getLoginPage();
     }
 
     @Given("^User is in the pop3 email screen$")
     public void user_is_in_the_pop_email_screen() {
-        testContext.getWebDriverManager().getDriver().switchTo().frame(0);
-        testContext.getWebDriverManager().getDriver().switchTo().frame(0);
+        //webDriverManager.getWebDriverManager().getDriver().switchTo().frame(0);
+        //testContext.getWebDriverManager().getDriver().switchTo().frame(0);
+        webDriverManager.getDriver().switchTo().frame(0);
+        webDriverManager.getDriver().switchTo().frame(0);
     }
 
     @When("^User enters a valid \"([^\"]*)\" existing address$")
@@ -36,12 +49,14 @@ public class loginStepDefs {
 
     @When("^User clicks on CONTINUE button$")
     public void user_clicks_on_CONTINUE_button() {
-        testContext.getWebDriverManager().getDriver().findElement(By.id("formSubmitButton")).click();
+       // testContext.getWebDriverManager().getDriver().findElement(By.id("formSubmitButton")).click();
+        webDriverManager.getDriver().findElement(By.id("formSubmitButton")).click();
     }
 
     @Then("^User lands on PASSWORD screen$")
     public void user_lands_on_PASSWORD_screen() {
-        passwordPage=testContext.getPageObjectManager().getPasswordPage();
+        //passwordPage=testContext.getPageObjectManager().getPasswordPage();
+        passwordPage=pageObjectManager.getPasswordPage();
         Assert.assertTrue(passwordPage.passwordField.isDisplayed());
     }
 
@@ -52,6 +67,7 @@ public class loginStepDefs {
 
     @Then("^User lands on Profile Info screen$")
     public void user_lands_on_Profile_Info_screen() {
+
         Assert.assertEquals("Profile Info", profileInfoPage.profilePage.getText());
         System.out.println(profileInfoPage.profilePage.getText());
     }
