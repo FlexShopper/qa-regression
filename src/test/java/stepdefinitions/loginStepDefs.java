@@ -14,7 +14,14 @@ import pageObjects.PasswordPage;
 import pageObjects.ProfileInfoPage;
 
 public class loginStepDefs {
+<<<<<<< HEAD
     //TestContext testContext;
+=======
+
+
+
+    TestContext testContext;
+>>>>>>> 64c00ce609179849d153e4c21c1e58676ab957b7
     LoginPage loginPage;
     ProfileInfoPage profileInfoPage;
     PasswordPage passwordPage;
@@ -22,6 +29,7 @@ public class loginStepDefs {
     WebDriverManager webDriverManager;
     PageObjectManager pageObjectManager;
 
+<<<<<<< HEAD
     @Given("^User wants to login to the application$")
     public void user_wants_to_login_to_the_application() {
         //testContext=context;
@@ -32,6 +40,19 @@ public class loginStepDefs {
         loginPage.getEmailScreen();
 
         //loginPage=testContext.getPageObjectManager().getLoginPage();
+=======
+
+    public  loginStepDefs(TestContext context) {
+
+
+        testContext=context;
+        loginPage=testContext.getPageObjectManager().getLoginPage();
+>>>>>>> 64c00ce609179849d153e4c21c1e58676ab957b7
+    }
+
+    @Given("^User wants to login to the application$")
+    public void user_wants_to_login_to_the_application() {
+        loginPage.getEmailScreen();
     }
 
     @Given("^User is in the pop3 email screen$")
@@ -67,7 +88,11 @@ public class loginStepDefs {
 
     @Then("^User lands on Profile Info screen$")
     public void user_lands_on_Profile_Info_screen() {
+<<<<<<< HEAD
 
+=======
+        profileInfoPage=testContext.getPageObjectManager().getProfileInfoPage();
+>>>>>>> 64c00ce609179849d153e4c21c1e58676ab957b7
         Assert.assertEquals("Profile Info", profileInfoPage.profilePage.getText());
         System.out.println(profileInfoPage.profilePage.getText());
     }
@@ -77,8 +102,8 @@ public class loginStepDefs {
         loginPage.enter_email(email);
     }
 
-    @And("^User clicks welcomepage$")
-    public void userClicksWelcomepage() {
+    @And("User clicks on Welcome to")
+    public void userClicksOnWelcomeTo() {
         loginPage.welcomeText.click();
     }
 
@@ -87,4 +112,5 @@ public class loginStepDefs {
         Assert.assertEquals(errorMsg,loginPage.errorMsg.getText() );
         System.out.println("Validation Message Returned: Invalid Email Address");
     }
+
 }
