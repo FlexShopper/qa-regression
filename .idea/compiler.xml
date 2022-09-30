@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="FlexShopperFramework" />
         <module name="ssss" />
+        <module name="qa-regression" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
