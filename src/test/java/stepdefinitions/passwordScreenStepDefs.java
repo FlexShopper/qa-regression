@@ -16,20 +16,16 @@ import pageObjects.PasswordPage;
 
 public class passwordScreenStepDefs {
 
-
     TestContext testContext;
     PasswordPage passwordPage;
     LoginPage loginPage;
     HomePage homePage;
 
-    public  passwordScreenStepDefs(TestContext context) {
-
+    public passwordScreenStepDefs(TestContext context) {
 
         testContext=context;
         passwordPage=testContext.getPageObjectManager().getPasswordPage();
     }
-
-
 
     @Given("User login to the application")
     public void userLoginToTheApplication() {
@@ -59,12 +55,8 @@ public class passwordScreenStepDefs {
 
     @When("User enters an valid {string} password")
     public void user_enters_an_valid_password(String password) {
-
         passwordPage.passwordField.sendKeys(password);
-
     }
-
-
     @When("^User clicks on Sign In button$")
     public void user_clicks_on_Sign_In_button() {
         passwordPage.signInBtn.click();
@@ -87,8 +79,7 @@ public class passwordScreenStepDefs {
         /**
          * Capturing alert message
          */
-
-       try {
+        try {
             WebDriverWait wait = new WebDriverWait(testContext.getWebDriverManager().getDriver(), 2);
             wait.until(ExpectedConditions.alertIsPresent());
             Alert alert = testContext.getWebDriverManager().getDriver().switchTo().alert();
@@ -100,7 +91,6 @@ public class passwordScreenStepDefs {
         }
 
     }
-
     @When("^User enters an invalid \"([^\"]*)\" empty field$")
     public void user_enters_an_invalid_empty_field(String password) {
         passwordPage.enter_password(password);
@@ -109,9 +99,7 @@ public class passwordScreenStepDefs {
     @Then("^User should be able  see \"([^\"]*)\" message$")
     public void user_should_be_able_see_message(String errorMsg) {
 
-
-
-       Assert.assertEquals("Required", passwordPage.errMsgReq.getText());
+        Assert.assertEquals("Required", passwordPage.errMsgReq.getText());
     }
 
 

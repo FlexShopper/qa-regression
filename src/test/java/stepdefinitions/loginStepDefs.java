@@ -20,8 +20,7 @@ public class loginStepDefs {
     ProfileInfoPage profileInfoPage;
     PasswordPage passwordPage;
 
-
-    public  loginStepDefs(TestContext context) {
+    public loginStepDefs(TestContext context) {
 
 
         testContext=context;
@@ -54,7 +53,6 @@ public class loginStepDefs {
         passwordPage=testContext.getPageObjectManager().getPasswordPage();
         Assert.assertTrue(passwordPage.passwordField.isDisplayed());
     }
-
     @When("^User enters a valid \"([^\"]*)\" non-existing address$")
     public void userEntersAValidNonExistingAddress(String email) {
         loginPage.enter_email(email);

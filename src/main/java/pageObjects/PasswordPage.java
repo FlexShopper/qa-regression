@@ -25,9 +25,11 @@ public class PasswordPage {
     @FindBy(how= How.XPATH, using = "//span[@label='Required']")
     public  WebElement errMsgReq;
 
-
     @FindBy(how = How.ID, using = "formSubmitButton")
     public WebElement signInBtn;
+
+    @FindBy(how = How.XPATH, using = "//a[text()='Forgot Password?']")
+    public WebElement ForgotPassword;
 
 
     public  void enter_password(String password) {
