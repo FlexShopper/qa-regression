@@ -248,4 +248,15 @@ public class forgotPasswordStepDefs {
     }
 
 
+    @Then("the user should see the first text: {string}")
+    public void theUserShouldSeeTheFirstText(String arg0) {
+    }
+
+    @And("the user should see the second text: {string}")
+    public void theUserShouldSeeTheSecondText(String arg0) {
+    }
+
+    @And("the user should see the {string}")
+    public void theUserShouldSeeThe(String arg0) {
+    }
 }

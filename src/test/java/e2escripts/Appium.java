@@ -21,7 +21,7 @@ public class Appium {
         capabilities.setCapability("Version", 12);
         capabilities.setCapability("deviceName","Pixel 4 New");
         capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("browserName", "chrome");
+        capabilities.setCapability("browserName", "Chrome");
         capabilities.setCapability("chromeOptions", ImmutableMap.of("w3c", false));
         //capabilities.setCapability("chromeExec", "/Users/veneraserikova/IdeaProjects/FlexShopperLatestVersionNew11/src/test/java/mobile_drivers/chromedriver 2");
         capabilities.setCapability("chromeExec", "./src/test/java/mobile_drivers/chromedriver 2");

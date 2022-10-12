@@ -1,6 +1,5 @@
 Feature: As user I should be able to change the password
 
-
   Background:
     Given user lands ann app
     And user on pop up screen
@@ -17,16 +16,15 @@ Feature: As user I should be able to change the password
     And user should be able to see text "Send SMS text with code to:" of radiobutton for text message
     And user should be able to click on continue button
 
+
   Scenario Outline: User without full information in the profile can see the email address provided
-    When the user is on the "Forgot Password" screen
-    Then the user should see the text: "<firstText>"
-    And the user should see the text: "<secondText>"
-    And the user should see the text: "Send email to:"
-    And the user should see the text: "Send SMS text with code to:"
-    And the user should see the "Continue" button
+    Then the user should see the first text: "<firstText>"
+    And the user should see the second text: "<secondText>"
+    And the user should see the "<email>"
+    And user should be able to click on continue button
     Examples:
-      | firstText                                                                                                                                    | secondText                              |
-      | How would you like to reset your password? You can verify by email or request a text to be sent to the mobile number linked to your account. | Please choose one of the options below: |
+      | firstText                                                                                                                                    | secondText                              |email            |
+      | How would you like to reset your password? You can verify by email or request a text to be sent to the mobile number linked to your account. | Please choose one of the options below: |ann_123@gmail.com|
 
 
   #verify Return to Password Sign In button functionality
@@ -71,7 +69,7 @@ Feature: As user I should be able to change the password
   Scenario: New Password/valid scenario
     And user clicks sent Email to radio button
     And user clicks Continue button
-    And code is sent using check email to insert code text box
+    And the user retrieves the verification code from the email and send to security code field
     And user clicks submit button
     And user enter reset "test123" password
     And user  clicks save changes

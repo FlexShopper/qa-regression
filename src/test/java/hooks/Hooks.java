@@ -20,6 +20,7 @@ public class Hooks {
         testContext = context;
     }
 
+
     @Before
     public void beforeScenario(/*Scenario scenario*/) {
         //Reporter.assignAuthor("Allure");
