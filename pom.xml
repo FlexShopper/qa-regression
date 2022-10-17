@@ -20,10 +20,11 @@
         <commons-lang3.version>LATEST</commons-lang3.version>
         <commons-io.version>LATEST</commons-io.version>
         <junit.version>LATEST</junit.version>
-        <log4j.version>LATEST</log4j.version>
+        <log4j.version>2.19.0</log4j.version>
         <BrowserType>Chrome</BrowserType>
         <environment>test</environment>
     </properties>
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
@@ -98,6 +99,18 @@
             <artifactId>extentreports</artifactId>
             <version>3.1.2</version>
         </dependency>
+        <!-- http://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <!-- http://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/net.masterthought/maven-cucumber-reporting -->
         <dependency>
             <groupId>net.masterthought</groupId>
@@ -120,6 +133,12 @@
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
             <version>7.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>

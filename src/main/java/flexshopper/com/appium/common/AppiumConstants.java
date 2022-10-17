@@ -1,4 +1,4 @@
-package tsys.appium.common;
+package flexshopper.com.appium.common;
 
 /**
  * This is the Appium Constants class for the Automation Framework.

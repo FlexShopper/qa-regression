@@ -1,4 +1,4 @@
-package tsys.appium.utilities;
+package flexshopper.com.appium.utilities;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.ScreenOrientation;
