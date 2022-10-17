@@ -1,5 +1,6 @@
 Feature: As a user I should be able to login
 
+  @login
   Scenario Outline: Existing Customer - User lands on the Password screen
     Given the user is in the "Email" screen
     When the user enters a valid existing email address: "<email>"
@@ -9,10 +10,13 @@ Feature: As a user I should be able to login
       | email               |
       | nann40547@gmail.com |
 
+  @login
   Scenario Outline: New Customer - User lands on the Profile Info screen
     Given the user is in the "Email" screen
     When the user enters a valid no-registered email address: "<email>"
     And the user clicks on the "Continue" button
+    And the user enters a valid password: "<password>"
+    And the user clicks on the "Sign In" button
     Then the user lands on the "Profile Info" screen
     Examples:
       | email           |

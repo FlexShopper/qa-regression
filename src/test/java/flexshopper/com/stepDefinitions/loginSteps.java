@@ -16,7 +16,7 @@ public class loginSteps {
     public WebDriver driver;
     LoginPage loginPage = new LoginPage(driver);
 
-    @Given("^the user is in the \"([^\"]*)\"  screen$")
+    @Given("^the user is in the \"([^\"]*)\" screen$")
     public void theUserIsInTheScreen(String screen) {
         System.out.println("Given the user is in the " + screen + " screen");
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
@@ -26,8 +26,9 @@ public class loginSteps {
         driver.manage().window().fullscreen();
         driver.switchTo().frame(0);
         driver.switchTo().frame(0);
+
         switch (screen) {
-            case "Password":
+             case "Password":
                 driver.findElement(By.id("email-input")).sendKeys("nann40547@gmail.com");
                 driver.findElement(By.id("formSubmitButton")).click();
                 break;
@@ -42,13 +43,13 @@ public class loginSteps {
     @When("^the user enters a valid existing email address: \"([^\"]*)\"$")
     public void theUserEntersAValidExistingEmailAddress(String emailAddress) {
         System.out.println("When the user enters a valid existing email address: " + emailAddress);
-        loginPage.enterEmail(emailAddress);
+        driver.findElement(By.id("email-input")).sendKeys("nann40547@gmail.com");
     }
 
     @And("^the user clicks on the \"([^\"]*)\" button$")
     public void theUserClicksOnTheButton(String button) {
         System.out.println("When the user clicks on the " + button + " button");
-        loginPage.clickContinueBtn();
+        driver.findElement(By.id("formSubmitButton")).click();
     }
 
     @Then("^the user lands on the \"([^\"]*)\" screen$")
@@ -64,11 +65,13 @@ public class loginSteps {
                 WebElement profileInfo = driver.findElement(By.xpath("//h2[text()='Profile Info']"));
                 Assert.assertEquals("Profile Info", profileInfo.getText());
                 System.out.println("profileInfo.getText() = " + profileInfo.getText());
+                driver.quit();
                 break;
             case "Homepage":
                 WebElement myAccountHeader = driver.findElement(By.className("userName"));
                 Assert.assertEquals("Ashley Zzelkova", myAccountHeader.getText());
                 System.out.println("myAccountHeader.getText() = " + myAccountHeader.getText());
+                driver.quit();
                 break;
         }
     }
@@ -91,5 +94,6 @@ public class loginSteps {
         WebElement errorMessage=driver.findElement(By.xpath("//span[@label='Invalid email address']"));
         Assert.assertEquals("Invalid email address", errorMessage.getText());
         System.out.println(errorMessage.getText());
+        driver.quit();
     }
 }
