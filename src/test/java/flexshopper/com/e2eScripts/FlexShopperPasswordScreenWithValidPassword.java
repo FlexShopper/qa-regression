@@ -40,7 +40,7 @@ public class FlexShopperPasswordScreenWithValidPassword {
         driver.findElement(By.id("formSubmitButton")).click();
 
         /**
-         * Test Scenario: Existing Customer lands in Home Page as loged in user
+         * Test Scenario: Existing Customer lands in Home Page as logged-in user
          * WHEN user enters a valid password
          */
         driver.findElement(By.id("password-input")).sendKeys("test123");
@@ -51,7 +51,7 @@ public class FlexShopperPasswordScreenWithValidPassword {
         driver.findElement(By.id("formSubmitButton")).click();
 
         /**
-         * THEN user lands in the Home page as loged in user
+         * THEN user lands in the Home page as logged-in user
          */
         WebElement myAccountHeader = driver.findElement(By.className("userName"));
         Assert.assertEquals("Stanislav Kuleshov", myAccountHeader.getText());

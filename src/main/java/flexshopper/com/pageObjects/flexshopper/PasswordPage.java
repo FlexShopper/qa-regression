@@ -11,11 +11,17 @@ import org.junit.Assert;
 public class PasswordPage {
     WebDriver driver;
 
+    /**
+     * Constructor Definition & Page Initialization
+     */
     public PasswordPage(WebDriver driver) {
         this.driver=driver;
         PageFactory.initElements(driver,this);
     }
 
+    /**
+     * Elements Definitions
+     */
     @FindBy(how = How.ID,using = "password-input")
     public WebElement passwordField;
 
@@ -29,14 +35,27 @@ public class PasswordPage {
     public WebElement signInBtn;
 
     @FindBy(how = How.XPATH, using = "//a[text()='Forgot Password?']")
-    public WebElement ForgotPassword;
+    public WebElement ForgotPasswordLnk;
 
+    /**
+     * Classes Definitions
+     */
     public void enterPassword(String password) {
         passwordField.sendKeys(password);
+    }
+
+    public void clickSignInBtn() {
+        signInBtn.click();
     }
 
     public void passwordIsDisplayed() {
         WebElement password = driver.findElement(By.id(String.valueOf(passwordField)));
         Assert.assertTrue(password.isDisplayed());
+    }
+
+    public void userIsInPasswordPage() {
+        Assert.assertTrue(passwordField.isDisplayed());
+        Assert.assertTrue(ForgotPasswordLnk.isDisplayed());
+        Assert.assertTrue(signInBtn.isDisplayed());
     }
 }

@@ -14,7 +14,7 @@ public class FlexShopperLoginWithInvalidNoEmail {
 
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver",
-                "drivers/chromedriver");
+                "drivers/chromedriver.exe");
 
         /**
          *  BACKGROUND:

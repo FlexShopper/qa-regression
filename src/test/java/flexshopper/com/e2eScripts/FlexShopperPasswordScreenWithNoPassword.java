@@ -14,7 +14,7 @@ public class FlexShopperPasswordScreenWithNoPassword {
 
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver",
-                "drivers/chromedriver");
+                "drivers/chromedriver.exe");
 
         /**
          * BACKGROUND:
@@ -57,7 +57,7 @@ public class FlexShopperPasswordScreenWithNoPassword {
         WebElement errorMessage = driver.findElement(By.xpath("//span[@label='Required']"));
         Assert.assertEquals("Required", errorMessage.getText());
         System.out.println(errorMessage.getText());
-        driver.quit();
+        //driver.quit();
     }
 }
 
