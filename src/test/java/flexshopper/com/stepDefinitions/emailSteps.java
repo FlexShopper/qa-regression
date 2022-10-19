@@ -2,6 +2,7 @@ package flexshopper.com.stepDefinitions;
 
 import flexshopper.com.pageObjects.flexshopper.EmailPage;
 import flexshopper.com.pageObjects.flexshopper.PasswordPage;
+import flexshopper.com.pageObjects.flexshopper.ProfileInfoPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -34,7 +35,6 @@ public class emailSteps {
     @When("^the user enters a valid existing email address: \"([^\"]*)\"$")
     public void theUserEntersAValidExistingEmailAddress(String emailAddress) {
         System.out.println("When the user enters a valid existing email address: " + emailAddress);
-        //driver.findElement(By.id("email-input")).sendKeys("nann40547@gmail.com");
         EmailPage emailPage = new EmailPage(driver);
         emailPage.enterEmail(emailAddress);
     }
@@ -78,5 +78,7 @@ public class emailSteps {
     @Then("the user lands on the Profile Info screen")
     public void theUserLandsOnTheProfileInfoScreen() {
         System.out.println("Then the user lands on the Profile Info screen");
+        ProfileInfoPage profileInfoPage = new ProfileInfoPage(driver);
+        profileInfoPage.userIsInProfileInfoPage();
     }
 }
