@@ -1,27 +1,41 @@
 package flexshopper.com.stepDefinitions;
 
+import flexshopper.com.managers.CapabilitiesManager;
 import flexshopper.com.pageObjects.flexshopper.EmailPage;
 import flexshopper.com.pageObjects.flexshopper.PasswordPage;
 import flexshopper.com.pageObjects.flexshopper.ProfileInfoPage;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class emailSteps {
-    public WebDriver driver;
+    //public WebDriver driver; ==>> To be used with Browser testing
+    public AppiumDriver<?> driver;
 
     @Given("^the user is in the Email screen$")
-    public void theUserIsInTheEmailScreen() {
+    public void theUserIsInTheEmailScreen() throws MalformedURLException {
         System.out.println("Given the user is in the Email screen");
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-        driver = new ChromeDriver();
+
+        //Instantiate Appium Driver
+        CapabilitiesManager capabilitiesManager = new CapabilitiesManager();
+        try {
+            driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilitiesManager.getCapabilities());
+
+        } catch (MalformedURLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        //driver = new ChromeDriver(); ==>> To be used with Browser testing
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://fmweb.staging.flexint.net/?do=pp3");
         driver.manage().window().fullscreen();

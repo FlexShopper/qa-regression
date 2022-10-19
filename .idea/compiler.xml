@@ -9,10 +9,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="FlexShopperFramework" />
         <module name="ssss" />
+        <module name="qa-regression" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="qa-regression" target="1.5" />
       <module name="UIFramework" target="1.8" />
     </bytecodeTargetLevel>
   </component>

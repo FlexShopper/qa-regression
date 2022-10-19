@@ -1,14 +1,23 @@
 package flexshopper.com.appium.common;
 
-import org.openqa.selenium.support.PageFactory;
+import flexshopper.com.managers.CapabilitiesManager;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class AppiumBase {
     public static AppiumDriver<?> driver;
 
-    public AppiumBase(){
-        //AppiumBase.driver = new AppiumDriverManager().getDriver();
-        PageFactory.initElements(new AppiumFieldDecorator(AppiumBase.driver), this);
+    public AppiumBase() {
+        CapabilitiesManager capabilitiesManager = new CapabilitiesManager();
+
+        //Instantiate Appium Driver
+        try {
+            driver = new AndroidDriver<>(new URL("http://0.0.0.0:4723/wd/hub"), capabilitiesManager.getCapabilities());
+
+        } catch (MalformedURLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

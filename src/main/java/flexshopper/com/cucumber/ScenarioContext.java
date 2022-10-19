@@ -1,5 +1,7 @@
 package flexshopper.com.cucumber;
 
+import flexshopper.com.enums.Context;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +20,7 @@ public class ScenarioContext {
         return scenarioContext.get(key.toString());
     }
 
-    public Boolean isContains(Context key){
+    public Boolean isContains(Context key) {
         return scenarioContext.containsKey(key.toString());
+    }
 }
