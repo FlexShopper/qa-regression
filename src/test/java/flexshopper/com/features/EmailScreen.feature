@@ -1,5 +1,6 @@
-@email
+@wip
 Feature: As a customer I should be able to enter the email in the login email
+
 
   Scenario Outline: Existing Customer - User lands on the Password screen
     Given the user is in the Email screen
@@ -30,4 +31,4 @@ Feature: As a customer I should be able to enter the email in the login email
       | a.abcde@flexshopper   | Invalid email address |
       | Ab cd@flexshopper.com | Invalid email address |
       | Abcde@flexshopper.c   | Invalid email address |
-      |                       | Invalid email address |
+      |                       | Invalid email address              |

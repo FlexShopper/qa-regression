@@ -1,10 +1,12 @@
 package flexshopper.com.cucumber;
 
+import flexshopper.com.enums.Context;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class ScenarioContext {
-    private Map<String, Object> scenarioContext;
+    private  Map<String, Object> scenarioContext;
 
     public ScenarioContext(){
         scenarioContext = new HashMap<>();
@@ -20,4 +22,5 @@ public class ScenarioContext {
 
     public Boolean isContains(Context key){
         return scenarioContext.containsKey(key.toString());
+    }
 }

@@ -49,8 +49,7 @@ public class PasswordPage {
     }
 
     public void passwordIsDisplayed() {
-        WebElement password = driver.findElement(By.id(String.valueOf(passwordField)));
-        Assert.assertTrue(password.isDisplayed());
+        Assert.assertTrue(passwordField.isDisplayed());
     }
 
     public void userIsInPasswordPage() {

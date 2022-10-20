@@ -1,5 +1,9 @@
 package flexshopper.com.cucumber;
 
+import flexshopper.com.managers.PageObjectManager;
+import flexshopper.com.managers.WebDriverManager;
+
+
 public class TestContext {
     private WebDriverManager webDriverManager;
     private PageObjectManager pageObjectManager;
@@ -22,4 +26,5 @@ public class TestContext {
     public ScenarioContext getScenarioContext() {
         return scenarioContext;
     }
+
 }

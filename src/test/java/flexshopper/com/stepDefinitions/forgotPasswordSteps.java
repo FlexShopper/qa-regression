@@ -1,5 +1,6 @@
 package flexshopper.com.stepDefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -72,4 +73,7 @@ public class forgotPasswordSteps {
     public void theUserShouldNotSeeThePage(String page) {
         System.out.println("Then the user should not see the " + page);
     }
+
+
+
 }
