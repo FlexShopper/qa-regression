@@ -1,4 +1,4 @@
 package flexshopper.com.enums;
 
-public class Context {
+public enum Context {
 }

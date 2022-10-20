@@ -1,4 +1,6 @@
 package flexshopper.com.enums;
 
-public class EnvironmentType {
+public enum EnvironmentType {
+    LOCAL,
+    REMOTE
 }

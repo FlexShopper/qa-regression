@@ -1,4 +1,6 @@
 package flexshopper.com.enums;
 
-public class DriverType {
+public enum DriverType {
+    FIREFOX,
+    CHROME
 }
