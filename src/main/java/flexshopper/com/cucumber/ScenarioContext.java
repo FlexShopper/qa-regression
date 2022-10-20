@@ -1,5 +1,7 @@
 package flexshopper.com.cucumber;
 
+import flexshopper.com.enums.Context;
+
 import java.util.HashMap;
 import java.util.Map;
 

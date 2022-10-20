@@ -11,13 +11,10 @@ public class Customer {
     public String RoutingNumber;
     public String accountNumber;
 
-
     public class Address {
         public String homeAddress;
         public String city;
         public String state;
         public String postalCode;
     }
-
-
 }
