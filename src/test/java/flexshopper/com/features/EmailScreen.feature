@@ -1,5 +1,6 @@
-@email
+@wip
 Feature: As a customer I should be able to enter the email in the login email
+
 
   Scenario Outline: Existing Customer - User lands on the Password screen
     Given the user is in the Email screen
@@ -9,7 +10,7 @@ Feature: As a customer I should be able to enter the email in the login email
     Examples:
       | email               |
       | nann40547@gmail.com |
-
+  @email
   Scenario Outline: New Customer - User lands on the Profile Info screen
     Given the user is in the Email screen
     When the user enters a valid no-registered email address: "<email>"
