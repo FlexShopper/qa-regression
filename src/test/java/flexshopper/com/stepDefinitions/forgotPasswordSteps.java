@@ -1,4 +1,4 @@
-package flexshopper.com.stepDefinitions;
+/*package flexshopper.com.stepDefinitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -100,3 +100,4 @@ public class forgotPasswordSteps {
         System.out.println("Then the user should not see the Dashboard page");
     }
 }
+*/

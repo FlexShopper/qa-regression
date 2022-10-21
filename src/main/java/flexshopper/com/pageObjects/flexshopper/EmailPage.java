@@ -1,5 +1,6 @@
 package flexshopper.com.pageObjects.flexshopper;
 
+import flexshopper.com.managers.FileReaderManager;
 import io.appium.java_client.pagefactory.AndroidBy;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -22,12 +23,19 @@ public class EmailPage {
     /**
      * Elements
      */
-    @AndroidBy(xpath = "//*[@text='Enter your email address to sign in or begin application for a spending limit of up to $2,500 to shop today.']")
-    public WebElement enterEmailTxt;
 
+    @FindBy(how = How.XPATH, using = "//h3[normalize-space(.)='Enter your email address to sign in or begin application for a spending limit of up to $2,500 to shop today.']")
+    @AndroidBy(xpath = "//*[@text='Enter your email address to sign in or begin application for a spending limit of up to $2,500 to shop today.']")
+    private WebElement enterEmailTxt;
+    // in case if text will be edited or changed : //*[@id="app"]/div[1]/div[2]/div/div/div/div[1]/div/h3[2]
+    @FindBy(how = How.XPATH, using = "//h3[(.)='Welcome to']")
+    public WebElement welcomeText;
     @FindBy(how = How.ID, using = "email-input")
     @AndroidBy(xpath = "//*[@id='email-input']")
     private WebElement emailAddressField;
+    @FindBy(how = How.ID, using = "formSubmitButton")
+    @AndroidBy(xpath = "//*[@text='Continue']")
+    private WebElement continueBtn;
 
     @AndroidBy(xpath = "//*[@name='firstName']")
     private WebElement firstNameField;
@@ -59,9 +67,7 @@ public class EmailPage {
     @AndroidBy(xpath = "//*[@text='Sign me up to receive the latest news on FlexShopper and MyFlexLending products and promotions. We respect your privacy. Please view our ']")
     private WebElement signMeUpField;
 
-    @FindBy(how = How.ID, using = "formSubmitButton")
-    @AndroidBy(xpath = "//*[@text='Continue']")
-    private WebElement continueBtn;
+
 
     /**
      * Validation Messages
@@ -96,6 +102,18 @@ public class EmailPage {
      * clickContinueBtn() - Click on the "Continue" button
      */
     public void clickContinueBtn() {
+        continueBtn.click();
+    }
+    public void getEmailScreen() {
+        driver.get(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
+        // add delete cookies
+    }
+    public void login(){
+        emailAddressField.sendKeys(FileReaderManager.getInstance().getConfigReader().getEmail());
+        continueBtn.click();
+    }
+    public void loginWithOutFullInfo(){
+        emailAddressField.sendKeys(FileReaderManager.getInstance().getConfigReader().getEmailWithOutFullInfo());
         continueBtn.click();
     }
 }

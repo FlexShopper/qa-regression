@@ -23,34 +23,39 @@ public class PasswordPage {
     /**
      * Elements
      */
+    @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div[2]/div/form/div/div[2]/div/div[1]/h3")
+    private WebElement emailText;
+    @FindBy(how =How.XPATH, using = "//*[@id=\"app\"]/div[1]/div[2]/div/div/div/div[2]/div/form/div/div[1]/p")
     @AndroidBy(xpath = "//*[@text='Enter your password to sign in to your existing account.']")
-    public WebElement enterPasswordTxt;
+    private WebElement enterPasswordTxt;
+    // in case if text will be edited or changed: //*[@id="app"]/div[1]/div[2]/div/div/div/div[2]/div/form/div/div[1]/p
 
+    @FindBy(how = How.XPATH, using = "//button[(.)='Not You?']")
     @AndroidBy(xpath = "//*[@text='Not You?']")
-    public WebElement notYouTxt;
+    private WebElement notYouTxt;
 
     @FindBy(how = How.ID,using = "password-input")
     @AndroidBy(xpath = "//*[@id='password-input']")
-    public WebElement passwordField;
+    private WebElement passwordField;
 
     @FindBy(how = How.XPATH, using = "//a[text()='Forgot Password?']")
     @AndroidBy(xpath = "//*[@text='Forgot Password?']")
-    public WebElement forgotPasswordLnk;
+    private WebElement forgotPasswordLnk;
 
     @FindBy(how = How.ID, using = "formSubmitButton")
     @AndroidBy(xpath = "//*[@text='Sign In']")
-    public WebElement signInBtn;
+    private WebElement signInBtn;
 
     /**
      * Validation Messages
      */
     @FindBy(how = How.XPATH, using = "//span[text()='Invalid email or password: please check your details and try again']")
     @AndroidBy(xpath = "//span[text()='Invalid email or password: please check your details and try again']")
-    public WebElement errorMsg;
+    private WebElement errorMsg;
 
     @FindBy(how= How.XPATH, using = "//span[@label='Required']")
     @AndroidBy(xpath = "//span[@label='Required']")
-    public  WebElement errMsgRequired;
+    public    WebElement errMsgRequired;
 
     /**
      * Classes
@@ -60,6 +65,7 @@ public class PasswordPage {
      * userIsInPasswordPage() - Verify user landed in the Password screen
       */
     public void userIsInPasswordPage() {
+        Assert.assertTrue(emailText.isDisplayed());
         Assert.assertTrue(enterPasswordTxt.isDisplayed());
         Assert.assertTrue(notYouTxt.isDisplayed());
         Assert.assertTrue(passwordField.isDisplayed());
@@ -80,5 +86,8 @@ public class PasswordPage {
      */
     public void clickSignInBtn() {
         signInBtn.click();
+    }
+    public void clickToForgotPassword(){
+        forgotPasswordLnk.click();
     }
 }

@@ -23,13 +23,10 @@ public class HomePage {
      * Elements Definitions
      */
     @FindBy(how = How.CLASS_NAME,using = "userName")
-    public WebElement userName;
+    public WebElement myAccountHeader;
 
     /**
      * Classes Definitions
      */
-    public void userNameIsDisplayed() {
-        WebElement myAccountHeader = driver.findElement(By.className("userName"));
-        Assert.assertEquals("Ashley Zzelkova", myAccountHeader.getText());
-    }
+
 }
