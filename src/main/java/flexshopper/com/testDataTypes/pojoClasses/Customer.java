@@ -1,20 +1,21 @@
 package flexshopper.com.testDataTypes.pojoClasses;
 
 public class Customer {
-    public String firstName;
-    public String lastName;
-    public String phoneNumber;
-    public Address address;
-    public String DOB;
+    public String first_name;
+    public String last_name;
+    public String email;
+    public String PhoneNumber;
+    public String Birthdate;
     public String SSN;
-    public double grossIncome;
-    public String RoutingNumber;
-    public String accountNumber;
+    public String grossIncome;
+    public String ACHRouting;
+    public String ACHAccount;
+    public String gender;
+    public String MonthlyIncome;
+    public String PayFrequency;
+    public String street;
+    public String City;
+    public String State;
+    public String Zip;
 
-    public class Address {
-        public String homeAddress;
-        public String city;
-        public String state;
-        public String postalCode;
-    }
 }

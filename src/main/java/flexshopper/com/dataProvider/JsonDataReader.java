@@ -35,7 +35,58 @@ public class JsonDataReader {
     }
 
     public final Customer getCustomerByName(String customerName){
-        return customerList.stream().filter(x -> x.firstName.equalsIgnoreCase(customerName)).findAny().get();
+        return customerList.stream().filter(x -> x.first_name.equalsIgnoreCase(customerName)).findAny().get();
     }
+    public final Customer getCustomerByLastName(String customerLastName){
+        return customerList.stream().filter(x -> x.last_name.equalsIgnoreCase(customerLastName)).findAny().get();
+    }
+    public final Customer getCustomerByGender(String customerGender){
+        return customerList.stream().filter(x -> x.gender.equalsIgnoreCase(customerGender)).findAny().get();
+    }
+    public final Customer getCustomerBySSN(String customerSSN){
+        return customerList.stream().filter(x -> x.SSN.equalsIgnoreCase(customerSSN)).findAny().get();
+    }
+    public final Customer getCustomerByACHRouting(String customerACHRouting){
+        return customerList.stream().filter(x -> x.ACHRouting.equalsIgnoreCase(customerACHRouting)).findAny().get();
+    }
+    public final Customer getCustomerByACHAccount(String customerACHAccount){
+        return customerList.stream().filter(x -> x.ACHAccount.equalsIgnoreCase(customerACHAccount)).findAny().get();
+    }
+    public final Customer getCustomerByBirthdate(String customerBirthdate){
+        return customerList.stream().filter(x -> x.Birthdate.equalsIgnoreCase(customerBirthdate)).findAny().get();
+    }
+    public final Customer getCustomerByMonthlyIncome(String customerMonthlyIncome){
+        return customerList.stream().filter(x -> x.MonthlyIncome.equalsIgnoreCase(customerMonthlyIncome)).findAny().get();
+    }
+    public final Customer getCustomerByPayFrequency(String customerPayFrequency){
+        return customerList.stream().filter(x -> x.PayFrequency.equalsIgnoreCase(customerPayFrequency)).findAny().get();
+    }
+    public final Customer getCustomerByPhoneNumber(String customerPhoneNumber){
+        return customerList.stream().filter(x -> x.PhoneNumber.equalsIgnoreCase(customerPhoneNumber)).findAny().get();
+    }
+    public final Customer getCustomerByEmail(String customerEmail){
+        return customerList.stream().filter(x -> x.email.equalsIgnoreCase(customerEmail)).findAny().get();
+    }
+    public final Customer getCustomerByCity(String customerCity){
+        return customerList.stream().filter(x -> x.City.equalsIgnoreCase(customerCity)).findAny().get();
+
+    }
+    public final Customer getCustomerGrossIncome(String customerGrossIncome){
+        return customerList.stream().filter(x -> x.grossIncome.equalsIgnoreCase(customerGrossIncome)).findAny().get();
+
+    }
+    public final Customer getCustomerStreet(String customerStreet){
+        return customerList.stream().filter(x -> x.street.equalsIgnoreCase(customerStreet)).findAny().get();
+
+    }
+    public final Customer getCustomerState(String customerState){
+        return customerList.stream().filter(x -> x.State.equalsIgnoreCase(customerState)).findAny().get();
+
+    }
+    public final Customer getCustomerZip(String customerZip){
+        return customerList.stream().filter(x -> x.Zip.equalsIgnoreCase(customerZip)).findAny().get();
+
+    }
+
 
 }

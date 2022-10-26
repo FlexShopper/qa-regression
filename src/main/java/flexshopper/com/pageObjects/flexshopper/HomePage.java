@@ -25,6 +25,9 @@ public class HomePage {
     @FindBy(how = How.CLASS_NAME,using = "userName")
     public WebElement myAccountHeader;
 
+   @FindBy(how = How.XPATH, using = "(//*[@id='Layer_1'])[1]")
+    public WebElement layer1;
+
     /**
      * Classes Definitions
      */

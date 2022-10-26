@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class EmailPage {
     WebDriver driver;
@@ -27,12 +29,15 @@ public class EmailPage {
     @FindBy(how = How.XPATH, using = "//h3[normalize-space(.)='Enter your email address to sign in or begin application for a spending limit of up to $2,500 to shop today.']")
     @AndroidBy(xpath = "//*[@text='Enter your email address to sign in or begin application for a spending limit of up to $2,500 to shop today.']")
     private WebElement enterEmailTxt;
+
     // in case if text will be edited or changed : //*[@id="app"]/div[1]/div[2]/div/div/div/div[1]/div/h3[2]
     @FindBy(how = How.XPATH, using = "//h3[(.)='Welcome to']")
     public WebElement welcomeText;
-    @FindBy(how = How.ID, using = "email-input")
+
+  @FindBy(how = How.ID, using = "email-input")
     @AndroidBy(xpath = "//*[@id='email-input']")
     private WebElement emailAddressField;
+    
     @FindBy(how = How.ID, using = "formSubmitButton")
     @AndroidBy(xpath = "//*[@text='Continue']")
     private WebElement continueBtn;
@@ -95,25 +100,21 @@ public class EmailPage {
      */
     public void enterEmail(String email) {
         emailAddressField.clear();
-        emailAddressField.sendKeys(email);
+      emailAddressField.sendKeys(email);
     }
 
     /**
      * clickContinueBtn() - Click on the "Continue" button
      */
     public void clickContinueBtn() {
+        WebDriverWait wait =new WebDriverWait(driver, 5);
+       wait.until(ExpectedConditions.visibilityOf(continueBtn));
         continueBtn.click();
     }
     public void getEmailScreen() {
         driver.get(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
         // add delete cookies
     }
-    public void login(){
-        emailAddressField.sendKeys(FileReaderManager.getInstance().getConfigReader().getEmail());
-        continueBtn.click();
-    }
-    public void loginWithOutFullInfo(){
-        emailAddressField.sendKeys(FileReaderManager.getInstance().getConfigReader().getEmailWithOutFullInfo());
-        continueBtn.click();
-    }
+
+
 }

@@ -73,6 +73,12 @@ public class ProfileInfoPage {
     @FindBy(how = How.XPATH, using = "//span[(.)='Continue']")
     @AndroidBy(xpath = "//*[@id='formSubmitButton' and @nodeName='BUTTON']")
     private WebElement formSubmitBtn;
+    @FindBy(how = How.XPATH, using = "//*[@id='headerPanel-close-button']")
+    private WebElement closeBtn;
+    @FindBy(how = How.XPATH, using = "//*[@id='headerPanel-faq-button']")
+    private WebElement FAQBtn;
+    @FindBy(how = How.XPATH, using = "//*[@id='headerPanel']/div[2]/div/div")
+    private WebElement FlexShopperLogo;
 
     /**
      * Classes
@@ -91,7 +97,49 @@ public class ProfileInfoPage {
         Assert.assertTrue(phoneField.isDisplayed());
         Assert.assertTrue(streetField.isDisplayed());
         Assert.assertTrue(enterManualLink.isDisplayed());
-        Assert.assertTrue(signMeUpField.isDisplayed());
+      //  Assert.assertTrue(signMeUpField.isDisplayed());
         Assert.assertTrue(formSubmitBtn.isDisplayed());
+    }
+    public void enterName(String name){
+        firstNameField.sendKeys(name);
+    }
+    public void enterLastName(String lastName){
+        lastNameField.sendKeys(lastName);
+    }
+    public void enterPhone(String phoneNumber){
+        phoneField.sendKeys(phoneNumber);
+    }
+    public void enterStreet(String street){
+        streetField.sendKeys(street);
+    }
+    public void clickEnterAddressManually(){
+        enterManualLink.click();
+    }
+    public void closeBtnExist(){
+        Assert.assertTrue(closeBtn.isDisplayed());
+    }
+    public void FAQBtnExist(){
+        Assert.assertTrue(FAQBtn.isDisplayed());
+    }
+    public void FlexShopperLogoExist(){
+        Assert.assertTrue(FlexShopperLogo.isDisplayed());
+    }
+    public void NotYouExist(){
+        Assert.assertTrue(notYouBtn.isDisplayed());
+    }
+    public void firstNameIsExist(){
+        Assert.assertTrue(firstNameField.isDisplayed());
+    }
+    public void lastNameIsExist(){
+        Assert.assertTrue(lastNameField.isDisplayed());
+    }
+    public void phoneNumberIsExist(){
+        Assert.assertTrue(phoneField.isDisplayed());
+    }
+    public void homeAddressIsExist(){
+        Assert.assertTrue(streetField.isDisplayed());
+    }
+    public void enterManuallyLinkIsExist(){
+        Assert.assertTrue(enterManualLink.isDisplayed());
     }
 }

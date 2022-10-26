@@ -1,10 +1,13 @@
 package flexshopper.com.pageObjects.flexshopper;
 
+import flexshopper.com.testDataTypes.pojoClasses.Customer;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class ApplyPage {
     WebDriver driver;
@@ -87,6 +90,71 @@ public class ApplyPage {
 
     @FindBy(how = How.XPATH,using = "//span[.='Start Shopping']")
     private WebElement startShoppingBtn;
+    @FindBy(how = How.CLASS_NAME, using = "sc-elJkPf eUIGYj")
+    private List<WebElement> payFrequencies;
+
+   public void enter_name(String name){
+       firstNamePP3.sendKeys(name);
+   }
+    public void enter_lastName(String lastName){
+        lastNamePP3.sendKeys(lastName);
+    }
+    public void enter_phone(String phoneNumber){
+       phonePP3.sendKeys(phoneNumber);
+    }
+    public void enter_street(String street){
+       streetPP3.sendKeys(street);
+    }
+    public void enter_dob(String dob){
+        dobPP3.sendKeys(dob);
+    }
+    public void enter_ssn(String ssn){
+        ssnPP3.sendKeys(ssn);
+    }
+    public void enter_monthlyIncome(String monthlyIncome){
+     monthlyIncomePP3.sendKeys(monthlyIncome);
+    }
+    public void enter_routingNumber(String routingNumber){
+        monthlyIncomePP3.sendKeys(routingNumber);
+    }
+    public void enter_accountNumber(String accountNumber){
+        monthlyIncomePP3.sendKeys(accountNumber);
+    }
+    public void enter_payFrequency(String payFrequency){
+       payFrequencyPP3.click();
+        for (WebElement eachPayFrequency : payFrequencies) {
+            if(eachPayFrequency.getText().equalsIgnoreCase(payFrequency));
+            eachPayFrequency.click();
+            try { Thread.sleep(3000);}
+            catch (InterruptedException e) {}
+            break;
+
+        }
+
+
+
+
+    }
+    public void clickEnterAddressManually(){
+       enterAddressManuallyPP3.click();
+    }
+    public void fill_FullDetails(Customer customer) {
+        enter_name(customer.first_name);
+        enter_lastName(customer.last_name);
+        enter_phone(customer.PhoneNumber);
+        enter_street(customer.street);
+        enter_dob(customer.Birthdate);
+        enter_ssn(customer.SSN);
+        enter_monthlyIncome(customer.MonthlyIncome);
+        enter_routingNumber(customer.ACHAccount);
+        enter_routingNumber(customer.ACHRouting);
+
+    }
+
+
+
+
+
 
 
 

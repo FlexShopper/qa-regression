@@ -51,17 +51,6 @@ public class ConfigFileReader {
         if(url != null) return url;
         else throw new RuntimeException("Application Url not specified in the Configuration.properties file for the Key:url");
     }
-    public String getEmail() {
-        String url = properties.getProperty("email");
-        if(url != null) return url;
-        else throw new RuntimeException("email not specified in the Configuration.properties file for the Key:email");
-    }
-    public String getEmailWithOutFullInfo() {
-        String url = properties.getProperty("emailWithOutFullInfo");
-        if(url != null) return url;
-        else throw new RuntimeException("emailWithOutFullInfo not specified in the Configuration.properties file for the Key:emailWithOutFullInfo");
-    }
-
     public DriverType getBrowser() {
         String browserName = properties.getProperty("browser");
         if(browserName == null || browserName.equals("chrome")) return DriverType.CHROME;

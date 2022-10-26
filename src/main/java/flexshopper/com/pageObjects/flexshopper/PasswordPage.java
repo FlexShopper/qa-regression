@@ -25,7 +25,9 @@ public class PasswordPage {
      */
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div[2]/div/form/div/div[2]/div/div[1]/h3")
     private WebElement emailText;
-    @FindBy(how =How.XPATH, using = "//*[@id=\"app\"]/div[1]/div[2]/div/div/div/div[2]/div/form/div/div[1]/p")
+
+
+    @FindBy(how =How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div[2]/div/form/div/div[1]/p")
     @AndroidBy(xpath = "//*[@text='Enter your password to sign in to your existing account.']")
     private WebElement enterPasswordTxt;
     // in case if text will be edited or changed: //*[@id="app"]/div[1]/div[2]/div/div/div/div[2]/div/form/div/div[1]/p
@@ -42,9 +44,9 @@ public class PasswordPage {
     @AndroidBy(xpath = "//*[@text='Forgot Password?']")
     private WebElement forgotPasswordLnk;
 
-    @FindBy(how = How.ID, using = "formSubmitButton")
-    @AndroidBy(xpath = "//*[@text='Sign In']")
-    private WebElement signInBtn;
+    @FindBy(how = How.XPATH, using = "//span[(.)='Sign In']")
+    @AndroidBy(xpath = "//span[(.)='Sign In']")
+    public WebElement signInBtn;
 
     /**
      * Validation Messages
@@ -65,7 +67,6 @@ public class PasswordPage {
      * userIsInPasswordPage() - Verify user landed in the Password screen
       */
     public void userIsInPasswordPage() {
-        Assert.assertTrue(emailText.isDisplayed());
         Assert.assertTrue(enterPasswordTxt.isDisplayed());
         Assert.assertTrue(notYouTxt.isDisplayed());
         Assert.assertTrue(passwordField.isDisplayed());

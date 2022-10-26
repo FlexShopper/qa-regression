@@ -1,8 +1,14 @@
 package flexshopper.com.cucumber;
 
 
+import flexshopper.com.managers.CapabilitiesManager;
 import flexshopper.com.managers.PageObjectManager;
 import flexshopper.com.managers.WebDriverManager;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class TestContext {
     private WebDriverManager webDriverManager;
@@ -10,7 +16,7 @@ public class TestContext {
     public ScenarioContext scenarioContext;
 
     public TestContext(){
-        webDriverManager = new WebDriverManager();
+         webDriverManager = new WebDriverManager();
         pageObjectManager = new PageObjectManager(webDriverManager.getDriver());
         scenarioContext = new ScenarioContext();
     }
@@ -19,6 +25,8 @@ public class TestContext {
         return webDriverManager;
     }
 
+
+
     public PageObjectManager getPageObjectManager() {
         return pageObjectManager;
     }
@@ -26,4 +34,5 @@ public class TestContext {
     public ScenarioContext getScenarioContext() {
         return scenarioContext;
     }
+
 }

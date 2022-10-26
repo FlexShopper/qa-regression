@@ -21,7 +21,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-public class forgotPasswordStepDefs {
+public class forgotPasswordStepDefs{
     TestContext testContext;
     PasswordPage passwordPage;
     EmailPage emailPage;
@@ -42,7 +42,8 @@ public class forgotPasswordStepDefs {
         emailPage.getEmailScreen();
         testContext.getWebDriverManager().getDriver().switchTo().frame(0);
         testContext.getWebDriverManager().getDriver().switchTo().frame(0);
-        emailPage.login();
+       emailPage.enterEmail("nann40547@gmail.com");
+       emailPage.clickContinueBtn();
         passwordPage.clickToForgotPassword();
         Thread.sleep(4000);
     }
@@ -64,23 +65,24 @@ public class forgotPasswordStepDefs {
         wait.until(ExpectedConditions.visibilityOf(forgotPasswordPage.phoneNumber));
         Assert.assertEquals(phoneNumber, forgotPasswordPage.phoneNumber.getText());
     }
-    @Then("user should be able to click on continue button")
-    public void user_should_be_able_to_click_on_continue_button() {
-        Assert.assertTrue(forgotPasswordPage.continueBtn.isEnabled());
+    @And("user should be able to click {string} button")
+    public void userShouldBeAbleToClickButton(String button) {
+        forgotPasswordPage.navigateToContinue(button);
     }
     @Given("user without Full Info is in the Forgot Password screen")
     public void userWithoutFullInfoIsInTheForgotPasswordScreen() throws InterruptedException {
         emailPage.getEmailScreen();
         testContext.getWebDriverManager().getDriver().switchTo().frame(0);
         testContext.getWebDriverManager().getDriver().switchTo().frame(0);
-        emailPage.loginWithOutFullInfo();
+        emailPage.enterEmail("user01@flexshopper.com");
+        emailPage.clickContinueBtn();
         passwordPage.clickToForgotPassword();
         Thread.sleep(4000);
     }
 
-    @And("user clicks on the link: Return to Password Sign In")
-    public void userClicksOnTheLinkReturnToPasswordSignIn() {
-        forgotPasswordPage.returnToPwdSignIn.click();
+    @And("user clicks on the link: {string}")
+    public void userClicksOnTheLink(String retToPasSign) {
+        forgotPasswordPage.navigateToReturnToPasswordSignIn(retToPasSign);
     }
 
     @Then("user should see Email screen")
@@ -97,10 +99,6 @@ public class forgotPasswordStepDefs {
         }
         //System.out.println(forgotPasswordPage.emailNameOfRadioBtn.isSelected());
     }
-    @When("the user clicks on the Continue btn")
-    public void theUserClicksOnTheContinueBtn() {
-        forgotPasswordPage.continueBtn.click();
-    }
 
     @Then("the user lands on the {string} screen")
     public void theUserLandsOnTheScreen(String weSentCodeText) {
@@ -111,9 +109,11 @@ public class forgotPasswordStepDefs {
     public void theUserShouldSeeTheEmailText(String email) {
         Assert.assertEquals(email, forgotPasswordPage.email.getText());
     }
-    @And("user see Security Code field")
-    public void userSeeSecurityCodeField() {
+
+    @And("user see {string} field")
+    public void userSeeField(String securityCodeField) {
         Assert.assertTrue(forgotPasswordPage.securityBox.isDisplayed());
+        Assert.assertEquals(securityCodeField, forgotPasswordPage.securityCode.getText());
     }
 
     @And("the Send SMS radio button is selected")
@@ -131,7 +131,7 @@ public class forgotPasswordStepDefs {
         emailPage.getEmailScreen();
         testContext.getWebDriverManager().getDriver().switchTo().frame(0);
         testContext.getWebDriverManager().getDriver().switchTo().frame(0);
-        emailPage.login();
+        emailPage.enterEmail("user01@flexshopper.com");
         passwordPage.clickToForgotPassword();
         forgotPasswordPage.continueBtn.click();
     }
@@ -145,19 +145,15 @@ public class forgotPasswordStepDefs {
         forgotPasswordPage.securityCodeBox.sendKeys(PassCode);
     }
 
-    @And("the user clicks on the Submit button")
-    public void theUserClicksOnTheSubmitButton() {
-        forgotPasswordPage.SubmitBtn.click();
-    }
 
     @Then("user lands on the {string} screen")
     public void userLandsOnTheScreen(String changePassword) {
         Assert.assertEquals(changePassword,forgotPasswordPage.changePassword.getText() );
     }
 
-    @When("user clicks on No Code received? button")
-    public void userClicksOnNoCodeReceivedButton() {
-        forgotPasswordPage.NoCodeReceivedBtn.click();
+    @And("the user clicks on the {string} button")
+    public void theUserClicksOnTheButton(String submitBtn) {
+        forgotPasswordPage.navigateToReturnToSubmitButton(submitBtn);
     }
     @Then("user should see forgot password screen with {string}")
     public void userShouldSeeForgotPasswordScreenWith(String email) {
@@ -174,17 +170,19 @@ public class forgotPasswordStepDefs {
         Assert.assertEquals(phoneNumber, forgotPasswordPage.phoneNumber.getText());
     }
 
-    @Given("the user with phone is in the We sent you a code screen")
-    public void theUserWithPhoneIsInTheWeSentYouACodeScreen() {
+
+    @Given("the user is in the {string} screen")
+    public void theUserIsInTheScreen(String text) {
         emailPage.getEmailScreen();
         testContext.getWebDriverManager().getDriver().switchTo().frame(0);
         testContext.getWebDriverManager().getDriver().switchTo().frame(0);
-        emailPage.login();
+        emailPage.enterEmail("user01@flexshopper.com");
         passwordPage.clickToForgotPassword();
         WebDriverWait wait =new WebDriverWait(testContext.getWebDriverManager().getDriver(), 20);
         wait.until(ExpectedConditions.visibilityOf(forgotPasswordPage.textMsgOfRadioBtn));
-       forgotPasswordPage.textMsgOfRadioBtn.click();
+        forgotPasswordPage.textMsgOfRadioBtn.click();
         forgotPasswordPage.continueBtn.click();
+        Assert.assertEquals(text, forgotPasswordPage.weSentYouCodeText.getText());
     }
 
     @Given("User on Change Password Screen")
@@ -192,7 +190,7 @@ public class forgotPasswordStepDefs {
         emailPage.getEmailScreen();
         testContext.getWebDriverManager().getDriver().switchTo().frame(0);
         testContext.getWebDriverManager().getDriver().switchTo().frame(0);
-        emailPage.login();
+        emailPage.enterEmail("user01@flexshopper.com");
         passwordPage.clickToForgotPassword();
         WebDriverWait wait =new WebDriverWait(testContext.getWebDriverManager().getDriver(), 20);
         wait.until(ExpectedConditions.visibilityOf(forgotPasswordPage.textMsgOfRadioBtn));
@@ -237,9 +235,9 @@ public class forgotPasswordStepDefs {
         emailPage.enterEmail(email);
     }
 
-    @And("user clicks continue btn")
-    public void userClicksContinueBtn() {
-        emailPage.clickContinueBtn();
+    @When("the user clicks on the {string} btn")
+    public void theUserClicksOnTheBtn(String button) {
+        forgotPasswordPage.navigateToContinue(button);
     }
 
     @And("user enter new {string} password")
@@ -279,5 +277,9 @@ public class forgotPasswordStepDefs {
         } catch (Exception e) {
             System.out.println("No such Alert exception");
         }
+    }
+
+    @Given("the user with phone is in the {string} screen")
+    public void theUserWithPhoneIsInTheScreen(String arg0) {
     }
 }

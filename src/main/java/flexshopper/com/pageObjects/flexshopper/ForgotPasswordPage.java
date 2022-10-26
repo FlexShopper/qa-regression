@@ -1,5 +1,6 @@
 package flexshopper.com.pageObjects.flexshopper;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -70,6 +71,8 @@ public class ForgotPasswordPage {
 
     @FindBy(how = How.XPATH, using = "//span[text()='Change Password']")
     public WebElement changePassword;
+    @FindBy(how = How.XPATH, using = "//span[(.)='Security Code']")
+    public WebElement securityCode;
 
 
     public  void clickToSignIn(){
@@ -104,4 +107,24 @@ public class ForgotPasswordPage {
         textMsgOfRadioBtn.click();
 
     }
+    public void navigateToContinue(String continueBtn)  {
+
+        driver.findElement(By.xpath("//span[(.)='"+continueBtn+"']")).click();
+    }
+
+    public void navigateToReturnToPasswordSignIn(String retToPassSign)  {
+
+        driver.findElement(By.xpath("//a[(.)='"+retToPassSign+"']")).click();
+    }
+
+    public void navigateToReturnToSubmitButton(String submitBtn)  {
+
+        driver.findElement(By.xpath("//span[(.)='"+submitBtn+"']")).click();
+    }
+
+    public void navigateToNoCodeReceivedButton(String noCodeReceivedBtn){
+        driver.findElement(By.xpath("//button[text()='"+noCodeReceivedBtn+"']")).click();
+    }
+
+
 }

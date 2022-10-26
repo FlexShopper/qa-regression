@@ -1,4 +1,4 @@
-@wip
+@email
 Feature: As a customer I should be able to enter the email in the login email
 
 
@@ -10,7 +10,7 @@ Feature: As a customer I should be able to enter the email in the login email
     Examples:
       | email               |
       | nann40547@gmail.com |
-  @email
+
   Scenario Outline: New Customer - User lands on the Profile Info screen
     Given the user is in the Email screen
     When the user enters a valid no-registered email address: "<email>"
@@ -26,9 +26,8 @@ Feature: As a customer I should be able to enter the email in the login email
     And the user clicks on the Continue button
     Then the user sees the following validation message: "<errorMsg>"
     Examples:
-      | email                 | errorMsg              |
-      | abcde@flexshopper     | Invalid email address |
-      | a.abcde@flexshopper   | Invalid email address |
-      | Ab cd@flexshopper.com | Invalid email address |
-      | Abcde@flexshopper.c   | Invalid email address |
-      |                       | Invalid email address |
+      | email               | errorMsg              |
+      | abcde@flexshopper   | Invalid email address |
+      | a.abcde@flexshopper | Invalid email address |
+      | Abcde@flexshopper.c | Invalid email address |
+      |                     | Invalid email address |
