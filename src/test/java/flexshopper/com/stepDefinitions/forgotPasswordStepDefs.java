@@ -1,12 +1,13 @@
 package flexshopper.com.stepDefinitions;
 
 
+import com.fasterxml.jackson.databind.jsontype.impl.StdSubtypeResolver;
 import flexshopper.com.cucumber.TestContext;
 import flexshopper.com.helpers.CheckMail;
-import flexshopper.com.pageObjects.flexshopper.EmailPage;
-import flexshopper.com.pageObjects.flexshopper.ForgotPasswordPage;
-import flexshopper.com.pageObjects.flexshopper.HomePage;
-import flexshopper.com.pageObjects.flexshopper.PasswordPage;
+import flexshopper.com.managers.CapabilitiesManager;
+import flexshopper.com.pageObjects.flexshopper.*;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -20,35 +21,44 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
 
 public class forgotPasswordStepDefs{
-    TestContext testContext;
-    PasswordPage passwordPage;
     EmailPage emailPage;
-    ForgotPasswordPage forgotPasswordPage;
-    CheckMail checkMail;
+    PasswordPage passwordPage;
+    ProfileInfoPage profileInfoPage;
     HomePage homePage;
-
-    public forgotPasswordStepDefs(TestContext context) {
-        testContext = context;
-        emailPage = testContext.getPageObjectManager().getLoginPage();
-        passwordPage = testContext.getPageObjectManager().getPasswordPage();
-        forgotPasswordPage = testContext.getPageObjectManager().getForgotPasswordPage();
-        homePage = testContext.getPageObjectManager().getHomePage();
-    }
+    ForgotPasswordPage forgotPasswordPage;
+    public AppiumDriver<?> driver;
 
     @Given("the user is in the Forgot Password screen")
     public void theUserIsInTheForgotPasswordScreen() throws InterruptedException {
-        emailPage.getEmailScreen();
-        testContext.getWebDriverManager().getDriver().switchTo().frame(0);
-        testContext.getWebDriverManager().getDriver().switchTo().frame(0);
-       emailPage.enterEmail("nann40547@gmail.com");
-       emailPage.clickContinueBtn();
+        CapabilitiesManager capabilitiesManager = new CapabilitiesManager();
+        try {
+            driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilitiesManager.getCapabilities());
+            driver.get("https://fmweb.staging.flexint.net/?do=pp3");
+            driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+        } catch (MalformedURLException e) {
+            System.out.println(e.getMessage());
+        }
+        emailPage=new EmailPage(driver);
+        driver.switchTo().frame(0);
+        driver.switchTo().frame(0);
+        emailPage.enterEmail("nann40547@gmail.com");
+        emailPage.clickContinueBtn();
+        passwordPage=new PasswordPage(driver);
+
         passwordPage.clickToForgotPassword();
-        Thread.sleep(4000);
     }
     @Then("user should see firstText {string}")
     public void userShouldSeeFirstText(String firstText) {
+        forgotPasswordPage=new ForgotPasswordPage(driver);
+        WebDriverWait wait =new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.visibilityOf(forgotPasswordPage.resetPasswordText));
+        forgotPasswordPage.resetPasswordText.getText();
         Assert.assertEquals(firstText,forgotPasswordPage.resetPasswordText.getText());
     }
     @Then("user should see secondText {string}")
@@ -61,7 +71,7 @@ public class forgotPasswordStepDefs{
     }
     @And("user should be able to see text {string}")
     public void userShouldBeAbleToSeeText(String phoneNumber) throws InterruptedException {
-        WebDriverWait wait =new WebDriverWait(testContext.getWebDriverManager().getDriver(), 10);
+        WebDriverWait wait =new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(forgotPasswordPage.phoneNumber));
         Assert.assertEquals(phoneNumber, forgotPasswordPage.phoneNumber.getText());
     }
@@ -71,17 +81,27 @@ public class forgotPasswordStepDefs{
     }
     @Given("user without Full Info is in the Forgot Password screen")
     public void userWithoutFullInfoIsInTheForgotPasswordScreen() throws InterruptedException {
-        emailPage.getEmailScreen();
-        testContext.getWebDriverManager().getDriver().switchTo().frame(0);
-        testContext.getWebDriverManager().getDriver().switchTo().frame(0);
-        emailPage.enterEmail("user01@flexshopper.com");
+        CapabilitiesManager capabilitiesManager = new CapabilitiesManager();
+        try {
+            driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilitiesManager.getCapabilities());
+            driver.get("https://fmweb.staging.flexint.net/?do=pp3");
+            driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+        } catch (MalformedURLException e) {
+            System.out.println(e.getMessage());
+        }
+        emailPage=new EmailPage(driver);
+        driver.switchTo().frame(0);
+        driver.switchTo().frame(0);
+        emailPage.enterEmail("abc_123@gmail.com");
         emailPage.clickContinueBtn();
+        passwordPage=new PasswordPage(driver);
         passwordPage.clickToForgotPassword();
-        Thread.sleep(4000);
     }
+
 
     @And("user clicks on the link: {string}")
     public void userClicksOnTheLink(String retToPasSign) {
+        forgotPasswordPage=new ForgotPasswordPage(driver);
         forgotPasswordPage.navigateToReturnToPasswordSignIn(retToPasSign);
     }
 
@@ -91,13 +111,18 @@ public class forgotPasswordStepDefs{
     }
     @And("the Send Email radio button is selected")
     public void theSendEmailRadioButtonIsSelected() {
+        forgotPasswordPage=new ForgotPasswordPage(driver);
         try {
-            WebDriverWait wait = new WebDriverWait(testContext.getWebDriverManager().getDriver(), 30);
+            WebDriverWait wait = new WebDriverWait(driver, 30);
             WebElement element = wait.until(ExpectedConditions.visibilityOf(forgotPasswordPage.emailNameOfRadioBtn));
         } catch (TimeoutException toe) {
             System.out.println("WebElement wasn't found");
         }
         //System.out.println(forgotPasswordPage.emailNameOfRadioBtn.isSelected());
+    }
+    @When("the user clicks on the {string} btn")
+    public void theUserClicksOnTheBtn(String button) {
+        forgotPasswordPage.navigateToContinue(button);
     }
 
     @Then("the user lands on the {string} screen")
@@ -118,6 +143,7 @@ public class forgotPasswordStepDefs{
 
     @And("the Send SMS radio button is selected")
     public void theSendSMSRadioButtonIsSelected() {
+        forgotPasswordPage=new ForgotPasswordPage(driver);
         forgotPasswordPage.clickToSendSms();
     }
 
@@ -128,21 +154,39 @@ public class forgotPasswordStepDefs{
 
     @Given("the user is in the We sent you a code screen")
     public void theUserIsInTheWeSentYouACodeScreen() throws InterruptedException {
-        emailPage.getEmailScreen();
-        testContext.getWebDriverManager().getDriver().switchTo().frame(0);
-        testContext.getWebDriverManager().getDriver().switchTo().frame(0);
-        emailPage.enterEmail("user01@flexshopper.com");
+        CapabilitiesManager capabilitiesManager = new CapabilitiesManager();
+        try {
+            driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilitiesManager.getCapabilities());
+            driver.get("https://fmweb.staging.flexint.net/?do=pp3");
+            driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+        } catch (MalformedURLException e) {
+            System.out.println(e.getMessage());
+        }
+        emailPage=new EmailPage(driver);
+        driver.switchTo().frame(0);
+        driver.switchTo().frame(0);
+        emailPage.enterEmail("nann40547@gmail.com");
+        emailPage.clickContinueBtn();
+        passwordPage=new PasswordPage(driver);
         passwordPage.clickToForgotPassword();
+        forgotPasswordPage=new ForgotPasswordPage(driver);
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 30);
+            WebElement element = wait.until(ExpectedConditions.visibilityOf(forgotPasswordPage.emailNameOfRadioBtn));
+        } catch (TimeoutException toe) {
+            System.out.println("WebElement wasn't found");
+        }
         forgotPasswordPage.continueBtn.click();
-    }
 
+    }
     @When("And the user retrieves the verification code from the email and send to Security Code field")
     public void andTheUserRetrievesTheVerificationCodeFromTheEmailAndSendToSecurityCodeField() throws InterruptedException {
         CheckMail checkGmail = new CheckMail();
-        Thread.sleep(6000);
+        Thread.sleep(20000);
         String PassCode = CheckMail.check("imap.gmail.com", "imap", "nann40547@gmail.com", "rhtytnjlxhtxbehk");
         System.out.println("PassCode is " + PassCode);
         forgotPasswordPage.securityCodeBox.sendKeys(PassCode);
+
     }
 
 
@@ -157,7 +201,7 @@ public class forgotPasswordStepDefs{
     }
     @Then("user should see forgot password screen with {string}")
     public void userShouldSeeForgotPasswordScreenWith(String email) {
-        WebDriverWait wait =new WebDriverWait(testContext.getWebDriverManager().getDriver(), 10);
+        WebDriverWait wait =new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(forgotPasswordPage.email));
         Assert.assertEquals(email, forgotPasswordPage.email.getText());
 
@@ -165,20 +209,20 @@ public class forgotPasswordStepDefs{
 
     @And("user should see forgot psd scr with {string}")
     public void userShouldSeeForgotPsdScrWith(String phoneNumber) {
-        WebDriverWait wait =new WebDriverWait(testContext.getWebDriverManager().getDriver(), 20);
+        WebDriverWait wait =new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOf(forgotPasswordPage.phoneNumber));
         Assert.assertEquals(phoneNumber, forgotPasswordPage.phoneNumber.getText());
     }
 
 
     @Given("the user is in the {string} screen")
-    public void theUserIsInTheScreen(String text) {
+    public void theUserIsInTheScreen(String text) throws InterruptedException {
         emailPage.getEmailScreen();
-        testContext.getWebDriverManager().getDriver().switchTo().frame(0);
-        testContext.getWebDriverManager().getDriver().switchTo().frame(0);
+        driver.switchTo().frame(0);
+        driver.switchTo().frame(0);
         emailPage.enterEmail("user01@flexshopper.com");
         passwordPage.clickToForgotPassword();
-        WebDriverWait wait =new WebDriverWait(testContext.getWebDriverManager().getDriver(), 20);
+        WebDriverWait wait =new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOf(forgotPasswordPage.textMsgOfRadioBtn));
         forgotPasswordPage.textMsgOfRadioBtn.click();
         forgotPasswordPage.continueBtn.click();
@@ -188,17 +232,21 @@ public class forgotPasswordStepDefs{
     @Given("User on Change Password Screen")
     public void userOnChangePasswordScreen() throws InterruptedException {
         emailPage.getEmailScreen();
-        testContext.getWebDriverManager().getDriver().switchTo().frame(0);
-        testContext.getWebDriverManager().getDriver().switchTo().frame(0);
+       driver.switchTo().frame(0);
+       driver.switchTo().frame(0);
         emailPage.enterEmail("user01@flexshopper.com");
         passwordPage.clickToForgotPassword();
-        WebDriverWait wait =new WebDriverWait(testContext.getWebDriverManager().getDriver(), 20);
+        WebDriverWait wait =new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOf(forgotPasswordPage.textMsgOfRadioBtn));
         forgotPasswordPage.continueBtn.click();
         CheckMail checkGmail = new CheckMail();
         Thread.sleep(6000);
         String PassCode = CheckMail.check("imap.gmail.com", "imap", "nann40547@gmail.com", "rhtytnjlxhtxbehk");
-        forgotPasswordPage.securityCodeBox.sendKeys(PassCode);
+        //forgotPasswordPage.securityCodeBox.sendKeys(PassCode);
+        forgotPasswordPage.SubmitBtn.click();
+    }
+    @And("the user clicks on the Submit button")
+    public void theUserClicksOnTheSubmitButton() {
         forgotPasswordPage.SubmitBtn.click();
     }
 
@@ -213,9 +261,12 @@ public class forgotPasswordStepDefs{
     }
 
 
-    @And("the user is on the Email screen")
+
+
+
+  /*  @And("the user is on the Email screen")
     public void theUserIsOnTheEmailScreen() throws InterruptedException {
-        Actions actions = new Actions(testContext.getWebDriverManager().getDriver());
+        Actions actions = new Actions(driver);
         actions.moveToElement(testContext.getPageObjectManager().getHomePage().myAccountHeader).perform();
         testContext.getWebDriverManager().getDriver().findElement(By.xpath("//a[@class='logOut']")).click();
         testContext.getWebDriverManager().getDriver().manage().deleteAllCookies();
@@ -281,5 +332,5 @@ public class forgotPasswordStepDefs{
 
     @Given("the user with phone is in the {string} screen")
     public void theUserWithPhoneIsInTheScreen(String arg0) {
-    }
+    }*/
 }

@@ -1,6 +1,6 @@
 
 Feature: As an existing customer I should be able to enter the password in the password screen
-  @password
+
   Scenario Outline: Existing Customer lands in Home Page as logged in user
     Given the user is in the Password screen
     When the user enters a valid password: "<password>"
@@ -9,7 +9,7 @@ Feature: As an existing customer I should be able to enter the password in the p
     Examples:
       | password | user            |
       | test123  | Ashley Zzelkova |
-
+  @password
   Scenario Outline: Existing Customer cannot log in with an invalid password
     Given the user is in the Password screen
     When the user enters an invalid password: "<password>"

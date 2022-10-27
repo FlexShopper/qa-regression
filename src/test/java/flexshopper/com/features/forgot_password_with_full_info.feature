@@ -62,6 +62,7 @@ Feature: As user I should be able to change the password
       | abc_123@gmail.com |
 
     #Assert code screen - Code sent to Phone Number
+
   Scenario Outline: User with phone information in the profile should see the "Code" screen
     Given the user is in the Forgot Password screen
    And the Send SMS radio button is selected
@@ -73,10 +74,11 @@ Feature: As user I should be able to change the password
       | xxx-xxx-3966 |
 
     # Receive verification code in the email
+  @wip
   Scenario: User should be able to receive the verification code in the email
     Given the user is in the We sent you a code screen
     When And the user retrieves the verification code from the email and send to Security Code field
-    And the user clicks on the "Submit" button
+    And the user clicks on the Submit button
     Then  user lands on the "Change Password" screen
 
     # Receive verification code in the phone

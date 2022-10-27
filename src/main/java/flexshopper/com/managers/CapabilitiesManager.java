@@ -26,6 +26,7 @@ public class CapabilitiesManager {
         capabilities.setCapability("browserName", "chrome");
         capabilities.setCapability("chromeOptions", ImmutableMap.of("w3c", false));
         capabilities.setCapability("chromeExec", "/Users/veneraserikova/IdeaProjects/FlexShopperLatestVersionNew11/src/test/java/mobile_drivers/chromedriver 2");
+        capabilities.setCapability("forceMjsonwp", true);
         return capabilities;
 
     }

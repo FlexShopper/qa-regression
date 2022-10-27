@@ -1,5 +1,6 @@
 package flexshopper.com.pageObjects.flexshopper;
 
+import io.appium.java_client.AppiumDriver;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,15 +10,16 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
-    public WebDriver driver;
+    public AppiumDriver<?> driver;
 
     /**
-     * Constructor Definition & Page Initialization
+     * Constructor & Page Initialization
      */
     public HomePage(WebDriver driver) {
-        this.driver=driver;
+        this.driver= (AppiumDriver<?>) driver;
         PageFactory.initElements(driver,this);
     }
+
 
     /**
      * Elements Definitions

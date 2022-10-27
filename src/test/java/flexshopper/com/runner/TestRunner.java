@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         plugin = {"pretty", "html:target/cucumber"},
         features = "src/test/java/flexshopper/com/features/",
         glue = {"flexshopper.com.stepDefinitions"},
-        tags = "@password",
+        tags = "@profile",
         monochrome = true
 )
 public class TestRunner {

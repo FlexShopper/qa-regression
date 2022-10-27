@@ -4,22 +4,18 @@ import flexshopper.com.managers.CapabilitiesManager;
 import flexshopper.com.pageObjects.flexshopper.EmailPage;
 import flexshopper.com.pageObjects.flexshopper.HomePage;
 import flexshopper.com.pageObjects.flexshopper.PasswordPage;
-import flexshopper.com.pageObjects.flexshopper.ProfileInfoPage;
-import flexshopper.com.selenium.ActionClass;
-import flexshopper.com.selenium.Wait;
-import flexshopper.com.selenium.Window;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.touch.TapOptions;
+import io.appium.java_client.touch.offset.ElementOption;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -57,34 +53,54 @@ public class passwordSteps {
 
     @And("the user clicks on the Sign In button")
     public void theUserClicksOnTheSignInButton() {
-        driver.executeScript("arguments[0].click();", passwordPage.signInBtn);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", passwordPage.signInBtn);
+                    driver.executeScript("arguments[0].click();", passwordPage.signInBtn);
 
     }
 
     @Then("the user lands in the Homepage as logged in user: {string}")
     public void theUserLandsInTheHomepageAsLoggedInUser(String user) {
-        Window.switchToWindow("CDwindow-0");
+        String windowHandle = driver.getWindowHandle();
+        driver.switchTo().window("CDwindow-0");
         homePage=new HomePage(driver);
-        ActionClass.click(homePage.layer1);
-        Wait.waitForPageRefreshed(homePage.myAccountHeader);
+        Actions action = new Actions(driver);
+        action.moveToElement(homePage.layer1).click().perform();
+        WebDriverWait wait =new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(homePage.myAccountHeader)));
         System.out.println(homePage.myAccountHeader.getText());
 
 
     }
 
     @When("the user enters an invalid password: {string}")
-    public void theUserEntersAnInvalidPassword(String arg0) {
+    public void theUserEntersAnInvalidPassword(String password) {
+        passwordPage=new PasswordPage(driver);
+        passwordPage.enterPassword(password);
+
     }
 
     @Then("the user should see the validation error message: {string}")
-    public void theUserShouldSeeTheValidationErrorMessage(String arg0) {
+    public void theUserShouldSeeTheValidationErrorMessage(String errorMsg) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 2);
+            wait.until(ExpectedConditions.alertIsPresent());
+            Alert alert = driver.switchTo().alert();
+            System.out.println(alert.getText());
+            alert.accept();
+            Assert.assertEquals(errorMsg, alert.getText());
+        } catch (Exception e) {
+            System.out.println("No such Alert exception");
+        }
     }
 
     @When("the user enters blank: {string}")
-    public void theUserEntersBlank(String arg0) {
+    public void theUserEntersBlank(String password) {
+        passwordPage=new PasswordPage(driver);
+        passwordPage.enterPassword(password);
     }
 
     @Then("the user should see the validation err message: {string}")
-    public void theUserShouldSeeTheValidationErrMessage(String arg0) {
+    public void theUserShouldSeeTheValidationErrMessage(String errorMsg) {
+        Assert.assertEquals(errorMsg, passwordPage.errMsgRequired.getText());
     }
 }

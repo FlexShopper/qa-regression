@@ -1,6 +1,7 @@
 package flexshopper.com.pageObjects.flexshopper;
 
 import flexshopper.com.managers.FileReaderManager;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidBy;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -12,15 +13,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class EmailPage {
-    WebDriver driver;
+    public AppiumDriver<?> driver;
 
     /**
      * Constructor & Page Initialization
      */
     public EmailPage(WebDriver driver) {
-        this.driver = driver;
+        this.driver= (AppiumDriver<?>) driver;
         PageFactory.initElements(driver,this);
     }
+
 
     /**
      * Elements
