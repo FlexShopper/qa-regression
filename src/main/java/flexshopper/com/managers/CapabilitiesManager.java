@@ -20,9 +20,9 @@ public class CapabilitiesManager {
     public DesiredCapabilities getCapabilities() {
         if (platform.equalsIgnoreCase("android")) {
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("Version", 12);
-            capabilities.setCapability("deviceName", "Pixel 4 New");
-            capabilities.setCapability("platformName", "Android");
+            capabilities.setCapability("Version",prop.getProperty("android.platform.version"));
+            capabilities.setCapability("deviceName", prop.getProperty("android.device.name"));
+            capabilities.setCapability("platformName", prop.getProperty("android.platform"));
             capabilities.setCapability("browserName", "chrome");
             capabilities.setCapability("chromeOptions", ImmutableMap.of("w3c", false));
             capabilities.setCapability("chromeExec", "/Users/veneraserikova/qa-regression/drivers/chromedriverEmulator");
