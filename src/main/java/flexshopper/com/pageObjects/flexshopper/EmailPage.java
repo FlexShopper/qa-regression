@@ -23,7 +23,6 @@ public class EmailPage {
         PageFactory.initElements(driver,this);
     }
 
-
     /**
      * Elements
      */
@@ -36,7 +35,7 @@ public class EmailPage {
     @FindBy(how = How.XPATH, using = "//h3[(.)='Welcome to']")
     public WebElement welcomeText;
 
-  @FindBy(how = How.ID, using = "email-input")
+   @FindBy(how = How.ID, using = "email-input")
     @AndroidBy(xpath = "//*[@id='email-input']")
     private WebElement emailAddressField;
     
@@ -73,8 +72,6 @@ public class EmailPage {
 
     @AndroidBy(xpath = "//*[@text='Sign me up to receive the latest news on FlexShopper and MyFlexLending products and promotions. We respect your privacy. Please view our ']")
     private WebElement signMeUpField;
-
-
 
     /**
      * Validation Messages

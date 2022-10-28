@@ -21,7 +21,6 @@ public class HomePage {
         PageFactory.initElements(driver,this);
     }
 
-
     /**
      * Elements Definitions
      */

@@ -12,8 +12,8 @@ public class CapabilitiesManager {
     public String platform = "iOS";
     Properties prop = new Properties();
     InputStream input = null;
-    public void propConfigFile() throws IOException {
 
+    public void propConfigFile() throws IOException {
         input = new FileInputStream("configs/Configuration.properties");
         prop.load(input);
     }
@@ -41,8 +41,6 @@ public class CapabilitiesManager {
             capabilities.setCapability("bundleId", prop.getProperty("ios.bundle.id"));
             return capabilities;
         }
-
-
         return null;
     }
 }

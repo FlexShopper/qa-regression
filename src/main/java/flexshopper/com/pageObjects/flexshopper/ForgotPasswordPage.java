@@ -76,9 +76,7 @@ public class ForgotPasswordPage {
 
 
     public  void clickToSignIn(){
-
         returnToPwdSignIn.click();
-
     }
 
     public void clickToContinueBtn(){
@@ -108,17 +106,14 @@ public class ForgotPasswordPage {
 
     }
     public void navigateToContinue(String continueBtn)  {
-
         driver.findElement(By.xpath("//span[(.)='"+continueBtn+"']")).click();
     }
 
     public void navigateToReturnToPasswordSignIn(String retToPassSign)  {
-
         driver.findElement(By.xpath("//a[(.)='"+retToPassSign+"']")).click();
     }
 
     public void navigateToReturnToSubmitButton(String submitBtn)  {
-
         driver.findElement(By.xpath("//span[(.)='"+submitBtn+"']")).click();
     }
 

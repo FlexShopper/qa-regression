@@ -51,8 +51,6 @@ public class ProfileInfoStepsCopy {
         /** TODO
          * ASK STAN
          */
-
-
         List<WebElement> element = testContext.getWebDriverManager().getDriver().findElements(By.className("//*[@id='app']/div[1]/div[2]/div/div/div/div/div/div/form/div/div[5]/div/div[2]/div[2]/ul/div"));
         WebElement el=testContext.getWebDriverManager().getDriver().findElement(By.xpath("//*[@id='app']/div[1]/div[2]/div/div/div/div/div/div/form/div/div[5]/div/div[2]/div[2]/ul/div[1]/li"));
         Assert.assertTrue(el.isDisplayed());
@@ -63,7 +61,6 @@ public class ProfileInfoStepsCopy {
             System.out.println("elements.getText() = " + elements.getText());
             elements.click();
         }
-
     }
 
     @And("the user can select the address from the suggestionssss")
@@ -85,11 +82,9 @@ public class ProfileInfoStepsCopy {
         profileInfoPage.clickEnterAddressManually();
     }
 
-
     @Then("the user should see Home Address field")
     public void theUserShouldSeeHomeAddressField() {
         profileInfoPage.homeAddressIsExist();
-
     }
     @And("the usersssss should see the Apt\\/Unit fields")
     public void theUsersssssShouldSeeTheAptUnitFields() {
@@ -99,7 +94,6 @@ public class ProfileInfoStepsCopy {
     @And("the user should see the City field")
     public void theUserShouldSeeTheCityField() {
         profileInfoPage.cityFieldExist();
-
     }
 
     @And("the user should see the State field")
@@ -118,7 +112,6 @@ public class ProfileInfoStepsCopy {
         WebElement el=testContext.getWebDriverManager().getDriver().findElement(By.xpath("//span[(.)='Continue']"));
         wait.until(ExpectedConditions.visibilityOf(el));
         el.click();
-
     }
     @Then("the user should land {string} Screen")
     public void theUserShouldLandScreen(String personalInfo) {

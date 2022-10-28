@@ -33,7 +33,6 @@ public class PasswordPage {
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div[2]/div/form/div/div[2]/div/div[1]/h3")
     private WebElement emailText;
 
-
     @FindBy(how =How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div[2]/div/form/div/div[1]/p")
     @AndroidBy(xpath = "//*[@text='Enter your password to sign in to your existing account.']")
     private WebElement enterPasswordTxt;

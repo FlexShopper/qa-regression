@@ -60,15 +60,19 @@ public class ProfileInfoPage {
     @FindBy(how = How.ID, using = "enterManualLink")
     @AndroidBy(xpath = "//*[@id='enterManualLink']")
     private WebElement enterManualLink;
+
     @FindBy(how = How.ID, using = "street2-input")
     @AndroidBy(xpath = "//*[@name='street2']")
     private WebElement unitNumberField;
+
     @FindBy(how = How.ID, using = "city-input")
     @AndroidBy(xpath = "//*[@name='city']")
     private WebElement cityField;
+
     @FindBy(how = How.ID, using = "region-input")
     @AndroidBy(xpath = "//*[@name='region']")
     private WebElement regionField;
+
     @FindBy(how = How.ID, using = "postalCode-input")
     @AndroidBy(xpath = "//*[@name='postalCode']")
     private WebElement postalCodeField;
@@ -80,41 +84,57 @@ public class ProfileInfoPage {
     @FindBy(how = How.XPATH, using = "//span[(.)='Continue']")
     @AndroidBy(xpath = "//*[@id='formSubmitButton' and @nodeName='BUTTON']")
     private WebElement formSubmitBtn;
+
     @FindBy(how = How.XPATH, using = "//*[@id='headerPanel-close-button']")
     private WebElement closeBtn;
+
     @FindBy(how = How.XPATH, using = "//*[@id='headerPanel-faq-button']")
     private WebElement FAQBtn;
+
     @FindBy(how = How.XPATH, using = "//*[@id='headerPanel']/div[2]/div/div")
     private WebElement FlexShopperLogo;
+
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div/div/div/form/div/div[6]/label/div[2]/span/a")
     private WebElement privacyPolicy;
+
     @FindBy(how = How.ID, using = "footer-privacy-button")
     private WebElement privacyFooter;
+
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[3]/div/div/div/div[2]/div/p[1]")
     private WebElement privacyFooterInfo;
+
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[3]/div/div/div/div[2]/div/p[1]")
     private WebElement privacyPolicyInfo;
+
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div/footer/div/div[1]")
     private WebElement copyrightInfo;
+
     @FindBy(how = How.ID, using = "footer-accessibility-button")
     private WebElement Accessibility;
+
     @FindBy(how = How.ID, using = "footer-terms-button")
     private WebElement Terms;
+
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[3]/div/div/div/div[2]/div/p[2]")
     private WebElement termsInfo;
+
     @FindBy(how = How.XPATH, using = "(//span[(.)='No special characters'])[1]")
     public WebElement errMsgFirstNameField;
+
     @FindBy(how = How.XPATH, using = "(//span[(.)='No special characters'])[2]")
     public WebElement errMsgLastNameField;
+
     @FindBy(how =How.XPATH, using = "//*[@id='formSubmitButton']/span")
     private WebElement continueBtn;
+
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div/div/div/form/div/div[4]/div/span[2]")
     public WebElement errMsfMobileField;
+
     @FindBy(how = How.ID, using = "postalCode-input")
     private WebElement zipCode;
+
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div/div/div/form/div/div[5]/div/div[2]/div[2]/div[2]/div/span[2]")
     public WebElement errMsgZipCode;
-
 
     /**
      * Classes
@@ -189,7 +209,6 @@ public class ProfileInfoPage {
     }
     public void clickPrivacyPolicy(){
       privacyPolicy.click();
-
     }
     public void clickPrivacy(){
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", privacyFooter);
@@ -257,15 +276,4 @@ public class ProfileInfoPage {
         Assert.assertTrue(regionField.isDisplayed());
     }
 
-
-       /* enterStreet();
-        enter_Name(customer.firstName);
-        enter_LastName(customer.lastName);
-        enter_Phone(customer.phoneNumber.mob);
-        enter_Email(customer.emailAddress);
-        enter_City(customer.address.city);
-        enter_Address(customer.address.streetAddress);
-        enter_PostCode(customer.address.postCode);
-        select_Country(customer.address.country);
-        select_County(customer.address.county);*/
   }

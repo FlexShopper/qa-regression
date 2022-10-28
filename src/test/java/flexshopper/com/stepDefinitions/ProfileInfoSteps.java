@@ -42,7 +42,6 @@ public class ProfileInfoSteps {
     public void theUserCanSeeTheCloseButton() {
         profileInfoPage=new ProfileInfoPage(driver);
         profileInfoPage.closeBtnExist();
-
     }
 
   /**
@@ -246,17 +245,14 @@ public class ProfileInfoSteps {
 
     @When("the user has entered {string} information Profile page and  starts entering a valid address")
     public void theUserHasEnteredInformationProfilePageAndStartsEnteringAValidAddress(String arg0) {
-        
     }
 
     @Then("the user should see address suggestions")
     public void theUserShouldSeeAddressSuggestions() {
-        
     }
 
     @And("the user can select the address from the suggestions")
     public void theUserCanSelectTheAddressFromTheSuggestions() {
-
     }
 
 

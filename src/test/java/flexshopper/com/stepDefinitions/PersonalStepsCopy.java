@@ -40,7 +40,6 @@ public class PersonalStepsCopy {
         testContext.getWebDriverManager().getDriver().switchTo().frame(0);
         loginPage.enterEmail("abcde.approve@flexshopper.com");
         loginPage.clickContinueBtn();
-
     }
 
     @Then("user can see {string}:")
@@ -65,8 +64,6 @@ public class PersonalStepsCopy {
 
     @And("the user can see the Pay Frequency drop down button")
     public void theUserCanSeeThePayFrequencyDropDownButton() {
-
-
     }
     @And("the user can see the following opt:")
     public void theUserCanSeeTheFollowingOpt(List<String> expectedOptions) {

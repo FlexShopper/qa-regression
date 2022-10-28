@@ -29,8 +29,6 @@ Feature: As user I should be able to change the password
     And user clicks on the link: "Return to Password Sign In"
     Then user should see Email screen
 
-
-
   #verify Return to Password Sign In button functionality
   Scenario: User is able to return to the Email screen
     Given the user is in the Forgot Password screen
@@ -38,7 +36,6 @@ Feature: As user I should be able to change the password
     Then user should see Email screen
 
 # Assert code screen - Code sent to Email Address
-
   Scenario Outline: User with email information in the profile should see the "Code" screen
     Given the user is in the Forgot Password screen
     And the Send Email radio button is selected
@@ -62,7 +59,6 @@ Feature: As user I should be able to change the password
       | abc_123@gmail.com |
 
     #Assert code screen - Code sent to Phone Number
-
   Scenario Outline: User with phone information in the profile should see the "Code" screen
     Given the user is in the Forgot Password screen
    And the Send SMS radio button is selected

@@ -130,10 +130,6 @@ public class BankingInfoPage {
             break;
 
         }
-
-
-
-
     }
     public void clickEnterAddressManually(){
         enterAddressManuallyPP3.click();
@@ -148,7 +144,6 @@ public class BankingInfoPage {
         enter_monthlyIncome(customer.MonthlyIncome);
         enter_routingNumber(customer.ACHAccount);
         enter_routingNumber(customer.ACHRouting);
-
     }
 
 
