@@ -142,7 +142,7 @@ public class ApplyPage {
         enter_name(customer.first_name);
         enter_lastName(customer.last_name);
         enter_phone(customer.PhoneNumber);
-        enter_street(customer.street);
+        enter_street(customer.streetFull);
         enter_dob(customer.Birthdate);
         enter_ssn(customer.SSN);
         enter_monthlyIncome(customer.MonthlyIncome);

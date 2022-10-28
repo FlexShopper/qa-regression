@@ -1,33 +1,49 @@
 package flexshopper.com.managers;
 
 import com.google.common.collect.ImmutableMap;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.remote.MobileCapabilityType;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
-import java.net.URL;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 public class CapabilitiesManager {
-    public DesiredCapabilities getCapabilities() {
-      /*  DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-        desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "12.0");
-        desiredCapabilities.setCapability(MobileCapabilityType.UDID, "emulator-5554");
-        desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel 4 New");
-        desiredCapabilities.setCapability(MobileCapabilityType.BROWSER_NAME,"Chrome");
-        desiredCapabilities.setCapability(MobileCapabilityType.VERSION, "91.0.4472");
-        return desiredCapabilities;}*/
-        DesiredCapabilities capabilities=new DesiredCapabilities();
-        capabilities.setCapability("Version", 12);
-        capabilities.setCapability("deviceName","Pixel 4 New");
-        capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("browserName", "chrome");
-        capabilities.setCapability("chromeOptions", ImmutableMap.of("w3c", false));
-        capabilities.setCapability("chromeExec", "/Users/veneraserikova/IdeaProjects/FlexShopperLatestVersionNew11/src/test/java/mobile_drivers/chromedriver 2");
-        capabilities.setCapability("forceMjsonwp", true);
-        return capabilities;
+    public String platform = "iOS";
+    Properties prop = new Properties();
+    InputStream input = null;
+    public void propConfigFile() throws IOException {
 
+        input = new FileInputStream("configs/Configuration.properties");
+        prop.load(input);
+    }
+    public DesiredCapabilities getCapabilities() {
+        if (platform.equalsIgnoreCase("android")) {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("Version", 12);
+            capabilities.setCapability("deviceName", "Pixel 4 New");
+            capabilities.setCapability("platformName", "Android");
+            capabilities.setCapability("browserName", "chrome");
+            capabilities.setCapability("chromeOptions", ImmutableMap.of("w3c", false));
+            capabilities.setCapability("chromeExec", "/Users/veneraserikova/qa-regression/drivers/chromedriverEmulator");
+            capabilities.setCapability("forceMjsonwp", true);
+            return capabilities;
+        }
+        else if (platform.equalsIgnoreCase("iOS")) {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("Version", prop.getProperty("ios.platform.version"));
+            capabilities.setCapability("deviceName", prop.getProperty("ios.device.name"));
+            capabilities.setCapability("platformName", prop.getProperty("ios.platform"));
+            capabilities.setCapability(CapabilityType.BROWSER_NAME, "chrome");
+            capabilities.setCapability("chromeOptions", ImmutableMap.of("w3c", false));
+            capabilities.setCapability("chromeExec", prop.getProperty("driverPath"));
+            capabilities.setCapability("forceMjsonwp", true);
+            capabilities.setCapability("bundleId", prop.getProperty("ios.bundle.id"));
+            return capabilities;
+        }
+
+
+        return null;
     }
 }
+

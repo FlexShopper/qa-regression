@@ -13,7 +13,8 @@ public class Customer {
     public String gender;
     public String MonthlyIncome;
     public String PayFrequency;
-    public String street;
+    public String streetFull;
+    public String streetNotFull;
     public String City;
     public String State;
     public String Zip;

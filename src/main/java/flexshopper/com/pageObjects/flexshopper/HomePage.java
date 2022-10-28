@@ -10,13 +10,14 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
-    public AppiumDriver<?> driver;
-
+   // public AppiumDriver<?> driver;
+    public WebDriver driver;
     /**
      * Constructor & Page Initialization
      */
     public HomePage(WebDriver driver) {
-        this.driver= (AppiumDriver<?>) driver;
+       // this.driver= (AppiumDriver<?>) driver;
+        this.driver=driver;
         PageFactory.initElements(driver,this);
     }
 

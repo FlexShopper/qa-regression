@@ -1,6 +1,7 @@
 package flexshopper.com.pageObjects.flexshopper;
 
 import flexshopper.com.testDataTypes.pojoClasses.Customer;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,26 +35,40 @@ public class PersonalInfoPage {
     private List<WebElement> payFrequencies;
 
     @FindBy(how=How.XPATH, using = "//h2[text()='Personal Info']")
-    private WebElement PersonalInfoPScreenP3;
-    public void enter_dob(String dob){
+    public WebElement PersonalInfoPScreenP3;
+    public void enterDob(String dob){
         dobPP3.sendKeys(dob);
     }
-    public void enter_ssn(String ssn){
+    public void enterSSN(String ssn){
         ssnPP3.sendKeys(ssn);
     }
-    public void enter_monthlyIncome(String monthlyIncome){
+    public void enterMonthlyIncome(String monthlyIncome){
         monthlyIncomePP3.sendKeys(monthlyIncome);
     }
 
-    public void enter_payFrequency(String payFrequency){
+    public void enterPayFrequency(Customer customer){
         payFrequencyPP3.click();
         for (WebElement eachPayFrequency : payFrequencies) {
-            if(eachPayFrequency.getText().equalsIgnoreCase(payFrequency));
+            if(eachPayFrequency.getText().equalsIgnoreCase(customer.PayFrequency));
             eachPayFrequency.click();
             try { Thread.sleep(3000);}
             catch (InterruptedException e) {}
             break;
 
         }}
+    public void DOBExist(){
+        Assert.assertTrue(dobPP3.isDisplayed());
+    }
+    public void SSNExist(){
+        Assert.assertTrue(ssnPP3.isDisplayed());
+    }
+    public void monthlyIncomeExist(){
+        Assert.assertTrue(monthlyIncomePP3.isDisplayed());
+    }
+    public void enterPersonalInfo(Customer customer){
+        enterDob(customer.Birthdate);
+        enterSSN(customer.SSN);
+        enterMonthlyIncome(customer.grossIncome);
+    }
 
 }

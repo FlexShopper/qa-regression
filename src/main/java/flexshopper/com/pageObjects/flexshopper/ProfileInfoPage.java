@@ -1,5 +1,6 @@
 package flexshopper.com.pageObjects.flexshopper;
 
+import flexshopper.com.testDataTypes.pojoClasses.Customer;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidBy;
 import org.junit.Assert;
@@ -12,13 +13,15 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 public class ProfileInfoPage {
-    public AppiumDriver<?> driver;
+  //  public AppiumDriver<?> driver;
+    WebDriver driver;
 
     /**
      * Constructor & Page Initialization
      */
     public ProfileInfoPage(WebDriver driver) {
-        this.driver= (AppiumDriver<?>) driver;
+        //this.driver= (AppiumDriver<?>) driver;
+        this.driver=driver;
         PageFactory.initElements(driver,this);
     }
 
@@ -55,18 +58,18 @@ public class ProfileInfoPage {
     private WebElement streetField;
 
     @FindBy(how = How.ID, using = "enterManualLink")
-    @AndroidBy(xpath = "//*[@id='enterManualLink' and @text='Enter Address Manually']")
+    @AndroidBy(xpath = "//*[@id='enterManualLink']")
     private WebElement enterManualLink;
-
+    @FindBy(how = How.ID, using = "street2-input")
     @AndroidBy(xpath = "//*[@name='street2']")
     private WebElement unitNumberField;
-
+    @FindBy(how = How.ID, using = "city-input")
     @AndroidBy(xpath = "//*[@name='city']")
     private WebElement cityField;
-
+    @FindBy(how = How.ID, using = "region-input")
     @AndroidBy(xpath = "//*[@name='region']")
     private WebElement regionField;
-
+    @FindBy(how = How.ID, using = "postalCode-input")
     @AndroidBy(xpath = "//*[@name='postalCode']")
     private WebElement postalCodeField;
 
@@ -103,8 +106,14 @@ public class ProfileInfoPage {
     public WebElement errMsgFirstNameField;
     @FindBy(how = How.XPATH, using = "(//span[(.)='No special characters'])[2]")
     public WebElement errMsgLastNameField;
-    @FindBy(how = How.ID, using = "formSubmitButton")
+    @FindBy(how =How.XPATH, using = "//*[@id='formSubmitButton']/span")
     private WebElement continueBtn;
+    @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div/div/div/form/div/div[4]/div/span[2]")
+    public WebElement errMsfMobileField;
+    @FindBy(how = How.ID, using = "postalCode-input")
+    private WebElement zipCode;
+    @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div/div/div/form/div/div[5]/div/div[2]/div[2]/div[2]/div/span[2]")
+    public WebElement errMsgZipCode;
 
 
     /**
@@ -140,7 +149,7 @@ public class ProfileInfoPage {
         streetField.sendKeys(street);
     }
     public void clickEnterAddressManually(){
-        enterManualLink.click();
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();",enterManualLink);
     }
     public void closeBtnExist(){
         Assert.assertTrue(closeBtn.isDisplayed());
@@ -151,7 +160,6 @@ public class ProfileInfoPage {
     public void FlexShopperLogoExist(){
         Assert.assertTrue(FlexShopperLogo.isDisplayed());
     }
-
     public void NotYouExist(){
         Assert.assertTrue(notYouBtn.isDisplayed());
     }
@@ -221,5 +229,43 @@ public class ProfileInfoPage {
     public void clickContinueBtn(){
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();",continueBtn);
     }
+    public void enterZipcode(String zipCode){
+        this.zipCode.sendKeys(zipCode);
+    }
 
-}
+    public void fillProfileDetails(Customer customer) {
+        enterName(customer.first_name);
+        enterLastName(customer.last_name);
+        enterPhone(customer.PhoneNumber);
+        enterStreet(customer.streetFull);
+    }
+    public void fillProfileDetailsNoAddress(Customer customer) {
+        enterName(customer.first_name);
+        enterLastName(customer.last_name);
+        enterPhone(customer.PhoneNumber);
+    }
+    public void unitNumberFieldExist(){
+        Assert.assertTrue(unitNumberField.isDisplayed());
+    }
+    public void cityFieldExist(){
+        Assert.assertTrue(cityField.isDisplayed());
+    }
+    public void zipCodeFieldExist(){
+        Assert.assertTrue(zipCode.isDisplayed());
+    }
+    public void regionFieldExist(){
+        Assert.assertTrue(regionField.isDisplayed());
+    }
+
+
+       /* enterStreet();
+        enter_Name(customer.firstName);
+        enter_LastName(customer.lastName);
+        enter_Phone(customer.phoneNumber.mob);
+        enter_Email(customer.emailAddress);
+        enter_City(customer.address.city);
+        enter_Address(customer.address.streetAddress);
+        enter_PostCode(customer.address.postCode);
+        select_Country(customer.address.country);
+        select_County(customer.address.county);*/
+  }

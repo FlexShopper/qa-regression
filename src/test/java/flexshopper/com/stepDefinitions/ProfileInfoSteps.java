@@ -222,6 +222,42 @@ public class ProfileInfoSteps {
     }
 
     @When("the user enters an invalid mobile number: {string}")
-    public void theUserEntersAnInvalidMobileNumber(String arg0) {
+    public void theUserEntersAnInvalidMobileNumber(String mobileNumber) {
+        profileInfoPage=new ProfileInfoPage(driver);
+        profileInfoPage.enterPhone(mobileNumber);
     }
+
+    @Then("the user should see the validation message: {string}")
+    public void theUserShouldSeeTheValidationMessage(String validationMess) {
+       Assert.assertEquals(validationMess, profileInfoPage.errMsfMobileField.getText());
+    }
+
+    @When("the user enters an invalid zip code: {string}")
+    public void theUserEntersAnInvalidZipCode(String zipCode) {
+        profileInfoPage=new ProfileInfoPage(driver);
+        profileInfoPage.clickEnterAddressManually();
+        profileInfoPage.enterZipcode(zipCode);
+    }
+
+    @Then("the user should see the validation message in zip code filed: {string}")
+    public void theUserShouldSeeTheValidationMessageInZipCodeFiled(String validationMess) {
+        Assert.assertEquals(validationMess, profileInfoPage.errMsgZipCode.getText());
+    }
+
+    @When("the user has entered {string} information Profile page and  starts entering a valid address")
+    public void theUserHasEnteredInformationProfilePageAndStartsEnteringAValidAddress(String arg0) {
+        
+    }
+
+    @Then("the user should see address suggestions")
+    public void theUserShouldSeeAddressSuggestions() {
+        
+    }
+
+    @And("the user can select the address from the suggestions")
+    public void theUserCanSelectTheAddressFromTheSuggestions() {
+
+    }
+
+
 }

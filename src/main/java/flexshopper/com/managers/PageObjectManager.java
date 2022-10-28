@@ -11,6 +11,7 @@ public class PageObjectManager {
     private ForgotPasswordPage forgotPasswordPage;
     private HomePage homePage;
     private ApplyPage applyPage;
+    private PersonalInfoPage personalInfoPage;
 
     public PageObjectManager(WebDriver driver) {
         this.driver=driver;
@@ -37,6 +38,9 @@ public class PageObjectManager {
     }
     public ApplyPage getApplyPage() {return (applyPage==null) ? applyPage =
             new ApplyPage(driver) : applyPage;
+    }
+    public PersonalInfoPage getPersonalInfoPage() {return (personalInfoPage==null) ? personalInfoPage =
+            new PersonalInfoPage(driver) : personalInfoPage;
     }
 
 }

@@ -13,13 +13,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class EmailPage {
-    public AppiumDriver<?> driver;
+    public WebDriver driver;
 
     /**
      * Constructor & Page Initialization
      */
     public EmailPage(WebDriver driver) {
-        this.driver= (AppiumDriver<?>) driver;
+       this.driver=driver;
         PageFactory.initElements(driver,this);
     }
 

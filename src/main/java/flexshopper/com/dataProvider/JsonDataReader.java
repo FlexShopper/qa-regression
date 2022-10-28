@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class JsonDataReader {
-    private final String customerFilePath = FileReaderManager.getInstance().getConfigReader().getTestDataResourcePath() + "Customer.json";
+    private final String customerFilePath = FileReaderManager.getInstance().getConfigReader().getTestDataResourcePath();
     private List<Customer> customerList;
 
     public JsonDataReader(){
@@ -75,8 +75,12 @@ public class JsonDataReader {
         return customerList.stream().filter(x -> x.grossIncome.equalsIgnoreCase(customerGrossIncome)).findAny().get();
 
     }
-    public final Customer getCustomerStreet(String customerStreet){
-        return customerList.stream().filter(x -> x.street.equalsIgnoreCase(customerStreet)).findAny().get();
+    public final Customer getCustomerFullStreet(String customerStreet){
+        return customerList.stream().filter(x -> x.streetFull.equalsIgnoreCase(customerStreet)).findAny().get();
+
+    }
+    public final Customer getCustomerNotFullStreet(String customerStreet){
+        return customerList.stream().filter(x -> x.streetNotFull.equalsIgnoreCase(customerStreet)).findAny().get();
 
     }
     public final Customer getCustomerState(String customerState){

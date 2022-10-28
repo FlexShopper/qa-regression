@@ -15,13 +15,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PasswordPage {
 
-    public AppiumDriver<?> driver;
+    //public AppiumDriver<?> driver;
+    public WebDriver driver;
 
     /**
      * Constructor & Page Initialization
      */
     public PasswordPage(WebDriver driver) {
-        this.driver= (AppiumDriver<?>) driver;
+        //this.driver= (AppiumDriver<?>) driver;
+        this.driver=driver;
         PageFactory.initElements(driver,this);
     }
 
@@ -96,6 +98,6 @@ public class PasswordPage {
     public void clickToForgotPassword() throws InterruptedException {
         Thread.sleep(5000);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", forgotPasswordLnk);
-        driver.executeScript("arguments[0].click();",forgotPasswordLnk);
+       // driver.executeScript("arguments[0].click();",forgotPasswordLnk);
     }
 }

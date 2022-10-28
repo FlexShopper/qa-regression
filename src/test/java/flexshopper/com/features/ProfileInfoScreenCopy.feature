@@ -98,16 +98,16 @@ Feature: As user I should be able to land Profile Info Screen
       | 1       | Must be 5 characters |
 
  Scenario Outline: The user can select a valid matching address from the address suggestions
-    Given the user lands in the ProfileInfo screen
-    When the user has entered "<customer>" information Profile page and  starts entering a valid address
-    Then the user should see address suggestions
-    And the user can select the address from the suggestions
+    Given the user lands in the ProfileInfo screen1
+    When the user has entered "<customer>" information Profile page and  starts entering a valid addresssss
+    Then the user should see address suggestionsss
+    And the user can select the address from the suggestionssss
    Examples:
-     | customer         |
-     | user24@gmail.com |
+     | customer                      |
+     | abcde.approve@flexshopper.com |
 
   Scenario: The user cannot see address suggestions is an invalid address is entered
-    Given the user lands in the ProfileInfo screen
+    Given the user lands in the ProfileInfo screen1
     And the user has entered information in the First Name field
     And the user has entered information in the Last Name field
     And the user has entered information in the Mobile Number field
@@ -116,23 +116,24 @@ Feature: As user I should be able to land Profile Info Screen
     And the user can select the address from the suggestions
 
 
-  Scenario: The user can enter the address manually
-    Given the user lands in the ProfileInfo screen
-    And the user has entered information in the First Name field
-    And the user has entered information in the Last Name field
-    And the user has entered information in the Mobile Number field
-    When the user clicks on the "Enter Address Manually" link
-    Then the user should see "Home Address" field
-    And the user should see the "Apt/Unit" field
-    And the user should see the "City" field
-    And the user should see the "State" field
-    And the user should see the "Postal Code" field
-
-  Scenario: The user should land on Personal Info screen
-    Given the user lands in the ProfileInfo screen
-    And the user has entered information in the First Name field
-    And the user has entered information in the Last Name field
-    And  the user has entered information in the Mobile Number field
-    When the user starts entering a valid address
-    And the user clicks on the Continue button
+  Scenario Outline: The user can enter the address manually
+    Given the user lands in the ProfileInfo screen1
+    When the user has entered "<customer>" information
+    When the user clicks on the Enter Address Manually links
+    Then the user should see Home Address field
+    And the usersssss should see the Apt/Unit fields
+    And the user should see the City field
+    And the user should see the State field
+    And the user should see the Postal Code field
+    Examples:
+      | customer                      |
+      | abcde.approve@flexshopper.com |
+  @customer
+  Scenario Outline: The user should land on Personal Info screen
+    Given the user lands in the ProfileInfo screen1
+    When the user has entered "<customer>" information
+    And the user clicks on the Continue button on copy Profile Page
     Then the user should land "Personal Info" Screen
+    Examples:
+      | customer                      |
+      | abcde.approve@flexshopper.com |

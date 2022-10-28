@@ -8,6 +8,7 @@ import java.net.URL;
 
 public class AppiumBase {
     public static AppiumDriver<?> driver;
+    public String platform = "ios";
 
     public AppiumBase() {
         CapabilitiesManager capabilitiesManager = new CapabilitiesManager();
