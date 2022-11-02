@@ -10,43 +10,43 @@ import static utils.selenium.Settings.weHighlightedColour;
 
 public class WebElementHelpers {
 
-    public static WebDriverWait weWaitForSeconds() {
+    public static WebDriverWait webWaitForSeconds() {
         WebDriverWait wait = new WebDriverWait(browser(), Duration.ofSeconds(10));
         return wait;
     }
 
-    public boolean weElementIsDisplayed(WebElement element) {
-        weWaitForSeconds().until(ExpectedConditions.visibilityOf(element));
+    public boolean webElementIsDisplayed(WebElement element) {
+        webWaitForSeconds().until(ExpectedConditions.visibilityOf(element));
         return element.isDisplayed();
     }
 
-    public boolean weElementToBeClickable(WebElement element) {
-        weWaitForSeconds().until(ExpectedConditions.elementToBeClickable(element));
+    public boolean webElementToBeClickable(WebElement element) {
+        webWaitForSeconds().until(ExpectedConditions.elementToBeClickable(element));
         return element.isEnabled();
     }
 
-    public void weHighlightElement(WebElement element) {
+    public void webHighlightElement(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) browser();
         js.executeScript(weHighlightedColour, element);
     }
 
-    public void weClick(WebElement element) {
-        weElementToBeClickable(element);
-        weHighlightElement(element);
+    public void webClick(WebElement element) {
+        webElementToBeClickable(element);
+        webHighlightElement(element);
         element.click();
     }
-    public void weSendKeys(WebElement element, String text, boolean clearFirst) {
-        weElementIsDisplayed(element);
-        if (clearFirst) weClick(element);
+    public void webSendKeys(WebElement element, String text, boolean clearFirst) {
+        webElementIsDisplayed(element);
+        if (clearFirst) webClick(element);
         element.sendKeys(text);
     }
 
     public static boolean webElementIsInvisible(WebElement element) {
-        weWaitForSeconds().until(ExpectedConditions.invisibilityOf(element));
+        webWaitForSeconds().until(ExpectedConditions.invisibilityOf(element));
         return !element.isDisplayed();
     }
 
-    public static String weGetAttribute(WebElement element, String attribute) {
+    public static String webGetAttribute(WebElement element, String attribute) {
         return element.getAttribute(attribute);
     }
 

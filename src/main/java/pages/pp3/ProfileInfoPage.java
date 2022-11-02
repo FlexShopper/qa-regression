@@ -3,7 +3,6 @@ package pages.pp3;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import pages.pp3.EmailPage;
 
 public class ProfileInfoPage extends EmailPage {
     /**
@@ -76,15 +75,15 @@ public class ProfileInfoPage extends EmailPage {
      * Verify PP3's Profile Info Screen
      */
     public void verifyProfileInfoScreen() {
-        elementHelpers.weElementIsDisplayed(profileInfoTab);
+        elementHelpers.webElementIsDisplayed(profileInfoTab);
         // TODO: elementHelpers.weElementIsDisplayed(emailAddressTxt);
-        elementHelpers.weElementIsDisplayed(notYouBtn);
-        elementHelpers.weElementIsDisplayed(firstName);
-        elementHelpers.weElementIsDisplayed(lastName);
-        elementHelpers.weElementIsDisplayed(mobilePhone);
-        elementHelpers.weElementIsDisplayed(homeAddress);
-        elementHelpers.weElementIsDisplayed(enterManualLink);
+        elementHelpers.webElementIsDisplayed(notYouBtn);
+        elementHelpers.webElementIsDisplayed(firstName);
+        elementHelpers.webElementIsDisplayed(lastName);
+        elementHelpers.webElementIsDisplayed(mobilePhone);
+        elementHelpers.webElementIsDisplayed(homeAddress);
+        elementHelpers.webElementIsDisplayed(enterManualLink);
         // TODO: elementHelpers.weElementIsDisplayed(signMeUpBtn);
-        elementHelpers.weElementIsDisplayed(continueBtn);
+        elementHelpers.webElementIsDisplayed(continueBtn);
     }
 }

@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
-import pages.pp3.EmailPage;
 import utils.helpers.WebDriverHelpers;
 import utils.helpers.WebElementHelpers;
 
@@ -52,14 +51,14 @@ public class PasswordPage extends EmailPage {
      * verifyPasswordScreen() - Verifies user landed in the Password screen
      */
     public void verifyPasswordScreen() {
-        elementHelpers.weElementIsDisplayed(flexshopperLogo);
+        elementHelpers.webElementIsDisplayed(flexshopperLogo);
         // TODO: elementHelpers.weElementIsDisplayed(existingCustomerTxt);
         // TODO: elementHelpers.weElementIsDisplayed(enterPasswordTxt);
         // TODO: elementHelpers.weElementIsDisplayed(emailTxt);
-        elementHelpers.weElementIsDisplayed(notYouTxt);
-        elementHelpers.weElementIsDisplayed(passwordField);
-        elementHelpers.weElementIsDisplayed(forgotPasswordLnk);
-        elementHelpers.weElementIsDisplayed(signInBtn);
+        elementHelpers.webElementIsDisplayed(notYouTxt);
+        elementHelpers.webElementIsDisplayed(passwordField);
+        elementHelpers.webElementIsDisplayed(forgotPasswordLnk);
+        elementHelpers.webElementIsDisplayed(signInBtn);
     }
 
     /**
@@ -67,27 +66,27 @@ public class PasswordPage extends EmailPage {
      * @param password
      */
     public void enterPassword(String password) {
-        elementHelpers.weSendKeys(passwordField, password, true);
+        elementHelpers.webSendKeys(passwordField, password, true);
     }
 
     /**
      * clickSignInBtn() - Click on the "Sign-In" button
      */
     public void clickOnTheSignInBtn() {
-        elementHelpers.weClick(signInBtn);
+        elementHelpers.webClick(signInBtn);
     }
 
     /**
      * emailValidationMessage() - Verifies the customer sees the expected Validation Message
      */
     public void passwordValidationMessage(String validationMsg) {
-        elementHelpers.weElementIsDisplayed(passwordValidationMsg);
+        elementHelpers.webElementIsDisplayed(passwordValidationMsg);
         // TODO: Assert using Ignore Case
         Assert.assertEquals("Invalid email or password: please check your details and try again", passwordValidationMsg.getText());
     }
 
     public void passwordRequiredMsg(String validationMsg) {
-        elementHelpers.weElementIsDisplayed(passwordRequiredMsg);
+        elementHelpers.webElementIsDisplayed(passwordRequiredMsg);
         // TODO: Assert using Ignore Case
         Assert.assertEquals("Required", passwordRequiredMsg.getText());
     }

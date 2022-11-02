@@ -91,19 +91,19 @@ public class EmailPage extends Page {
      * Verify PP3's Header
      */
     public void verifyHeader() {
-        elementHelpers.weElementIsDisplayed(headerCloseBtn);
-        elementHelpers.weElementIsDisplayed(headerFAQBtn);
+        elementHelpers.webElementIsDisplayed(headerCloseBtn);
+        elementHelpers.webElementIsDisplayed(headerFAQBtn);
     }
 
     /**
      * Verify PP3's Email Screen
      */
     public void verifyEmailScreen() {
-        elementHelpers.weElementIsDisplayed(flexshopperLogo);
-        elementHelpers.weElementIsDisplayed(enterEmailTxt);
-        elementHelpers.weElementIsDisplayed(welcomeTxt);
-        elementHelpers.weElementIsDisplayed(emailAddressField);
-        elementHelpers.weElementIsDisplayed(continueBtn);
+        elementHelpers.webElementIsDisplayed(flexshopperLogo);
+        elementHelpers.webElementIsDisplayed(enterEmailTxt);
+        elementHelpers.webElementIsDisplayed(welcomeTxt);
+        elementHelpers.webElementIsDisplayed(emailAddressField);
+        elementHelpers.webElementIsDisplayed(continueBtn);
     }
 
     /**
@@ -112,8 +112,8 @@ public class EmailPage extends Page {
     public void verifyFooter() {
         // TODO: elementHelpers.weElementIsDisplayed(flexUSPattenNumber);
         // TODO: elementHelpers.weElementIsDisplayed(flexCopyright);
-        elementHelpers.weElementIsDisplayed(footerAccessibilityBtn);
-        elementHelpers.weElementIsDisplayed(footerPrivacyBtn);
+        elementHelpers.webElementIsDisplayed(footerAccessibilityBtn);
+        elementHelpers.webElementIsDisplayed(footerPrivacyBtn);
         // TODO: assertFlexUSPattenNumber();
         // TODO: assertFlexUSCopyrightInfo();
     }
@@ -122,14 +122,14 @@ public class EmailPage extends Page {
      * Assert FlexShopper's US Patten Number
      */
     public void assertFlexUSPattenNumber() {
-        Assert.assertTrue((WebElementHelpers.weGetAttribute(flexUSPattenNumber,"value")).contains("U.S. Pat. Nos. 10,089,682 & 10,282,779"));
+        Assert.assertTrue((WebElementHelpers.webGetAttribute(flexUSPattenNumber,"value")).contains("U.S. Pat. Nos. 10,089,682 & 10,282,779"));
     }
 
     /**
      * Assert FlexShopper's Copyright Information
      */
     public void assertFlexUSCopyrightInfo() {
-        Assert.assertTrue((WebElementHelpers.weGetAttribute(flexCopyright,"value")).contains("© 2022 FlexShopper, LLC"));
+        Assert.assertTrue((WebElementHelpers.webGetAttribute(flexCopyright,"value")).contains("© 2022 FlexShopper, LLC"));
     }
 
     /**
@@ -137,14 +137,14 @@ public class EmailPage extends Page {
      * @param email
      */
     public void enterEmail(String email) {
-        elementHelpers.weSendKeys(emailAddressField, email, true);
+        elementHelpers.webSendKeys(emailAddressField, email, true);
     }
 
     /**
      * clickContinueBtn() - Click on the "Continue" button
      */
     public void clickOnContinueBtn() {
-        elementHelpers.weClick(continueBtn);
+        elementHelpers.webClick(continueBtn);
     }
 
     /**
