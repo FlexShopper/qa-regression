@@ -4,10 +4,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.EmailPage;
+import pages.pp3.EmailPage;
 import pages.Page;
-import pages.PasswordPage;
-import pages.ProfileInfoPage;
+import pages.pp3.PasswordPage;
+import pages.pp3.ProfileInfoPage;
 
 public class EmailSteps extends Page {
     @Given("^the user is in the Email screen$")

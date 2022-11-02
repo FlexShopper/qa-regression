@@ -1,8 +1,9 @@
-package pages;
+package pages.pp3;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import pages.pp3.EmailPage;
 
 public class ProfileInfoPage extends EmailPage {
     /**

@@ -1,4 +1,4 @@
-package pages;
+package pages.pp3;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

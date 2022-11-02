@@ -1,9 +1,10 @@
-package pages;
+package pages.pp3;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
+import pages.Page;
 import utils.helpers.WebDriverHelpers;
 import utils.helpers.WebElementHelpers;
 import utils.selenium.Settings;

@@ -4,10 +4,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.EmailPage;
-import pages.FlexShopperHomePage;
+import pages.pp3.EmailPage;
+import pages.flexshopper.FlexShopperHomePage;
 import pages.Page;
-import pages.PasswordPage;
+import pages.pp3.PasswordPage;
 
 public class PasswordSteps extends Page {
     @Given("^the user is in the Password screen with email \"([^\"]*)\"$")
