@@ -11,8 +11,7 @@ import static utils.selenium.Settings.weHighlightedColour;
 public class WebElementHelpers {
 
     public static WebDriverWait webWaitForSeconds() {
-        WebDriverWait wait = new WebDriverWait(browser(), Duration.ofSeconds(10));
-        return wait;
+        return new WebDriverWait(browser(), Duration.ofSeconds(10));
     }
 
     public boolean webElementIsDisplayed(WebElement element) {
@@ -41,7 +40,7 @@ public class WebElementHelpers {
         element.sendKeys(text);
     }
 
-    public static boolean webElementIsInvisible(WebElement element) {
+    public boolean webElementIsInvisible(WebElement element) {
         webWaitForSeconds().until(ExpectedConditions.invisibilityOf(element));
         return !element.isDisplayed();
     }

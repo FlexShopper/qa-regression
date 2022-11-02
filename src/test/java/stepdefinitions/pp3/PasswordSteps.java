@@ -10,7 +10,7 @@ import pages.Page;
 import pages.pp3.PasswordPage;
 
 public class PasswordSteps extends Page {
-    @Given("^the user is in the Password screen with email \"([^\"]*)\"$")
+    @Given("^the user is in the Password screen with email: \"([^\"]*)\"$")
     public void theUserIsInThePasswordScreenWithEmail(String email) {
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();

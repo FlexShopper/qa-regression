@@ -12,7 +12,7 @@ public class PasswordPage extends EmailPage {
     protected WebDriverHelpers driverHelpers = new WebDriverHelpers();
 
     /**
-     * Elements - Password Screen
+     * Elements - PP3's Password Screen
      */
     @FindBy(how = How.CSS, using = "svg > .cls-1:nth-child(8)")
     private WebElement flexshopperLogo;
@@ -77,7 +77,8 @@ public class PasswordPage extends EmailPage {
     }
 
     /**
-     * emailValidationMessage() - Verifies the customer sees the expected Validation Message
+     * passwordValidationMessage() - Verifies the customer sees the expected Validation Message when an invalid password is submitted
+     * @param validationMsg
      */
     public void passwordValidationMessage(String validationMsg) {
         elementHelpers.webElementIsDisplayed(passwordValidationMsg);
@@ -85,9 +86,20 @@ public class PasswordPage extends EmailPage {
         Assert.assertEquals("Invalid email or password: please check your details and try again", passwordValidationMsg.getText());
     }
 
+    /**
+     * passwordRequiredMsg() - Verifies the customer sees the expected Validation Message when the password is not provided
+     * @param validationMsg
+     */
     public void passwordRequiredMsg(String validationMsg) {
         elementHelpers.webElementIsDisplayed(passwordRequiredMsg);
         // TODO: Assert using Ignore Case
         Assert.assertEquals("Required", passwordRequiredMsg.getText());
+    }
+
+    /**
+     * clickOnTheForgotPasswordLnk() - Click on the "Forgot Password" Link
+     */
+    public void clickOnTheForgotPasswordLnk() {
+        elementHelpers.webClick(forgotPasswordLnk);
     }
 }

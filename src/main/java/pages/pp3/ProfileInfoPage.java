@@ -6,7 +6,7 @@ import org.openqa.selenium.support.How;
 
 public class ProfileInfoPage extends EmailPage {
     /**
-     * Elements - Profile Info Screen
+     * Elements - PP3's Profile Info Screen
      */
     @FindBy(how = How.XPATH, using = "//h2[text()='Profile Info']")
     public WebElement profileInfoTab;

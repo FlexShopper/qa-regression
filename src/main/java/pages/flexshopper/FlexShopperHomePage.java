@@ -26,7 +26,7 @@ public class FlexShopperHomePage extends EmailPage {
         validatePageTitle("FlexShopper Lease-to-Own | Top Brands & Retailers");
     }
 
-    // TODO: Move Getters and Validations to Selenium Helpers
+    //TODO: Move Getters and Validations to Selenium Helpers
     /**
      *  Getters:
      *      Get FlexShopper's Homepage URL
@@ -49,7 +49,7 @@ public class FlexShopperHomePage extends EmailPage {
      * @param expectedTitle
      */
     public void validatePageTitle(String expectedTitle) {
-        // TODO: Assert using Ignore Case
+        //TODO: Assert using Ignore Case
         Assert.assertTrue(getTitle().contains(expectedTitle));
         System.out.println(":: The title of the site is: " + getTitle());
     }
@@ -59,7 +59,7 @@ public class FlexShopperHomePage extends EmailPage {
      * @param userName
      */
     public void verifyUserLoggedIn(String userName) {
-        // TODO: Assert using Ignore Case
+        //TODO: Assert using Ignore Case
         Assert.assertEquals("Stanislav Kuleshov", myAccountHeader.getText());
     }
 }

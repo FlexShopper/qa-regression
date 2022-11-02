@@ -6,7 +6,7 @@ import org.openqa.selenium.support.How;
 
 public class BankingInfoPage {
     /**
-     * Elements - Personal Info Screen
+     * Elements - PP3's Banking Info Screen
      */
     @FindBy(how = How.XPATH, using = "//h2[text()='Banking Info']")
     public WebElement bankingInfoTab;

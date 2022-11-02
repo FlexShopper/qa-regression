@@ -6,7 +6,7 @@ import org.openqa.selenium.support.How;
 
 public class PersonalInfoPage {
     /**
-     * Elements - Personal Info Screen
+     * Elements - PP3's Personal Info Screen
      */
     @FindBy(how = How.XPATH, using = "//h2[text()='Personal Info']")
     public WebElement personalInfoTab;

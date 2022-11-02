@@ -24,7 +24,7 @@ public class EmailPage extends Page {
     private WebElement headerFAQBtn;
 
     /**
-     * Elements - Email Screen
+     * Elements - PP3's Email Screen
      */
     @FindBy(how = How.CSS, using = "svg > .cls-1:nth-child(8)")
     private WebElement flexshopperLogo;
