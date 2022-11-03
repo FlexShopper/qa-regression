@@ -19,9 +19,19 @@ public class WebElementHelpers {
         return element.isDisplayed();
     }
 
-    public boolean webElementToBeClickable(WebElement element) {
+    public void webElementIsSelected(WebElement element) {
+        webWaitForSeconds().until(ExpectedConditions.visibilityOf(element));
+        boolean selectState = element.isSelected();
+
+        // Performing the click operation only if element is not selected
+        if(selectState == false) {
+            element.click();
+        }
+    }
+
+    public void webElementToBeClickable(WebElement element) {
         webWaitForSeconds().until(ExpectedConditions.elementToBeClickable(element));
-        return element.isEnabled();
+        element.isEnabled();
     }
 
     public void webHighlightElement(WebElement element) {

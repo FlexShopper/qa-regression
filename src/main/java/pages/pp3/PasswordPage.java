@@ -17,10 +17,10 @@ public class PasswordPage extends EmailPage {
     @FindBy(how = How.CSS, using = "svg > .cls-1:nth-child(8)")
     private WebElement flexshopperLogo;
 
-    @FindBy(how = How.CSS, using = "h3.sc-jKJlTe.ithYWB")
+    @FindBy(how = How.XPATH, using = "//h3[normalize-space(.)='Looks like you already have an account with FlexShopper registered under this email address.'")
     private WebElement existingCustomerTxt;
 
-    @FindBy(how =How.XPATH, using = "Enter your password to sign in to your existing account.")
+    @FindBy(how =How.XPATH, using = "//p[(.)='Enter your password to sign in to your existing account.']")
     private WebElement enterPasswordTxt;
 
     @FindBy(how = How.CSS, using = "h3.sc-TOsTZ.iBTFfQ.sc-kLIISr.gdrpxe")
@@ -52,9 +52,9 @@ public class PasswordPage extends EmailPage {
      */
     public void verifyPasswordScreen() {
         elementHelpers.webElementIsDisplayed(flexshopperLogo);
-        // TODO: elementHelpers.weElementIsDisplayed(existingCustomerTxt);
-        // TODO: elementHelpers.weElementIsDisplayed(enterPasswordTxt);
-        // TODO: elementHelpers.weElementIsDisplayed(emailTxt);
+        // TODO: elementHelpers.webElementIsDisplayed(existingCustomerTxt);
+        elementHelpers.webElementIsDisplayed(enterPasswordTxt);
+        // TODO: elementHelpers.webElementIsDisplayed(emailTxt);
         elementHelpers.webElementIsDisplayed(notYouTxt);
         elementHelpers.webElementIsDisplayed(passwordField);
         elementHelpers.webElementIsDisplayed(forgotPasswordLnk);

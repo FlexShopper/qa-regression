@@ -39,15 +39,15 @@ public class EmailPage extends Page {
     private WebElement emailAddressField;
 
     @FindBy(how = How.ID, using = "formSubmitButton")
-    private WebElement continueBtn;
+    protected WebElement continueBtn;
 
     /**
      * Elements - Footer
      */
-    @FindBy(how = How.CSS, using = "div.sc-itybZL.kpLoCi") // FlexShopper's US Patten
+    @FindBy(how = How.XPATH, using = "//footer[(.)='U.S. Pat. Nos. 10,089,682 & 10,282,779']") // FlexShopper's US Patten
     private WebElement flexUSPattenNumber;
 
-    @FindBy(how = How.CSS, using =  "span.sc-fjmCvl.ckQtfY") // FlexShopper's Copyright
+    @FindBy(how = How.XPATH, using = "//span[(.)='© 2022 FlexShopper, LLC']") // FlexShopper's Copyright
     private WebElement flexCopyright;
 
     @FindBy(how = How.ID, using = "footer-accessibility-button") // Accessibility button
@@ -110,8 +110,8 @@ public class EmailPage extends Page {
      * Verify PP3's Footer
      */
     public void verifyFooter() {
-        // TODO: elementHelpers.weElementIsDisplayed(flexUSPattenNumber);
-        // TODO: elementHelpers.weElementIsDisplayed(flexCopyright);
+        // TODO: elementHelpers.webElementIsDisplayed(flexUSPattenNumber);
+        elementHelpers.webElementIsDisplayed(flexCopyright);
         elementHelpers.webElementIsDisplayed(footerAccessibilityBtn);
         elementHelpers.webElementIsDisplayed(footerPrivacyBtn);
         // TODO: assertFlexUSPattenNumber();
