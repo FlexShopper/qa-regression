@@ -55,7 +55,7 @@ Feature: As user I should be able to change the password
       | startdrift@gmail.com | xxx-xxx-2917 |
 
   Scenario Outline: User should be able to receive the verification code in the email
-    #Given the user is on the Verification Code screen with email: "<email>"
+    Given the user is on the Verification Code screen with email: "<email>"
     #When the user retrieves the verification code from the email
     #And the user enters the Security Code in the field
     #And the user clicks on the Submit button
@@ -65,31 +65,31 @@ Feature: As user I should be able to change the password
       | nann40547@gmail.com |
 
   Scenario Outline: User should be able to receive the verification code in the phone
-    #Given the user is on the Verification Code screen with email: "<email>"
+    Given the user is on the Verification Code screen with email: "<email>"
     #When the user retrieves the verification code from the phone
     ##And the user enters the Security Code in the field
     #And the user clicks on the Submit button
     #Then the user lands on the Change Password screen
     Examples:
-      | email                |
+      | email               |
       | nann40547@gmail.com |
 
   Scenario Outline: User with email should be able to click to the No code received link
-    #Given the user is on the Verification Code screen with email: "<email>"
-    #When the user clicks on the link: No code received
-    #Then the user lands on the Forgot Password screen
-    #And the user should see the email: "<email>"
-    #And the user should see the phone number: "<phoneNumber>"
+    Given the user is on the Verification Code screen with email: "<email>"
+    When the user clicks on the link: No code received
+    Then the user lands on the Forgot Password screen
+    And the user should see the email: "<email>"
+    And the user should see the phone number: "<phoneNumber>"
     Examples:
       | email                | phoneNumber  |
       | startdrift@gmail.com | xxx-xxx-2917 |
 
   Scenario Outline: User with phone should be able to click to No code received link
-    #Given the user is on the Verification Code screen with email: "<email>"
-    #When  the user clicks on the link: No code received
-    #Then the user lands on the Forgot Password screen
-    #And the user should see the email: "<email>"
-    #And the user should see the phone number: "<phoneNumber>"
+    Given the user is on the Verification Code screen with email: "<email>"
+    When  the user clicks on the link: No code received
+    Then the user lands on the Forgot Password screen
+    And the user should see the email: "<email>"
+    And the user should see the phone number: "<phoneNumber>"
     Examples:
       | email                | phoneNumber  |
       | startdrift@gmail.com | xxx-xxx-2917 |

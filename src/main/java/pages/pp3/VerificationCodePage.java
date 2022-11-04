@@ -8,10 +8,12 @@ public class VerificationCodePage extends EmailPage {
     /**
      * Elements - PP3's Verification Code Popup Screen
      */
+    // Text: 'We sent you a code'
     @FindBy(how = How.XPATH, using = "//h1[(.)='We sent you a code']")
     private WebElement codeSentTxt;
 
-    @FindBy(how = How.XPATH, using = "//p[(.)='Enter verification code we sent to']")
+    // Text: 'Enter verification code we sent to'
+    @FindBy(how = How.XPATH, using = "//div[@id='app']/div[3]/div/div/div/div/div/div")
     private WebElement enterCodeTxt;
 
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[3]/div/div/div/div/div/div/p/span")
@@ -20,7 +22,8 @@ public class VerificationCodePage extends EmailPage {
     @FindBy(how = How.ID,using = "code-input")
     private WebElement securityCode;
 
-    @FindBy(how = How.LINK_TEXT, using = "No code received?")
+    // Link: "No code received?"
+    @FindBy(how = How.XPATH, using = "//*[@id='app']/div[3]/div/div/div/div/div/div/button[1]")
     private WebElement noCodeLink;
 
     @FindBy(how = How.XPATH, using = "//span[(.)='Submit']")
@@ -30,11 +33,11 @@ public class VerificationCodePage extends EmailPage {
      * verifyVerificationCodeScreen() - Verifies user landed in the Verification Code screen
      */
     public void verifyVerificationCodeScreen() {
-        //TODO: elementHelpers.webElementIsDisplayed(codeSentTxt);
-        //TODO: elementHelpers.webElementIsDisplayed(enterCodeTxt);
+        elementHelpers.webElementIsDisplayed(codeSentTxt);
+        elementHelpers.webElementIsDisplayed(enterCodeTxt);
         elementHelpers.webElementIsDisplayed(emailTxt);
         elementHelpers.webElementIsDisplayed(securityCode);
-        //TODO: elementHelpers.webElementIsDisplayed(noCodeLink);
+        elementHelpers.webElementIsDisplayed(noCodeLink);
         elementHelpers.webElementIsDisplayed(submitBtn);
     }
 
