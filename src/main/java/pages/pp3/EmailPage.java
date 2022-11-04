@@ -38,8 +38,7 @@ public class EmailPage extends Page {
     @FindBy(how = How.ID, using = "email-input")
     private WebElement emailAddressField;
 
-    //@FindBy(how = How.ID, using = "formSubmitButton")
-    @FindBy(how = How.XPATH, using = "//span[(.)='Continue']")
+    @FindBy(how = How.ID, using = "formSubmitButton")
     protected WebElement continueBtn;
 
     /**

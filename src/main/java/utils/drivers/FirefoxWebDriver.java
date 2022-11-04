@@ -22,4 +22,3 @@ public class FirefoxWebDriver {
         return driver;
     }
 }
-
