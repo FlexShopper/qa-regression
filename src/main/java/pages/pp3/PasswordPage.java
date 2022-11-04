@@ -32,7 +32,7 @@ public class PasswordPage extends EmailPage {
     @FindBy(how = How.ID,using = "password-input")
     private WebElement passwordField;
 
-    @FindBy(how = How.XPATH, using = "//a[text()='Forgot Password?']")
+    @FindBy(how = How.LINK_TEXT, using = "Forgot Password?")
     private WebElement forgotPasswordLnk;
 
     @FindBy(how = How.XPATH, using = "//span[(.)='Sign In']")

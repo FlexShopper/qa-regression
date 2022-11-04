@@ -41,8 +41,8 @@ public class ForgotPasswordSteps extends Page {
         instanceOf(ForgotPasswordPage.class).verifySMSOptionsNotShown(phoneNumber);
     }
 
-    @When("^the user clicks on the link: \"([^\"]*)\"$")
-    public void theUserClicksOnTheLink(String returnToPasswordLink) {
+    @When("the user clicks on the link: Return to Password Sign In")
+    public void theUserClicksOnTheLinkReturnToPasswordSignIn() {
         instanceOf(ForgotPasswordPage.class).clickOnReturnToPasswordLink();
     }
 
@@ -53,12 +53,17 @@ public class ForgotPasswordSteps extends Page {
 
     @Then("^the user lands on the Verification Code screen$")
     public void theUserLandsOnTheVerificationCodeScreen() {
-        instanceOf(ForgotPasswordPage.class).verifyForgotPasswordScreen();
+        instanceOf(VerificationCodePage.class).verifyVerificationCodeScreen();
     }
 
     @Then("^the user should see the field: \"([^\"]*)\"$")
     public void theUserShouldSeeTheField(String fieldName) {
         //TODO: ASSERT THE SECURITY CODE IS FOUND
+    }
+
+    @When("the user clicks on the link: No code received")
+    public void theUserClicksOnTheLinkNoCodeReceived() {
+        instanceOf(VerificationCodePage.class).clickOnNoCodeReceivedLnk();
     }
 
     @Given("^the Send SMS radio button is selected$")
@@ -87,9 +92,18 @@ public class ForgotPasswordSteps extends Page {
     }
 
     @Given("^the user is on the Verification Code screen$")
-    public void theUserIsOnTheVerificationCodeScreen() {
-        //TODO: Launch browser and navigate to the PP3's Verification Code screen
-        //TODO: Verify user landed on the PP3's Verification Code screen
+    public void theUserIsOnTheVerificationCodeScreen(String email) {
+        // Launch browser and navigate to the PP3's Verification Code screen
+        instanceOf(EmailPage.class).navigateToBaseUrl();
+        instanceOf(EmailPage.class).browserFullScreen();
+        instanceOf(EmailPage.class).switchToFrame();
+        instanceOf(EmailPage.class).enterEmail(email);
+        instanceOf(EmailPage.class).clickOnContinueBtn();
+        instanceOf(PasswordPage.class).clickOnTheForgotPasswordLnk();
+        instanceOf(EmailPage.class).clickOnContinueBtn();
+
+        // Verify user landed on the PP3's Verification Code screen
+        instanceOf(VerificationCodePage.class).verifyVerificationCodeScreen();
     }
 
     @When("^the user retrieves the verification code from the phone$")
@@ -98,8 +112,18 @@ public class ForgotPasswordSteps extends Page {
     }
 
     @Given("^the user is on the Verification Code screen with email: \"([^\"]*)\"$")
-    public void theUserIsOnThVerificationCodeScreenWithEmail(String email) {
+    public void theUserIsOnThVerificationCodeScreenWithEmail(String email) throws InterruptedException {
+        // Launch browser and navigate to the PP3's Verification Code screen
+        instanceOf(EmailPage.class).navigateToBaseUrl();
+        instanceOf(EmailPage.class).browserFullScreen();
+        instanceOf(EmailPage.class).switchToFrame();
+        instanceOf(EmailPage.class).enterEmail(email);
+        instanceOf(EmailPage.class).clickOnContinueBtn();
+        instanceOf(PasswordPage.class).clickOnTheForgotPasswordLnk();
+        instanceOf(EmailPage.class).clickOnContinueBtn();
 
+        // Verify user landed on the PP3's Verification Code screen
+        instanceOf(VerificationCodePage.class).verifyVerificationCodeScreen();
     }
 
     @When("^the user clicks on the button: \"([^\"]*)\"$")
