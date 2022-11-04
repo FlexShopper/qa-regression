@@ -1,4 +1,4 @@
-@Chrome
+@Chrome @Regression
 Feature: As a customer I should be able to enter the email in the login email
 
   Scenario Outline: Existing Customer - User lands on the Password screen

@@ -1,6 +1,7 @@
 @Chrome @ChangePassword
 Feature: As user I should be able to change the password
 
+  @Regression
   Scenario Outline: User with full information in the profile can see the email and the phone number provided
     Given the user is on the Forgot Password screen with email: "<email>"
     Then the user should see the email: "<email>>"
@@ -9,6 +10,7 @@ Feature: As user I should be able to change the password
       | email                | phoneNumber  |
       | startdrift@gmail.com | xxx-xxx-2917 |
 
+  @Regression
   Scenario Outline: User without full information in the profile can see the email address provided
     Given the user is on the Forgot Password screen with email: "<email>"
     Then the user should see the email: "<email>"
@@ -17,6 +19,7 @@ Feature: As user I should be able to change the password
       | email               | phoneNumber  |
       | nann40547@gmail.com | xxx-xxx-3966 |
 
+  @Regression
   Scenario Outline: User is able to return to the Email screen
     Given the user is on the Forgot Password screen with email: "<email>"
     When the user clicks on the link: "Return to Password Sign In"
@@ -25,12 +28,14 @@ Feature: As user I should be able to change the password
       | email                |
       | startdrift@gmail.com |
 
+  @Regression
   Scenario: User with email information in the profile should see the "Verification Code" screen
     Given the user is on the Forgot Password screen with email: "startdrift@gmail.com"
     And the Send Email radio button is selected
     When the user clicks on the Continue button
     Then the user lands on the Verification Code screen
 
+  @Regression
   Scenario: User without full information email information in the profile should see the "Code" screen
     Given the user is on the Forgot Password screen with email: "startdrift@gmail.com"
     And the Send Email radio button is selected
@@ -38,6 +43,7 @@ Feature: As user I should be able to change the password
     Then the user lands on the Verification Code screen
     And the user should see the email: "startdrift@gmail.com"
 
+  @Regression
   Scenario Outline: User with phone information in the profile should see the "Verification Code" screen
     Given the user is on the Forgot Password screen with email: "<email>"
     And the Send SMS radio button is selected
