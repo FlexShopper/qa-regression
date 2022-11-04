@@ -8,6 +8,7 @@ import pages.pp3.EmailPage;
 import pages.pp3.ForgotPasswordPage;
 import pages.pp3.PasswordPage;
 import pages.pp3.VerificationCodePage;
+import utils.helpers.RetrieveVerificationCode;
 
 public class ForgotPasswordSteps extends Page {
     @Given("^the user is on the Forgot Password screen with email: \"([^\"]*)\"$")
@@ -73,7 +74,8 @@ public class ForgotPasswordSteps extends Page {
 
     @When("^the user retrieves the verification code from the email$")
     public void theUserRetrievesTheVerificationCodeFromTheEmail() {
-        //TODO: RETRIEVE VERIFICATION CODE FROM THE EMAIL
+        String PassCode = RetrieveVerificationCode.check("imap.gmail.com", "imap", "nann40547@gmail.com", "rhtytnjlxhtxbehk");
+        System.out.println("PassCode is " + PassCode);
     }
 
     @When("^the user enters the Security Code in the field$")
