@@ -10,3 +10,4 @@ public class Page {
         return PageFactory.initElements(browser(), clazz);
     }
 }
+
