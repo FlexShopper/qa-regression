@@ -1,7 +1,6 @@
 package flexshopper.com.stepDefinitions;
 
 
-import flexshopper.com.cucumber.TestContext;
 import flexshopper.com.helpers.CheckMail;
 import flexshopper.com.pageObjects.flexshopper.EmailPage;
 import flexshopper.com.pageObjects.flexshopper.ForgotPasswordPage;

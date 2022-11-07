@@ -2,7 +2,6 @@ package flexshopper.com.stepDefinitions;
 
 import com.cucumber.listener.Reporter;
 import com.google.common.io.Files;
-import flexshopper.com.cucumber.TestContext;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.cucumber.java.After;
