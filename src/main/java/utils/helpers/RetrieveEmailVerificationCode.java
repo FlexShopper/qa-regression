@@ -5,7 +5,7 @@ import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RetrieveVerificationCode {
+public class RetrieveEmailVerificationCode {
     public static String check(String host, String storeType, String user, String password) {
         String url="";
         String userid ="";

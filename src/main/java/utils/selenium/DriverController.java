@@ -29,7 +29,6 @@ public class DriverController {
         try
         {
             instance.webDriver.quit();
-            instance.webDriver.close();
         }
         catch (Exception e)
         {
