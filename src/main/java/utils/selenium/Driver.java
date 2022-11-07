@@ -7,3 +7,4 @@ public class Driver {
         return DriverController.instance.webDriver;
     }
 }
+
