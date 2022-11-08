@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Run PP3 Tests on FlexShopper Staging') {
             steps{
-                dir("${env.WORKSPACE}/qa-regression/builds/libs"){
+                dir("per_CI_qa-regression_development/qa-regression/builds/libs"){
                     sh "pwd"
                 }
                 sh "java -jar FlexShopperFramework-1.0-SNAPSHOT-tests.jar > scalr.out"
