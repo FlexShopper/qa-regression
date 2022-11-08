@@ -21,4 +21,4 @@ RUN ./gradlew shadowJar
 
 #An ENTRYPOINT allows you to configure a container that will run as an executable.
 #Here we are executing our JAR file via TestNG with a given xml test suite passed in from our $TEST_SUITE environment variable
-ENTRYPOINT ["/bin/sh", "-c", "java -cp 'build/libs/seleniumgradle-test-1.0-SNAPSHOT-tests.jar' org.testng.TestNG $TEST_SUITE"]
+ENTRYPOINT ["/bin/sh", "-c", "java -cp 'build/libs/FlexShopperFramework-1.0-SNAPSHOT-tests.jar' org.testng.TestNG $TEST_SUITE"]
