@@ -1,6 +1,9 @@
 pipeline {
     agent any // use any available agent in Jenkins
-
+    tools {
+      maven 'MAVEN_HOME'
+      jdk 'JAVA_HOME'
+    }
     stages {
         stage('Clone repo in to Jenkins instance') {
             steps {
