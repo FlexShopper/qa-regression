@@ -11,7 +11,7 @@ pipeline {
             steps{
                 dir(WORKSPACE + '/per_CI_qa-regression_development/qa-regression/builds/libs') {
                     sh "pwd"
-                    bat "java -jar FlexShopperFramework-1.0-SNAPSHOT-tests.jar"
+                    sh "java -jar FlexShopperFramework-1.0-SNAPSHOT-tests.jar"
                 }
             }
         }
