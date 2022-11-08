@@ -2,6 +2,12 @@ pipeline {
     agent any // use any available agent in Jenkins
 
     stages {
+        stage('Clone repo in to Jenkins instance') {
+            steps {
+                deleteDir()
+                checkout scm // checkout and clone our git repo into the Jenkins instance
+            }
+        }
         stage('Pull latest Docker image') {
             steps {
                 sh 'docker pull selenium/standalone-chrome:latest'
