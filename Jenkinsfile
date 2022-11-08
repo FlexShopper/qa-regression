@@ -16,6 +16,7 @@ pipeline {
         stage('Run PP3 Tests on FlexShopper Staging') {
             steps {
                 sh """
+                source ~/.bash_profile
                  mvn clean test
                  """
             }
