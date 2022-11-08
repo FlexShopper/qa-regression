@@ -9,10 +9,17 @@ pipeline {
         }
         stage('Run PP3 Tests on FlexShopper Staging') {
             steps{
-                dir("per_CI_qa-regression_development/qa-regression/builds/libs"){
-                    sh "pwd"
-                }
-                sh "java -jar FlexShopperFramework-1.0-SNAPSHOT-tests.jar > scalr.out"
+            dir(WORKSPACE + '/' + BuildLocation) {
+                sh """
+                   cd ''' + WORKSPACE + '''/''' + per_CI_qa-regression_development + '''/''' + qa-regression + '''/''' + builds + '''/''' + libs + '''
+                   var=$(find -regex "$App.*.jar" 2>/dev/null)
+                   echo "$var"
+                   if ! [ -z "$var" ]
+                   then
+                       echo "JAR file found"
+                       java -jar FlexShopperFramework-1.0-SNAPSHOT-tests.jar
+                    fi
+                """
             }
         }
     }
