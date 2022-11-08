@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Pull latest Docker image') {
             steps {
-                sh 'docker pull selenium/standalone-chrome:latest'
+                sh 'docker pull registry.flexshopper.xyz:5000/docker'
             }
         }
         stage('Run PP3 Tests on FlexShopper Staging') {
