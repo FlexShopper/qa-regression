@@ -12,7 +12,7 @@ pipeline {
                 dir("${env.WORKSPACE}/qa-regression/builds/libs"){
                     sh "pwd"
                 }
-                sh "java -jar FlexShopperFramework-1.0-SNAPSHOT-tests > scalr.out"
+                sh "java -jar FlexShopperFramework-1.0-SNAPSHOT-tests.jar > scalr.out"
             }
         }
     }
