@@ -1,7 +1,7 @@
 pipeline {
     agent any // use any available agent in Jenkins
     stages {
-        stage('Checkout') {
+        stage('Clone Repository') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/development']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-ci-user', url: 'https://github.com/FlexShopper/qa-regression.git']]])
                 sh "ls -lart ./*"
@@ -11,9 +11,11 @@ pipeline {
             steps{
                 dir(WORKSPACE + '/per_CI_qa-regression_development/qa-regression/builds/libs') {
                     sh "pwd"
-                    sh "pwd [-LP]"
-                    sh "java -jar " + WORKSPACE + "/per_CI_qa-regression_development/per_CI_qa-regression_development/qa-regression/builds/libs/FlexShopperFramework-1.0-SNAPSHOT-tests.jar"
                 }
+                sh """
+                source ~/.bash_profile
+                 mvn clean test
+                 """
             }
         }
     }
