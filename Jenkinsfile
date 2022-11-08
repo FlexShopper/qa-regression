@@ -11,11 +11,8 @@ pipeline {
             steps{
                 dir(WORKSPACE + '/per_CI_qa-regression_development/qa-regression/builds/libs') {
                     sh "pwd"
+                    bat "java -jar FlexShopperFramework-1.0-SNAPSHOT-tests.jar"
                 }
-                FILE=FlexShopperFramework-1.0-SNAPSHOT-tests.jar
-                if test -f "$FILE"; then
-                    echo "$FILE exists."
-                fi
             }
         }
     }
