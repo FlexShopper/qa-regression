@@ -6,7 +6,7 @@ pipeline {
             steps {
                 sh """
                 source ~/.bash_profile
-                 mvn clean test -Dsurefire.suiteXmlFiles=testng.xml
+                 mvn clean test
                  """
             }
         }
