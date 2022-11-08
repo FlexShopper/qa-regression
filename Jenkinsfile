@@ -13,7 +13,6 @@ pipeline {
                     sh "pwd"
                 }
                 sh "java -jar FlexShopperFramework-1.0-SNAPSHOT-tests > scalr.out"
-                def out = readFile 'scalr.out'
             }
         }
     }
