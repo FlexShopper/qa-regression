@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Run PP3 Tests on FlexShopper Staging') {
             steps{
-                dir(WORKSPACE + '/per_CI_qa-regression_development/qa-regression/builds/libs') {
+                dir(WORKSPACE + '/per_CI_qa-regression_development/qa-regression/') {
                     sh "pwd"
                 }
                 sh """
