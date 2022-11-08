@@ -12,7 +12,7 @@ pipeline {
                 dir(WORKSPACE + '/per_CI_qa-regression_development/qa-regression/builds/libs') {
                     sh "pwd"
                     sh "pwd [-LP]"
-                    sh "FlexShopperFramework-1.0-SNAPSHOT-tests.jar"
+                    sh "java -jar " + WORKSPACE + "/per_CI_qa-regression_development/per_CI_qa-regression_development/qa-regression/builds/libs/FlexShopperFramework-1.0-SNAPSHOT-tests.jar"
                 }
             }
         }
