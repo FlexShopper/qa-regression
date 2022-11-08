@@ -9,13 +9,14 @@ pipeline {
         }
         stage('Run PP3 Tests on FlexShopper Staging') {
             steps{
-            dir(WORKSPACE + '/per_CI_qa-regression_development/qa-regression/builds/libs') {
-                sh "pwd"
+                dir(WORKSPACE + '/per_CI_qa-regression_development/qa-regression/builds/libs') {
+                    sh "pwd"
+                }
+                FILE=FlexShopperFramework-1.0-SNAPSHOT-tests.jar
+                if test -f "$FILE"; then
+                    echo "$FILE exists."
+                fi
             }
-            FILE=FlexShopperFramework-1.0-SNAPSHOT-tests.jar
-            if test -f "$FILE"; then
-                echo "$FILE exists."
-            fi
         }
     }
 }
