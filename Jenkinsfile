@@ -13,8 +13,8 @@ pipeline {
                     sh "pwd"
                 }
                 sh """
-                source ~/.bash_profile
-                 mvn clean test
+                Java -jar FlexShopperFramework-1.0-SNAPSHOT.jar
+                Java -jar FlexShopperFramework-1.0-SNAPSHOT-tests.jar
                  """
             }
         }
