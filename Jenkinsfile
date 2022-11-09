@@ -20,18 +20,6 @@ pipeline {
                     }
                 }
             }
-            steps {
-                script {
-                    sh "pwd"
-                }
-            }
-            steps {
-                script {
-                        sh """
-                        Java -jar FlexShopperFramework-1.0-SNAPSHOT-tests.jar
-                         """
-                }
-            }
         }
     }
 }
