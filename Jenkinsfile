@@ -16,6 +16,7 @@ pipeline {
                     if (fileExists('per_CI_qa-regression_development/qa-regression/FlexShopperFramework-1.0-SNAPSHOT-tests.jar')) {
                         echo "File src/main/rersources/index.html found!"
                     }
+                    sh "java -jar FlexShopperFramework-1.0-SNAPSHOT-tests.jar"
                 }
             }
         }
