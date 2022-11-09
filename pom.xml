@@ -129,12 +129,20 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>
-                                runners.TestRunner
-                            </mainClass>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>runners.TestRunner</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
