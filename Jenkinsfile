@@ -19,7 +19,7 @@ pipeline {
                     }
                     else {
                         echo 'File mvnw Not found'
-                        sh "la -a"
+                        sh "ls -lart ./*"
                     }
                 }
             }
