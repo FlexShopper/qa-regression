@@ -14,8 +14,8 @@ pipeline {
                 }
                 sh """
                 source ~/.bash_profile
-                 mvn clean test
-                 """
+                mvnw.cmd clean install
+                """
             }
         }
     }
