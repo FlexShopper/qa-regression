@@ -15,7 +15,7 @@ pipeline {
                 script {
                     if (fileExists('./mvnw')) {
                         echo 'File mvnw found!'
-                        sh "sudo chmod -R 777 ./mvnw"
+                        sh "chmod -R 777 ./mvnw"
                         sh "./mvnw clean install"
                     }
                     else {
