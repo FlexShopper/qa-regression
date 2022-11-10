@@ -15,10 +15,7 @@ pipeline {
                 script {
                     if (fileExists('./mvnw')) {
                         echo 'File mvnw found!'
-                        sh """
-                        source ~/.bash_profile
-                        ./mvnw clean install
-                        """
+                        sh "./mvnw clean install"
                     }
                     else {
                         echo 'File mvnw Not found'
