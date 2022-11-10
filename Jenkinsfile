@@ -12,10 +12,10 @@ pipeline {
                 dir(WORKSPACE + '/qa-regression/') {
                     sh "pwd"
                 }
-                sh "/maven/bin/mvn -v"
+                sh "/per_CI_qa-regression_development/qa-regression/maven/bin/mvn -v"
                 sh """
                 source ~/.bash_profile
-                 /maven/bin/mvn clean test
+                 /per_CI_qa-regression_development/qa-regression/maven/bin/mvn clean test
                  """
             }
         }
