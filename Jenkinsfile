@@ -17,11 +17,12 @@ pipeline {
                         echo 'File mvnw found!'
                         sh """
                         source ~/.bash_profile
-                        mvnw clean install
+                        ./mvnw clean install
                         """
                     }
                     else {
                         echo 'File mvnw Not found'
+                        sh "./mvnw clean install"
                         sh "ls -lart ./*"
                     }
                 }
