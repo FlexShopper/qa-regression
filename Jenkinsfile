@@ -12,10 +12,10 @@ pipeline {
                 dir(WORKSPACE + '/qa-regression/') {
                     sh "pwd"
                 }
-                sh "mvnw.cmd clean install"
+                sh "mvnw clean install"
                 sh """
                 source ~/.bash_profile
-                mvnw.cmd clean install
+                mvnw clean install
                 """
             }
         }
