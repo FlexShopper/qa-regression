@@ -7,6 +7,11 @@ pipeline {
                 sh "ls -lart ./*"
             }
         }
+        stage('Pull latest Docker image') {
+            steps {
+                sh 'docker pull registry.flexshopper.xyz:5000/docker'
+            }
+        }
         stage('Run PP3 Tests on FlexShopper Staging') {
             steps{
                 dir(WORKSPACE + '/qa-regression/') {
