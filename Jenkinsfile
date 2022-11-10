@@ -12,10 +12,6 @@ pipeline {
                 dir(WORKSPACE + '/qa-regression/') {
                     sh "pwd"
                 }
-                sh """
-                source ~/.bash_profile
-                 mvn --version
-                 """
                 sh "mvn --version"
                 sh """
                 source ~/.bash_profile
