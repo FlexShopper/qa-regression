@@ -13,7 +13,7 @@ pipeline {
                     sh "pwd"
                 }
                 script {
-                    if (fileExists('per_CI_qa-regression_development/qa-regression/mvnw')) {
+                    if (fileExists('./mvnw')) {
                         echo 'File mvnw found!'
                         sh """
                         source ~/.bash_profile
@@ -22,7 +22,7 @@ pipeline {
                     }
                     else {
                         echo 'File mvnw Not found'
-                        sh "./mvnw clean install"
+                        sh "per_CI_qa-regression_development/qa-regression/mvnw clean install"
                         sh "ls -lart ./*"
                     }
                 }
