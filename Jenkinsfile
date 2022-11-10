@@ -14,6 +14,11 @@ pipeline {
                 }
                 sh """
                 source ~/.bash_profile
+                 mvn --version
+                 """
+                sh "mvn --version"
+                sh """
+                source ~/.bash_profile
                  mvn clean test
                  """
             }
