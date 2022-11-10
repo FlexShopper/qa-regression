@@ -15,7 +15,7 @@ pipeline {
                 script {
                     if (fileExists('./mvnw')) {
                         echo 'File mvnw found!'
-                        sh "./per_CI_qa-regression_development/qa-regression/mvnw clean install"
+                        sh "sudo ./mvnw clean install"
                     }
                     else {
                         echo 'File mvnw Not found'
