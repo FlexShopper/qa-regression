@@ -13,9 +13,9 @@ pipeline {
                     sh "pwd"
                 }
                 script {
-                    if (fileExists('per_CI_qa-regression_development/qa-regression/mvnw')) {
-                        echo 'File mvnw found!'
-                        sh "mvnw clean install"
+                    if (fileExists('per_CI_qa-regression_development/qa-regression/mvnw.cmd')) {
+                        echo 'File mvnw.cmd found!'
+                        sh "mvnw.cmd clean install"
                     }
                     else {
                         echo 'File mvnw Not found'
