@@ -12,11 +12,15 @@ pipeline {
                 dir(WORKSPACE + '/qa-regression/') {
                     sh "pwd"
                 }
-                sh "mvnw clean install"
-                sh """
-                source ~/.bash_profile
-                mvnw clean install
-                """
+                script {
+                    if (fileExists('./mvnw')) {
+                        echo 'File mvnw found!'
+                        sh "mvnw clean install"
+                    }
+                    else {
+                        echo 'File mvnw Not found'
+                    }
+                }
             }
         }
     }
