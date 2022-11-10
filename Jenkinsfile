@@ -15,6 +15,7 @@ pipeline {
                 script {
                     if (fileExists('./mvnw')) {
                         echo 'File mvnw found!'
+                        echo $JAVA_HOME
                         sh "chmod -R 777 ./mvnw"
                         sh "./mvnw clean install"
                     }
