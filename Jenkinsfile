@@ -13,6 +13,9 @@ pipeline {
                     sh "pwd"
                 }
                 script {
+                    if (fileExists('pom/xml')) {
+                        echo 'File pom/xml found!'
+                    }
                     if (fileExists('per_CI_qa-regression_development/qa-regression/mvnw.cmd')) {
                         echo 'File mvnw.cmd found!'
                         sh "mvnw.cmd clean install"
