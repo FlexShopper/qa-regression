@@ -4,14 +4,13 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
 import static utils.selenium.Driver.browser;
 import static utils.selenium.Settings.weHighlightedColour;
 
 public class WebElementHelpers {
 
     public static WebDriverWait webWaitForSeconds() {
-        return new WebDriverWait(browser(), Duration.ofSeconds(10));
+        return new WebDriverWait(browser(), 10);
     }
 
     public boolean webElementIsDisplayed(WebElement element) {
