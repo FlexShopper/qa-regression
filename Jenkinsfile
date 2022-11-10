@@ -12,12 +12,11 @@ pipeline {
                 dir(WORKSPACE + '/qa-regression/') {
                     sh "pwd"
                 }
-                script {
-                    if (fileExists('per_CI_qa-regression_development/qa-regression/FlexShopperFramework-1.0-SNAPSHOT.jar')) {
-                        echo "File FlexShopperFramework-1.0-SNAPSHOT.jar found!"
-                    }
-                    sh "java -jar FlexShopperFramework-1.0-SNAPSHOT.jar"
-                }
+            steps {
+                sh """
+                source ~/.bash_profile
+                 mvn clean test
+                 """
             }
         }
     }
