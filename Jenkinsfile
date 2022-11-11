@@ -1,5 +1,4 @@
 pipeline {
-    stages {
         def podSpec = """
         apiVersion: v1
         kind: Pod
@@ -34,6 +33,8 @@ pipeline {
           imagePullSecrets:
           - name: regcred-gitlab
         """
+        
+    stages {
 
         def label = "flexci-executor-auto-qa-mp-" + UUID.randomUUID().toString()
 
