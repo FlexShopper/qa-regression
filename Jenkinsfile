@@ -1,11 +1,8 @@
 pipeline {
     agent any // use any available agent in Jenkins
         stages {
-        stage("Install") {
-            checkout scm
-        }
-        stage('Pull latest Selenium Jenkins image & Run PP3 Tests on FlexShopper Staging') {
-            steps {
+            stage('Pull latest Selenium Jenkins image & Run PP3 Tests on FlexShopper Staging') {
+                steps {
                     docker.image("registry.flexshopper.xyz:5000/selenium-jenkins-runner").inside {
                         withCredentials([string(credentialsId: 'slack-api-token', variable: 'SLACK_TOKEN')]) {
                            ansiColor('gnome-terminal') {
@@ -24,7 +21,7 @@ pipeline {
                                echo 'File mvnw Not found'
                                sh "ls -lart ./*"
                            }
-                        }
+                       }
                     }
                 }
             }
