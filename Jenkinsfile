@@ -7,9 +7,9 @@ pipeline {
                 sh "ls -lart ./*"
             }
         }
-        stage('Pull latest Selenium Standalone image') {
+        stage('Pull latest Selenium Jenkins image') {
             steps {
-                sh 'selenium/standalone-chrome:latest'
+                sh 'registry.flexshopper.xyz:5000/selenium-jenkins-runner'
             }
         }
         stage('Run PP3 Tests on FlexShopper Staging') {
