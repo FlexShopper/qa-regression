@@ -50,7 +50,7 @@ podTemplate(label: label,
         }
 
         stage("Run PP3 Tests on FlexShopper Staging") {
-            docker.image("registry.flexshopper.xyz:5000/cypress").inside {
+            docker.image("registry.flexshopper.xyz:5000/selenium-jenkins-runner").inside {
                 withCredentials([string(credentialsId: 'slack-api-token', variable: 'SLACK_TOKEN')]) {
                     ansiColor('gnome-terminal') {
                        dir(WORKSPACE + '/qa-regression/') {
