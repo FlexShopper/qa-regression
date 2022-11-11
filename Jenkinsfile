@@ -33,11 +33,10 @@ pipeline {
           imagePullSecrets:
           - name: regcred-gitlab
         """
-        
-    stages {
 
         def label = "flexci-executor-auto-qa-mp-" + UUID.randomUUID().toString()
 
+    stages {
         podTemplate(label: label,
                 yaml: podSpec,
                 cloud: 'huachuca'
