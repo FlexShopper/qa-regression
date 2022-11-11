@@ -37,15 +37,15 @@ def label = "flexci-executor-auto-qa-mp-" + UUID.randomUUID().toString()
 
 podTemplate(label: label,
         yaml: podSpec,
-        cloud: 'huachuca'
-) {
+        cloud: 'huachuca')
+{
     node(label) {
         container("docker") {
             stage('Clone Repository') {
                 steps {
-                        checkout([$class: 'GitSCM', branches: [[name: '*/development']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-ci-user', url: 'https://github.com/FlexShopper/qa-regression.git']]])
-                        sh "ls -lart ./*"
-                    }
+                    checkout([$class: 'GitSCM', branches: [[name: '*/development']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-ci-user', url: 'https://github.com/FlexShopper/qa-regression.git']]])
+                    sh "ls -lart ./*"
+                }
             }
         }
 
@@ -53,18 +53,19 @@ podTemplate(label: label,
             docker.image("registry.flexshopper.xyz:5000/cypress").inside {
                 withCredentials([string(credentialsId: 'slack-api-token', variable: 'SLACK_TOKEN')]) {
                     ansiColor('gnome-terminal') {
-                        dir(WORKSPACE + '/qa-regression/') {
-                                       sh "pwd"
-                   }
-                   if (fileExists('./mvnw')) {
-                       echo 'File mvnw found!'
-                       sh "java -version"
-                       sh "chmod -R 777 ./mvnw"
-                       sh "./mvnw clean install"
-                   }
-                   else {
-                       echo 'File mvnw Not found'
-                       sh "ls -lart ./*"
+                       dir(WORKSPACE + '/qa-regression/') {
+                                           sh "pwd"
+                       }
+                       if (fileExists('./mvnw')) {
+                           echo 'File mvnw found!'
+                           sh "java -version"
+                           sh "chmod -R 777 ./mvnw"
+                           sh "./mvnw clean install"
+                       }
+                       else {
+                           echo 'File mvnw Not found'
+                           sh "ls -lart ./*"
+                       }
                    }
                 }
             }
