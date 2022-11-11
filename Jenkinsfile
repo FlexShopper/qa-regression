@@ -3,7 +3,7 @@ pipeline {
         stages {
             stage('Pull latest Selenium Jenkins image & Run PP3 Tests on FlexShopper Staging') {
                 steps {
-                    @docker.image("registry.flexshopper.xyz:5000/selenium-jenkins-runner").inside {
+                    @docker.image("registry.flexshopper.xyz:5000/selenium-jenkins-runner") {
                         withCredentials([string(credentialsId: 'slack-api-token', variable: 'SLACK_TOKEN')]) {
                            ansiColor('gnome-terminal') {
                            checkout([$class: 'GitSCM', branches: [[name: '*/development']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-ci-user', url: 'https://github.com/FlexShopper/qa-regression.git']]])
