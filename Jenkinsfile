@@ -45,13 +45,19 @@ podTemplate(label: label,
                 checkout scm
             }
 
+            stage('Clone Repository') {
+                checkout([$class: 'GitSCM', branches: [[name: '*/development']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-ci-user', url: 'https://github.com/FlexShopper/qa-regression.git']]])
+                sh "ls -lart ./*"
+               dir(WORKSPACE + '/qa-regression/') {
+                   sh "pwd"
+               }
+            }
+
             stage("Run PP3 Tests on FlexShopper Staging") {
                 docker.image("registry.flexshopper.xyz:5000/selenium-jenkins-runner").inside {
                     withCredentials([string(credentialsId: 'slack-api-token', variable: 'SLACK_TOKEN')]) {
                         ansiColor('gnome-terminal') {
-                           dir(WORKSPACE + '/qa-regression/') {
-                               sh "pwd"
-                           }
+
                         }
                     }
                 }
