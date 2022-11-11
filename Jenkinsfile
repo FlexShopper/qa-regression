@@ -41,35 +41,16 @@ podTemplate(label: label,
 ) {
     node(label) {
         container("docker") {
-            stage('Clone Repository') {
-                steps {
-                    checkout([$class: 'GitSCM', branches: [[name: '*/development']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-ci-user', url: 'https://github.com/FlexShopper/qa-regression.git']]])
-                    sh "ls -lart ./*"
-                }
+            stage("Install") {
+                checkout scm
             }
-        }
 
-        stage("Run PP3 Tests on FlexShopper Staging") {
-            steps {
+            stage("Run PP3 Tests on FlexShopper Staging") {
                 docker.image("registry.flexshopper.xyz:5000/selenium-jenkins-runner").inside {
                     withCredentials([string(credentialsId: 'slack-api-token', variable: 'SLACK_TOKEN')]) {
-                       ansiColor('gnome-terminal') {
-                           dir(WORKSPACE + '/qa-regression/') {
-                                          sh "pwd"
-                           }
-                           script {
-                               if (fileExists('./mvnw')) {
-                                   echo 'File mvnw found!'
-                                   sh "java -version"
-                                   sh "chmod -R 777 ./mvnw"
-                                   sh "./mvnw clean install"
-                               }
-                               else {
-                                   echo 'File mvnw Not found'
-                                   sh "ls -lart ./*"
-                               }
-                           }
-                       }
+                        ansiColor('gnome-terminal') {
+
+                        }
                     }
                 }
             }
