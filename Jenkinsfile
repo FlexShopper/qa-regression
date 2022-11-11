@@ -51,6 +51,7 @@ podTemplate(label: label,
                dir(WORKSPACE + '/qa-regression/') {
                    sh "pwd"
                }
+               sh "java -version"
             }
 
             stage("Run PP3 Tests on FlexShopper Staging") {
