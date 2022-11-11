@@ -57,7 +57,16 @@ podTemplate(label: label,
                 docker.image("registry.flexshopper.xyz:5000/selenium-jenkins-runner").inside {
                     withCredentials([string(credentialsId: 'slack-api-token', variable: 'SLACK_TOKEN')]) {
                         ansiColor('gnome-terminal') {
-
+                           if (fileExists('./mvnw')) {
+                               echo 'File mvnw found!'
+                               sh "java -version"
+                               sh "chmod -R 777 ./mvnw"
+                               sh "./mvnw clean install"
+                           }
+                           else {
+                               echo 'File mvnw Not found'
+                               sh "ls -lart ./*"
+                           }
                         }
                     }
                 }
