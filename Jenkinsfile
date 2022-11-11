@@ -7,9 +7,9 @@ pipeline {
                 sh "ls -lart ./*"
             }
         }
-        stage('Pull latest Docker image') {
+        stage('Pull latest Selenium Standalone image') {
             steps {
-                sh 'docker pull registry.flexshopper.xyz:5000/docker'
+                sh 'selenium/standalone-chrome:latest'
             }
         }
         stage('Run PP3 Tests on FlexShopper Staging') {
