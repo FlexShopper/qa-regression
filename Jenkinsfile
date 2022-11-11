@@ -37,24 +37,22 @@ def label = "flexci-executor-auto-qa-mp-" + UUID.randomUUID().toString()
 
 podTemplate(label: label,
         yaml: podSpec,
-        cloud: 'huachuca')
-{
+        cloud: 'huachuca'
+) {
     node(label) {
         container("docker") {
             stage('Clone Repository') {
-                steps {
-                    checkout([$class: 'GitSCM', branches: [[name: '*/development']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-ci-user', url: 'https://github.com/FlexShopper/qa-regression.git']]])
-                    sh "ls -lart ./*"
-                }
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/development']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-ci-user', url: 'https://github.com/FlexShopper/qa-regression.git']]])
+                sh "ls -lart ./*"
             }
         }
 
-        stage("Run PP3 Tests on FlexShopper Staging") {
-            steps {
-                docker.image("registry.flexshopper.xyz:5000/cypress").inside {
-                    withCredentials([string(credentialsId: 'slack-api-token', variable: 'SLACK_TOKEN')]) {
-                        ansiColor('gnome-terminal') {
-                           dir(WORKSPACE + '/qa-regression/') {
+            stage("Run PP3 Tests on FlexShopper Staging") {
+                    docker.image("registry.flexshopper.xyz:5000/selenium-jenkins-runner").inside {
+                        withCredentials([string(credentialsId: 'slack-api-token', variable: 'SLACK_TOKEN')]) {
+                           ansiColor('gnome-terminal') {
+                                dir(WORKSPACE + '/qa-regression/') {
                                                sh "pwd"
                            }
                            if (fileExists('./mvnw')) {
@@ -67,8 +65,9 @@ podTemplate(label: label,
                                echo 'File mvnw Not found'
                                sh "ls -lart ./*"
                            }
-                       }
+                        }
                     }
+
                 }
             }
         }
