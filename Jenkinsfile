@@ -36,19 +36,19 @@ pipeline {
 
         def label = "flexci-executor-auto-qa-mp-" + UUID.randomUUID().toString()
 
-    stages {
         podTemplate(label: label,
                 yaml: podSpec,
                 cloud: 'huachuca'
         ) {
             node(label) {
-                container("docker") {
-                    stage('Clone Repository') {
-                    steps {
-                        checkout([$class: 'GitSCM', branches: [[name: '*/development']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-ci-user', url: 'https://github.com/FlexShopper/qa-regression.git']]])
-                        sh "ls -lart ./*"
+                stages {
+                    container("docker") {
+                        stage('Clone Repository') {
+                        steps {
+                            checkout([$class: 'GitSCM', branches: [[name: '*/development']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-ci-user', url: 'https://github.com/FlexShopper/qa-regression.git']]])
+                            sh "ls -lart ./*"
+                        }
                     }
-                }
 
                     stage("Run PP3 Tests on FlexShopper Staging") {
                             docker.image("registry.flexshopper.xyz:5000/selenium-jenkins-runner").inside {
