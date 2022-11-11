@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Pull latest Selenium Jenkins image') {
             steps {
-                sh 'registry.flexshopper.xyz:5000/selenium-jenkins-runner'
+                sh 'registry.flexshopper.xyz:5000/docker'
             }
         }
         stage('Run PP3 Tests on FlexShopper Staging') {
