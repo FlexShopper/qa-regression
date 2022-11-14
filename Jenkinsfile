@@ -57,18 +57,23 @@ podTemplate(label: label,
                 docker.image("registry.flexshopper.xyz:5000/selenium-jenkins-runner").inside {
                     withCredentials([string(credentialsId: 'slack-api-token', variable: 'SLACK_TOKEN')]) {
                         ansiColor('gnome-terminal') {
-                           if (fileExists('./mvn')) {
-                               sh "./mvn -X clean install"
+                           if (fileExists('./mvnw')) {
+                                echo 'File mvnw found!'
+                                sh "java -version"
+                                sh "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64"
+                                sh "chmod -R 777 ./mvnw"
+                                sh "./mvn -X clean install"
                            }
                            else {
-                               echo 'File mvn Not found'
-                               sh "apt-get install maven -y"
-                               sh "mvn -v"
-                               sh "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64"
-                               sh "export MAVEN_HOME=/usr/share/maven"
-                               sh "export M2_HOME=/home/maven/"
-                               sh "mvn -v"
-                               sh "mvn -X clean install"
+                                echo 'File mvnw Not found'
+                                echo 'Installing Maven'
+                                sh "apt-get install maven -y"
+                                sh "mvn -v"
+                                echo 'Installing Maven'
+                                sh "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64"
+                                sh "export MAVEN_HOME=/usr/share/maven"
+                                sh "export M2_HOME=/home/maven/"
+                                sh "mvn -X clean install"
                            }
                         }
                     }
