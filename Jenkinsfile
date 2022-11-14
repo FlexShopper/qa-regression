@@ -62,7 +62,7 @@ podTemplate(label: label,
                                 sh "java -version"
                                 sh "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64"
                                 sh "chmod -R 777 ./mvnw"
-                                sh "./mvn -X clean install"
+                                sh "./mvnw -X clean install"
                            }
                            else {
                                 echo 'File mvnw Not found'
