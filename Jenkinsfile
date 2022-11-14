@@ -66,9 +66,9 @@ podTemplate(label: label,
                                sh "whereis java"
                                sh "apt-get install maven -y"
                                sh "mvn -v"
-                               sh "export JAVA_HOME=/usr/bin/java/java-1.8.0-openjdk-amd64"
+                               sh "export JAVA_HOME=/usr/bin/java/"
                                sh "export MAVEN_HOME=/home/maven/"
-                               sh "mvn -e -X clean install"
+                               sh "mvn -X clean install"
                            }
                         }
                     }
