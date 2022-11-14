@@ -60,6 +60,7 @@ podTemplate(label: label,
                            if (fileExists('./mvnw')) {
                                echo 'File mvnw found!'
                                sh "java -version"
+                               sh "whereis java"
                                sh "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/"
                                sh "chmod -R 777 ./mvnw"
                                sh "./mvnw -X clean install"
