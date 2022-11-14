@@ -64,12 +64,12 @@ podTemplate(label: label,
                                echo 'File mvn Not found'
                                sh "java -version"
                                sh "whereis java"
+                               sh "ls -l /usr/bin/java"
                                sh "ls -l /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java"
                                sh "apt-get install maven -y"
                                sh "mvn -v"
                                sh "export JAVA_HOME=/usr/bin/java/"
                                sh "export MAVEN_HOME=/home/maven/"
-                               sh "chmod -R 777 mvn"
                                sh "mvn -X clean install"
                            }
                         }
