@@ -69,8 +69,8 @@ podTemplate(label: label,
                                sh "mvn -v"
                                sh "export JAVA_HOME=/usr/bin/java/"
                                sh "export MAVEN_HOME=/home/maven/"
-                               sh "chmod -R 777 ./mvn"
-                               sh "./mvn -X clean install"
+                               sh "chmod -R 777 mvn"
+                               sh "mvn -X clean install"
                            }
                         }
                     }
