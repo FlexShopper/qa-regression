@@ -63,6 +63,8 @@ podTemplate(label: label,
                            else {
                                echo 'File mvn Not found'
                                sh "apt-get install maven -y"
+                               sh "mvn -v"
+                               sh "mvn clean install"
                            }
                         }
                     }
