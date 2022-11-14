@@ -10,7 +10,5 @@ import io.cucumber.testng.CucumberOptions;
                 "rerun:target/cucumber-reports/rerun.txt"},
         monochrome = true)
 public class TestRunner extends AbstractTestNGCucumberTests {
-    public static void main(String[] args) {
-        cucumber.api.cli.Main.main(args);
-    }
+
 }

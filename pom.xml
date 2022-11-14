@@ -50,12 +50,6 @@
             <version>3.8.0</version>
         </dependency>
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.14.3</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>3.12.0</version>
@@ -113,10 +107,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${MavenCompiler.version}</version>
+                <version>3.8.1</version>
                 <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
 
             </plugin>
