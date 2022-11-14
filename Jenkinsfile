@@ -67,9 +67,6 @@ podTemplate(label: label,
                                sh "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64"
                                sh "export MAVEN_HOME=/usr/share/maven"
                                sh "export M2_HOME=/home/maven/"
-                               sh "export M2=$M2_HOME/bin"
-                               sh "export MAVEN_OPTS=-Xms256m -Xmx512m"
-                               sh "export PATH=$M2:$PATH"
                                sh "mvn -v"
                                sh "mvn -X clean install"
                            }
