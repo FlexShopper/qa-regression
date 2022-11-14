@@ -62,12 +62,15 @@ podTemplate(label: label,
                            }
                            else {
                                echo 'File mvn Not found'
-                               sh "apt-get install openjdk-8-jdk"
                                sh "apt-get install maven -y"
                                sh "mvn -v"
                                sh "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64"
                                sh "export MAVEN_HOME=/usr/share/maven"
                                sh "export M2_HOME=/home/maven/"
+                               sh "export M2=$M2_HOME/bin"
+                               sh "export MAVEN_OPTS=-Xms256m -Xmx512m"
+                               sh "export PATH=$M2:$PATH"
+                               sh "mvn -v"
                                sh "mvn -X clean install"
                            }
                         }
