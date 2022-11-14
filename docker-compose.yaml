@@ -1,0 +1,50 @@
+version: "3.1" #version of docker-compose reference to use
+services: #begin listing our services we want to use for our Grid
+  hub:
+    image: selenium/hub #get the selenium grid image
+    ports:
+      - "4444:4444" #set the ports of the hub to 4444:4444
+  chrome:
+    image: selenium/node-chrome #get the chrome node image
+    links:
+      - hub #chrome node image requires the hub to work
+    environment:
+      - HUB_PORT_4444_TCP_ADDR=hub #set the hub port for the chrome node
+      - HUB_PORT_4444_TCP_PORT=4444
+  firefox:
+    image: selenium/node-firefox #get the firefox node image
+    links:
+      - hub #firefox node image requires the hub to work
+    environment:
+      - HUB_PORT_4444_TCP_ADDR=hub #set the hub port for the firefox node
+      - HUB_PORT_4444_TCP_PORT=4444
+  emailscreen-tests:
+    image: anavasFlexShopper/selenium-docker #change username to your docker account's username
+    container_name: emailscreen-tests
+    depends_on: #this test image depends on the grid being set up
+      - firefox
+      - chrome
+    environment:
+      - TEST_SUITE=emailscreen-suite.xml #run emailscreen-suite-suite.xml test suite
+      - HUB_URL=hub
+      - LOCAL=false
+  passwordscreen-tests:
+    image: anavasFlexShopper/selenium-docker #change username to your docker account's username
+    container_name: passwordscreen-tests
+    depends_on: #this test image depends on the grid being set up
+      - firefox
+      - chrome
+    environment:
+      - TEST_SUITE=passwordscreen-suite.xml #run the passwordscreen-suite.xml test suite
+      - HUB_URL=hub
+      - LOCAL=false
+  forgotpasswordscreen-tests:
+    image: anavasFlexShopper/selenium-docker #change username to your docker account's username
+    container_name: forgotpasswordscreen-tests
+    depends_on: #this test image depends on the grid being set up
+      - firefox
+      - chrome
+    environment:
+      - TEST_SUITE=forgotpasswordscreen-suite.xml #run the forgotpasswordscreen-suite.xml test suite
+      - HUB_URL=hub
+      - LOCAL=false

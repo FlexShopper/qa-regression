@@ -9,7 +9,7 @@ import java.util.Properties;
 
 public class CucumberHooks {
     @Before("@Web")
-    public void beforeWeb() throws IOException {
+    public void beforeWeb() throws Exception {
         Properties browserProps = new Properties();
         browserProps.load(new FileInputStream("src/test/resources/config.properties"));
 
@@ -30,7 +30,7 @@ public class CucumberHooks {
     }
 
     @Before("@Chrome")
-    public void beforeChrome(){
+    public void beforeChrome() throws Exception {
         DriverController.instance.startChrome("--disable-extensions");
     }
 
@@ -41,7 +41,7 @@ public class CucumberHooks {
     }
 
     @Before("@HeadlessChrome")
-    public void beforeChromeHeadless() {
+    public void beforeChromeHeadless() throws Exception {
         DriverController.instance.startChrome("--headless");
     }
 
