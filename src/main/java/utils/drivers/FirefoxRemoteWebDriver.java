@@ -3,6 +3,7 @@ package utils.drivers;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.URL;
+import static utils.selenium.Settings.hubUrl;
 
 public class FirefoxRemoteWebDriver {
     public static RemoteWebDriver loadFirefoxDriver(String firefoxArgument) throws Exception {

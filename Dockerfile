@@ -17,7 +17,7 @@ WORKDIR /app
 COPY . /app
 
 #Run the shadowJar gradle task using the bash shell we added previously, in order to package our JAR file
-RUN ./gradlew shadowJar
+#RUN ./gradlew shadowJar
 
 #An ENTRYPOINT allows you to configure a container that will run as an executable.
 #Here we are executing our JAR file via TestNG with a given xml test suite passed in from our $TEST_SUITE environment variable
