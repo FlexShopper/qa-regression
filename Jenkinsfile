@@ -60,6 +60,7 @@ podTemplate(label: label,
                            if (fileExists('./mvnw')) {
                                echo 'File mvnw found!'
                                sh "java -version"
+                               sh "readlink -f $(which java) "
                                sh "chmod -R 777 ./mvnw"
                                sh "./mvnw clean install"
                            }
