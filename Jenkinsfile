@@ -62,8 +62,9 @@ podTemplate(label: label,
                            }
                            else {
                                echo 'File mvn Not found'
-                               sh "./mvn -X clean install"
-                               sh "ls -lart ./*"
+                               sh "apt-get update"
+                               sh "apt-get upgrade"
+                               sh "apt-get install maven -y"
                            }
                         }
                     }
