@@ -66,7 +66,7 @@ podTemplate(label: label,
                                sh "mvn -v"
                                sh "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64"
                                sh "export MAVEN_HOME=/home/maven/"
-                               sh "mvn clean install"
+                               sh "mvn -e -X clean install"
                            }
                         }
                     }
