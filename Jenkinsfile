@@ -66,6 +66,8 @@ podTemplate(label: label,
                            }
                            else {
                                 echo 'File mvnw Not found'
+                                echo 'Installing Java JDK'
+                                sh "apt-get install openjdk-8-jdk -y"
                                 echo 'Installing Maven'
                                 sh "apt-get install maven -y"
                                 sh "mvn -v"
