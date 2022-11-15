@@ -70,6 +70,8 @@ podTemplate(label: label,
                                 sh "apt-get install maven -y"
                                 sh "mvn -v"
                                 echo 'Setting Environment Variables'
+                                sh "ls -a /usr/lib/jvm/java-8-openjdk-amd64/"
+                                sh "ls -a /usr/lib/jvm/java-8-openjdk-amd64/bin/"
                                 sh "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/bin/"
                                 sh "export MAVEN_HOME=/usr/share/maven"
                                 sh "export M2_HOME=/home/maven/"
