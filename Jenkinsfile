@@ -66,13 +66,11 @@ podTemplate(label: label,
                            }
                            else {
                                 echo 'File mvnw Not found'
-                                echo 'Installing Java JDK'
-                                sh "apt-get install openjdk-8-jdk"
                                 echo 'Installing Maven'
                                 sh "apt-get install maven -y"
                                 sh "mvn -v"
                                 echo 'Setting Environment Variables'
-                                sh "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64"
+                                sh "export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_191/bin/java"
                                 sh "export MAVEN_HOME=/usr/share/maven"
                                 sh "export M2_HOME=/home/maven/"
                                 sh "mvn -X clean install"
