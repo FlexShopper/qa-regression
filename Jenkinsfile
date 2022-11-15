@@ -64,6 +64,15 @@ podTemplate(label: label,
                                 apt-get install -y ant && \
                                 apt-get clean;
                             """
+                            echo 'Fix Java JDK Certificate Issues'
+                            sh """
+                                apt-get update && \
+                                apt-get install -y ca-certificates-java && \
+                                apt-get clean && \
+                                update-ca-certificates -f && \
+                                rm -rf /var/lib/apt/lists/* && \
+                                rm -rf /var/cache/oracle-jdk8-installer;
+                            """
                             echo 'Install Google Chrome'
                             sh "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -"
                             sh "apt-get update"
