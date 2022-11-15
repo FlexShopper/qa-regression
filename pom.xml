@@ -13,6 +13,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <MavenCompiler.version>3.8.1</MavenCompiler.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <executable>/usr/lib/jvm/java-8-openjdk-amd64/bin/javac</executable>
+        <fork>false</fork>
     </properties>
 
     <dependencies>
