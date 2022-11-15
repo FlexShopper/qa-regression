@@ -1,30 +1,31 @@
-# Initialise a new build stage and sets the Base Image for subsequent instructions.
-# Here we are getting an image running Linux Alpine OS which has Java JDK 8 on it
-FROM openjdk:8-jdk-alpine
+FROM maven:3.8.6-jdk-8
 
-# Add a bash shell to the base image defined above
-RUN apk add --no-cache bash
+WORKDIR /apps/qa
+RUN chmod -R 777 /apps/qa
 
-# Create a directory called 'app'
-RUN mkdir /app
+# Install tools.
+RUN apt update -y & apt install -y wget unzip
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get install -y tzdata
 
-# The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile.
-# Here we are setting the app directory we created above as the working directory
-WORKDIR /app
+# Install Chrome.
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+RUN apt-get update
+RUN apt-get install -y google-chrome-stable
 
-# Get the Maven wrapper and our pom.xml file into our image
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
+# Install ChromeDriver.
+RUN wget -N https://chromedriver.storage.googleapis.com/105.0.5195.19/chromedriver_linux64.zip -P ~/
+RUN unzip ~/chromedriver_linux64.zip -d ~/
+RUN rm ~/chromedriver_linux64.zip
+RUN mv -f ~/chromedriver /usr/local/bin/chromedriver
+RUN chmod +x /usr/local/bin/chromedriver
 
-# Execute the command mvnw dependency:resolve, which install all the dependencies into the image.
-RUN ./mvnw dependency:resolve
+ENV env_browser_param Chrome
 
-#Copy all files and folders from our project root in to our 'app' working directory
+#Copy source code and pom file.
+#COPY src /apps/qa/src
+#COPY pom.xml /apps/qa
 COPY . /app
 
-# An ENTRYPOINT allows you to configure a container that will run as an executable.
-# Here we are executing our JAR file via TestNG with a given xml test suite passed in from our $TEST_SUITE environment variable
-# ENTRYPOINT ["/bin/sh", "-c", "java -cp 'build/libs/FlexShopperFramework-1.0-SNAPSHOT-tests.jar' org.testng.TestNG $TEST_SUITE"]
-
-# Docker will be running as a Maven wrapper
-CMD ["./mvnw", "install"]
+ENTRYPOINT mvn test -Dbrowser_param=${env_browser_param}
