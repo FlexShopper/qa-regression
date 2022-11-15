@@ -74,9 +74,11 @@ podTemplate(label: label,
                                 rm -rf /var/cache/oracle-jdk8-installer;
                             """
                             echo 'Install Google Chrome'
-                            sh "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -"
-                            sh "apt-get update"
-                            sh "apt-get install -y google-chrome-stable"
+                            sh """
+                                wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+                                apt-get update
+                                apt-get install -y google-chrome-stable
+                            """
                             echo 'Install Chromedriver'
                             sh """
                                 wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/107.0.5304.62/chromedriver_linux64.zip \
