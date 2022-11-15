@@ -109,7 +109,7 @@
                     <target>1.8</target>
                     <showDeprecation>true</showDeprecation>
                     <showWarnings>true</showWarnings>
-                    <executable>/usr/lib/jvm/jdk1.8.0_191/bin/javac</executable>
+                    <executable>/usr/lib/jvm/java-8-openjdk-amd64/bin/javac</executable>
                     <fork>false</fork>
                 </configuration>
             </plugin>
