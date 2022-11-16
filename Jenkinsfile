@@ -70,7 +70,7 @@ podTemplate(label: label,
                                 echo 'File mvnw found!'
                                 sh "java -version"
                                 sh "chmod -R 777 ./mvnw"
-                                sh "./mvnw -X clean install"
+                                sh "./mvnw clean install"
                            }
                            else {
                                 echo 'File mvnw Not found'
@@ -79,7 +79,7 @@ podTemplate(label: label,
                                 sh "mvn -v"
                                 sh "export MAVEN_HOME=/usr/share/maven"
                                 sh "export M2_HOME=/home/maven/"
-                                sh "mvn -X clean install"
+                                sh "mvn clean install"
                            }
                         }
                     }
