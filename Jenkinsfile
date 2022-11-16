@@ -66,21 +66,6 @@ podTemplate(label: label,
                                 """
                             sh "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64"
                             sh "java -version"
-                            echo 'Install Google Chrome'
-                            sh """
-                                wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-                                apt-get update
-                                apt-get install -y google-chrome-stable
-                                """
-                            echo 'Install Chromedriver'
-                            sh """
-                                wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/107.0.5304.62/chromedriver_linux64.zip \
-                                && unzip /tmp/chromedriver.zip -d /opt \
-                                && rm /tmp/chromedriver.zip \
-                                && mv /opt/chromedriver /opt/chromedriver-107.0.5304.62 \
-                                && chmod 755 /opt/chromedriver-107.0.5304.62 \
-                                && ln -s /opt/chromedriver-107.0.5304.62 /usr/bin/chromedriver
-                                """
                            if (fileExists('./mvnw')) {
                                 echo 'File mvnw found!'
                                 sh "java -version"
