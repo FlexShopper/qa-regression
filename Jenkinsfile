@@ -63,7 +63,7 @@ podTemplate(label: label,
                                 apt-get install -y openjdk-8-jdk && \
                                 apt-get install -y ant && \
                                 apt-get clean;
-                            """
+                                """
                             echo 'Fix Java JDK Certificate Issues'
                             sh """
                                 apt-get update && \
@@ -72,13 +72,13 @@ podTemplate(label: label,
                                 update-ca-certificates -f && \
                                 rm -rf /var/lib/apt/lists/* && \
                                 rm -rf /var/cache/oracle-jdk8-installer;
-                            """
+                                """
                             echo 'Install Google Chrome'
                             sh """
                                 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
                                 apt-get update
                                 apt-get install -y google-chrome-stable
-                            """
+                                """
                             echo 'Install Chromedriver'
                             sh """
                                 wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/107.0.5304.62/chromedriver_linux64.zip \
@@ -87,12 +87,11 @@ podTemplate(label: label,
                                 && mv /opt/chromedriver /opt/chromedriver-107.0.5304.62 \
                                 && chmod 755 /opt/chromedriver-107.0.5304.62 \
                                 && ln -s /opt/chromedriver-107.0.5304.62 /usr/bin/chromedriver
-                            """
+                                """
                             sh "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64"
                            if (fileExists('./mvnw')) {
                                 echo 'File mvnw found!'
                                 sh "java -version"
-
                                 sh "chmod -R 777 ./mvnw"
                                 sh "./mvnw -X clean install"
                            }
