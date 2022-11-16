@@ -65,7 +65,7 @@ podTemplate(label: label,
                                 apt-get clean;
                                 """
                             sh "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64"
-                            sh "java -v"
+                            sh "java -version"
                             echo 'Install Google Chrome'
                             sh """
                                 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
