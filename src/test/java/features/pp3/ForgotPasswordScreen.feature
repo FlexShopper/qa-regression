@@ -75,6 +75,13 @@ Feature: As user I should be able to change the password
       | FlexShopperAutomation@gmail.com |
 
   #Scenario Outline: User should be able to change the password after retrieving the verification code from an email message
+    #Given the user is in the Change Password screen with email: "<email>"
+    #When the user enters a new password: "<newpassword>"
+    ##And the user clicks on the Submit button
+    #Then the user is able to change the password
+    #Examples:
+    #  | email                           | newpassword  |
+    #  | FlexShopperAutomation@gmail.com | Test@12345   |
 
   #Scenario Outline: User can login with the New password
   # Given the user is on the Change Password Screen
@@ -87,8 +94,8 @@ Feature: As user I should be able to change the password
     #And the user clicks on the Sign in button
     #Then the user lands on the Homepage as logged in user: "<user>"
   #  Examples:
-  #    | email                | newPassword | user             |
-  #    | startdrift@gmail.com | test123     | Stanislav Kuleshov |
+  #    | email                           | newPassword | user                   |
+  #    | FlexShopperAutomation@gmail.com | Test@12345  | FlexShopper Automation |
 
   #Scenario Outline: User cannot login with the Old password
     #Given the user is on the Change Password Screen with email: "<email>"
@@ -101,8 +108,8 @@ Feature: As user I should be able to change the password
     #And the user clicks on the Sign in button
     #Then the user should see the validation error message: "<validationMessage>"
   #  Examples:
-  #    | email                | oldPassword | validationMessage                                                  | newPassword |
-  #    | startdrift@gmail.com | test123     | Invalid email or password: please check your details and try again | test1234    |
+  #    | email                           | oldPassword | validationMessage                                                  | newPassword |
+  #    | FlexShopperAutomation@gmail.com | Test@12345  | Invalid email or password: please check your details and try again | Test@1234   |
 
   #Scenario Outline: User should be able to change the password after retrieving the verification code from a SMS message
 
