@@ -1,6 +1,7 @@
 @Chrome @Regression @Web
 Feature: As a customer I should be able to enter the email in the login email
 
+  @Chrome107
   Scenario Outline: Existing Customer - User lands on the Password screen
     Given the user is in the Email screen
     When the user enters a valid existing email address: "<email>"

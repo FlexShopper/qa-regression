@@ -4,9 +4,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import utils.drivers.ChromeRemoteWebDriver;
 import utils.drivers.ChromeWebDriver;
-import utils.drivers.FirefoxRemoteWebDriver;
 import utils.drivers.FirefoxWebDriver;
 
 public class DriverController {
@@ -17,7 +15,7 @@ public class DriverController {
 
     private static Logger log = LogManager.getLogger(DriverController.class.getName());
 
-    public void startChrome(String arg) throws Exception {
+    public void startChrome(String arg) {
         if(instance.webDriver != null) return;
         if (System.getenv("LOCAL")==null) {
             String local = dotenv.get("LOCAL");
@@ -27,9 +25,12 @@ public class DriverController {
             }
         }
 
-        else if(System.getenv("LOCAL").trim().equals("false")) {
-            instance.webDriver = ChromeRemoteWebDriver.loadChromeDriver(arg);
-        }
+        /**
+        * TODO: To be added when Docker support is added again
+        *    else if(System.getenv("LOCAL").trim().equals("false")) {
+        *         instance.webDriver = ChromeRemoteWebDriver.loadChromeDriver(arg);
+         *   }
+        */
     }
 
     public void startFirefox(String arg) throws Exception {
@@ -42,9 +43,12 @@ public class DriverController {
             }
         }
 
-        else if(System.getenv("LOCAL").trim().equals("false")) {
-            instance.webDriver = FirefoxRemoteWebDriver.loadFirefoxDriver(arg);
-        }
+        /**
+         * TODO: To be added when Docker support gets added again
+         *    else if(System.getenv("LOCAL").trim().equals("false")) {
+         *        instance.webDriver = FirefoxRemoteWebDriver.loadFirefoxDriver(arg);
+         *    }
+         */
     }
 
     public void stopWebDriver() {

@@ -19,8 +19,6 @@ public class ChromeWebDriver {
         ChromeDriverService driverService = ChromeDriverService.createDefaultService();
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
         options.addArguments(chromeArgument);
 
         driver = new ChromeDriver(driverService, options);
