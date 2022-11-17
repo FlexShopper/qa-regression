@@ -19,6 +19,11 @@ public class ChromeWebDriver {
         ChromeDriverService driverService = ChromeDriverService.createDefaultService();
 
         ChromeOptions options = new ChromeOptions();
+        // Following arguments were added to solve error: "DevToolsActivePort file doesn't exist"
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--disable-extensions");
         options.addArguments(chromeArgument);
 
         driver = new ChromeDriver(driverService, options);
