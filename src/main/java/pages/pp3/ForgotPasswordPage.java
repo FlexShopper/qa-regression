@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import utils.helpers.WebElementHelpers;
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class ForgotPasswordPage extends EmailPage {
@@ -47,7 +46,7 @@ public class ForgotPasswordPage extends EmailPage {
     private WebElement submitBtn;
 
     /**
-     * verifyForgotPasswordScreen() - Verifies user landed in the Forgot Password screen
+     * verifyForgotPasswordScreen() - Verifies user landed on the Forgot Password screen
      */
     public void verifyForgotPasswordScreen() {
         elementHelpers.webElementIsDisplayed(flexshopperLogo);
@@ -78,15 +77,6 @@ public class ForgotPasswordPage extends EmailPage {
         assertTrue(elementHelpers.webElementIsDisplayed(sendSMAToTxt));
         assertTrue(elementHelpers.webElementIsDisplayed(phoneNumberTxt));
         //TODO: assertEquals(WebElementHelpers.webGetText(phoneNumberTxt), phoneNumber);
-    }
-
-    /**
-     * verifySMSOptionsNotShown() - Verifies Phone information is not shown in PP3's Forgot Password screen
-     */
-    public void verifySMSOptionsNotShown(String phoneNumber) {
-        //TODO: assertTrue(elementHelpers.webElementIsInvisible(smsRadioBtn));
-        //TODO: assertTrue(elementHelpers.webElementIsInvisible(sendSMAToTxt));
-        //TODO: assertTrue(elementHelpers.webElementIsInvisible(phoneNumberTxt));
     }
 
     /**

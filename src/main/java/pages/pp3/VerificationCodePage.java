@@ -5,10 +5,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import utils.helpers.RetrieveEmailVerificationCode;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
 public class VerificationCodePage extends EmailPage {
     /**
      * Elements - PP3's Verification Code Popup Screen

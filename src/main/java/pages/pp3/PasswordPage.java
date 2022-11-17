@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
-import utils.helpers.WebDriverHelpers;
 import utils.helpers.WebElementHelpers;
 
 public class PasswordPage extends EmailPage {
@@ -47,11 +46,11 @@ public class PasswordPage extends EmailPage {
     public WebElement passwordRequiredMsg;
 
     /**
-     * verifyPasswordScreen() - Verifies user landed in the Password screen
+     * verifyPasswordScreen() - Verifies user landed on the Password screen
      */
     public void verifyPasswordScreen() throws InterruptedException {
         Thread.sleep(3000); //TODO: Replace this with a Java ScheduledExecutorService or other form of wait
-        elementHelpers.webElementIsDisplayed(flexshopperLogo);
+        // TODO: elementHelpers.webElementIsDisplayed(flexshopperLogo);
         // TODO: elementHelpers.webElementIsDisplayed(existingCustomerTxt);
         elementHelpers.webElementIsDisplayed(enterPasswordTxt);
         // TODO: elementHelpers.webElementIsDisplayed(emailTxt);
