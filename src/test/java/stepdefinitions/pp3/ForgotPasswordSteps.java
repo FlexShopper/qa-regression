@@ -36,12 +36,6 @@ public class ForgotPasswordSteps extends Page {
         instanceOf(ForgotPasswordPage.class).verifySMSOptions(phoneNumber);
     }
 
-    @Then("^the user should not see the phone number: \"([^\"]*)\"$")
-    public void theUserShouldNotSeeThePhoneNumber(String phoneNumber) {
-        System.out.println("Then the user should not see the phone number: " + phoneNumber);
-        instanceOf(ForgotPasswordPage.class).verifySMSOptionsNotShown(phoneNumber);
-    }
-
     @When("^the user clicks on the link: \"([^\"]*)\"$")
     public void theUserClicksOnTheLink(String returnToPasswordLink) {
         System.out.println("When the user clicks on the link: " + returnToPasswordLink);
