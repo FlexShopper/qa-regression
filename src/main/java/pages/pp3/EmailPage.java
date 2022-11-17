@@ -5,6 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
 import pages.Page;
+import utils.helpers.WaitHelpers;
 import utils.helpers.WebDriverHelpers;
 import utils.helpers.WebElementHelpers;
 import utils.selenium.Settings;
@@ -91,7 +92,7 @@ public class EmailPage extends Page {
      * Verify PP3's Header
      */
     public void verifyHeader() throws InterruptedException {
-        Thread.sleep(5000); //TODO: Replace this with a Java ScheduledExecutorService or other form of wait
+        WaitHelpers.waitPageToLoad(6);
         elementHelpers.webElementIsDisplayed(headerCloseBtn);
         elementHelpers.webElementIsDisplayed(headerFAQBtn);
     }

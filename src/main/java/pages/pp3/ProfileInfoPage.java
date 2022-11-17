@@ -3,6 +3,7 @@ package pages.pp3;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import utils.helpers.WaitHelpers;
 
 public class ProfileInfoPage extends EmailPage {
     /**
@@ -75,6 +76,7 @@ public class ProfileInfoPage extends EmailPage {
      * Verify PP3's Profile Info Screen
      */
     public void verifyProfileInfoScreen() {
+        WaitHelpers.waitPageToLoad(6);
         elementHelpers.webElementIsDisplayed(profileInfoTab);
         // TODO: elementHelpers.weElementIsDisplayed(emailAddressTxt);
         elementHelpers.webElementIsDisplayed(notYouBtn);

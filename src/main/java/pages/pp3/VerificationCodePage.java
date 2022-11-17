@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import utils.helpers.RetrieveEmailVerificationCode;
+import utils.helpers.WaitHelpers;
 
 public class VerificationCodePage extends EmailPage {
     /**
@@ -31,7 +32,7 @@ public class VerificationCodePage extends EmailPage {
      * verifyVerificationCodeScreen() - Verifies user landed in the Verification Code screen
      */
     public void verifyVerificationCodeScreen() throws InterruptedException {
-        Thread.sleep(3000); //TODO: Replace this with a Java ScheduledExecutorService or other form of wait
+        WaitHelpers.waitPageToLoad(6);
         elementHelpers.webElementIsDisplayed(codeSentTxt);
         elementHelpers.webElementIsDisplayed(enterCodeTxt);
         elementHelpers.webElementIsDisplayed(emailTxt);

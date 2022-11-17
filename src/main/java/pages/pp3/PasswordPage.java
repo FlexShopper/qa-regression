@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
+import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 
 public class PasswordPage extends EmailPage {
@@ -49,7 +50,7 @@ public class PasswordPage extends EmailPage {
      * verifyPasswordScreen() - Verifies user landed on the Password screen
      */
     public void verifyPasswordScreen() throws InterruptedException {
-        Thread.sleep(3000); //TODO: Replace this with a Java ScheduledExecutorService or other form of wait
+        WaitHelpers.waitPageToLoad(6);
         // TODO: elementHelpers.webElementIsDisplayed(flexshopperLogo);
         // TODO: elementHelpers.webElementIsDisplayed(existingCustomerTxt);
         elementHelpers.webElementIsDisplayed(enterPasswordTxt);

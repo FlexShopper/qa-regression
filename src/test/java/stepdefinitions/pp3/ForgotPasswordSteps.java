@@ -148,6 +148,17 @@ public class ForgotPasswordSteps extends Page {
     @Given("^the user is on the Change Password screen with email: \"([^\"]*)\"$")
     public void theUserIsOnTheChangePasswordScreenWithEmail(String emailAddress) throws InterruptedException {
         System.out.println("Given the user is on the Change Password screen with email: " + emailAddress);
+        // Launch browser and navigate to the PP3's Change Password screen
+        instanceOf(EmailPage.class).navigateToBaseUrl();
+        instanceOf(EmailPage.class).browserFullScreen();
+        instanceOf(EmailPage.class).switchToFrame();
+        instanceOf(EmailPage.class).enterEmail(emailAddress);
+        instanceOf(EmailPage.class).clickOnContinueBtn();
+        instanceOf(PasswordPage.class).clickOnTheForgotPasswordLnk();
+        instanceOf(EmailPage.class).clickOnContinueBtn();
+        instanceOf(VerificationCodePage.class).retrievesTheVerificationCodeFromEmail();
+        instanceOf(VerificationCodePage.class).clickOnSubmitBtn();
+
         // Verify user landed on the PP3's Change Password screen
         instanceOf(EmailPage.class).verifyHeader();
         instanceOf(ChangePasswordPage.class).verifyChangePasswordScreen();
