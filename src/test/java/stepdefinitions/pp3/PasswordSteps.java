@@ -11,7 +11,7 @@ import pages.pp3.PasswordPage;
 
 public class PasswordSteps extends Page {
     @Given("^the user is in the Password screen with email: \"([^\"]*)\"$")
-    public void theUserIsInThePasswordScreenWithEmail(String email) {
+    public void theUserIsInThePasswordScreenWithEmail(String email) throws InterruptedException {
         // Launch browser and navigate to the PP3's Password screen
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();

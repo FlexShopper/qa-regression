@@ -34,7 +34,7 @@ public class EmailSteps extends Page {
     }
 
     @Then("the user lands on the Password screen")
-    public void theUserLandsOnThePasswordScreen() {
+    public void theUserLandsOnThePasswordScreen() throws InterruptedException {
         instanceOf(EmailPage.class).verifyHeader();
         instanceOf(PasswordPage.class).verifyPasswordScreen();
         instanceOf(EmailPage.class).verifyFooter();

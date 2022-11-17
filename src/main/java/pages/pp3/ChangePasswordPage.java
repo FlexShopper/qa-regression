@@ -38,7 +38,8 @@ public class ChangePasswordPage extends EmailPage {
     /**
      * verifyChangePasswordScreen() - Verify Change Password Screen
      */
-    public void verifyChangePasswordScreen() {
+    public void verifyChangePasswordScreen() throws InterruptedException {
+        Thread.sleep(3000); //TODO: Replace this with a Java ScheduledExecutorService or other form of wait
         elementHelpers.webElementIsDisplayed(createNewPasswordTxt);
         elementHelpers.webElementIsDisplayed(emailValueTxt);
         elementHelpers.webElementIsDisplayed(notYouLink);

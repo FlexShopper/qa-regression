@@ -55,7 +55,7 @@ public class ForgotPasswordSteps extends Page {
     }
 
     @Then("^the user lands on the Verification Code screen$")
-    public void theUserLandsOnTheVerificationCodeScreen() {
+    public void theUserLandsOnTheVerificationCodeScreen() throws InterruptedException {
         System.out.println("Then the user lands on the Verification Code screen");
         instanceOf(VerificationCodePage.class).verifyVerificationCodeScreen();
     }
@@ -85,7 +85,7 @@ public class ForgotPasswordSteps extends Page {
     }
 
     @Then("^the user lands on the Change Password screen$")
-    public void theUserLandsOnTheChangePasswordScreen() {
+    public void theUserLandsOnTheChangePasswordScreen() throws InterruptedException {
         System.out.println("Then the user lands on the Change Password screen");
         instanceOf(ChangePasswordPage.class).verifyChangePasswordScreen();
     }
@@ -109,7 +109,7 @@ public class ForgotPasswordSteps extends Page {
     }
 
     @Given("^the user is on the Change Password Screen$")
-    public void theUserIsOnTheChangePasswordScreen() {
+    public void theUserIsOnTheChangePasswordScreen() throws InterruptedException {
         // Verify user landed on the PP3's Change Password screen
         instanceOf(EmailPage.class).verifyHeader();
         instanceOf(ChangePasswordPage.class).verifyChangePasswordScreen();
@@ -140,7 +140,7 @@ public class ForgotPasswordSteps extends Page {
     }
 
     @Given("^the user is on the Change Password Screen with email: \"([^\"]*)\"$")
-    public void theUserIsOnTheChangePasswordScreenWithEmail(String emailAddress) {
+    public void theUserIsOnTheChangePasswordScreenWithEmail(String emailAddress) throws InterruptedException {
         // Verify user landed on the PP3's Change Password screen
         instanceOf(EmailPage.class).verifyHeader();
         instanceOf(ChangePasswordPage.class).verifyChangePasswordScreen();

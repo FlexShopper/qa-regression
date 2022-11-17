@@ -21,6 +21,7 @@ public class DriverController {
             String local = dotenv.get("LOCAL");
             assert local != null;
             if (local.equals("true")) {
+                // Added to solve error: " [SEVERE]: bind() failed: Cannot assign requested address (99)."
                 System.setProperty("webdriver.chrome.whitelistedIps", "");
                 instance.webDriver = ChromeWebDriver.loadChromeDriver(arg);
             }
@@ -40,6 +41,7 @@ public class DriverController {
             String local = dotenv.get("LOCAL");
             assert local != null;
             if (local.equals("true")) {
+                // Added to solve error: " [SEVERE]: bind() failed: Cannot assign requested address (99)."
                 System.setProperty("webdriver.firefox.whitelistedIps", "");
                 instance.webDriver = FirefoxWebDriver.loadFirefoxDriver(arg);
             }
