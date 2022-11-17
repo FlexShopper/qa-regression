@@ -1,4 +1,4 @@
-@Chrome @Regression @Web
+@Chrome @Regression @Web @ForgotPassword
 Feature: As user I should be able to change the password
 
   Scenario Outline: User with full information in the profile can see the email and the phone number provided
@@ -8,14 +8,6 @@ Feature: As user I should be able to change the password
     Examples:
       | email                | phoneNumber  |
       | startdrift@gmail.com | xxx-xxx-2917 |
-
-  Scenario Outline: User without full information in the profile can see the email address provided
-    Given the user is on the Forgot Password screen with email: "<email>"
-    Then the user should see the email: "<email>"
-    And the user should not see the phone number: "<phoneNumber>"
-    Examples:
-      | email               | phoneNumber  |
-      | nann40547@gmail.com | xxx-xxx-3966 |
 
   Scenario Outline: User is able to return to the Email screen
     Given the user is on the Forgot Password screen with email: "<email>"
@@ -75,13 +67,44 @@ Feature: As user I should be able to change the password
     And the Send Email radio button is selected
     And the user clicks on the Continue button
     And the user lands on the Verification Code screen
-    And the user clicks on the Submit button
     When the user enters the Verification Code in the field
     And the user clicks on the Submit button
     Then the user lands on the Change Password screen
     Examples:
-      | email               |
-      | nann40547@gmail.com |
+      | email                           |
+      | FlexShopperAutomation@gmail.com |
+
+  #Scenario Outline: User should be able to change the password after retrieving the verification code from an email message
+
+  #Scenario Outline: User can login with the New password
+  # Given the user is on the Change Password Screen
+    #When the user enters the password: "<newPassword>"
+    #And the user clicks on the button: "Save Changes"
+    #And the user is on the Email screen
+    #And the user enters the email: "<email>"
+    #And the user clicks on the Continue button
+    #And the user enters the password: "<newPassword>"
+    #And the user clicks on the Sign in button
+    #Then the user lands on the Homepage as logged in user: "<user>"
+  #  Examples:
+  #    | email                | newPassword | user             |
+  #    | startdrift@gmail.com | test123     | Stanislav Kuleshov |
+
+  #Scenario Outline: User cannot login with the Old password
+    #Given the user is on the Change Password Screen with email: "<email>"
+    #When the user enters the password: "<newPassword>"
+    #And the user clicks on the Save Changes button
+    #And the user is on the Email screen
+    #And the user enters the email: "<email>"
+    #And the user clicks on the Continue button
+    #And the user enters the password: "<oldPassword>"
+    #And the user clicks on the Sign in button
+    #Then the user should see the validation error message: "<validationMessage>"
+  #  Examples:
+  #    | email                | oldPassword | validationMessage                                                  | newPassword |
+  #    | startdrift@gmail.com | test123     | Invalid email or password: please check your details and try again | test1234    |
+
+  #Scenario Outline: User should be able to change the password after retrieving the verification code from a SMS message
 
   #Scenario Outline: User should be able to retrieve the verification code from a SMS message
     ##### User should be on the Verification Code with email & phone number #####
@@ -95,7 +118,7 @@ Feature: As user I should be able to change the password
     #  | nann40547@gmail.com | xxx-xxx-3966 |
 
   #Scenario Outline: User can login with the New password
-  # Given the user is on the Change Password Screen
+    #Given the user is on the Change Password Screen
     #When the user enters the password: "<newPassword>"
     #And the user clicks on the button: "Save Changes"
     #And the user is on the Email screen

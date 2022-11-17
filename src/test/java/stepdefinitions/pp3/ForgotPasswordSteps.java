@@ -73,7 +73,7 @@ public class ForgotPasswordSteps extends Page {
     }
 
     @When("^the user enters the Verification Code in the field$")
-    public void theUserEntersTheVerificationCodeInTheField() {
+    public void theUserEntersTheVerificationCodeInTheField() throws InterruptedException {
         System.out.println("When the user enters the Security Code in the field");
         instanceOf(VerificationCodePage.class).retrievesTheVerificationCodeFromEmail();
     }
@@ -140,8 +140,11 @@ public class ForgotPasswordSteps extends Page {
     }
 
     @Given("^the user is on the Change Password Screen with email: \"([^\"]*)\"$")
-    public void theUserIsOnTheChangePasswordScreenWithEmail(String string) {
-        //TODO: Verify the user is on the Change Password Screen
+    public void theUserIsOnTheChangePasswordScreenWithEmail(String emailAddress) {
+        // Verify user landed on the PP3's Change Password screen
+        instanceOf(EmailPage.class).verifyHeader();
+        instanceOf(ChangePasswordPage.class).verifyChangePasswordScreen();
+        instanceOf(EmailPage.class).verifyFooter();
     }
 
     @When("^the user clicks on the Save Changes button$")

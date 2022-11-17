@@ -5,6 +5,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import utils.helpers.RetrieveEmailVerificationCode;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 public class VerificationCodePage extends EmailPage {
     /**
      * Elements - PP3's Verification Code Popup Screen
@@ -42,8 +46,9 @@ public class VerificationCodePage extends EmailPage {
     /**
      * retrievesTheVerificationCodeFromEmail() - System retrieves the Verification Code from the email
      */
-    public void retrievesTheVerificationCodeFromEmail() {
-        String PassCode = RetrieveEmailVerificationCode.check("imap.gmail.com", "imap", "nann40547@gmail.com", "rhtytnjlxhtxbehk");
+    public void retrievesTheVerificationCodeFromEmail() throws InterruptedException {
+        Thread.sleep(5000); //TODO: Replace this with a Java ScheduledExecutorService or other form of wait
+        String PassCode = RetrieveEmailVerificationCode.check("imap.gmail.com", "imap", "FlexShopperAutomation@gmail.com", "wpbpstzzakmrcqgu");
         System.out.println("PassCode is " + PassCode);
         elementHelpers.webSendKeys(securityCode, PassCode, true);
     }

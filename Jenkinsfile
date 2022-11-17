@@ -54,7 +54,7 @@ podTemplate(label: label,
             }
 
             stage("Run PP3 Tests on FlexShopper Staging") {
-                docker.image("registry.flexshopper.xyz:5000/selenium-jenkins-runner").inside {
+                docker.image("registry.flexshopper.xyz:5000/selenium-jenkins-runner-chrome-latest").inside {
                     withCredentials([string(credentialsId: 'slack-api-token', variable: 'SLACK_TOKEN')]) {
                         ansiColor('gnome-terminal') {
                             echo 'Install Java JDK'
@@ -68,6 +68,7 @@ podTemplate(label: label,
                             sh "java -version"
                            if (fileExists('./mvnw')) {
                                 echo 'File mvnw found!'
+                                echo 'Running automation with Maven wrapper'
                                 sh "java -version"
                                 sh "chmod -R 777 ./mvnw"
                                 sh "./mvnw clean install"
