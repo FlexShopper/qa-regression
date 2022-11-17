@@ -83,33 +83,33 @@ Feature: As user I should be able to change the password
       | email                           | newpassword |
       | FlexShopperAutomation@gmail.com | Test@1234  |
 
-  #Scenario Outline: User can login with the New password
-  # Given the user is on the Change Password Screen
-    #When the user enters the password: "<newPassword>"
-    #And the user clicks on the button: "Save Changes"
-    #And the user is on the Email screen
-    #And the user enters the email: "<email>"
-    #And the user clicks on the Continue button
-    #And the user enters the password: "<newPassword>"
-    #And the user clicks on the Sign in button
-    #Then the user lands on the Homepage as logged in user: "<user>"
-  #  Examples:
-  #    | email                           | newPassword | user                   |
-  #    | FlexShopperAutomation@gmail.com | Test@12345  | FlexShopper Automation |
+  Scenario Outline: User can login with the New password after retrieving the verification code from an email message
+    Given the user is on the Change Password screen with email: "<email>"
+    When the user enters the password: "<newPassword>"
+    And the user clicks on the Change Password button
+    And the user is on the Email screen
+    And the user enters the email: "<email>"
+    And the user clicks on the Continue button
+    And the user enters the password: "<newPassword>"
+    And the user clicks on the Sign in button
+    Then the user lands on the Homepage as logged in user: "<user>"
+    Examples:
+      | email                           | newPassword | user                   |
+      | FlexShopperAutomation@gmail.com | Test@12345  | FlexShopper Automation |
 
-  #Scenario Outline: User cannot login with the Old password
-    #Given the user is on the Change Password Screen with email: "<email>"
-    #When the user enters the password: "<newPassword>"
-    #And the user clicks on the Save Changes button
-    #And the user is on the Email screen
-    #And the user enters the email: "<email>"
-    #And the user clicks on the Continue button
-    #And the user enters the password: "<oldPassword>"
-    #And the user clicks on the Sign in button
-    #Then the user should see the validation error message: "<validationMessage>"
-  #  Examples:
-  #    | email                           | oldPassword | validationMessage                                                  | newPassword |
-  #    | FlexShopperAutomation@gmail.com | Test@12345  | Invalid email or password: please check your details and try again | Test@1234   |
+  Scenario Outline: User cannot login with the Old password after retrieving the verification code from an email message
+    Given the user is on the Change Password screen with email: "<email>"
+    When the user enters the password: "<newPassword>"
+    And the user clicks on the Change Password button
+    And the user is on the Email screen
+    And the user enters the email: "<email>"
+    And the user clicks on the Continue button
+    And the user enters the password: "<oldPassword>"
+    And the user clicks on the Sign in button
+    Then the user should see the validation error message: "<validationMessage>"
+    Examples:
+      | email                           | oldPassword | validationMessage                                                  | newPassword |
+      | FlexShopperAutomation@gmail.com | Test@12345  | Invalid email or password: please check your details and try again | Test@1234   |
 
   #Scenario Outline: User should be able to change the password after retrieving the verification code from a SMS message
 

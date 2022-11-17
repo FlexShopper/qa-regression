@@ -160,12 +160,6 @@ public class ForgotPasswordSteps extends Page {
         instanceOf(ChangePasswordPage.class).clickOnChangePasswordBtn();
     }
 
-    @When("^the user clicks on the Save Changes button$")
-    public void theUserClicksOnTheSaveChangesButton() {
-        System.out.println("When the user clicks on the Save Changes button");
-        //TODO: user clicks on the Save Changes button
-    }
-
     @Then("^the user is able to change the password$")
     public void theUserIsAbleToChangeThePassword() {
         System.out.println("Then the user is able to change the password");
