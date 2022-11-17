@@ -74,14 +74,14 @@ Feature: As user I should be able to change the password
       | email                           |
       | FlexShopperAutomation@gmail.com |
 
-  #Scenario Outline: User should be able to change the password after retrieving the verification code from an email message
-    #Given the user is in the Change Password screen with email: "<email>"
-    #When the user enters a new password: "<newpassword>"
-    ##And the user clicks on the Submit button
-    #Then the user is able to change the password
-    #Examples:
-    #  | email                           | newpassword  |
-    #  | FlexShopperAutomation@gmail.com | Test@12345   |
+  Scenario Outline: User should be able to change the password after retrieving the verification code from an email message
+    Given the user is on the Change Password screen with email: "<email>"
+    When the user enters the password: "<newpassword>"
+    And the user clicks on the Change Password button
+    Then the user is able to change the password
+    Examples:
+      | email                           | newpassword |
+      | FlexShopperAutomation@gmail.com | Test@1234  |
 
   #Scenario Outline: User can login with the New password
   # Given the user is on the Change Password Screen

@@ -1,5 +1,6 @@
 package stepdefinitions.pp3;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -81,21 +82,27 @@ public class ForgotPasswordSteps extends Page {
     @Then("^the user lands on the Change Password screen$")
     public void theUserLandsOnTheChangePasswordScreen() throws InterruptedException {
         System.out.println("Then the user lands on the Change Password screen");
+        // Verify user landed on the PP3's Change Password screen
+        instanceOf(EmailPage.class).verifyHeader();
         instanceOf(ChangePasswordPage.class).verifyChangePasswordScreen();
+        instanceOf(EmailPage.class).verifyFooter();
     }
 
     @When("^the user retrieves the Verification Code from the phone$")
     public void theUserRetrievesTheVerificationCodeFromThePhone() {
+        System.out.println("When the user retrieves the Verification Code from the phone");
         //TODO: RETRIEVE VERIFICATION CODE FROM THE PHONE
     }
 
     @When("^the user clicks on the button: \"([^\"]*)\"$")
     public void theUserClicksOnTheButton(String noCodeReceivedBtn) {
+        System.out.println("When the user clicks on the button: " + noCodeReceivedBtn);
         instanceOf(VerificationCodePage.class).clickOnNoCodeReceivedLnk();
     }
 
     @Then("^the user lands on the Forgot Password screen$")
     public void theUserLandsOnTheForgotPasswordScreen() throws InterruptedException {
+        System.out.println("Then the user lands on the Forgot Password screen");
         // Verify user landed on the PP3's Forgot Password screen
         instanceOf(EmailPage.class).verifyHeader();
         instanceOf(ForgotPasswordPage.class).verifyForgotPasswordScreen();
@@ -104,6 +111,7 @@ public class ForgotPasswordSteps extends Page {
 
     @Given("^the user is on the Change Password Screen$")
     public void theUserIsOnTheChangePasswordScreen() throws InterruptedException {
+        System.out.println("Given the user is on the Change Password Screen");
         // Verify user landed on the PP3's Change Password screen
         instanceOf(EmailPage.class).verifyHeader();
         instanceOf(ChangePasswordPage.class).verifyChangePasswordScreen();
@@ -112,11 +120,13 @@ public class ForgotPasswordSteps extends Page {
 
     @When("^the user enters the password: \"([^\"]*)\"$")
     public void theUserEntersThePassword(String password) {
-        //TODO: Enter new password
+        System.out.println("When the user enters the password: " + password);
+        instanceOf(ChangePasswordPage.class).enterNewPassword(password);
     }
 
     @When("^the user is on the Email screen$")
     public void theUserIsOnTheEmailScreen() throws InterruptedException {
+        System.out.println("When the user is on the Email screen");
         // Verify user landed on the PP3's Email screen
         instanceOf(EmailPage.class).verifyHeader();
         instanceOf(EmailPage.class).verifyEmailScreen();
@@ -124,25 +134,41 @@ public class ForgotPasswordSteps extends Page {
     }
 
     @When("^the user enters the email: \"([^\"]*)\"$")
-    public void theUserEntersTheEmail(String email) {
+    public void theUserEntersTheEmail(String emailAddress) {
+        System.out.println("When the user enters the email: " + emailAddress);
         //TODO: user enters the email
     }
 
     @When("^the user clicks on the Sign in button$")
     public void theUserClicksOnTheSignInButton() {
+        System.out.println("When the user clicks on the Sign in button");
         //TODO: user clicks on the Sign in button
     }
 
-    @Given("^the user is on the Change Password Screen with email: \"([^\"]*)\"$")
+    @Given("^the user is on the Change Password screen with email: \"([^\"]*)\"$")
     public void theUserIsOnTheChangePasswordScreenWithEmail(String emailAddress) throws InterruptedException {
+        System.out.println("Given the user is on the Change Password screen with email: " + emailAddress);
         // Verify user landed on the PP3's Change Password screen
         instanceOf(EmailPage.class).verifyHeader();
         instanceOf(ChangePasswordPage.class).verifyChangePasswordScreen();
         instanceOf(EmailPage.class).verifyFooter();
     }
 
+    @When("^the user clicks on the Change Password button$")
+    public void theUserClicksOnTheChangePasswordButton() {
+        System.out.println("And the user clicks on the Change Changes button");
+        instanceOf(ChangePasswordPage.class).clickOnChangePasswordBtn();
+    }
+
     @When("^the user clicks on the Save Changes button$")
     public void theUserClicksOnTheSaveChangesButton() {
+        System.out.println("When the user clicks on the Save Changes button");
         //TODO: user clicks on the Save Changes button
+    }
+
+    @Then("^the user is able to change the password$")
+    public void theUserIsAbleToChangeThePassword() {
+        System.out.println("Then the user is able to change the password");
+
     }
 }

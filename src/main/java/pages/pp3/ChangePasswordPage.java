@@ -3,6 +3,7 @@ package pages.pp3;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.testng.Assert;
 import utils.helpers.WebElementHelpers;
 
 public class ChangePasswordPage extends EmailPage {
@@ -35,6 +36,9 @@ public class ChangePasswordPage extends EmailPage {
     @FindBy(how = How.XPATH, using = "//span[(.)='Change Password']")
     public WebElement changePasswordBtn;
 
+    @FindBy(how = How.XPATH, using = "//span[(.)='Password changed successfully']")
+    public WebElement passwordChangedTxt;
+
     /**
      * verifyChangePasswordScreen() - Verify Change Password Screen
      */
@@ -45,5 +49,27 @@ public class ChangePasswordPage extends EmailPage {
         elementHelpers.webElementIsDisplayed(newPassword);
         elementHelpers.webElementIsDisplayed(passwordRequirementsTxt);
         elementHelpers.webElementIsDisplayed(changePasswordBtn);
+    }
+
+    /**
+     * enterNewPassword() - Enter new password in the password field.
+     * @param password
+     */
+    public void enterNewPassword(String password) {
+        elementHelpers.webSendKeys(newPassword, password, true);
+    }
+
+    /**
+     * clickOnChangePasswordBtn() - Clicks on the "Change Password" button
+     */
+    public void clickOnChangePasswordBtn() {
+        elementHelpers.webClick(changePasswordBtn);
+    }
+
+    /**
+     * passwordChangedMsg() - Verifies "Password Changed Successfully" message is shown
+     */
+    public void passwordChangedMsg() {
+        Assert.assertEquals("Password changed successfully", WebElementHelpers.webGetText(passwordChangedTxt));
     }
 }
