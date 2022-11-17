@@ -50,8 +50,7 @@ public class PasswordPage extends EmailPage {
     /**
      * verifyPasswordScreen() - Verifies user landed in the Password screen
      */
-    public void verifyPasswordScreen() throws InterruptedException {
-        Thread.sleep(3000); //TODO: Replace this with a Java ScheduledExecutorService or other form of wait
+    public void verifyPasswordScreen() {
         elementHelpers.webElementIsDisplayed(flexshopperLogo);
         // TODO: elementHelpers.webElementIsDisplayed(existingCustomerTxt);
         elementHelpers.webElementIsDisplayed(enterPasswordTxt);

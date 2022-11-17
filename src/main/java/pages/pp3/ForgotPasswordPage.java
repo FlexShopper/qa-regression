@@ -49,8 +49,7 @@ public class ForgotPasswordPage extends EmailPage {
     /**
      * verifyForgotPasswordScreen() - Verifies user landed in the Forgot Password screen
      */
-    public void verifyForgotPasswordScreen() throws InterruptedException {
-        Thread.sleep(3000); //TODO: Replace this with a Java ScheduledExecutorService or other form of wait
+    public void verifyForgotPasswordScreen() {
         elementHelpers.webElementIsDisplayed(flexshopperLogo);
         elementHelpers.webElementIsDisplayed(resetYourPasswordTxt);
         elementHelpers.webElementIsDisplayed(passwordResetOptionsTxt);
