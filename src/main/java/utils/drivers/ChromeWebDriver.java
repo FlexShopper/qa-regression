@@ -26,6 +26,7 @@ public class ChromeWebDriver {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
         options.addArguments("--disable-extensions");
+        options.addArguments("--whitelisted-ips");
         options.addArguments("start-maximized");
         options.addArguments(chromeArgument);
 
