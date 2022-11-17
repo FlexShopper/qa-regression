@@ -122,7 +122,7 @@ public class ForgotPasswordSteps extends Page {
     }
 
     @When("^the user is on the Email screen$")
-    public void theUserIsOnTheEmailScreen() {
+    public void theUserIsOnTheEmailScreen() throws InterruptedException {
         // Verify user landed on the PP3's Email screen
         instanceOf(EmailPage.class).verifyHeader();
         instanceOf(EmailPage.class).verifyEmailScreen();

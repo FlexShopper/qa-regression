@@ -90,7 +90,8 @@ public class EmailPage extends Page {
     /**
      * Verify PP3's Header
      */
-    public void verifyHeader() {
+    public void verifyHeader() throws InterruptedException {
+        Thread.sleep(3000); //TODO: Replace this with a Java ScheduledExecutorService or other form of wait
         elementHelpers.webElementIsDisplayed(headerCloseBtn);
         elementHelpers.webElementIsDisplayed(headerFAQBtn);
     }

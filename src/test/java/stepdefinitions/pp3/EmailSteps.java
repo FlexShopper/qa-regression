@@ -11,7 +11,7 @@ import pages.pp3.ProfileInfoPage;
 
 public class EmailSteps extends Page {
     @Given("^the user is in the Email screen$")
-    public void theUserIsInTheEmailScreen() {
+    public void theUserIsInTheEmailScreen() throws InterruptedException {
         // Launch browser and navigate to the PP3's Email screen
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
@@ -46,7 +46,7 @@ public class EmailSteps extends Page {
     }
 
     @Then("the user lands on the Profile Info screen")
-    public void theUserLandsOnTheProfileInfoScreen() {
+    public void theUserLandsOnTheProfileInfoScreen() throws InterruptedException {
         instanceOf(EmailPage.class).verifyHeader();
         instanceOf(ProfileInfoPage.class).verifyProfileInfoScreen();
         instanceOf(EmailPage.class).verifyFooter();
