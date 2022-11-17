@@ -34,7 +34,7 @@ public class DriverController {
         */
     }
 
-    public void startFirefox(String arg) throws Exception {
+    public void startFirefox(String arg) {
         if(instance.webDriver != null) return;
         if (System.getenv("LOCAL")==null) {
             String local = dotenv.get("LOCAL");

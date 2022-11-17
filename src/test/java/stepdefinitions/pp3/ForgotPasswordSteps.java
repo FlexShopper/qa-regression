@@ -8,7 +8,7 @@ import pages.pp3.*;
 
 public class ForgotPasswordSteps extends Page {
     @Given("^the user is on the Forgot Password screen with email: \"([^\"]*)\"$")
-    public void theUserIsOnTheForgotPasswordScreenWithEmail(String email) {
+    public void theUserIsOnTheForgotPasswordScreenWithEmail(String email) throws InterruptedException {
         System.out.println("Given the user is on the Forgot Password screen with email: " + email);
         // Launch browser and navigate to the PP3's Forgot Password screen
         instanceOf(EmailPage.class).navigateToBaseUrl();
@@ -101,7 +101,7 @@ public class ForgotPasswordSteps extends Page {
     }
 
     @Then("^the user lands on the Forgot Password screen$")
-    public void theUserLandsOnTheForgotPasswordScreen() {
+    public void theUserLandsOnTheForgotPasswordScreen() throws InterruptedException {
         // Verify user landed on the PP3's Forgot Password screen
         instanceOf(EmailPage.class).verifyHeader();
         instanceOf(ForgotPasswordPage.class).verifyForgotPasswordScreen();
