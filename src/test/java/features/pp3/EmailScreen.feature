@@ -1,9 +1,8 @@
 @Chrome @Regression @Web
 Feature: As a customer I should be able to enter the email in the login email
 
-  @Chrome107
-  Scenario Outline: Existing Customer - User lands on the Password screen
-    Given the user is in the Email screen
+  Scenario Outline: Existing Customer lands on the Password screen
+    Given the user is on the Email screen
     When the user enters a valid existing email address: "<email>"
     And the user clicks on the Continue button
     Then the user lands on the Password screen
@@ -11,8 +10,8 @@ Feature: As a customer I should be able to enter the email in the login email
       | email               |
       | nann40547@gmail.com |
 
-  Scenario Outline: New Customer - User lands on the Profile Info screen
-    Given the user is in the Email screen
+  Scenario Outline: New Customer lands on the Profile Info screen
+    Given the user is on the Email screen
     When the user enters a valid no-registered email address: "<email>"
     And the user clicks on the Continue button
     Then the user lands on the Profile Info screen
@@ -20,8 +19,8 @@ Feature: As a customer I should be able to enter the email in the login email
       | email                     |
       | flexshopper1017@gmail.com |
 
-  Scenario Outline: Login with an invalid email fails
-    Given the user is in the Email screen
+  Scenario Outline: User cannot log-in with an invalid email address
+    Given the user is on the Email screen
     When the user enters an invalid email address: "<email>"
     And the user clicks on the Continue button
     Then the user sees the following validation message: "<validationMsg>"
@@ -31,3 +30,18 @@ Feature: As a customer I should be able to enter the email in the login email
       | a.abcde@flexshopper | Invalid email address |
       | Abcde@flexshopper.c | Invalid email address |
       |                     | Invalid email address |
+
+  # Scenario: User can close the PP3's screen
+  # Scenario: User remains in the PP3's screen after cancelling request of closing the PP3's screen
+
+  ######################## Header Verification ########################
+  # Scenario: User can navigate to Frequently Asked Questions (FAQ)
+  # Scenario: User can return to the PP3's screen after closing Frequently Asked Questions (FAQ)
+
+  ######################## Footer Verification ########################
+  # Scenario: User can navigate to Accessibility
+  # Scenario: User can return to the PP3's screen after closing Accessibility
+  # Scenario: User can navigate to Terms of Use
+  # Scenario: User can return to the PP3's screen after closing Terms of Use
+  # Scenario: User can return to the PP3's screen after closing Privacy Policy
+

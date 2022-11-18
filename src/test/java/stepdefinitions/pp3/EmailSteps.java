@@ -10,8 +10,8 @@ import pages.pp3.PasswordPage;
 import pages.pp3.ProfileInfoPage;
 
 public class EmailSteps extends Page {
-    @Given("^the user is in the Email screen$")
-    public void theUserIsInTheEmailScreen() throws InterruptedException {
+    @Given("^the user is on the Email screen$")
+    public void theUserIsOnTheEmailScreen() throws InterruptedException {
         // Launch browser and navigate to the PP3's Email screen
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
