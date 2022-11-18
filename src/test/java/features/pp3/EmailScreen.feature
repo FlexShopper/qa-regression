@@ -1,10 +1,10 @@
-@Chrome @Regression @Web
+@Chrome @Regression @Web @Email
 Feature: As a customer I should be able to enter the email in the login email
 
   Scenario Outline: Existing Customer lands on the Password screen
     Given the user is on the Email screen
     When the user enters a valid existing email address: "<email>"
-    And the user clicks on the Continue button
+    And the user clicks on the button: "Continue"
     Then the user lands on the Password screen
     Examples:
       | email               |
@@ -13,7 +13,7 @@ Feature: As a customer I should be able to enter the email in the login email
   Scenario Outline: New Customer lands on the Profile Info screen
     Given the user is on the Email screen
     When the user enters a valid no-registered email address: "<email>"
-    And the user clicks on the Continue button
+    And the user clicks on the button: "Continue"
     Then the user lands on the Profile Info screen
     Examples:
       | email                     |
@@ -22,7 +22,7 @@ Feature: As a customer I should be able to enter the email in the login email
   Scenario Outline: User cannot log-in with an invalid email address
     Given the user is on the Email screen
     When the user enters an invalid email address: "<email>"
-    And the user clicks on the Continue button
+    And the user clicks on the button: "Continue"
     Then the user sees the following validation message: "<validationMsg>"
     Examples:
       | email               | validationMsg         |

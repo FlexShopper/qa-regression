@@ -49,7 +49,7 @@ public class PasswordPage extends EmailPage {
     /**
      * verifyPasswordScreen() - Verifies user landed on the Password screen
      */
-    public void verifyPasswordScreen() throws InterruptedException {
+    public void verifyPasswordScreen() {
         WaitHelpers.waitPageToLoad(6);
         // TODO: elementHelpers.webElementIsDisplayed(flexshopperLogo);
         // TODO: elementHelpers.webElementIsDisplayed(existingCustomerTxt);
@@ -83,6 +83,7 @@ public class PasswordPage extends EmailPage {
     public void passwordValidationMessage(String validationMsg) {
         elementHelpers.webElementIsDisplayed(passwordValidationMsg);
         // TODO: Assert using Ignore Case
+        // TODO: Use the message provided in feature file or remove it from there
         Assert.assertEquals("Invalid email or password: please check your details and try again", passwordValidationMsg.getText());
     }
 
@@ -97,7 +98,14 @@ public class PasswordPage extends EmailPage {
     }
 
     /**
-     * clickOnTheForgotPasswordLnk() - Click on the "Forgot Password" Link
+     * clickOnTheNotYouLnk() - Clicks on the "Not You?" Link
+     */
+    public void clickOnTheNotYouLnk() {
+        elementHelpers.webClick(notYouTxt);
+    }
+
+    /**
+     * clickOnTheForgotPasswordLnk() - Clicks on the "Forgot Password" Link
      */
     public void clickOnTheForgotPasswordLnk() {
         elementHelpers.webClick(forgotPasswordLnk);

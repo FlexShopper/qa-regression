@@ -1,13 +1,11 @@
 package stepdefinitions.pp3;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.pp3.EmailPage;
+import pages.pp3.*;
 import pages.flexshopper.FlexShopperHomePage;
 import pages.Page;
-import pages.pp3.PasswordPage;
 
 public class PasswordSteps extends Page {
     @Given("^the user is on the Password screen with email: \"([^\"]*)\"$")
@@ -26,17 +24,43 @@ public class PasswordSteps extends Page {
         instanceOf(EmailPage.class).verifyFooter();
     }
 
+    @Then("^the user lands on the Email screen$")
+    public void theUserLandsOnTheEmailScreen() throws InterruptedException {
+        System.out.println("Then the user lands on the Email screen");
+        // Verify user landed on the PP3's Email screen
+        instanceOf(EmailPage.class).verifyHeader();
+        instanceOf(EmailPage.class).verifyEmailScreen();
+        instanceOf(EmailPage.class).verifyFooter();
+    }
+
+    @When("^the user clicks on the link: \"([^\"]*)\"$")
+    public void theUserClicksOnTheLink(String link) {
+        System.out.println("When the user clicks on the link: " + link);
+        switch (link) {
+            case "Not You?":
+                instanceOf(PasswordPage.class).clickOnTheNotYouLnk();
+                break;
+            case "Forgot Password?":
+                instanceOf(PasswordPage.class).clickOnTheForgotPasswordLnk();
+                break;
+            case "Return to Password Sign In":
+                instanceOf(ForgotPasswordPage.class).clickOnReturnToPasswordLink();
+                break;
+            case "No Code received?":
+                instanceOf(VerificationCodePage.class).clickOnNoCodeReceivedLnk();
+                break;
+            case "Enter Address Manually":
+                instanceOf(ProfileInfoPage.class).clickOnEnterAddressManuallyLnk();
+                break;
+            default:
+                System.out.println("Link " + link + "was not found!");
+        }
+    }
+
     @When("^the user enters a valid password: \"([^\"]*)\"$")
     public void theUserEntersAValidPassword(String password) {
         System.out.println("When the user enters a valid password: " + password);
         instanceOf(PasswordPage.class).enterPassword(password);
-    }
-
-    @And("^the user clicks on the Sign In button")
-    public void theUserClicksOnTheSignInButton() throws InterruptedException {
-        System.out.println("And the user clicks on the Sign In button");
-        instanceOf(PasswordPage.class).clickOnTheSignInBtn();
-        Thread.sleep(5000);
     }
 
     @Then("^the user lands on the Homepage as logged in user: \"([^\"]*)\"$")

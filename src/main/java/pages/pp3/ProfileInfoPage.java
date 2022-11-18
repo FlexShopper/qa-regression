@@ -40,7 +40,7 @@ public class ProfileInfoPage extends EmailPage {
     private WebElement city;
 
     @FindBy(how = How.ID, using = "region-input")
-    private WebElement region;
+    private WebElement state;
 
     @FindBy(how = How.ID, using = "postalCode-input")
     private WebElement postalCode;
@@ -73,7 +73,7 @@ public class ProfileInfoPage extends EmailPage {
     public WebElement errMsgZipCode;
 
     /**
-     * Verify PP3's Profile Info Screen
+     * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
      */
     public void verifyProfileInfoScreen() {
         WaitHelpers.waitPageToLoad(6);
@@ -87,5 +87,96 @@ public class ProfileInfoPage extends EmailPage {
         elementHelpers.webElementIsDisplayed(enterManualLink);
         // TODO: elementHelpers.weElementIsDisplayed(signMeUpBtn);
         elementHelpers.webElementIsDisplayed(continueBtn);
+    }
+
+    /**
+     * verifyProfileInfoScreenWithHiddenFields() - Verify PP3's Profile Info Screen showing hidden address fields
+     */
+    public void verifyProfileInfoScreenWithHiddenFields() {
+        elementHelpers.webElementIsDisplayed(profileInfoTab);
+        // TODO: elementHelpers.weElementIsDisplayed(emailAddressTxt);
+        elementHelpers.webElementIsDisplayed(notYouBtn);
+        elementHelpers.webElementIsDisplayed(firstName);
+        elementHelpers.webElementIsDisplayed(lastName);
+        elementHelpers.webElementIsDisplayed(mobilePhone);
+        elementHelpers.webElementIsDisplayed(homeAddress);
+        elementHelpers.webElementIsDisplayed(unitNumber);
+        elementHelpers.webElementIsDisplayed(city);
+        elementHelpers.webElementIsDisplayed(state);
+        elementHelpers.webElementIsDisplayed(zipCode);
+        // TODO: elementHelpers.weElementIsDisplayed(signMeUpBtn);
+        elementHelpers.webElementIsDisplayed(continueBtn);
+    }
+
+    /**
+     * enterFirstName() - Enter First Name
+     * @param name
+     */
+    public void enterFirstName(String name){
+        elementHelpers.webSendKeys(firstName, name, true);
+    }
+
+    /**
+     * enterLastName() - Enter Last Name
+     * @param surname
+     */
+    public void enterLastName(String surname){
+        elementHelpers.webSendKeys(lastName, surname, true);
+    }
+
+    /**
+     * enterMobileNumber() - Enter Mobile Number
+     * @param mobile
+     */
+    public void enterMobileNumber(String mobile){
+        elementHelpers.webSendKeys(mobilePhone, mobile, true);
+    }
+
+    /**
+     * enterAddress() - Enter Address
+     * @param address
+     */
+    public void enterAddress(String address){
+        elementHelpers.webSendKeys(homeAddress, address, true);
+    }
+
+    /**
+     * clickOnEnterAddressManuallyLnk() - Clicks on the "Enter Address Manually" link
+     */
+    public void clickOnEnterAddressManuallyLnk(){
+        // TODO: Move to element
+        elementHelpers.webClickJSExecutor(enterManualLink);
+    }
+
+    /**
+     * enterUnitNumber() - Enter Unit Number
+     * @param unit
+     */
+    public void enterUnitNumber(String unit){
+        elementHelpers.webSendKeys(unitNumber, unit, true);
+    }
+
+    /**
+     * enterCity() - Enter City
+     * @param cityOfResidence
+     */
+    public void enterCity(String cityOfResidence){
+        elementHelpers.webSendKeys(city, cityOfResidence, true);
+    }
+
+    /**
+     * enterState() - Enter State or Region
+     * @param region
+     */
+    public void enterState(String region){
+        elementHelpers.webSendKeys(state, region, true);
+    }
+
+    /**
+     * enterState() - Enter State or Region
+     * @param postalCode
+     */
+    public void enterZipCode(String postalCode){
+        elementHelpers.webSendKeys(zipCode, postalCode, true);
     }
 }

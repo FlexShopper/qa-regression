@@ -36,12 +36,6 @@ public class ForgotPasswordSteps extends Page {
         instanceOf(ForgotPasswordPage.class).verifySMSOptions(phoneNumber);
     }
 
-    @When("^the user clicks on the link: \"([^\"]*)\"$")
-    public void theUserClicksOnTheLink(String returnToPasswordLink) {
-        System.out.println("When the user clicks on the link: " + returnToPasswordLink);
-        instanceOf(ForgotPasswordPage.class).clickOnReturnToPasswordLink();
-    }
-
     @Given("^the Send Email radio button is selected$")
     public void theSendEmailRadioButtonIsSelected() {
         System.out.println("Given the Send Email radio button is selected");
@@ -54,12 +48,6 @@ public class ForgotPasswordSteps extends Page {
         instanceOf(VerificationCodePage.class).verifyVerificationCodeScreen();
     }
 
-    @Then("^the user should see the field: \"([^\"]*)\"$")
-    public void theUserShouldSeeTheField(String fieldName) {
-        System.out.println("Then the user should see the field: " + fieldName);
-        //TODO: ASSERT THE SECURITY CODE IS FOUND
-    }
-
     @Given("^the Send SMS radio button is selected$")
     public void theSendSMSRadioButtonIsSelected() {
         System.out.println("Given the Send SMS radio button is selected");
@@ -70,12 +58,6 @@ public class ForgotPasswordSteps extends Page {
     public void theUserEntersTheVerificationCodeInTheField() throws InterruptedException {
         System.out.println("When the user enters the Security Code in the field");
         instanceOf(VerificationCodePage.class).retrievesTheVerificationCodeFromEmail();
-    }
-
-    @When("^the user clicks on the Submit button$")
-    public void theUserClicksOnTheSubmitButton() {
-        System.out.println("When the user clicks on the Submit button");
-        instanceOf(VerificationCodePage.class).clickOnSubmitBtn();
     }
 
     @Then("^the user lands on the Change Password screen$")
@@ -91,12 +73,6 @@ public class ForgotPasswordSteps extends Page {
     public void theUserRetrievesTheVerificationCodeFromThePhone() {
         System.out.println("When the user retrieves the Verification Code from the phone");
         //TODO: RETRIEVE VERIFICATION CODE FROM THE PHONE
-    }
-
-    @When("^the user clicks on the button: \"([^\"]*)\"$")
-    public void theUserClicksOnTheButton(String noCodeReceivedBtn) {
-        System.out.println("When the user clicks on the button: " + noCodeReceivedBtn);
-        instanceOf(VerificationCodePage.class).clickOnNoCodeReceivedLnk();
     }
 
     @Then("^the user lands on the Forgot Password screen$")

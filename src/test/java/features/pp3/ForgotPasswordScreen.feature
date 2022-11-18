@@ -20,7 +20,7 @@ Feature: As user I should be able to change the password
   Scenario Outline: User with email information in the profile should see the "Verification Code" screen
     Given the user is on the Forgot Password screen with email: "<email>"
     And the Send Email radio button is selected
-    When the user clicks on the Continue button
+    And the user clicks on the button: "Continue"
     Then the user lands on the Verification Code screen
     And the user should see the email: "<email>"
     Examples:
@@ -30,7 +30,7 @@ Feature: As user I should be able to change the password
   Scenario Outline: User with phone information in the profile should see the "Verification Code" screen
     Given the user is on the Forgot Password screen with email: "<email>"
     And the Send SMS radio button is selected
-    When the user clicks on the Continue button
+    And the user clicks on the button: "Continue"
     Then the user lands on the Verification Code screen
     And the user should see the phone number: "<phoneNumber>"
     Examples:
@@ -40,9 +40,9 @@ Feature: As user I should be able to change the password
   Scenario Outline: User should be able to click on the "No code received?" link when the Verification Code is not received in the email
     Given the user is on the Forgot Password screen with email: "<email>"
     And the Send Email radio button is selected
-    And the user clicks on the Continue button
+    And the user clicks on the button: "Continue"
     When the user lands on the Verification Code screen
-    And the user clicks on the button: "No Code received?"
+    And the user clicks on the link: "No Code received?"
     Then the user lands on the Forgot Password screen
     And the user should see the email: "<email>"
     Examples:
@@ -52,7 +52,7 @@ Feature: As user I should be able to change the password
   Scenario Outline: User should be able to click on the "No code received?" link when the Verification Code is not received on the phone
     Given the user is on the Forgot Password screen with email: "<email>"
     And the Send SMS radio button is selected
-    And the user clicks on the Continue button
+    And the user clicks on the button: "Continue"
     When the user lands on the Verification Code screen
     And the user clicks on the button: "No Code received?"
     Then the user lands on the Forgot Password screen
@@ -65,10 +65,10 @@ Feature: As user I should be able to change the password
   Scenario Outline: User should be able to retrieve the verification code from an email message
     Given the user is on the Forgot Password screen with email: "<email>"
     And the Send Email radio button is selected
-    And the user clicks on the Continue button
+    And the user clicks on the button: "Continue"
     And the user lands on the Verification Code screen
     When the user enters the Verification Code in the field
-    And the user clicks on the Submit button
+    And the user clicks on the button: "Submit"
     Then the user lands on the Change Password screen
     Examples:
       | email                           |

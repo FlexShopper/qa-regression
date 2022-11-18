@@ -43,6 +43,12 @@ public class WebElementHelpers {
         webHighlightElement(element);
         element.click();
     }
+
+    public void webClickJSExecutor(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) browser();
+        js.executeScript("arguments[0].click();", element);
+    }
+
     public void webSendKeys(WebElement element, String text, boolean clearFirst) {
         webElementIsDisplayed(element);
         if (clearFirst) webClick(element);
