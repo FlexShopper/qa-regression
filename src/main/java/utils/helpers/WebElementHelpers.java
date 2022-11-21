@@ -14,12 +14,12 @@ public class WebElementHelpers {
     }
 
     public boolean webElementIsDisplayed(WebElement element) {
-        webWaitForSeconds().until(ExpectedConditions.visibilityOf(element));
+        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
         return element.isDisplayed();
     }
 
     public void webElementIsSelected(WebElement element) {
-        webWaitForSeconds().until(ExpectedConditions.visibilityOf(element));
+        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
         boolean selectState = element.isSelected();
 
         // Performing the click operation only if element is not selected
@@ -28,8 +28,8 @@ public class WebElementHelpers {
         }
     }
 
-    public void webElementToBeClickable(WebElement element) {
-        webWaitForSeconds().until(ExpectedConditions.elementToBeClickable(element));
+    public static void webElementToBeClickable(WebElement element) {
+        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
         element.isEnabled();
     }
 

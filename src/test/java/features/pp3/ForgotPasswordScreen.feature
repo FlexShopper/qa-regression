@@ -1,4 +1,4 @@
-@Chrome @Regression @Web @ForgotPassword
+@Chrome @Regression @Web @ForgotPassword @PP3
 Feature: As user I should be able to change the password
 
   Scenario Outline: User with full information in the profile can see the email and the phone number provided

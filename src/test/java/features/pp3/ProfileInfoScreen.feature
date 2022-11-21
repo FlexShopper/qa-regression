@@ -1,4 +1,4 @@
-@Chrome @Regression @Web @PP3 @ProfileInfo
+@Regression @Web @PP3 @ProfileInfo
 Feature: As user I should be able to land Profile Info Screen
 
   Scenario Outline: User can navigate back to the Email screen if the email shown is not his
@@ -10,10 +10,13 @@ Feature: As user I should be able to land Profile Info Screen
       | email                            |
       | profileinforuser@flexshopper.com |
 
-  #Scenario: User should see additional fields when the user clicks on the "Enter Address Manually" link
-  #  Given the user is on the Profile Info screen with email: "profileinforuser@flexshopper.com"
+  #Scenario Outline: User should see additional fields when the user clicks on the "Enter Address Manually" link
+  #  Given the user is on the Profile Info screen with email: "<email>"
   #  When the user clicks on the link: "Enter Address Manually"
   #  Then the user should see the hidden address fields
+  #  Examples:
+  #    | email                            |
+  #    | profileinforuser@flexshopper.com |
 
   Scenario Outline: User cannot enter special characters in the First Name
     Given the user is on the Profile Info screen with email: "profileinforuser@flexshopper.com"

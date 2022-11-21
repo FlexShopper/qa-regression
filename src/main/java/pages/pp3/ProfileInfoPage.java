@@ -3,7 +3,6 @@ package pages.pp3;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import utils.helpers.WaitHelpers;
 
 public class ProfileInfoPage extends EmailPage {
     /**
@@ -76,7 +75,7 @@ public class ProfileInfoPage extends EmailPage {
      * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
      */
     public void verifyProfileInfoScreen() {
-        WaitHelpers.waitPageToLoad(6);
+        waitHelpers.waitPageToLoad(6);
         elementHelpers.webElementIsDisplayed(profileInfoTab);
         // TODO: elementHelpers.weElementIsDisplayed(emailAddressTxt);
         elementHelpers.webElementIsDisplayed(notYouBtn);
@@ -144,7 +143,6 @@ public class ProfileInfoPage extends EmailPage {
      * clickOnEnterAddressManuallyLnk() - Clicks on the "Enter Address Manually" link
      */
     public void clickOnEnterAddressManuallyLnk(){
-        // TODO: Move to element
         elementHelpers.webClickJSExecutor(enterManualLink);
     }
 
