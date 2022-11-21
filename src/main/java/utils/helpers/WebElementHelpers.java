@@ -39,12 +39,13 @@ public class WebElementHelpers {
     }
 
     public void webClick(WebElement element) {
-        webElementToBeClickable(element);
+        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
         webHighlightElement(element);
         element.click();
     }
 
     public void webClickJSExecutor(WebElement element) {
+        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
         JavascriptExecutor js = (JavascriptExecutor) browser();
         js.executeScript("arguments[0].click();", element);
     }
@@ -56,6 +57,7 @@ public class WebElementHelpers {
     }
 
     public boolean webElementIsInvisible(WebElement element) {
+        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
         webWaitForSeconds().until(ExpectedConditions.invisibilityOf(element));
         return !element.isDisplayed();
     }

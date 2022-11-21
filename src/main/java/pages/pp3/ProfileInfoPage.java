@@ -3,6 +3,7 @@ package pages.pp3;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.testng.Assert;
 
 public class ProfileInfoPage extends EmailPage {
     /**
@@ -28,6 +29,9 @@ public class ProfileInfoPage extends EmailPage {
 
     @FindBy(how = How.ID, using = "street1-input")
     private WebElement homeAddress;
+
+    @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div/div/div/form/div/div[5]/div/div[2]/div[2]/ul")
+    private WebElement suggestedAddresses;
 
     @FindBy(how = How.ID, using = "enterManualLink")
     private WebElement enterManualLink;
@@ -76,6 +80,8 @@ public class ProfileInfoPage extends EmailPage {
      */
     public void verifyProfileInfoScreen() {
         waitHelpers.waitPageToLoad(6);
+        // TODO: Verify PP3's Header
+        // TODO: Verify PP3's Footer
         elementHelpers.webElementIsDisplayed(profileInfoTab);
         // TODO: elementHelpers.weElementIsDisplayed(emailAddressTxt);
         elementHelpers.webElementIsDisplayed(notYouBtn);
@@ -105,6 +111,18 @@ public class ProfileInfoPage extends EmailPage {
         elementHelpers.webElementIsDisplayed(zipCode);
         // TODO: elementHelpers.weElementIsDisplayed(signMeUpBtn);
         elementHelpers.webElementIsDisplayed(continueBtn);
+    }
+
+    /**
+     * verifyEmailAddressIsNotHis() - Verifies the email provided does not match the expected one
+     * @param emailEntered
+     */
+    public void verifyEmailAddressIsNotHis(String emailEntered) {
+        Assert.assertNotEquals(emailEntered, "expectedEmail@flexshopper.com");
+    }
+
+    public void selectFromSuggestedAddresses(String withText) {
+        selectHelpers.selectOptionWithText(suggestedAddresses, withText);
     }
 
     /**

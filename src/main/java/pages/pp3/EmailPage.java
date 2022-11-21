@@ -5,10 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
 import pages.Page;
-import utils.helpers.ActionHelpers;
-import utils.helpers.WaitHelpers;
-import utils.helpers.WebDriverHelpers;
-import utils.helpers.WebElementHelpers;
+import utils.helpers.*;
 import utils.selenium.Settings;
 import static utils.selenium.Driver.browser;
 
@@ -17,6 +14,7 @@ public class EmailPage extends Page {
     protected WebDriverHelpers driverHelpers = new WebDriverHelpers();
     protected WaitHelpers waitHelpers = new WaitHelpers();
     protected ActionHelpers actionHelpers = new ActionHelpers();
+    protected SelectHelpers selectHelpers = new SelectHelpers();
 
     /**
      * Elements - Header

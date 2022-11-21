@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class PersonalInfoPage {
+public class PersonalInfoPage extends EmailPage {
     /**
      * Elements - PP3's Personal Info Screen
      */
@@ -18,7 +18,7 @@ public class PersonalInfoPage {
     private WebElement ssnPP3;
 
     @FindBy(how = How.ID, using = "monthlyIncome-input")
-    private WebElement monthlyIncome;
+    private WebElement grossMonthlyIncome;
 
     @FindBy(how = How.ID, using = "payFrequency-input")
     private WebElement payFrequency;
@@ -41,4 +41,21 @@ public class PersonalInfoPage {
 
     @FindBy(how = How.XPATH, using = "//*[@id='formSubmitButton']/span")
     private WebElement ContinueBtn;
+
+    /**
+     * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
+     */
+    public void verifyPersonalInfoPage() {
+        waitHelpers.waitPageToLoad(6);
+        // TODO: Verify PP3's Header
+        // TODO: Verify PP3's Footer
+        elementHelpers.webElementIsDisplayed(personalInfoTab);
+        elementHelpers.webElementIsDisplayed(dobPP3);
+        elementHelpers.webElementIsDisplayed(ssnPP3);
+        elementHelpers.webElementIsDisplayed(grossMonthlyIncome);
+        elementHelpers.webElementIsDisplayed(payFrequency);
+        // TODO: elementHelpers.webElementIsDisplayed(telemarketingCheckBox);
+        // TODO: elementHelpers.weElementIsDisplayed(signMeUpBtn);
+        elementHelpers.webElementIsDisplayed(continueBtn);
+    }
 }
