@@ -63,22 +63,22 @@ Feature: As user I should be able to land Profile Info Screen
   Scenario Outline: User can select a valid matching address from the address suggestions list
     Given the user is on the Profile Info screen with email: "profileinfouser@flexshopper.com"
     When the user starts entering an address: "<partialAddress>"
-    Then the user can select the address from the suggestions list with: "<withText>"
+    Then the user should see address suggestions
+    And the user can select the address from the suggestions list with: "<withText>"
     Examples:
       | partialAddress      | withText |
       | 2700 N Military Trl | 33409    |
       | 6503 N Military Trl | Apt 2700 |
       | 901 Yama            | SC       |
 
-  #Scenario Outline: User cannot see address suggestions is an invalid address is entered
-  #  Given the user is on the Profile Info screen with email: "profileinfouser@flexshopper.com"
-  #  When the user starts entering an address: "<invalidAddress>"
-  #  Then the user should not see address suggestions
-  #  And the user cannot select the address from the suggestions
-  #  Examples:
-  #    | invalidAddress |
-  #    | 801 POOH RD    |
-  #    | PO Box 2054    |
+  Scenario Outline: User cannot see address suggestions is an invalid address is entered
+    Given the user is on the Profile Info screen with email: "profileinfouser@flexshopper.com"
+    When the user starts entering an address: "<invalidAddress>"
+    Then the user should not see address suggestions
+    Examples:
+      | invalidAddress |
+      | 801 POOH RD    |
+      | PO Box 2054    |
 
   #Scenario Outline: User should land on the Personal Info screen when the address is completed using Suggested Address functionality
   #  Given the user is on the Profile Info screen with email: "personalinfouser@flexshopper.com"

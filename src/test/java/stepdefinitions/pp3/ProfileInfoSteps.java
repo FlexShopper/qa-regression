@@ -76,16 +76,16 @@ public class ProfileInfoSteps {
         instanceOf(ProfileInfoPage.class).selectFromSuggestedAddresses(withText);
     }
 
+    @Then("^the user should see address suggestions$")
+    public void theUserShouldSeeAddressSuggestions() {
+        System.out.println("Then the user should not see address suggestions");
+        //TODO: instanceOf(ProfileInfoPage.class)
+    }
+
     @Then("^the user should not see address suggestions$")
     public void theUserShouldNotSeeAddressSuggestions() {
         System.out.println("Then the user should not see address suggestions");
-        //TODO:
-    }
-
-    @And("^the user cannot select the address from the suggestions$")
-    public void theUserCannotSelectTheAddressFromTheSuggestions() {
-        System.out.println("And the user cannot select the address from the suggestions");
-        //TODO:
+        //TODO: instanceOf(ProfileInfoPage.class)
     }
 
     @And("^the user enters a valid first name: \"([^\"]*)\"$")

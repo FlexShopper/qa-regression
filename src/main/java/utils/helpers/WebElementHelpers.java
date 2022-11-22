@@ -1,6 +1,7 @@
 package utils.helpers;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -39,15 +40,35 @@ public class WebElementHelpers {
     }
 
     public void webClick(WebElement element) {
-        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
+        //webWaitForSeconds().until(ExpectedConditions.elementToBeClickable(element));
         webHighlightElement(element);
-        element.click();
+        int attempts = 0;
+        while(attempts < 5) {
+            try {
+                element.click();
+                break;
+            }
+            catch(StaleElementReferenceException staleException) {
+                staleException.printStackTrace();
+            }
+            attempts++;
+        }
     }
 
     public void webClickJSExecutor(WebElement element) {
-        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
-        JavascriptExecutor js = (JavascriptExecutor) browser();
-        js.executeScript("arguments[0].click();", element);
+        //webWaitForSeconds().until(ExpectedConditions.elementToBeClickable(element));
+        int attempts = 0;
+        while(attempts < 5) {
+            try {
+                JavascriptExecutor js = (JavascriptExecutor) browser();
+                js.executeScript("arguments[0].click();", element);
+                break;
+            }
+            catch(StaleElementReferenceException staleException) {
+                staleException.printStackTrace();
+            }
+            attempts++;
+        }
     }
 
     public void webSendKeys(WebElement element, String text, boolean clearFirst) {
