@@ -12,13 +12,17 @@ public class WebElementHelpers {
         return new WebDriverWait(browser(), 10);
     }
 
-    public boolean webElementIsDisplayed(WebElement element) {
+    public static void waitForStalelenessOf(WebElement element) {
         webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(element)));
+    }
+
+    public boolean webElementIsDisplayed(WebElement element) {
+        webWaitForSeconds().until(ExpectedConditions.visibilityOf(element));
         return element.isDisplayed();
     }
 
     public void webElementIsSelected(WebElement element) {
-        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
+        webElementIsDisplayed(element);
         boolean selectState = element.isSelected();
 
         // Performing the click operation only if element is not selected
@@ -29,6 +33,7 @@ public class WebElementHelpers {
 
     public static void webElementToBeClickable(WebElement element) {
         webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
+        //webWaitForSeconds().until(ExpectedConditions.elementToBeClickable(element));
         element.isEnabled();
     }
 
@@ -38,7 +43,7 @@ public class WebElementHelpers {
     }
 
     public void webClick(WebElement element) {
-        webWaitForSeconds().until(ExpectedConditions.elementToBeClickable(element));
+        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
         webHighlightElement(element);
         int attempts = 0;
         while(attempts < 5) {
@@ -54,7 +59,7 @@ public class WebElementHelpers {
     }
 
     public void webClickJSExecutor(WebElement element) {
-        webWaitForSeconds().until(ExpectedConditions.elementToBeClickable(element));
+        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
         int attempts = 0;
         while(attempts < 5) {
             try {
@@ -70,7 +75,7 @@ public class WebElementHelpers {
     }
 
     public void webSendKeys(WebElement element, String text, boolean clearFirst) {
-        webElementIsDisplayed(element);
+        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
         if (clearFirst) webClick(element);
         element.sendKeys(text);
     }
