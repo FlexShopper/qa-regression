@@ -71,7 +71,7 @@ podTemplate(label: label,
                                 echo 'Running automation with Maven wrapper'
                                 sh "java -version"
                                 sh "chmod -R 777 ./mvnw"
-                                sh "./mvnw clean install -Dcucumber.options='--tags -@PP3'"
+                                sh "./mvnw clean install'"
                            }
                            else {
                                 echo 'File mvnw Not found'
@@ -80,7 +80,7 @@ podTemplate(label: label,
                                 sh "mvn -v"
                                 sh "export MAVEN_HOME=/usr/share/maven"
                                 sh "export M2_HOME=/home/maven/"
-                                sh "mvn clean install -Dcucumber.options='--tags -@PP3'"
+                                sh "mvn clean install'"
                            }
                         }
                     }
