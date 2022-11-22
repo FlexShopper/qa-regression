@@ -13,7 +13,7 @@ public class WebElementHelpers {
     }
 
     public boolean webElementIsDisplayed(WebElement element) {
-        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
+        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(element)));
         return element.isDisplayed();
     }
 
