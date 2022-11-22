@@ -40,7 +40,7 @@ public class WebElementHelpers {
     }
 
     public void webClick(WebElement element) {
-        //webWaitForSeconds().until(ExpectedConditions.elementToBeClickable(element));
+        webWaitForSeconds().until(ExpectedConditions.elementToBeClickable(element));
         webHighlightElement(element);
         int attempts = 0;
         while(attempts < 5) {
@@ -56,7 +56,7 @@ public class WebElementHelpers {
     }
 
     public void webClickJSExecutor(WebElement element) {
-        //webWaitForSeconds().until(ExpectedConditions.elementToBeClickable(element));
+        webWaitForSeconds().until(ExpectedConditions.elementToBeClickable(element));
         int attempts = 0;
         while(attempts < 5) {
             try {
