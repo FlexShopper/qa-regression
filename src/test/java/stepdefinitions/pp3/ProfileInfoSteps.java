@@ -70,22 +70,22 @@ public class ProfileInfoSteps {
         instanceOf(ProfileInfoPage.class).enterAddress(partialAddress);
     }
 
+    @Then("^the user should see address suggestions$")
+    public void theUserShouldSeeAddressSuggestions() {
+        System.out.println("Then the user should not see address suggestions");
+        instanceOf(ProfileInfoPage.class).verifySuggestedAddressesDisplayed();
+    }
+
     @And("^the user can select the address from the suggestions list with: \"([^\"]*)\"$")
     public void theUserCanSelectTheAddressFromTheSuggestionsList(String withText) {
         System.out.println("And the user can select the address from the suggestions with: " + withText);
         instanceOf(ProfileInfoPage.class).selectFromSuggestedAddresses(withText);
     }
 
-    @Then("^the user should see address suggestions$")
-    public void theUserShouldSeeAddressSuggestions() {
-        System.out.println("Then the user should not see address suggestions");
-        //TODO: instanceOf(ProfileInfoPage.class)
-    }
-
     @Then("^the user should not see address suggestions$")
     public void theUserShouldNotSeeAddressSuggestions() {
         System.out.println("Then the user should not see address suggestions");
-        //TODO: instanceOf(ProfileInfoPage.class)
+        instanceOf(ProfileInfoPage.class).verifySuggestedAddressesNotDisplayed();
     }
 
     @And("^the user enters a valid first name: \"([^\"]*)\"$")
@@ -97,13 +97,13 @@ public class ProfileInfoSteps {
     @And("^the user enters a valid last name: \"([^\"]*)\"$")
     public void theUserEntersAValidLastName(String lastName) {
         System.out.println("And the user enters a valid last name: " + lastName);
-        instanceOf(ProfileInfoPage.class).enterFirstName(lastName);
+        instanceOf(ProfileInfoPage.class).enterLastName(lastName);
     }
 
     @And("^the user enters a valid mobile number: \"([^\"]*)\"$")
     public void theUserEntersAValidMobileNumber(String mobileNumber) {
         System.out.println("And the user enters a valid mobile number: " + mobileNumber);
-        instanceOf(ProfileInfoPage.class).enterFirstName(mobileNumber);
+        instanceOf(ProfileInfoPage.class).enterMobileNumber(mobileNumber);
     }
 
     @Then("^the user lands on the Personal Info screen$")
@@ -113,26 +113,26 @@ public class ProfileInfoSteps {
     }
 
     @And("^the user enters a valid unit number: \"([^\"]*)\"$")
-    public void theUserEntersAValidUnitNumber(String arg0) {
-        System.out.println("Then the user lands on the Personal Info screen");
-        //TODO:
+    public void theUserEntersAValidUnitNumber(String unitNumber) {
+        System.out.println("And the user enters a valid unit number: " + unitNumber);
+        instanceOf(ProfileInfoPage.class).enterUnitNumber(unitNumber);
     }
 
     @And("^the user selects a valid state: \"([^\"]*)\"$")
-    public void theUserSelectsAValidState(String arg0) {
+    public void theUserSelectsAValidState(String state) {
         System.out.println("Then the user lands on the Personal Info screen");
-        //TODO:
+        instanceOf(ProfileInfoPage.class).selectState(state);
     }
 
     @And("^the user enters a valid zip code: \"([^\"]*)\"$")
-    public void theUserEntersAValidZipCode(String arg0) {
+    public void theUserEntersAValidZipCode(String zipCode) {
         System.out.println("Then the user lands on the Personal Info screen");
-        //TODO:
+        instanceOf(ProfileInfoPage.class).enterZipCode(zipCode);
     }
 
     @And("^the user clicks on the Sign me up checkbox$")
     public void theUserClicksOnTheSignMeUpCheckbox() {
         System.out.println("And the user clicks on the Sign me up checkbox");
-        //TODO:
+        instanceOf(ProfileInfoPage.class).selectSignMeUpBtn();
     }
 }

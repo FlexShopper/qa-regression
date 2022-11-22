@@ -23,7 +23,7 @@ public class ChangePasswordPage extends EmailPage {
     private WebElement createNewPasswordTxt;
 
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div[2]/div/div/div[1]/h3")
-    public WebElement emailValueTxt;
+    private WebElement emailValueTxt;
 
     @FindBy(how = How.ID, using = "notYou-button")
     private WebElement notYouLink;
@@ -35,10 +35,10 @@ public class ChangePasswordPage extends EmailPage {
     private WebElement passwordRequirementsTxt;
 
     @FindBy(how = How.XPATH, using = "//span[(.)='Change Password']")
-    public WebElement changePasswordBtn;
+    private WebElement changePasswordBtn;
 
     @FindBy(how = How.XPATH, using = "//span[(.)='Password changed successfully']")
-    public WebElement passwordChangedTxt;
+    private WebElement passwordChangedTxt;
 
     /**
      * verifyChangePasswordScreen() - Verify Change Password Screen

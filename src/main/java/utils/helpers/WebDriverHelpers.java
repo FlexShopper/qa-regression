@@ -16,7 +16,6 @@ public class WebDriverHelpers {
     }
 
     public Object wdElementIsDisplayed(By locator) {
-        wdHighlight(locator);
         WebDriverWait wait = new WebDriverWait(browser(), 10);
         return wait.until(ExpectedConditions.visibilityOf((WebElement) locator));
     }
@@ -33,6 +32,11 @@ public class WebDriverHelpers {
 
     public void wdClick(By locator) {
         wdFindElement(locator).click();
+    }
+
+    public void wdSendKeys(By locator, String text, boolean clearFirst) {
+        if (clearFirst) wdClick(locator);
+        wdFindElement(locator).sendKeys(text);
     }
 
     public void wdSwitchToFrame() {

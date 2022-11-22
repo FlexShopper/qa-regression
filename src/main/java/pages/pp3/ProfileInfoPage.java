@@ -1,5 +1,7 @@
 package pages.pp3;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -10,10 +12,10 @@ public class ProfileInfoPage extends EmailPage {
      * Elements - PP3's Profile Info Screen
      */
     @FindBy(how = How.XPATH, using = "//h2[text()='Profile Info']")
-    public WebElement profileInfoTab;
+    private WebElement profileInfoTab;
 
     @FindBy(how = How.CSS, using = "h3.sc-TOsTZ.iBTFfQ.sc-kLIISr.gdrpxe")
-    public WebElement emailAddressTxt;
+    private WebElement emailAddressTxt;
 
     @FindBy(how = How.ID, using = "notYou-button")
     private WebElement notYouBtn;
@@ -49,7 +51,7 @@ public class ProfileInfoPage extends EmailPage {
     private WebElement postalCode;
 
     @FindBy(how =How.CSS, using = ".sc-jhAzac.dVrxkJ")
-    public WebElement signMeUpBtn;
+    private WebElement signMeUpBtn;
 
     // TODO: Check Text: Sign me up to receive the latest news on FlexShopper and MyFlexLending products and promotions. We respect your privacy. Please view our
     // TODO: Check Link "Privacy Policy"
@@ -64,16 +66,16 @@ public class ProfileInfoPage extends EmailPage {
      * Validation Messages
      */
     @FindBy(how = How.XPATH, using = "(//span[(.)='No special characters'])[1]")
-    public WebElement errMsgFirstNameField;
+    private WebElement errMsgFirstNameField;
 
     @FindBy(how = How.XPATH, using = "(//span[(.)='No special characters'])[2]")
-    public WebElement errMsgLastNameField;
+    private WebElement errMsgLastNameField;
 
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div/div/div/form/div/div[4]/div/span[2]")
-    public WebElement errMsfMobileField;
+    private WebElement errMsfMobileField;
 
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div/div/div/form/div/div[5]/div/div[2]/div[2]/div[2]/div/span[2]")
-    public WebElement errMsgZipCode;
+    private WebElement errMsgZipCode;
 
     /**
      * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
@@ -121,6 +123,24 @@ public class ProfileInfoPage extends EmailPage {
         Assert.assertNotEquals(emailEntered, "expectedEmail@flexshopper.com");
     }
 
+    /**
+     * verifySuggestedAddressesDisplayed() - Verify Suggested Addresses are displayed
+     */
+    public void verifySuggestedAddressesDisplayed() {
+        Assert.assertTrue(selectHelpers.optionsReturned(suggestedAddresses));
+    }
+
+    /**
+     * verifySuggestedAddressesNotDisplayed() - Verify Suggested Addresses are not displayed
+     */
+    public void verifySuggestedAddressesNotDisplayed() {
+        Assert.assertTrue(elementHelpers.webElementIsInvisible(suggestedAddresses));
+    }
+
+    /**
+     * selectFromSuggestedAddresses() - Selects from the Suggested Addresses returned
+     * @param withText
+     */
     public void selectFromSuggestedAddresses(String withText) {
         selectHelpers.selectOptionWithText(suggestedAddresses, withText);
     }
@@ -129,7 +149,7 @@ public class ProfileInfoPage extends EmailPage {
      * enterFirstName() - Enter First Name
      * @param name
      */
-    public void enterFirstName(String name){
+    public void enterFirstName(String name){;
         elementHelpers.webSendKeys(firstName, name, true);
     }
 
@@ -184,15 +204,22 @@ public class ProfileInfoPage extends EmailPage {
      * enterState() - Enter State or Region
      * @param region
      */
-    public void enterState(String region){
-        elementHelpers.webSendKeys(state, region, true);
+    public void selectState(String region){
+        selectHelpers.selectOptionWithText(state, region);
     }
 
     /**
-     * enterState() - Enter State or Region
+     * enterZipCode() - Enter Zip Code
      * @param postalCode
      */
     public void enterZipCode(String postalCode){
         elementHelpers.webSendKeys(zipCode, postalCode, true);
+    }
+
+    /**
+     * selectSignMeUpBtn() - Clicks on the "Sign me up..." radio button
+     */
+    public void selectSignMeUpBtn() {
+        elementHelpers.webClick(signMeUpBtn);
     }
 }

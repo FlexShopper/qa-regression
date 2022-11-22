@@ -9,7 +9,7 @@ public class PersonalInfoPage extends EmailPage {
      * Elements - PP3's Personal Info Screen
      */
     @FindBy(how = How.XPATH, using = "//h2[text()='Personal Info']")
-    public WebElement personalInfoTab;
+    private WebElement personalInfoTab;
 
     @FindBy(how = How.ID, using = "dob-input")
     private WebElement dobPP3;

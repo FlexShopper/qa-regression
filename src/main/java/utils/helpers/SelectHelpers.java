@@ -27,4 +27,15 @@ public class SelectHelpers {
             System.out.println(e.getStackTrace());
         }
     }
+
+    public boolean optionsReturned(WebElement element) {
+        try {
+            WebElement options = webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
+            List <WebElement>elements = options.findElements(By.tagName("li"));
+            if(elements.size() > 0) { return true; };
+        } catch (NoSuchElementException e) {
+            System.out.println(e.getStackTrace());
+        }
+        return false;
+    }
 }

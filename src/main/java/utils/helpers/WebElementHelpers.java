@@ -1,8 +1,6 @@
 package utils.helpers;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import static utils.selenium.Driver.browser;
@@ -78,7 +76,6 @@ public class WebElementHelpers {
     }
 
     public boolean webElementIsInvisible(WebElement element) {
-        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
         webWaitForSeconds().until(ExpectedConditions.invisibilityOf(element));
         return !element.isDisplayed();
     }

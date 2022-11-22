@@ -9,10 +9,10 @@ public class BankingInfoPage {
      * Elements - PP3's Banking Info Screen
      */
     @FindBy(how = How.XPATH, using = "//h2[text()='Banking Info']")
-    public WebElement bankingInfoTab;
+    private WebElement bankingInfoTab;
 
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div/div/div[2]/div")
-    public WebElement weeklyDeductionDisclaimerTxt;
+    private WebElement weeklyDeductionDisclaimerTxt;
 
     // TODO: Assess Text: After you receive your order, your weekly payments will be deducted from this account.
 

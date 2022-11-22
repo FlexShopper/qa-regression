@@ -35,7 +35,7 @@ public class PasswordPage extends EmailPage {
     private WebElement forgotPasswordLnk;
 
     @FindBy(how = How.XPATH, using = "//span[(.)='Sign In']")
-    public WebElement signInBtn;
+    private WebElement signInBtn;
 
     /**
      * Validation Messages
@@ -81,6 +81,7 @@ public class PasswordPage extends EmailPage {
      * @param validationMsg
      */
     public void passwordValidationMessage(String validationMsg) {
+        WaitHelpers.waitPageToLoad(6);
         elementHelpers.webElementIsDisplayed(passwordValidationMsg);
         // TODO: Assert using Ignore Case
         // TODO: Use the message provided in feature file or remove it from there
@@ -92,6 +93,7 @@ public class PasswordPage extends EmailPage {
      * @param validationMsg
      */
     public void passwordRequiredMsg(String validationMsg) {
+        WaitHelpers.waitPageToLoad(6);
         elementHelpers.webElementIsDisplayed(passwordRequiredMsg);
         // TODO: Assert using Ignore Case
         Assert.assertEquals("Required", passwordRequiredMsg.getText());

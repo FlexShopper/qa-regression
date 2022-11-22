@@ -19,28 +19,28 @@ public class ForgotPasswordPage extends EmailPage {
     private WebElement resetYourPasswordTxt;
 
     @FindBy(how = How.XPATH, using = "//p[(.)='Please choose one of the options below:']")
-    public WebElement passwordResetOptionsTxt;
+    private WebElement passwordResetOptionsTxt;
 
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div[2]/div/div/label[1]/div[1]")
-    public WebElement emailRadioBtn;
+    private WebElement emailRadioBtn;
 
     @FindBy(how = How.XPATH, using = "//span[(.)='Send email to:']")
-    public WebElement sendEmailToTxt;
+    private WebElement sendEmailToTxt;
 
     @FindBy(how = How.CSS, using = "span.sc-gVyKpa.dgqWCN")
-    public WebElement emailValueTxt;
+    private WebElement emailValueTxt;
 
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div[2]/div/div/label[2]/div[1]")
-    public WebElement smsRadioBtn;
+    private WebElement smsRadioBtn;
 
     @FindBy(how = How.XPATH, using = "//span[(.)='xxx-xxx-2917']")
-    public WebElement phoneNumberTxt;
+    private WebElement phoneNumberTxt;
 
     @FindBy(how = How.XPATH, using = "//span[(.)='Send SMS text with code to:']")
-    public WebElement sendSMAToTxt;
+    private WebElement sendSMAToTxt;
 
     @FindBy(how = How.XPATH, using = "//a[(.)='Return to Password Sign In']")
-    public WebElement returnToPasswordLnk;
+    private WebElement returnToPasswordLnk;
 
     @FindBy(how = How.ID, using = "formSubmitButton")
     private WebElement submitBtn;
