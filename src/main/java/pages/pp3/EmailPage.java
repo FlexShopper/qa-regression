@@ -13,7 +13,6 @@ public class EmailPage extends Page {
     protected WebElementHelpers elementHelpers = new WebElementHelpers();
     protected WebDriverHelpers driverHelpers = new WebDriverHelpers();
     protected WaitHelpers waitHelpers = new WaitHelpers();
-    protected ActionHelpers actionHelpers = new ActionHelpers();
     protected SelectHelpers selectHelpers = new SelectHelpers();
 
     /**

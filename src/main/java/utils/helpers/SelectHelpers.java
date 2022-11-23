@@ -8,22 +8,22 @@ import java.util.List;
 import static utils.helpers.WebElementHelpers.webWaitForSeconds;
 
 public class SelectHelpers {
-    public void selectOptionWithText(WebElement element, String textToSelect) {
+
+    public void selectFromDropdown(WebElement element, String textToSelect) {
         try {
-            WebElement options = webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
-            List<WebElement> optionsToSelect = options.findElements(By.tagName("li"));
-            for(WebElement option : optionsToSelect) {
+            WebElement dropdownOptions = webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
+            List<WebElement> optionToSelect = dropdownOptions.findElements(By.tagName("li"));
+            for(WebElement option : optionToSelect) {
+                System.out.println("Text: " + element.getText());
                 if (option.getText().equals(textToSelect)) {
                     System.out.println("Trying to select: " + textToSelect);
                     option.click();
                     break;
                 }
             }
-
         } catch (NoSuchElementException e) {
             System.out.println(e.getStackTrace());
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getStackTrace());
         }
     }

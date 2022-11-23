@@ -12,7 +12,7 @@ public class WebElementHelpers {
         return new WebDriverWait(browser(), 10);
     }
 
-    public static void waitForStalelenessOf(WebElement element) {
+    public void waitForStalelenessOf(WebElement element) {
         webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(element)));
     }
 
@@ -44,9 +44,8 @@ public class WebElementHelpers {
 
     public void webClick(WebElement element) {
         webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
-        webHighlightElement(element);
         int attempts = 0;
-        while(attempts < 5) {
+        while(attempts < 10) {
             try {
                 element.click();
                 break;

@@ -59,7 +59,7 @@ public class ProfileInfoSteps {
     }
 
     @When("^the user enters an invalid zip code: \"([^\"]*)\"$")
-    public void theUserEntersAnInvalidZipCode(String zipCode) {
+    public void theUserEntersAnInvalidZipCode(String zipCode) throws InterruptedException {
         System.out.println("When the user enters an invalid zip code: " + zipCode);
         instanceOf(ProfileInfoPage.class).enterZipCode(zipCode);
     }
@@ -118,6 +118,12 @@ public class ProfileInfoSteps {
         instanceOf(ProfileInfoPage.class).enterUnitNumber(unitNumber);
     }
 
+    @And("^the user enters a valid city: \"([^\"]*)\"$")
+    public void theUserEntersAValidCity(String city) {
+        System.out.println("And the user enters a valid city: " + city);
+        instanceOf(ProfileInfoPage.class).enterCity(city);
+    }
+
     @And("^the user selects a valid state: \"([^\"]*)\"$")
     public void theUserSelectsAValidState(String state) {
         System.out.println("Then the user lands on the Personal Info screen");
@@ -125,7 +131,7 @@ public class ProfileInfoSteps {
     }
 
     @And("^the user enters a valid zip code: \"([^\"]*)\"$")
-    public void theUserEntersAValidZipCode(String zipCode) {
+    public void theUserEntersAValidZipCode(String zipCode) throws InterruptedException {
         System.out.println("Then the user lands on the Personal Info screen");
         instanceOf(ProfileInfoPage.class).enterZipCode(zipCode);
     }

@@ -94,35 +94,37 @@ Feature: As user I should be able to land Profile Info Screen
   #    | PersonalInfo | User     | 12345678900  | 2700 N Military Trl | 33409    |
   #    | Personal     | InfoUser | 12345678910  | 6503 N Military Trl | Apt 2700 |
 
-  #Scenario Outline: User should land on the Personal Info screen when the address is entered manually
-  #  Given the user is on the Profile Info screen with email: "personalinfouser@flexshopper.com"
-  #  And the user enters a valid first name: "<firstName>"
-  #  And the user enters a valid last name: "<lastName>"
-  #  And the user enters a valid mobile number: "<mobileNumber>"
-  #  And the user starts entering an address: "<partialAddress>"
-  #  When the user clicks on the link: "Enter Address Manually"
-  #  And the user enters a valid unit number: "<unit>"
-  #  And the user selects a valid state: "<state>"
-  #  And the user enters a valid zip code: "<zipCode>"
-  #  And the user clicks on the button: "Continue"
-  #  Then the user lands on the Personal Info screen
-  #  Examples:
-  #    | firstName    | lastName | mobileNumber | address             | unit | state | zipCode |
-  #    | PersonalInfo | User     | 12345678900  | 6503 N Military Trl | 2700 | FL    | 33496   |
+  Scenario Outline: User should land on the Personal Info screen when the address is entered manually
+    Given the user is on the Profile Info screen with email: "personalinfouser@flexshopper.com"
+    And the user enters a valid first name: "<firstName>"
+    And the user enters a valid last name: "<lastName>"
+    And the user enters a valid mobile number: "<mobileNumber>"
+    And the user starts entering an address: "<address>"
+    When the user clicks on the link: "Enter Address Manually"
+    And the user enters a valid unit number: "<unit>"
+    And the user enters a valid city: "<city>"
+    And the user selects a valid state: "<state>"
+    And the user enters a valid zip code: "<zipCode>"
+    #And the user clicks on the button: "Continue"
+    #Then the user lands on the Personal Info screen
+    Examples:
+      | firstName    | lastName | mobileNumber | address       | unit | city       | state | zipCode |
+      | PersonalInfo | User     | 18553539289  | 901 Yamato Rd | 260  | Boca Raton | FL    | 33431   |
 
-  #Scenario Outline: User should land on Personal Info screen when Sign me up is not checked
-  #  Given the user is on the Profile Info screen with email: "personalinfouser@flexshopper.com"
-  #  And the user enters a valid first name: "<firstName>"
-  #  And the user enters a valid last name: "<lastName>"
-  #  And the user enters a valid mobile number: "<mobileNumber>"
-  #  And the user starts entering an address: "<address>"
-  #  When the user clicks on the link: "Enter Address Manually"
-  #  And the user enters a valid unit number: "<unit>"
-  #  And the user selects a valid state: "<state>"
-  #  And the user enters a valid zip code: "<zipCode>"
-  #  And the user clicks on the Sign me up checkbox
-  #  And the user clicks on the button: "Continue"
-  #  Then the user lands on the Personal Info screen
-  #  Examples:
-  #    | firstName    | lastName | mobileNumber | address             | unit | state | zipCode |
-  #    | PersonalInfo | User     | 12345678900  | 6503 N Military Trl | 2700 | FL    | 33496   |
+  Scenario Outline: User should land on Personal Info screen when Sign me up is not checked
+    Given the user is on the Profile Info screen with email: "personalinfouser@flexshopper.com"
+    And the user enters a valid first name: "<firstName>"
+    And the user enters a valid last name: "<lastName>"
+    And the user enters a valid mobile number: "<mobileNumber>"
+    And the user starts entering an address: "<address>"
+    When the user clicks on the link: "Enter Address Manually"
+    And the user enters a valid unit number: "<unit>"
+    And the user enters a valid city: "<city>"
+    And the user selects a valid state: "<state>"
+    And the user enters a valid zip code: "<zipCode>"
+    #And the user clicks on the Sign me up checkbox
+    #And the user clicks on the button: "Continue"
+    #Then the user lands on the Personal Info screen
+    Examples:
+      | firstName    | lastName | mobileNumber | address       | unit | city       | state | zipCode |
+      | PersonalInfo | User     | 18553539289  | 901 Yamato Rd | 260  | Boca Raton | FL    | 33431   |

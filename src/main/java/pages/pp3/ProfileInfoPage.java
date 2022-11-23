@@ -1,7 +1,6 @@
 package pages.pp3;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -142,7 +141,7 @@ public class ProfileInfoPage extends EmailPage {
      * @param withText
      */
     public void selectFromSuggestedAddresses(String withText) {
-        selectHelpers.selectOptionWithText(suggestedAddresses, withText);
+        selectHelpers.selectFromDropdown(suggestedAddresses, withText);
     }
 
     /**
@@ -189,7 +188,7 @@ public class ProfileInfoPage extends EmailPage {
      * @param unit
      */
     public void enterUnitNumber(String unit){
-        elementHelpers.webSendKeys(unitNumber, unit, true);
+        elementHelpers.webSendKeys(unitNumber, unit, false);
     }
 
     /**
@@ -197,7 +196,7 @@ public class ProfileInfoPage extends EmailPage {
      * @param cityOfResidence
      */
     public void enterCity(String cityOfResidence){
-        elementHelpers.webSendKeys(city, cityOfResidence, true);
+        elementHelpers.webSendKeys(city, cityOfResidence, false);
     }
 
     /**
@@ -205,15 +204,17 @@ public class ProfileInfoPage extends EmailPage {
      * @param region
      */
     public void selectState(String region){
-        selectHelpers.selectOptionWithText(state, region);
+        elementHelpers.webSendKeys(state, region, false);
+        selectHelpers.selectFromDropdown(state, region);
     }
 
     /**
      * enterZipCode() - Enter Zip Code
      * @param postalCode
      */
-    public void enterZipCode(String postalCode){
-        elementHelpers.webSendKeys(zipCode, postalCode, true);
+    public void enterZipCode(String postalCode) throws InterruptedException {
+        elementHelpers.webSendKeys(zipCode, postalCode, false);
+        Thread.sleep(10000);
     }
 
     /**
