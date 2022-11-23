@@ -19,7 +19,7 @@ public class ChromeWebDriver {
         ChromeDriverService driverService = ChromeDriverService.createDefaultService();
 
         // Running Chrome in Headless mode to solve error: "DevToolsActivePort file doesn't exist"
-        ChromeOptions options = new ChromeOptions();
+        ChromeOptions options = new ChromeOptions().setHeadless(true);
         // Following arguments were added to solve error: "DevToolsActivePort file doesn't exist"
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-setuid-sandbox");
