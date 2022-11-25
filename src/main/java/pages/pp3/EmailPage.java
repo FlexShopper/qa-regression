@@ -14,6 +14,7 @@ public class EmailPage extends Page {
     protected WebDriverHelpers driverHelpers = new WebDriverHelpers();
     protected WaitHelpers waitHelpers = new WaitHelpers();
     protected SelectHelpers selectHelpers = new SelectHelpers();
+    protected ManageEmailTestAddresses emailTestAddress = new ManageEmailTestAddresses();
 
     /**
      * Elements - Header
@@ -91,7 +92,7 @@ public class EmailPage extends Page {
     /**
      * Verify PP3's Header
      */
-    public void verifyHeader() throws InterruptedException {
+    public void verifyHeader() {
         WaitHelpers.waitPageToLoad(6);
         elementHelpers.webElementIsDisplayed(headerCloseBtn);
         elementHelpers.webElementIsDisplayed(headerFAQBtn);
@@ -143,10 +144,19 @@ public class EmailPage extends Page {
     }
 
     /**
+     * enterEmail() - Enter email in the email address field.
+     * @param email
+     */
+    public void enterNewEmail(String email) {
+        elementHelpers.webSendKeys(emailAddressField, emailTestAddress.createEmailTestAddress(email), true);
+    }
+
+    /**
      * clickContinueBtn() - Click on the "Continue" button
      */
     public void clickOnContinueBtn() {
-        elementHelpers.webClick(continueBtn);
+        //elementHelpers.webClick(continueBtn);
+        elementHelpers.webClickJSExecutor(continueBtn);
     }
 
     /**

@@ -1,10 +1,14 @@
 package pages.pp3;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
+import java.util.List;
+import static utils.selenium.Driver.browser;
 
 public class ProfileInfoPage extends EmailPage {
     /**
@@ -46,10 +50,13 @@ public class ProfileInfoPage extends EmailPage {
     @FindBy(how = How.ID, using = "region-input")
     private WebElement state;
 
+    @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div/div/div/form/div/div[5]/div/div[2]/div[2]/div[1]/div[2]/div[2]/ul")
+    private WebElement listOfStates;
+
     @FindBy(how = How.ID, using = "postalCode-input")
     private WebElement postalCode;
 
-    @FindBy(how =How.CSS, using = ".sc-jhAzac.dVrxkJ")
+    @FindBy(how =How.ID, using = "emailConsent-checkBoxRadio")
     private WebElement signMeUpBtn;
 
     // TODO: Check Text: Sign me up to receive the latest news on FlexShopper and MyFlexLending products and promotions. We respect your privacy. Please view our
@@ -141,7 +148,7 @@ public class ProfileInfoPage extends EmailPage {
      * @param withText
      */
     public void selectFromSuggestedAddresses(String withText) {
-        selectHelpers.selectFromDropdown(suggestedAddresses, withText);
+        // TODO: selectHelpers.selectFromDropdown(suggestedAddresses, withText);
     }
 
     /**
@@ -203,9 +210,19 @@ public class ProfileInfoPage extends EmailPage {
      * enterState() - Enter State or Region
      * @param region
      */
-    public void selectState(String region){
+    public void selectState(String region) throws InterruptedException {
         elementHelpers.webSendKeys(state, region, false);
-        selectHelpers.selectFromDropdown(state, region);
+        Thread.sleep(3000);  // TODO: Handle Stale state via WebElementHelpers
+        WebDriver driver = browser();
+        List<WebElement> listOfStates= driver.findElements(By.tagName("li"));
+        for(WebElement state : listOfStates) {
+            System.out.println("State: " + state.getText());
+            if (state.getText().equals("FL")) {
+                System.out.println("Trying to select: " + "FL");
+                state.click();
+                break;
+            }
+        }
     }
 
     /**
@@ -214,13 +231,12 @@ public class ProfileInfoPage extends EmailPage {
      */
     public void enterZipCode(String postalCode) throws InterruptedException {
         elementHelpers.webSendKeys(zipCode, postalCode, false);
-        Thread.sleep(10000);
     }
 
     /**
      * selectSignMeUpBtn() - Clicks on the "Sign me up..." radio button
      */
     public void selectSignMeUpBtn() {
-        elementHelpers.webClick(signMeUpBtn);
+        elementHelpers.webClickJSExecutor(signMeUpBtn);
     }
 }

@@ -12,14 +12,14 @@ import static pages.Page.instanceOf;
 
 public class ProfileInfoSteps {
     @Given("^the user is on the Profile Info screen with email: \"([^\"]*)\"$")
-    public void theUserIsOnTheProfileInfoScreenWithEmail(String emailAddress) {
+    public void theUserIsOnTheProfileInfoScreenWithEmail(String emailAddress) throws InterruptedException {
         System.out.println("Given the user is on the Profile screen with email: " + emailAddress);
 
         // Launch browser and navigate to the PP3's Profile Info screen
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
         instanceOf(EmailPage.class).switchToFrame();
-        instanceOf(EmailPage.class).enterEmail(emailAddress);
+        instanceOf(EmailPage.class).enterNewEmail(emailAddress);
         instanceOf(EmailPage.class).clickOnContinueBtn();
     }
 
@@ -125,8 +125,8 @@ public class ProfileInfoSteps {
     }
 
     @And("^the user selects a valid state: \"([^\"]*)\"$")
-    public void theUserSelectsAValidState(String state) {
-        System.out.println("Then the user lands on the Personal Info screen");
+    public void theUserSelectsAValidState(String state) throws InterruptedException {
+        System.out.println("And the user selects a valid state: " + state);
         instanceOf(ProfileInfoPage.class).selectState(state);
     }
 
@@ -137,7 +137,7 @@ public class ProfileInfoSteps {
     }
 
     @And("^the user clicks on the Sign me up checkbox$")
-    public void theUserClicksOnTheSignMeUpCheckbox() {
+    public void theUserClicksOnTheSignMeUpCheckbox() throws InterruptedException {
         System.out.println("And the user clicks on the Sign me up checkbox");
         instanceOf(ProfileInfoPage.class).selectSignMeUpBtn();
     }

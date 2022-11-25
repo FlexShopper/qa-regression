@@ -73,8 +73,7 @@ public class PasswordPage extends EmailPage {
      * clickSignInBtn() - Click on the "Sign-In" button
      */
     public void clickOnTheSignInBtn() {
-        elementHelpers.waitForStalelenessOf(signInBtn);
-        elementHelpers.webClick(signInBtn);
+        elementHelpers.webClickJSExecutor(signInBtn);
     }
 
     /**
