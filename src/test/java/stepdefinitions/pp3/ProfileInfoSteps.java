@@ -7,12 +7,11 @@ import io.cucumber.java.en.When;
 import pages.pp3.EmailPage;
 import pages.pp3.PersonalInfoPage;
 import pages.pp3.ProfileInfoPage;
-
 import static pages.Page.instanceOf;
 
 public class ProfileInfoSteps {
     @Given("^the user is on the Profile Info screen with email: \"([^\"]*)\"$")
-    public void theUserIsOnTheProfileInfoScreenWithEmail(String emailAddress) throws InterruptedException {
+    public void theUserIsOnTheProfileInfoScreenWithEmail(String emailAddress) {
         System.out.println("Given the user is on the Profile screen with email: " + emailAddress);
 
         // Launch browser and navigate to the PP3's Profile Info screen
@@ -21,6 +20,9 @@ public class ProfileInfoSteps {
         instanceOf(EmailPage.class).switchToFrame();
         instanceOf(EmailPage.class).enterNewEmail(emailAddress);
         instanceOf(EmailPage.class).clickOnContinueBtn();
+
+        // Verify user landed on the PP3's Profile Info screen
+        // TODO:
     }
 
     @And("^the email address shown is not his: \"([^\"]*)\"$")
@@ -64,10 +66,16 @@ public class ProfileInfoSteps {
         instanceOf(ProfileInfoPage.class).enterZipCode(zipCode);
     }
 
-    @When("^the user starts entering an address: \"([^\"]*)\"$")
-    public void theUserStartsEnteringAnAddress(String partialAddress) {
-        System.out.println("When the user starts entering a valid address: " + partialAddress);
-        instanceOf(ProfileInfoPage.class).enterAddress(partialAddress);
+    @When("^the user enters a valid address: \"([^\"]*)\"$")
+    public void theUserEntersAValidAddress(String address) {
+        System.out.println("When the user enters a valid address: " + address);
+        instanceOf(ProfileInfoPage.class).enterAddress(address);
+    }
+
+    @When("^the user enters an invalid address: \"([^\"]*)\"$")
+    public void theUserEntersAnInvalidAddress(String address) {
+        System.out.println("When the user enters an invalid address: " + address);
+        instanceOf(ProfileInfoPage.class).enterAddress(address);
     }
 
     @Then("^the user should see address suggestions$")
@@ -109,7 +117,7 @@ public class ProfileInfoSteps {
     @Then("^the user lands on the Personal Info screen$")
     public void theUserLandsOnThePersonalInfoScreen() {
         System.out.println("Then the user lands on the Personal Info screen");
-        instanceOf(PersonalInfoPage.class).verifyPersonalInfoPage();
+        instanceOf(PersonalInfoPage.class).verifyPersonalInfoScreen();
     }
 
     @And("^the user enters a valid unit number: \"([^\"]*)\"$")
@@ -137,7 +145,7 @@ public class ProfileInfoSteps {
     }
 
     @And("^the user clicks on the Sign me up checkbox$")
-    public void theUserClicksOnTheSignMeUpCheckbox() throws InterruptedException {
+    public void theUserClicksOnTheSignMeUpCheckbox() {
         System.out.println("And the user clicks on the Sign me up checkbox");
         instanceOf(ProfileInfoPage.class).selectSignMeUpBtn();
     }

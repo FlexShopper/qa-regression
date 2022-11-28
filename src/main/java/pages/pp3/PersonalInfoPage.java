@@ -1,13 +1,22 @@
 package pages.pp3;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+
+import java.util.List;
+
+import static utils.selenium.Driver.browser;
 
 public class PersonalInfoPage extends EmailPage {
     /**
      * Elements - PP3's Personal Info Screen
      */
+    @FindBy(how = How.XPATH, using = "//h2[text()='Profile Info']")
+    private WebElement profileInfoTab;
+
     @FindBy(how = How.XPATH, using = "//h2[text()='Personal Info']")
     private WebElement personalInfoTab;
 
@@ -23,7 +32,7 @@ public class PersonalInfoPage extends EmailPage {
     @FindBy(how = How.ID, using = "payFrequency-input")
     private WebElement payFrequency;
 
-    @FindBy(how=How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div/div/form/div/div[6]/label/div[1]")
+    @FindBy(how=How.ID, using = "isLegalTermsChecked-checkBoxRadio")
     private WebElement agreementCheckBox;
 
     // TODO: Check Text: By checking here and clicking "Continue",  you understand and agree that you are providing written authorization to FlexShopper LLC and its affiliates and/or assigns (“Flexshopper”) under the Fair Credit Reporting Act authorizing FlexShopper to obtain information from your personal consumer report or other information from third-party sources.  You authorize FlexShopper to obtain such information to verify your personal and financial information. We may obtain information about you, including information from your bank and/or a consumer reporting agency, and you agree to be legally bound by the terms of our
@@ -33,29 +42,83 @@ public class PersonalInfoPage extends EmailPage {
     // TODO: Check Link: Privacy Policy
     // TODO: Check Link: Terms of Use
 
-    @FindBy(how=How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div/div/form/div/label/div[1]")
+    @FindBy(how=How.ID, using = "teleMarketingConsent-checkBoxRadio")
     private WebElement telemarketingCheckBox;
 
     // TODO: Check Text: By checking here and clicking "Continue", you authorize FlexShopper (or our service providers) to make telemarketing calls and deliver sales and marketing text messages to 234-567-8900 using an automatic telephone dialing system or an artificial or prerecorded voice. A machine may play messages automatically when the phone is answered, whether by you, someone else or a recording device. You understand that standard message and data rates may apply, and you agree that we are not liable to reimburse you. You can withdraw this consent at any time by
     // TODO: Check Link: contact us page
 
-    @FindBy(how = How.XPATH, using = "//*[@id='formSubmitButton']/span")
+    @FindBy(how = How.ID, using = "formSubmitButton")
     private WebElement ContinueBtn;
 
     /**
      * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
      */
-    public void verifyPersonalInfoPage() {
+    public void verifyPersonalInfoScreen() {
         waitHelpers.waitPageToLoad(6);
         // TODO: Verify PP3's Header
         // TODO: Verify PP3's Footer
+        elementHelpers.webElementIsDisplayed(profileInfoTab);
         elementHelpers.webElementIsDisplayed(personalInfoTab);
         elementHelpers.webElementIsDisplayed(dobPP3);
         elementHelpers.webElementIsDisplayed(ssnPP3);
         elementHelpers.webElementIsDisplayed(grossMonthlyIncome);
         elementHelpers.webElementIsDisplayed(payFrequency);
-        // TODO: elementHelpers.webElementIsDisplayed(telemarketingCheckBox);
-        // TODO: elementHelpers.weElementIsDisplayed(signMeUpBtn);
+        elementHelpers.webElementIsDisplayed(agreementCheckBox);
+        //TODO: elementHelpers.webElementIsDisplayed(agreementTxt);
+        //TODO: elementHelpers.webElementIsDisplayed(telemarketingCheckBox);
+        //TODO: elementHelpers.webElementIsDisplayed(telemarketingTxt);
         elementHelpers.webElementIsDisplayed(continueBtn);
+    }
+
+    /**
+     * enterDOB() - Enter Date of Birth (DOB)
+     * @param dob
+     */
+    public void enterDOB(String dob) {
+        elementHelpers.webSendKeys(dobPP3, dob, false);
+    }
+
+    /**
+     * enterSSN() - Enter Social Security Number (SSN)
+     * @param ssn
+     */
+    public void enterSSN(String ssn) {
+        elementHelpers.webSendKeys(ssnPP3, ssn, false);
+    }
+
+    /**
+     * enterIncome() - Enter Gross Monthly Income
+     * @param income
+     */
+    public void enterIncome(String income) {
+        elementHelpers.webSendKeys(grossMonthlyIncome, income, false);
+    }
+
+    /**
+     * selectPayFrequency() - Selects Pay Frequency
+     * @param paymentFrequency
+     */
+    public void selectPayFrequency(String paymentFrequency) throws InterruptedException {
+        //elementHelpers.webSendKeys(payFrequency, paymentFrequency, false);
+        elementHelpers.webClick(payFrequency);
+        Thread.sleep(3000);  // TODO: Handle Stale state via WebElementHelpers
+        WebDriver driver = browser();
+        List<WebElement> frequency = driver.findElements(By.tagName("li"));
+        for(WebElement payment : frequency) {
+            System.out.println("Payment Frequency: " + payFrequency.getText());
+            if (payFrequency.getText().equals("Weekly")) {
+                System.out.println("Trying to select: " + paymentFrequency);
+                payFrequency.click();
+                break;
+            }
+        }
+    }
+
+    /**
+     * selectAgreementCheckBox() - Clicks on the "Agreement" radio button
+     */
+    public void selectAgreementCheckBox() {
+        elementHelpers.webClickJSExecutor(agreementCheckBox);
     }
 }

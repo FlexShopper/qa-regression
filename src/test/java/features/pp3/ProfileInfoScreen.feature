@@ -1,5 +1,5 @@
 @Regression @Web @PP3 @ProfileInfo
-Feature: As user I should be able to land Profile Info Screen
+Feature: As user I should be able to land on the Profile Info Screen
 
   Scenario Outline: User can navigate back to the Email screen if the email shown is not his
     Given the user is on the Profile Info screen with email: "<email>"
@@ -7,7 +7,7 @@ Feature: As user I should be able to land Profile Info Screen
     When the user clicks on the link: "Not You?"
     Then the user lands on the Email screen
     Examples:
-      | email                            |
+      | email                       |
       | profileinfo@flexshopper.com |
 
   Scenario Outline: User should see additional fields when the user clicks on the "Enter Address Manually" link
@@ -15,7 +15,7 @@ Feature: As user I should be able to land Profile Info Screen
     When the user clicks on the link: "Enter Address Manually"
     Then the user should see the hidden address fields
     Examples:
-      | email                            |
+      | email                       |
       | profileinfo@flexshopper.com |
 
   Scenario Outline: User cannot enter special characters in the First Name
@@ -62,7 +62,7 @@ Feature: As user I should be able to land Profile Info Screen
 
   Scenario Outline: User can select a valid matching address from the address suggestions list
     Given the user is on the Profile Info screen with email: "profileinfo@flexshopper.com"
-    When the user starts entering an address: "<partialAddress>"
+    When the user enters a valid address: "<partialAddress>"
     Then the user should see address suggestions
     Examples:
       | partialAddress      | withText |
@@ -72,7 +72,7 @@ Feature: As user I should be able to land Profile Info Screen
 
   Scenario Outline: User cannot see address suggestions is an invalid address is entered
     Given the user is on the Profile Info screen with email: "profileinfo@flexshopper.com"
-    When the user starts entering an address: "<invalidAddress>"
+    When the user enters an invalid address: "<invalidAddress>"
     Then the user should not see address suggestions
     Examples:
       | invalidAddress |
@@ -99,7 +99,7 @@ Feature: As user I should be able to land Profile Info Screen
     And the user enters a valid first name: "<firstName>"
     And the user enters a valid last name: "<lastName>"
     And the user enters a valid mobile number: "<mobileNumber>"
-    And the user starts entering an address: "<address>"
+    And the user enters a valid address: "<address>"
     When the user clicks on the link: "Enter Address Manually"
     And the user enters a valid unit number: "<unit>"
     And the user enters a valid city: "<city>"
@@ -116,7 +116,7 @@ Feature: As user I should be able to land Profile Info Screen
     And the user enters a valid first name: "<firstName>"
     And the user enters a valid last name: "<lastName>"
     And the user enters a valid mobile number: "<mobileNumber>"
-    And the user starts entering an address: "<address>"
+    And the user enters a valid address: "<address>"
     When the user clicks on the link: "Enter Address Manually"
     And the user enters a valid unit number: "<unit>"
     And the user enters a valid city: "<city>"

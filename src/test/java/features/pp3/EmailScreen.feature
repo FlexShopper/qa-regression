@@ -33,6 +33,7 @@ Feature: As a customer I should be able to enter the email in the login email
 
   # Scenario: User can close the PP3's screen
   # Scenario: User remains in the PP3's screen after cancelling request of closing the PP3's screen
+  # Scenario: User has an older account
 
   ######################## Header Verification ########################
   # Scenario: User can navigate to Frequently Asked Questions (FAQ)

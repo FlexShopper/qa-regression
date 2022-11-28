@@ -20,7 +20,7 @@ public class ManageEmailTestAddresses {
 
     public String currentDate() {
         Date date = Calendar.getInstance().getTime();
-        DateFormat dateFormat = new SimpleDateFormat("yymmddhhmm");
+        DateFormat dateFormat = new SimpleDateFormat("mmddhhmmss");
         String strDate = dateFormat.format(date);
         System.out.println("Converted String: " + strDate);
         return strDate;

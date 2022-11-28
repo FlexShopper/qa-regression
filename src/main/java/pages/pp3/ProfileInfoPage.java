@@ -1,7 +1,6 @@
 package pages.pp3;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -211,14 +210,14 @@ public class ProfileInfoPage extends EmailPage {
      * @param region
      */
     public void selectState(String region) throws InterruptedException {
-        elementHelpers.webSendKeys(state, region, false);
+        elementHelpers.webSendKeys(state, region, false); //TODO: Click on field; navigate drop down and select FL.
         Thread.sleep(3000);  // TODO: Handle Stale state via WebElementHelpers
         WebDriver driver = browser();
         List<WebElement> listOfStates= driver.findElements(By.tagName("li"));
         for(WebElement state : listOfStates) {
-            System.out.println("State: " + state.getText());
-            if (state.getText().equals("FL")) {
-                System.out.println("Trying to select: " + "FL");
+            //System.out.println("State: " + state.getText());
+            if (state.getText().equals(region)) {
+                System.out.println("Trying to select: " + region);
                 state.click();
                 break;
             }
@@ -229,7 +228,7 @@ public class ProfileInfoPage extends EmailPage {
      * enterZipCode() - Enter Zip Code
      * @param postalCode
      */
-    public void enterZipCode(String postalCode) throws InterruptedException {
+    public void enterZipCode(String postalCode) {
         elementHelpers.webSendKeys(zipCode, postalCode, false);
     }
 

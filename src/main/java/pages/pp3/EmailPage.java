@@ -155,7 +155,6 @@ public class EmailPage extends Page {
      * clickContinueBtn() - Click on the "Continue" button
      */
     public void clickOnContinueBtn() {
-        //elementHelpers.webClick(continueBtn);
         elementHelpers.webClickJSExecutor(continueBtn);
     }
 
@@ -163,6 +162,7 @@ public class EmailPage extends Page {
      * emailValidationMessage() - Verifies the customer sees the expected Validation Message
      */
     public void emailValidationMessage(String validationMsg) {
+        elementHelpers.webElementIsDisplayed(invalidEmailAddressErrorMsg);
         Assert.assertEquals("Invalid email address", WebElementHelpers.webGetText(invalidEmailAddressErrorMsg));
     }
 }
