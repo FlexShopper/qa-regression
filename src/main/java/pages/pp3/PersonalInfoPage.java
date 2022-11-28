@@ -99,20 +99,9 @@ public class PersonalInfoPage extends EmailPage {
      * selectPayFrequency() - Selects Pay Frequency
      * @param paymentFrequency
      */
-    public void selectPayFrequency(String paymentFrequency) throws InterruptedException {
-        //elementHelpers.webSendKeys(payFrequency, paymentFrequency, false);
+    public void selectPayFrequency(String paymentFrequency) {
         elementHelpers.webClick(payFrequency);
-        Thread.sleep(3000);  // TODO: Handle Stale state via WebElementHelpers
-        WebDriver driver = browser();
-        List<WebElement> frequency = driver.findElements(By.tagName("li"));
-        for(WebElement payment : frequency) {
-            System.out.println("Payment Frequency: " + payFrequency.getText());
-            if (payFrequency.getText().equals("Weekly")) {
-                System.out.println("Trying to select: " + paymentFrequency);
-                payFrequency.click();
-                break;
-            }
-        }
+        selectHelpers.selectFromDropdown(payFrequency, paymentFrequency);
     }
 
     /**

@@ -84,9 +84,9 @@ public class ProfileInfoSteps {
         instanceOf(ProfileInfoPage.class).verifySuggestedAddressesDisplayed();
     }
 
-    @And("^the user can select the address from the suggestions list with: \"([^\"]*)\"$")
-    public void theUserCanSelectTheAddressFromTheSuggestionsList(String withText) {
-        System.out.println("And the user can select the address from the suggestions with: " + withText);
+    @And("^the user selects an address from the suggestions list with: \"([^\"]*)\"$")
+    public void theUserSelectsAnAddressFromTheSuggestionsList(String withText) {
+        System.out.println("And the user selects an address from the suggestions with: " + withText);
         instanceOf(ProfileInfoPage.class).selectFromSuggestedAddresses(withText);
     }
 

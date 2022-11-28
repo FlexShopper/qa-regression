@@ -12,8 +12,8 @@ public class WebElementHelpers {
         return new WebDriverWait(browser(), 10);
     }
 
-    public void waitForStalelenessOf(WebElement element) {
-        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(element)));
+    public static WebDriverWait webWaitForSeconds(Long timeOut) {
+        return new WebDriverWait(browser(), timeOut);
     }
 
     public boolean webElementIsDisplayed(WebElement element) {
@@ -33,7 +33,6 @@ public class WebElementHelpers {
 
     public static void webElementToBeClickable(WebElement element) {
         webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
-        //webWaitForSeconds().until(ExpectedConditions.elementToBeClickable(element));
         element.isEnabled();
     }
 

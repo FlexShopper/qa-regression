@@ -38,11 +38,11 @@ public class BankingInfoPage extends EmailPage{
      * verifyBankingInfoPage() - Verify PP3's Banking Info Screen
      */
     public void verifyBankingInfoPage() {
-        waitHelpers.waitPageToLoad(6);
+        waitHelpers.waitPageToLoad(10);
         // TODO: Verify PP3's Header
         // TODO: Verify PP3's Footer
-        elementHelpers.webElementIsDisplayed(profileInfoTab);
-        elementHelpers.webElementIsDisplayed(personalInfoTab);
+        // TODO: elementHelpers.webElementIsDisplayed(profileInfoTab);
+        // TODO: elementHelpers.webElementIsDisplayed(personalInfoTab);
         elementHelpers.webElementIsDisplayed(bankingInfoTab);
         elementHelpers.webElementIsDisplayed(routingNumberPP3);
         elementHelpers.webElementIsDisplayed(accountNumberPP3);

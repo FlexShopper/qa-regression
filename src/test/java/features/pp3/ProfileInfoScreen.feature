@@ -85,8 +85,8 @@ Feature: As user I should be able to land on the Profile Info Screen
   #  And the user enters a valid last name: "<lastName>"
   #  And the user enters a valid mobile number: "<mobileNumber>"
   #  And the user clicks on the link: "Enter Address Manually"
-  #  And the user starts entering an address: "<partialAddress>"
-  #  When the user can select the address from the suggestions list with: "<withText>"
+  #  And the user enters a valid address: "<partialAddress>"
+  #  When the user selects an address from the suggestions list with: "<withText>"
   #  And the user clicks on the button: "Continue"
   #  Then the user lands on the Personal Info screen
   #  Examples:
