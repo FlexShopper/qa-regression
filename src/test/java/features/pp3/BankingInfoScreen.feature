@@ -16,8 +16,7 @@ Feature: As user I should be able to land on the Banking Info Screen
     And the user enters a valid routing number: "<routingNumber>"
     And the user enters a valid account number: "<accountNumber>"
     And  the user enters a matching account number: "<confirmAccNumber>"
-    And the user clicks on the agreement button
-    When the user clicks on the button: "Submit"
+    When the user clicks on the button: "Submit Application"
     Then the user lands on the Decision Screen with decision: "FlexShopper User"
     Examples:
       | routingNumber | accountNumber | confirmAccNumber | decision     |

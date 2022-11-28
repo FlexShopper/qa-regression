@@ -1,11 +1,16 @@
 package pages.pp3;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
 import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
+
+import static utils.selenium.Driver.browser;
 
 public class PasswordPage extends EmailPage {
     protected WebElementHelpers elementHelpers = new WebElementHelpers();
@@ -82,10 +87,16 @@ public class PasswordPage extends EmailPage {
      */
     public void passwordValidationMessage(String validationMsg) {
         WaitHelpers.waitPageToLoad(6);
-        elementHelpers.webElementIsDisplayed(passwordValidationMsg);
-        // TODO: Assert using Ignore Case
-        // TODO: Use the message provided in feature file or remove it from there
-        Assert.assertEquals("Invalid email or password: please check your details and try again", passwordValidationMsg.getText());
+
+        //TODO: Move it to WebElementHelpers
+        WebDriver driver = browser();
+        //find the element in selenium webdriver
+        WebElement validationMsgTxt = driver.findElement(By.id(("password-input")));
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        //get the text
+        String validationMessage = (String) jsExecutor.executeScript("return arguments[0].value", validationMsgTxt);
+        System.out.println(validationMessage);
+        Assert.assertEquals("Invalid email or password: please check your details and try again", validationMessage);
     }
 
     /**
@@ -94,9 +105,16 @@ public class PasswordPage extends EmailPage {
      */
     public void passwordRequiredMsg(String validationMsg) {
         WaitHelpers.waitPageToLoad(6);
-        elementHelpers.webElementIsDisplayed(passwordRequiredMsg);
-        // TODO: Assert using Ignore Case
-        Assert.assertEquals("Required", passwordRequiredMsg.getText());
+
+        //TODO: Move it to WebElementHelpers
+        WebDriver driver = browser();
+        //find the element in selenium webdriver
+        WebElement validationMsgTxt = driver.findElement(By.id(("password-input")));
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        //get the text
+        String validationMessage = (String) jsExecutor.executeScript("return arguments[0].value", validationMsgTxt);
+        System.out.println(validationMessage);
+        Assert.assertEquals("Required", validationMessage);
     }
 
     /**

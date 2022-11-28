@@ -76,7 +76,7 @@ public class ForgotPasswordSteps extends Page {
     }
 
     @Then("^the user lands on the Forgot Password screen$")
-    public void theUserLandsOnTheForgotPasswordScreen() throws InterruptedException {
+    public void theUserLandsOnTheForgotPasswordScreen() {
         System.out.println("Then the user lands on the Forgot Password screen");
         // Verify user landed on the PP3's Forgot Password screen
         instanceOf(EmailPage.class).verifyHeader();

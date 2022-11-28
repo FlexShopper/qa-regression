@@ -47,7 +47,7 @@ public class BankingInfoPage extends EmailPage{
         elementHelpers.webElementIsDisplayed(routingNumberPP3);
         elementHelpers.webElementIsDisplayed(accountNumberPP3);
         elementHelpers.webElementIsDisplayed(confirmAccountNumberPP3);
-        elementHelpers.webElementIsDisplayed(submitBtn);
+        // TODO: elementHelpers.webElementIsDisplayed(submitBtn);
     }
 
     /**
@@ -55,7 +55,7 @@ public class BankingInfoPage extends EmailPage{
      * @param routingNumber
      */
     public void enterRoutingNumber(String routingNumber) {
-        elementHelpers.webSendKeys(routingNumberPP3, routingNumber, false);
+        elementHelpers.webSendKeys(routingNumberPP3, routingNumber, true);
     }
 
     /**
@@ -63,7 +63,7 @@ public class BankingInfoPage extends EmailPage{
      * @param accountNumber
      */
     public void enterAccountNumber(String accountNumber) {
-        elementHelpers.webSendKeys(accountNumberPP3, accountNumber, false);
+        elementHelpers.webSendKeys(accountNumberPP3, accountNumber, true);
     }
 
     /**
@@ -71,6 +71,6 @@ public class BankingInfoPage extends EmailPage{
      * @param confirmAccountNumber
      */
     public void confirmAccountNumber(String confirmAccountNumber) {
-        elementHelpers.webSendKeys(confirmAccountNumberPP3, confirmAccountNumber, false);
+        elementHelpers.webSendKeys(confirmAccountNumberPP3, confirmAccountNumber, true);
     }
 }

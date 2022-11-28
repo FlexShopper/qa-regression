@@ -31,6 +31,7 @@ public class EmailSteps extends Page {
         System.out.println("And the user clicks on the button: " + button);
         switch (button) {
             case "Continue":
+            case "Submit Application":
                 instanceOf(EmailPage.class).clickOnContinueBtn();
                 break;
             case "Sign In":

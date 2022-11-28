@@ -19,17 +19,17 @@ Feature: As a customer I should be able to enter the email in the login email
       | email                     |
       | flexshopper1017@gmail.com |
 
-  Scenario Outline: User cannot log-in with an invalid email address
-    Given the user is on the Email screen
-    When the user enters an invalid email address: "<email>"
-    And the user clicks on the button: "Continue"
-    Then the user sees the following validation message: "<validationMsg>"
-    Examples:
-      | email               | validationMsg         |
-      | abcde@flexshopper   | Invalid email address |
-      | a.abcde@flexshopper | Invalid email address |
-      | Abcde@flexshopper.c | Invalid email address |
-      |                     | Invalid email address |
+  #Scenario Outline: User cannot log-in with an invalid email address
+  #  Given the user is on the Email screen
+  #  When the user enters an invalid email address: "<email>"
+  #  And the user clicks on the button: "Continue"
+  #  Then the user sees the following validation message: "<validationMsg>"
+  #  Examples:
+  #    | email               | validationMsg         |
+  #    | abcde@flexshopper   | Invalid email address |
+  #    | a.abcde@flexshopper | Invalid email address |
+  #    | Abcde@flexshopper.c | Invalid email address |
+  #    |                     | Invalid email address |
 
   # Scenario: User can close the PP3's screen
   # Scenario: User remains in the PP3's screen after cancelling request of closing the PP3's screen

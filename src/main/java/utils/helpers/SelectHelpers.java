@@ -2,19 +2,19 @@ package utils.helpers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
-import static utils.helpers.WebElementHelpers.webWaitForSeconds;
+import static utils.selenium.Driver.browser;
 
 public class SelectHelpers {
 
-    public void selectFromDropdown(WebElement element, String textToSelect) {
+    public void selectFromDropdown(String textToSelect) {
         try {
-            WebElement dropdownOptions = webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
-            List<WebElement> optionToSelect = dropdownOptions.findElements(By.tagName("li"));
+            WebDriver driver = browser();
+            List<WebElement> optionToSelect = driver.findElements(By.tagName("li"));
             for(WebElement option : optionToSelect) {
-                System.out.println("Text: " + element.getText());
+                //System.out.println("Text: " + element.getText());
                 if (option.getText().equals(textToSelect)) {
                     System.out.println("Trying to select: " + textToSelect);
                     option.click();
@@ -28,10 +28,10 @@ public class SelectHelpers {
         }
     }
 
-    public boolean optionsReturned(WebElement element) {
+    public boolean optionsReturned() {
         try {
-            WebElement options = webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
-            List <WebElement>elements = options.findElements(By.tagName("li"));
+            WebDriver driver = browser();
+            List <WebElement>elements = driver.findElements(By.tagName("li"));
             if(elements.size() > 0) { return true; };
         } catch (NoSuchElementException e) {
             System.out.println(e.getStackTrace());

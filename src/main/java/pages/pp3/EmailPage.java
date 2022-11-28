@@ -1,5 +1,8 @@
 package pages.pp3;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -65,7 +68,7 @@ public class EmailPage extends Page {
      * Validation Messages
      */
     @FindBy(how= How.XPATH, using = "//span[@label='Invalid email address']")
-    public  WebElement invalidEmailAddressErrorMsg;
+    public  WebElement invalidEmailAddress;
 
     /**
      * Navigate to PP3's Base URL
@@ -162,7 +165,9 @@ public class EmailPage extends Page {
      * emailValidationMessage() - Verifies the customer sees the expected Validation Message
      */
     public void emailValidationMessage(String validationMsg) {
-        elementHelpers.webElementIsDisplayed(invalidEmailAddressErrorMsg);
-        Assert.assertEquals("Invalid email address", WebElementHelpers.webGetText(invalidEmailAddressErrorMsg));
+        WebDriver driver = browser();
+        WebElement validation = driver.findElement(By.cssSelector("span.sc-iELTvK.gbKRND.active"));
+        String validationMsgTxt = validation.getText();
+        Assert.assertEquals("Invalid email address", validationMsgTxt);
     }
 }

@@ -132,7 +132,7 @@ public class ProfileInfoPage extends EmailPage {
      * verifySuggestedAddressesDisplayed() - Verify Suggested Addresses are displayed
      */
     public void verifySuggestedAddressesDisplayed() {
-        Assert.assertTrue(selectHelpers.optionsReturned(suggestedAddresses));
+        Assert.assertTrue(selectHelpers.optionsReturned());
     }
 
     /**
@@ -211,7 +211,7 @@ public class ProfileInfoPage extends EmailPage {
      */
     public void selectState(String region) throws InterruptedException {
         elementHelpers.webSendKeys(state, region, false);
-        selectHelpers.selectFromDropdown(state, region);
+        selectHelpers.selectFromDropdown(region);
     }
 
     /**
