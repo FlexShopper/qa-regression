@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
+import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 import static utils.selenium.Driver.browser;
 
@@ -45,8 +46,8 @@ public class ChangePasswordPage extends EmailPage {
      */
     public void verifyChangePasswordScreen() {
         // Wait for screen to load & Ajax to be completed
-        waitHelpers.waitForPageReady(browser(), 30 );
-
+        WaitHelpers.waitForPageReady(browser(), 30 );
+        WaitHelpers.waitForStaleEl(createNewPasswordTxt);
         elementHelpers.webElementIsDisplayed(createNewPasswordTxt);
         elementHelpers.webElementIsDisplayed(emailValueTxt);
         elementHelpers.webElementIsDisplayed(notYouLink);
