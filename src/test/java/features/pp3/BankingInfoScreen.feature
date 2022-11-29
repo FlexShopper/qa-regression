@@ -3,11 +3,14 @@ Feature: As user I should be able to land on the Banking Info Screen
 
   #Scenario: The user cannot submit the agreement without entering a Routing Number
 
-  #Scenario: The user cannot submit the agreement without entering a valid Routing Number
+  #Scenario: The user cannot submit the agreement without entering a valid Routing Number / Routing Invalid routing number
+
+  #Scenario: Routing:  084009519 => We do not accept this bank. Please try a different bank
+  #Scenario:  After a Routing is rejected, user can enter a valid one
 
   #Scenario: The user cannot submit the agreement without entering an Account Number
 
-  #Scenario: The user cannot submit the agreement without entering a valid Account Number (10 characters)
+  #Scenario: The user cannot submit the agreement without entering a valid Account Number (10? or 3/17 characters?)
 
   #Scenario: The user cannot submit the agreement if the Account Number and the Confirm Account Number provided are not a match
 

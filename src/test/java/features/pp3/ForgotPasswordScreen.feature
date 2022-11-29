@@ -69,7 +69,7 @@ Feature: As user I should be able to change the password
     And the user lands on the Verification Code screen
     When the user enters the Verification Code in the field
     And the user clicks on the button: "Submit"
-    Then the user lands on the Change Password screen
+    #Then the user lands on the Change Password screen
     Examples:
       | email                           |
       | FlexShopperAutomation@gmail.com |
