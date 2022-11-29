@@ -17,9 +17,9 @@ Feature: As user I should be able to land on the Banking Info Screen
     And the user enters a valid account number: "<accountNumber>"
     And  the user enters a matching account number: "<confirmAccNumber>"
     When the user clicks on the button: "Submit Application"
-    Then the user lands on the Decision Screen with decision: "FlexShopper User"
+    Then the user lands on the Decision Screen with decision: "<decision>"
     Examples:
-      | routingNumber | accountNumber | confirmAccNumber | decision     |
-      | 325070760     | 3333333333    | 3333333333       | approved     |
-      | 325070760     | 3333333333    | 3333333333       | not approved |
-      | 325070760     | 3333333333    | 3333333333       | need to call |
+      | routingNumber | accountNumber | confirmAccNumber | decision                                  |
+      | 325070760     | 3333333333    | 3333333333       | You were approved for a spending limit of |
+      | 325070760     | 3333333333    | 3333333333       | You were approved for a spending limit of |
+      | 325070760     | 3333333333    | 3333333333       | You were approved for a spending limit of |

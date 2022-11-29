@@ -12,7 +12,7 @@ public class WebElementHelpers {
         return new WebDriverWait(browser(), 10);
     }
 
-    public static WebDriverWait webWaitForSeconds(Long timeOut) {
+    public static WebDriverWait webWaitForSeconds(int timeOut) {
         return new WebDriverWait(browser(), timeOut);
     }
 

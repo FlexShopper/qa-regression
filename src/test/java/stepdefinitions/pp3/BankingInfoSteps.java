@@ -3,10 +3,7 @@ package stepdefinitions.pp3;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import pages.pp3.BankingInfoPage;
-import pages.pp3.EmailPage;
-import pages.pp3.PersonalInfoPage;
-import pages.pp3.ProfileInfoPage;
+import pages.pp3.*;
 
 import static pages.Page.instanceOf;
 
@@ -66,8 +63,9 @@ public class BankingInfoSteps {
     }
 
     @Then("^the user lands on the Decision Screen with decision: \"([^\"]*)\"$")
-    public void theUserLandsOnTheDecisionScreenWithDecision(String decision) {
+    public void theUserLandsOnTheDecisionScreenWithDecision(String decision) throws InterruptedException {
         System.out.println("Then the user lands on the Decision Screen with decision: " + decision);
-        //TODO:
+        instanceOf(DecisionPage.class).verifyDecisionScreen();
+        instanceOf(DecisionPage.class).verifyDecision();
     }
 }

@@ -61,12 +61,12 @@ public class ForgotPasswordSteps extends Page {
     }
 
     @Then("^the user lands on the Change Password screen$")
-    public void theUserLandsOnTheChangePasswordScreen() throws InterruptedException {
+    public void theUserLandsOnTheChangePasswordScreen() {
         System.out.println("Then the user lands on the Change Password screen");
         // Verify user landed on the PP3's Change Password screen
-        instanceOf(EmailPage.class).verifyHeader();
+        //TODO: instanceOf(EmailPage.class).verifyHeader();
         instanceOf(ChangePasswordPage.class).verifyChangePasswordScreen();
-        instanceOf(EmailPage.class).verifyFooter();
+        //TODO: instanceOf(EmailPage.class).verifyFooter();
     }
 
     @When("^the user retrieves the Verification Code from the phone$")

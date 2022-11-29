@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class BankingInfoPage extends EmailPage{
+public class BankingInfoPage extends EmailPage {
     /**
      * Elements - PP3's Banking Info Screen
      */
