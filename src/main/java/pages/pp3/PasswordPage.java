@@ -55,7 +55,10 @@ public class PasswordPage extends EmailPage {
      * verifyPasswordScreen() - Verifies user landed on the Password screen
      */
     public void verifyPasswordScreen() {
-        WaitHelpers.waitPageToLoad(6);
+        // Wait for screen to load & Ajax to be completed
+        WaitHelpers.waitForPageReady(browser(),30);
+
+        // TODO: Verify PP3's Header
         // TODO: elementHelpers.webElementIsDisplayed(flexshopperLogo);
         // TODO: elementHelpers.webElementIsDisplayed(existingCustomerTxt);
         elementHelpers.webElementIsDisplayed(enterPasswordTxt);
@@ -64,6 +67,7 @@ public class PasswordPage extends EmailPage {
         elementHelpers.webElementIsDisplayed(passwordField);
         elementHelpers.webElementIsDisplayed(forgotPasswordLnk);
         elementHelpers.webElementIsDisplayed(signInBtn);
+        // TODO: Verify PP3's Footer
     }
 
     /**
@@ -86,7 +90,8 @@ public class PasswordPage extends EmailPage {
      * @param validationMsg
      */
     public void passwordValidationMessage(String validationMsg) {
-        WaitHelpers.waitPageToLoad(6);
+        // Wait for screen to load & Ajax to be completed
+        waitHelpers.waitForPageReady(browser(),6);
 
         //TODO: Move it to WebElementHelpers
         WebDriver driver = browser();
@@ -104,7 +109,8 @@ public class PasswordPage extends EmailPage {
      * @param validationMsg
      */
     public void passwordRequiredMsg(String validationMsg) {
-        WaitHelpers.waitPageToLoad(6);
+        // Wait for screen to load & Ajax to be completed
+        waitHelpers.waitForPageReady(browser(),6);
 
         //TODO: Move it to WebElementHelpers
         WebDriver driver = browser();

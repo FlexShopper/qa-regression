@@ -82,7 +82,7 @@ public class PersonalInfoSteps {
     }
 
     @Then("^the user lands on the Banking Info Screen")
-    public void theUserLandsOnTheBankingInfoScreen() {
+    public void theUserLandsOnTheBankingInfoScreen() throws InterruptedException {
         System.out.println("Then the user lands on the Banking Info Screen");
         instanceOf(BankingInfoPage.class).verifyBankingInfoPage();
     }

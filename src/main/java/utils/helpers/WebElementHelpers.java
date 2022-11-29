@@ -8,11 +8,11 @@ import static utils.selenium.Settings.weHighlightedColour;
 
 public class WebElementHelpers {
 
-    public static WebDriverWait webWaitForSeconds() {
-        return new WebDriverWait(browser(), 10);
+    public WebDriverWait webWaitForSeconds() {
+        return new WebDriverWait(browser(), 20);
     }
 
-    public static WebDriverWait webWaitForSeconds(int timeOut) {
+    public WebDriverWait webWaitForSeconds(int timeOut) {
         return new WebDriverWait(browser(), timeOut);
     }
 
@@ -31,7 +31,7 @@ public class WebElementHelpers {
         }
     }
 
-    public static void webElementToBeClickable(WebElement element) {
+    public void webWaitForClickable(WebElement element) {
         webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
         element.isEnabled();
     }

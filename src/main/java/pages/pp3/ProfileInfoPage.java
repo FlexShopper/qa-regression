@@ -1,13 +1,13 @@
 package pages.pp3;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
-import java.util.List;
+import utils.helpers.WaitHelpers;
+
 import static utils.selenium.Driver.browser;
+
 
 public class ProfileInfoPage extends EmailPage {
     /**
@@ -86,9 +86,10 @@ public class ProfileInfoPage extends EmailPage {
      * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
      */
     public void verifyProfileInfoScreen() {
-        waitHelpers.waitPageToLoad(6);
+        // Wait for screen to load & Ajax to be completed
+        WaitHelpers.waitForPageReady(browser(),30);
+
         // TODO: Verify PP3's Header
-        // TODO: Verify PP3's Footer
         elementHelpers.webElementIsDisplayed(profileInfoTab);
         // TODO: elementHelpers.weElementIsDisplayed(emailAddressTxt);
         elementHelpers.webElementIsDisplayed(notYouBtn);
@@ -99,6 +100,7 @@ public class ProfileInfoPage extends EmailPage {
         elementHelpers.webElementIsDisplayed(enterManualLink);
         // TODO: elementHelpers.weElementIsDisplayed(signMeUpBtn);
         elementHelpers.webElementIsDisplayed(continueBtn);
+        // TODO: Verify PP3's Footer
     }
 
     /**

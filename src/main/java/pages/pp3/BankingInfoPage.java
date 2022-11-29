@@ -3,6 +3,9 @@ package pages.pp3;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import utils.helpers.WaitHelpers;
+
+import static utils.selenium.Driver.browser;
 
 public class BankingInfoPage extends EmailPage {
     /**
@@ -37,8 +40,10 @@ public class BankingInfoPage extends EmailPage {
     /**
      * verifyBankingInfoPage() - Verify PP3's Banking Info Screen
      */
-    public void verifyBankingInfoPage() {
-        waitHelpers.waitPageToLoad(10);
+    public void verifyBankingInfoPage() throws InterruptedException {
+        // Wait for screen to load & Ajax to be completed
+        WaitHelpers.waitForPageReady(browser(),30);
+
         // TODO: Verify PP3's Header
         // TODO: Verify PP3's Footer
         // TODO: elementHelpers.webElementIsDisplayed(profileInfoTab);

@@ -1,7 +1,6 @@
 package pages.pp3;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -96,7 +95,8 @@ public class EmailPage extends Page {
      * Verify PP3's Header
      */
     public void verifyHeader() {
-        WaitHelpers.waitPageToLoad(6);
+        // Wait for screen to load & Ajax to be completed
+        waitHelpers.waitForPageReady(browser(),30);
         elementHelpers.webElementIsDisplayed(headerCloseBtn);
         elementHelpers.webElementIsDisplayed(headerFAQBtn);
     }
@@ -165,6 +165,7 @@ public class EmailPage extends Page {
      * emailValidationMessage() - Verifies the customer sees the expected Validation Message
      */
     public void emailValidationMessage(String validationMsg) {
+        //TODO: Move to WebElementHelpers
         WebDriver driver = browser();
         WebElement validation = driver.findElement(By.cssSelector("span.sc-iELTvK.gbKRND.active"));
         String validationMsgTxt = validation.getText();

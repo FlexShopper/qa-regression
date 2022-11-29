@@ -1,11 +1,11 @@
 package utils.helpers;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import static utils.selenium.Driver.browser;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+
+import java.time.Duration;
 
 public class WaitHelpers {
     /**
@@ -31,15 +31,13 @@ public class WaitHelpers {
 
     /**
      * waits for backgrounds processes on the browser to complete
-     * @param timeOutInSeconds
+     * @param waitTimeout
      */
-    public static void waitPageToLoad(long timeOutInSeconds) {
-        ExpectedCondition<Boolean> expectation = driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
-        try {
-            WebDriverWait wait = new WebDriverWait(browser(), timeOutInSeconds);
-            wait.until(expectation);
-        } catch (Throwable error) {
-            error.printStackTrace();
-        }
+    public static void waitForPageReady(WebDriver driver, int waitTimeout) {
+        Wait<WebDriver> wait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(waitTimeout))
+                .pollingEvery(Duration.ofMillis(500))
+                .ignoring(NoSuchElementException.class);
+        wait.until((ExpectedCondition<Boolean>) wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
     }
 }

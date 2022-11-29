@@ -115,7 +115,7 @@ public class ProfileInfoSteps {
     }
 
     @Then("^the user lands on the Personal Info screen$")
-    public void theUserLandsOnThePersonalInfoScreen() {
+    public void theUserLandsOnThePersonalInfoScreen() throws InterruptedException {
         System.out.println("Then the user lands on the Personal Info screen");
         instanceOf(PersonalInfoPage.class).verifyPersonalInfoScreen();
     }
