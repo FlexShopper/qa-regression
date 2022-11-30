@@ -32,9 +32,10 @@ public class VerificationCodePage extends EmailPage {
     /**
      * verifyVerificationCodeScreen() - Verifies user landed in the Verification Code screen
      */
-    public void verifyVerificationCodeScreen() {
+    public void verifyVerificationCodeScreen() throws InterruptedException {
         // Wait for screen to load & Ajax to be completed
-        WaitHelpers.waitForPageReady(browser(),10);
+        //TODO: WaitHelpers.waitForPageReady(browser(),10);
+        Thread.sleep(15000);
         // Verify top element for stale state
         WaitHelpers.waitForStaleEl(securityCode);
 

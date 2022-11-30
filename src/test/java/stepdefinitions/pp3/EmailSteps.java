@@ -51,7 +51,7 @@ public class EmailSteps extends Page {
     }
 
     @Then("^the user lands on the Password screen$")
-    public void theUserLandsOnThePasswordScreen() {
+    public void theUserLandsOnThePasswordScreen() throws InterruptedException {
         System.out.println("Then the user lands on the Password screen");
         instanceOf(EmailPage.class).verifyHeader();
         instanceOf(PasswordPage.class).verifyPasswordScreen();
@@ -65,7 +65,7 @@ public class EmailSteps extends Page {
     }
 
     @Then("^the user lands on the Profile Info screen$")
-    public void theUserLandsOnTheProfileInfoScreen() {
+    public void theUserLandsOnTheProfileInfoScreen() throws InterruptedException {
         System.out.println("Then the user lands on the Profile Info screen");
         instanceOf(EmailPage.class).verifyHeader();
         instanceOf(ProfileInfoPage.class).verifyProfileInfoScreen();

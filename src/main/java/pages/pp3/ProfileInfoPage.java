@@ -85,9 +85,10 @@ public class ProfileInfoPage extends EmailPage {
     /**
      * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
      */
-    public void verifyProfileInfoScreen() {
+    public void verifyProfileInfoScreen() throws InterruptedException {
         // Wait for screen to load & Ajax to be completed
-        WaitHelpers.waitForPageReady(browser(),30);
+        //TODO: WaitHelpers.waitForPageReady(browser(),30);
+        Thread.sleep(30000);
         // Verify top element for stale state
         WaitHelpers.waitForStaleEl(firstName);
 
@@ -109,9 +110,10 @@ public class ProfileInfoPage extends EmailPage {
     /**
      * verifyProfileInfoScreenWithHiddenFields() - Verify PP3's Profile Info Screen showing hidden address fields
      */
-    public void verifyProfileInfoScreenWithHiddenFields() {
+    public void verifyProfileInfoScreenWithHiddenFields() throws InterruptedException {
         // Wait for screen to load & Ajax to be completed
-        WaitHelpers.waitForPageReady(browser(),30);
+        //TODO: WaitHelpers.waitForPageReady(browser(),30);
+        Thread.sleep(15000);
         // Verify top element for stale state
         WaitHelpers.waitForStaleEl(city);
 

@@ -56,9 +56,10 @@ public class PasswordPage extends EmailPage {
     /**
      * verifyPasswordScreen() - Verifies user landed on the Password screen
      */
-    public void verifyPasswordScreen() {
+    public void verifyPasswordScreen() throws InterruptedException {
         // Wait for screen to load & Ajax to be completed
-        WaitHelpers.waitForPageReady(browser(),30);
+        //TODO: WaitHelpers.waitForPageReady(browser(),30);
+        Thread.sleep(15000);
         // Verify top element for stale state
         WaitHelpers.waitForStaleEl(passwordField);
         // TODO: Verify PP3's Header

@@ -9,9 +9,7 @@ import org.testng.Assert;
 import pages.Page;
 import utils.helpers.*;
 import utils.selenium.Settings;
-
 import java.util.List;
-
 import static utils.selenium.Driver.browser;
 
 public class EmailPage extends Page {

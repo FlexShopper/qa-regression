@@ -50,9 +50,10 @@ public class ForgotPasswordPage extends EmailPage {
     /**
      * verifyForgotPasswordScreen() - Verifies user landed on the Forgot Password screen
      */
-    public void verifyForgotPasswordScreen() {
+    public void verifyForgotPasswordScreen() throws InterruptedException {
         // Wait for screen to load & Ajax to be completed
-        WaitHelpers.waitForPageReady(browser(), 30);
+        //TODO: WaitHelpers.waitForPageReady(browser(), 30);
+        Thread.sleep(15000);
         WaitHelpers.waitForStaleEl(flexshopperLogo);
         // TODO: Verify PP3's Header
         // Verify elements are displayed

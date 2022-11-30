@@ -57,7 +57,6 @@ public class WebElementHelpers {
     }
 
     public void webClickJSExecutor(WebElement element) {
-        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
         int attempts = 0;
         while(attempts < 5) {
             try {

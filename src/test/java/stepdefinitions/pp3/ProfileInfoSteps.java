@@ -32,7 +32,7 @@ public class ProfileInfoSteps {
     }
 
     @Then("^the user should see the hidden address fields$")
-    public void theUserShouldSeeTheHiddenAddressFields() {
+    public void theUserShouldSeeTheHiddenAddressFields() throws InterruptedException {
         System.out.println("Then the user should see the hidden address fields");
         instanceOf(ProfileInfoPage.class).verifyProfileInfoScreenWithHiddenFields();
     }

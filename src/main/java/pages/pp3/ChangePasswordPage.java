@@ -44,9 +44,10 @@ public class ChangePasswordPage extends EmailPage {
     /**
      * verifyChangePasswordScreen() - Verify Change Password Screen
      */
-    public void verifyChangePasswordScreen() {
+    public void verifyChangePasswordScreen() throws InterruptedException {
         // Wait for screen to load & Ajax to be completed
-        WaitHelpers.waitForPageReady(browser(), 30 );
+        //TODO: WaitHelpers.waitForPageReady(browser(), 30);
+        Thread.sleep(15000);
         // Verify top element for stale state
         WaitHelpers.waitForStaleEl(newPassword);
         WaitHelpers.waitForStaleEl(createNewPasswordTxt);

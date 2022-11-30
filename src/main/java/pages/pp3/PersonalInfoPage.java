@@ -1,7 +1,5 @@
 package pages.pp3;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -54,7 +52,8 @@ public class PersonalInfoPage extends EmailPage {
      */
     public void verifyPersonalInfoScreen() throws InterruptedException {
         // Wait for screen to load & Ajax to be completed
-        WaitHelpers.waitForPageReady(browser(),30);
+        // TODO: WaitHelpers.waitForPageReady(browser(),30);
+        Thread.sleep(15000);
         // Verify top element for stale state
         WaitHelpers.waitForStaleEl(dobPP3);
 
