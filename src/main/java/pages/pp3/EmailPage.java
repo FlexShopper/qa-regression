@@ -9,6 +9,9 @@ import org.testng.Assert;
 import pages.Page;
 import utils.helpers.*;
 import utils.selenium.Settings;
+
+import java.util.List;
+
 import static utils.selenium.Driver.browser;
 
 public class EmailPage extends Page {
@@ -96,7 +99,7 @@ public class EmailPage extends Page {
      */
     public void verifyHeader() {
         // Wait for screen to load & Ajax to be completed
-        waitHelpers.waitForPageReady(browser(),30);
+        WaitHelpers.waitForPageReady(browser(),30);
         elementHelpers.webElementIsDisplayed(headerCloseBtn);
         elementHelpers.webElementIsDisplayed(headerFAQBtn);
     }
@@ -167,8 +170,25 @@ public class EmailPage extends Page {
     public void emailValidationMessage(String validationMsg) {
         //TODO: Move to WebElementHelpers
         WebDriver driver = browser();
-        WebElement validation = driver.findElement(By.cssSelector("span.sc-iELTvK.gbKRND.active"));
-        String validationMsgTxt = validation.getText();
-        Assert.assertEquals("Invalid email address", validationMsgTxt);
+        List<WebElement> spanText = driver.findElements(By.tagName("span"));
+        for(int i = 0; i<spanText.size(); i++){
+            String textFound = spanText.get(i).getText();
+            System.out.println("Value is  ==> " + spanText.get(i).getText());
+            if (textFound.contains("Invalid email address")) {
+                Assert.assertEquals("Invalid email address", spanText.get(i).getText());
+                break;
+            }
+        }
+    }
+
+    /**
+     * emailValidationMessage() - Verifies the customer sees the expected Validation Message
+     */
+    public void emailHTMLValidationMessage(String validationMsg) {
+        //TODO: Move to WebElementHelpers
+        WebDriver driver = browser();
+        WebElement email = driver.findElement(By.name("email"));
+        String htmlvalidationMsg = email.getAttribute("validationMessage");
+        Assert.assertTrue(htmlvalidationMsg.contains(validationMsg));
     }
 }

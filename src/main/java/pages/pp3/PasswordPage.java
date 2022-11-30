@@ -10,6 +10,8 @@ import org.testng.Assert;
 import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 
+import java.util.List;
+
 import static utils.selenium.Driver.browser;
 
 public class PasswordPage extends EmailPage {
@@ -92,16 +94,17 @@ public class PasswordPage extends EmailPage {
     public void passwordValidationMessage(String validationMsg) {
         // Wait for screen to load & Ajax to be completed
         waitHelpers.waitForPageReady(browser(),6);
-
-        //TODO: Move it to WebElementHelpers
+        //TODO: Move to WebElementHelpers
         WebDriver driver = browser();
-        //find the element in selenium webdriver
-        WebElement validationMsgTxt = driver.findElement(By.id(("password-input")));
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        //get the text
-        String validationMessage = (String) jsExecutor.executeScript("return arguments[0].value", validationMsgTxt);
-        System.out.println(validationMessage);
-        Assert.assertEquals("Invalid email or password: please check your details and try again", validationMessage);
+        List<WebElement> spanText = driver.findElements(By.tagName("span"));
+        for(int i = 0; i<spanText.size(); i++){
+            String textFound = spanText.get(i).getText();
+            System.out.println("Value is  ==> " + spanText.get(i).getText());
+            if (textFound.contains(validationMsg)) {
+                Assert.assertEquals(validationMsg, spanText.get(i).getText());
+                break;
+            }
+        }
     }
 
     /**
@@ -111,7 +114,6 @@ public class PasswordPage extends EmailPage {
     public void passwordRequiredMsg(String validationMsg) {
         // Wait for screen to load & Ajax to be completed
         waitHelpers.waitForPageReady(browser(),6);
-
         //TODO: Move it to WebElementHelpers
         WebDriver driver = browser();
         //find the element in selenium webdriver
@@ -120,6 +122,7 @@ public class PasswordPage extends EmailPage {
         //get the text
         String validationMessage = (String) jsExecutor.executeScript("return arguments[0].value", validationMsgTxt);
         System.out.println(validationMessage);
+
         Assert.assertEquals("Required", validationMessage);
     }
 

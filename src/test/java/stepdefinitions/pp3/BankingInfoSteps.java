@@ -3,8 +3,8 @@ package stepdefinitions.pp3;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import pages.pp3.*;
-
 import static pages.Page.instanceOf;
 
 public class BankingInfoSteps {
@@ -62,10 +62,43 @@ public class BankingInfoSteps {
         instanceOf(BankingInfoPage.class).confirmAccountNumber(accountNumber);
     }
 
+    @Then("^the user sees the name of the bank: \"([^\"]*)\"$")
+    public void theUserSeesTheNameOfTheBank(String bankName) {
+        System.out.println("Then the user sees the name of the bank: " + bankName);
+    }
+
+    @When("^the user enters an invalid routing number: \"([^\"]*)\"$")
+    public void theUserEntersAnInvalidRoutingNumber(String routingNumber) {
+        System.out.println("When the user enters an invalid routing number: " + routingNumber);
+    }
+
+    @When("^the user enters an invalid account number: \"([^\"]*)\"$")
+    public void theUserEntersAnInvalidAccountNumber(String accountNumber) {
+        System.out.println("When the user enters an invalid account number: " + accountNumber);
+    }
+
+    @And("^the user enters a non matching account number: \"([^\"]*)\"$")
+    public void theUserEntersANonMatchingAccountNumber(String accountNumber) {
+        System.out.println("When the user enters a non matching account number: " + accountNumber);
+    }
+
+    @Then("^the user should not see the validation message: \"([^\"]*)\"$")
+    public void theUserShouldNotSeeTheValidationMessage(String validationMessage) {
+        System.out.println("Then the user should not see the validation message: " + validationMessage);
+    }
+
     @Then("^the user lands on the Decision Screen with decision: \"([^\"]*)\"$")
     public void theUserLandsOnTheDecisionScreenWithDecision(String decision) throws InterruptedException {
         System.out.println("Then the user lands on the Decision Screen with decision: " + decision);
         instanceOf(DecisionPage.class).verifyDecisionScreen();
         instanceOf(DecisionPage.class).verifyDecision();
+    }
+
+    @And("^the user completes the Personal Info screen$")
+    public void theUserCompletesThePersonalInfoScreen() {
+    }
+
+    @And("^the user completes the Banking Info screen$")
+    public void theUserCompletesTheBankingInfoScreen() {
     }
 }
