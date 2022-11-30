@@ -1,5 +1,6 @@
 # qa-regression
 Automated test cases used to verify that a code change in the software does not impact the existing functionality of the product.
+It allows you to run Cucumber features (tests/scenarios) in multiple browsers simultaneously using Selenium (WebDriver) and TestNG.
 
 # Pre-requisites
 * Java
@@ -24,4 +25,7 @@ Automated test cases used to verify that a code change in the software does not 
   - Use "mvn test" command to run features.
   - Use "mvn clean install" to run features on a clean environment.
   - Use mvn test -Dcucumber.options="classpath:features/my_first.feature" to run specific feature if you have multiple feature files.
+
+# Viewing the results
+All Cucumber reports [html, json, xml, js] are in: target/cucumber-reports
 
