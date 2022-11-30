@@ -116,14 +116,15 @@ public class PasswordPage extends EmailPage {
         waitHelpers.waitForPageReady(browser(),6);
         //TODO: Move it to WebElementHelpers
         WebDriver driver = browser();
-        //find the element in selenium webdriver
-        WebElement validationMsgTxt = driver.findElement(By.id(("password-input")));
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        //get the text
-        String validationMessage = (String) jsExecutor.executeScript("return arguments[0].value", validationMsgTxt);
-        System.out.println(validationMessage);
-
-        Assert.assertEquals("Required", validationMessage);
+        List<WebElement> spanText = driver.findElements(By.tagName("span"));
+        for(int i = 0; i<spanText.size(); i++){
+            String textFound = spanText.get(i).getText();
+            System.out.println("Value is  ==> " + spanText.get(i).getText());
+            if (textFound.contains("Required")) {
+                Assert.assertEquals("Required", spanText.get(i).getText());
+                break;
+            }
+        }
     }
 
     /**

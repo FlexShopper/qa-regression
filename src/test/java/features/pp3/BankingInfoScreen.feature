@@ -71,7 +71,7 @@ Feature: As user I should be able to land on the Banking Info Screen
       | accountNumber | notMatchingAccNumber | validationMsg             | confirmAccNumber |
       | 3333333333    | 9876543210           | Mismatched Account Number | 3333333333       |
 
-  Scenario Outline: The user should land on the Banking info screen
+  Scenario Outline: The user should land on the Decision Screen with an approval decision
     Given the user is on the Banking Info screen with email: "decisionscreen@flexshopper.com"
     And the user enters a valid routing number: "<routingNumber>"
     And the user enters a valid account number: "<accountNumber>"

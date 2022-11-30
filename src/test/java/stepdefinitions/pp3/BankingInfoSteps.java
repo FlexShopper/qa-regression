@@ -96,9 +96,11 @@ public class BankingInfoSteps {
 
     @And("^the user completes the Personal Info screen$")
     public void theUserCompletesThePersonalInfoScreen() {
+        System.out.println("And the user completes the Personal Info screen");
     }
 
     @And("^the user completes the Banking Info screen$")
     public void theUserCompletesTheBankingInfoScreen() {
+        System.out.println("And the user completes the Banking Info screen");
     }
 }

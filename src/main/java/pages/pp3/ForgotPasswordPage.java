@@ -52,7 +52,7 @@ public class ForgotPasswordPage extends EmailPage {
     public void verifyForgotPasswordScreen() {
         // Wait for screen to load & Ajax to be completed
         waitHelpers.waitForPageReady(browser(), 30);
-
+        waitHelpers.waitForStaleEl(flexshopperLogo);
         // TODO: Verify PP3's Header
         elementHelpers.webElementIsDisplayed(flexshopperLogo);
         elementHelpers.webElementIsDisplayed(resetYourPasswordTxt);

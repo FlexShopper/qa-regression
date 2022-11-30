@@ -46,7 +46,7 @@ public class ChangePasswordPage extends EmailPage {
      */
     public void verifyChangePasswordScreen() {
         // Wait for screen to load & Ajax to be completed
-        WaitHelpers.waitForPageReady(browser(), 30 );
+        WaitHelpers.waitForPageReady(browser(), 45 );
         WaitHelpers.waitForStaleEl(createNewPasswordTxt);
         elementHelpers.webElementIsDisplayed(createNewPasswordTxt);
         elementHelpers.webElementIsDisplayed(emailValueTxt);

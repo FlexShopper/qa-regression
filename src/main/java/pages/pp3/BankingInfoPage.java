@@ -40,7 +40,7 @@ public class BankingInfoPage extends EmailPage {
     /**
      * verifyBankingInfoPage() - Verify PP3's Banking Info Screen
      */
-    public void verifyBankingInfoPage() throws InterruptedException {
+    public void verifyBankingInfoPage() {
         // Wait for screen to load & Ajax to be completed
         WaitHelpers.waitForPageReady(browser(),30);
 

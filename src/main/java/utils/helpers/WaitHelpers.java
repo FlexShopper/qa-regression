@@ -14,7 +14,7 @@ public class WaitHelpers {
      */
     public static void waitForStaleEl(WebElement element) {
         int y = 0;
-        while (y <= 25) {
+        while (y <= 30) {
             try {
                 element.isDisplayed();
                 break;
