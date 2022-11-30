@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import utils.helpers.RetrieveEmailVerificationCode;
-
+import utils.helpers.WaitHelpers;
 import static utils.selenium.Driver.browser;
 
 public class VerificationCodePage extends EmailPage {
@@ -34,8 +34,11 @@ public class VerificationCodePage extends EmailPage {
      */
     public void verifyVerificationCodeScreen() {
         // Wait for screen to load & Ajax to be completed
-        waitHelpers.waitForPageReady(browser(),10);
+        WaitHelpers.waitForPageReady(browser(),10);
+        // Verify top element for stale state
+        WaitHelpers.waitForStaleEl(securityCode);
 
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(codeSentTxt);
         elementHelpers.webElementIsDisplayed(enterCodeTxt);
         elementHelpers.webElementIsDisplayed(emailTxt);

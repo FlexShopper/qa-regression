@@ -65,42 +65,30 @@ public class BankingInfoSteps {
     @Then("^the user sees the name of the bank: \"([^\"]*)\"$")
     public void theUserSeesTheNameOfTheBank(String bankName) {
         System.out.println("Then the user sees the name of the bank: " + bankName);
+        instanceOf(BankingInfoPage.class).bankNameMsg(bankName);
     }
 
     @When("^the user enters an invalid routing number: \"([^\"]*)\"$")
     public void theUserEntersAnInvalidRoutingNumber(String routingNumber) {
         System.out.println("When the user enters an invalid routing number: " + routingNumber);
+        instanceOf(BankingInfoPage.class).enterRoutingNumber(routingNumber);
     }
 
     @When("^the user enters an invalid account number: \"([^\"]*)\"$")
     public void theUserEntersAnInvalidAccountNumber(String accountNumber) {
         System.out.println("When the user enters an invalid account number: " + accountNumber);
+        instanceOf(BankingInfoPage.class).enterAccountNumber(accountNumber);
     }
 
     @And("^the user enters a non matching account number: \"([^\"]*)\"$")
-    public void theUserEntersANonMatchingAccountNumber(String accountNumber) {
-        System.out.println("When the user enters a non matching account number: " + accountNumber);
+    public void theUserEntersANonMatchingAccountNumber(String confirmAccNumber) {
+        System.out.println("When the user enters a non matching account number: " + confirmAccNumber);
+        instanceOf(BankingInfoPage.class).confirmAccountNumber(confirmAccNumber);
     }
 
     @Then("^the user should not see the validation message: \"([^\"]*)\"$")
     public void theUserShouldNotSeeTheValidationMessage(String validationMessage) {
         System.out.println("Then the user should not see the validation message: " + validationMessage);
-    }
-
-    @Then("^the user lands on the Decision Screen with decision: \"([^\"]*)\"$")
-    public void theUserLandsOnTheDecisionScreenWithDecision(String decision) throws InterruptedException {
-        System.out.println("Then the user lands on the Decision Screen with decision: " + decision);
-        instanceOf(DecisionPage.class).verifyDecisionScreen();
-        instanceOf(DecisionPage.class).verifyDecision();
-    }
-
-    @And("^the user completes the Personal Info screen$")
-    public void theUserCompletesThePersonalInfoScreen() {
-        System.out.println("And the user completes the Personal Info screen");
-    }
-
-    @And("^the user completes the Banking Info screen$")
-    public void theUserCompletesTheBankingInfoScreen() {
-        System.out.println("And the user completes the Banking Info screen");
+        //TODO: Assert Validation message is not displayed
     }
 }

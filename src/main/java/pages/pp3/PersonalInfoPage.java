@@ -6,9 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import utils.helpers.WaitHelpers;
-
-import java.util.List;
-
 import static utils.selenium.Driver.browser;
 
 public class PersonalInfoPage extends EmailPage {
@@ -58,8 +55,11 @@ public class PersonalInfoPage extends EmailPage {
     public void verifyPersonalInfoScreen() throws InterruptedException {
         // Wait for screen to load & Ajax to be completed
         WaitHelpers.waitForPageReady(browser(),30);
+        // Verify top element for stale state
+        WaitHelpers.waitForStaleEl(dobPP3);
 
         // TODO: Verify PP3's Header
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(profileInfoTab);
         elementHelpers.webElementIsDisplayed(personalInfoTab);
         elementHelpers.webElementIsDisplayed(dobPP3);

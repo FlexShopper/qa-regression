@@ -88,8 +88,11 @@ public class ProfileInfoPage extends EmailPage {
     public void verifyProfileInfoScreen() {
         // Wait for screen to load & Ajax to be completed
         WaitHelpers.waitForPageReady(browser(),30);
+        // Verify top element for stale state
+        WaitHelpers.waitForStaleEl(firstName);
 
         // TODO: Verify PP3's Header
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(profileInfoTab);
         // TODO: elementHelpers.weElementIsDisplayed(emailAddressTxt);
         elementHelpers.webElementIsDisplayed(notYouBtn);
@@ -107,6 +110,12 @@ public class ProfileInfoPage extends EmailPage {
      * verifyProfileInfoScreenWithHiddenFields() - Verify PP3's Profile Info Screen showing hidden address fields
      */
     public void verifyProfileInfoScreenWithHiddenFields() {
+        // Wait for screen to load & Ajax to be completed
+        WaitHelpers.waitForPageReady(browser(),30);
+        // Verify top element for stale state
+        WaitHelpers.waitForStaleEl(city);
+
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(profileInfoTab);
         // TODO: elementHelpers.weElementIsDisplayed(emailAddressTxt);
         elementHelpers.webElementIsDisplayed(notYouBtn);

@@ -3,6 +3,7 @@ package pages.pp3;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 import static org.testng.Assert.assertTrue;
 import static utils.selenium.Driver.browser;
@@ -51,9 +52,10 @@ public class ForgotPasswordPage extends EmailPage {
      */
     public void verifyForgotPasswordScreen() {
         // Wait for screen to load & Ajax to be completed
-        waitHelpers.waitForPageReady(browser(), 30);
-        waitHelpers.waitForStaleEl(flexshopperLogo);
+        WaitHelpers.waitForPageReady(browser(), 30);
+        WaitHelpers.waitForStaleEl(flexshopperLogo);
         // TODO: Verify PP3's Header
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(flexshopperLogo);
         elementHelpers.webElementIsDisplayed(resetYourPasswordTxt);
         elementHelpers.webElementIsDisplayed(passwordResetOptionsTxt);

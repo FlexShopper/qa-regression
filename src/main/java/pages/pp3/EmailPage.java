@@ -100,6 +100,10 @@ public class EmailPage extends Page {
     public void verifyHeader() {
         // Wait for screen to load & Ajax to be completed
         WaitHelpers.waitForPageReady(browser(),30);
+        // Verify top element for stale state
+        WaitHelpers.waitForStaleEl(headerCloseBtn);
+        WaitHelpers.waitForStaleEl(headerFAQBtn);
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(headerCloseBtn);
         elementHelpers.webElementIsDisplayed(headerFAQBtn);
     }
@@ -108,6 +112,7 @@ public class EmailPage extends Page {
      * Verify PP3's Email Screen
      */
     public void verifyEmailScreen() {
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(flexshopperLogo);
         elementHelpers.webElementIsDisplayed(enterEmailTxt);
         elementHelpers.webElementIsDisplayed(welcomeTxt);
@@ -119,6 +124,7 @@ public class EmailPage extends Page {
      * Verify PP3's Footer
      */
     public void verifyFooter() {
+        // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(flexUSPattenNumber);
         elementHelpers.webElementIsDisplayed(flexCopyright);
         elementHelpers.webElementIsDisplayed(footerAccessibilityBtn);
