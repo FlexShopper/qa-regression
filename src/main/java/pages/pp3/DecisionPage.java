@@ -37,8 +37,6 @@ public class DecisionPage extends EmailPage {
         // Wait for screen to load & Ajax to be completed
         // TODO: WaitHelpers.waitForPageReady(browser(), 120);
         Thread.sleep(120000);
-        // Verify top element for stale state
-        WaitHelpers.waitForStaleEl(decisionTitleTxt);
         // TODO: Verify PP3's Header
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(decisionTitleTxt);

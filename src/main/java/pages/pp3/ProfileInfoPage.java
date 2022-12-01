@@ -1,13 +1,16 @@
 package pages.pp3;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
 import utils.helpers.WaitHelpers;
 
-import static utils.selenium.Driver.browser;
+import java.util.List;
 
+import static utils.selenium.Driver.browser;
 
 public class ProfileInfoPage extends EmailPage {
     /**
@@ -37,7 +40,7 @@ public class ProfileInfoPage extends EmailPage {
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div/div/div/form/div/div[5]/div/div[2]/div[2]/ul")
     private WebElement suggestedAddresses;
 
-    @FindBy(how = How.ID, using = "enterManualLink")
+    @FindBy(how = How.XPATH, using = "//*[@id=\"enterManualLink\"]")
     private WebElement enterManualLink;
 
     @FindBy(how = How.ID, using = "street2-input")
@@ -200,6 +203,7 @@ public class ProfileInfoPage extends EmailPage {
      */
     public void clickOnEnterAddressManuallyLnk(){
         elementHelpers.webClickJSExecutor(enterManualLink);
+
     }
 
     /**
