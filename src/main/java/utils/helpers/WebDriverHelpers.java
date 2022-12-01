@@ -3,6 +3,7 @@ package utils.helpers;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.List;
 import static utils.selenium.Driver.browser;
 import static utils.selenium.Settings.wdHighlightedColour;
 
@@ -28,6 +29,29 @@ public class WebDriverHelpers {
     public WebElement wdFindElement(By locator) {
         wdElementIsDisplayed(locator);
         return browser().findElement(locator);
+    }
+
+    public void wdIsElementFound(By locator, int timeout) {
+        WebDriver driver = browser();
+        List<WebElement> dynamicElement = driver.findElements(locator);
+        try{
+            for (int i=0; i<timeout; i++) {
+                if(dynamicElement.size() != 0){
+                    //If list size is non-zero, element is present
+                    System.out.println("Element was found");
+                    break;
+                }
+                else{
+                    //Else if size is 0, then element is not present
+                    Thread.sleep(1000);
+                    //System.out.println("Element not present");
+                }
+            }
+        } catch(NoSuchElementException e){
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void wdClick(By locator) {

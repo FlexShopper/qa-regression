@@ -234,7 +234,8 @@ The 'selenium' package contains our core WebDriver setup and DriverController in
 Run one of the following commands:
   - Use "mvn test" command to run features.
   - Use "mvn clean install" to run features on a clean environment.
-  - Use mvn test -Dcucumber.options="classpath:features/my_first.feature" to run specific feature if you have multiple feature files.
+  - Use mvn test -Dcucumber.options="classpath:features/EmailScreen.feature" to run specific feature if you have multiple feature files.
+  - Use mvn test -Dcucumber.options=“--tags @tag Name” to run a specific tag. Example: mvn test -Dcucumber.options=“--tags @Email” to run all the test scenarios from the EmailScreen feature file.
 
 * From the IntelliJ IDE UI
   - Right-click on the class 'TestRunner' (path to the class: \src\test\java)
