@@ -111,7 +111,7 @@ IntelliJ IDEA is a Java IDE for developing computer software.  It is developed b
   - Keep clicking 'Next' without changing anything on the following screens in the wizard
   - Click 'Start using IntelliJ IDEA'
 
-# Install IntelliJ Plugins
+# Install IntelliJ IDEA Plugins
 Follow the instructions found here: https://www.jetbrains.com/help/idea/managing-plugins.html to install from Marketplace the plug ins.
   - Launch IntelliJ IDEA
   - Press Ctrl+Alt+S to open the IDE settings and select Plugins
@@ -124,7 +124,36 @@ Follow the instructions found here: https://www.jetbrains.com/help/idea/managing
         TestNG
         GitHub
   - To install a specific version, go to the plugin page in the JetBrains Plugin Repository, download and install it as described in Install plugin from disk. For example, you can do it if the most recent version of the plugin is broken.
-  
+
+# Familiarize yourself with Intellij IDEA
+Feel free to spend some time learning about IntelliJ IDEA here: https://www.jetbrains.com/help/idea/getting-started.html
+
+# Packages & Directory Structure
+The framework include the following packages and sub-packages:
+  - # src\main\java
+  - src\main\java\pages
+  - src\main\java\utils
+  - *src\main\java\utils\drivers
+  - *src\main\java\utils\helpers
+  - *src\main\java\utils\selenium
+  - # src\test\java
+  - *src\test\java\features
+  - *src\test\java\hooks
+  - *src\test\java\stepdefinitions
+  - # src\test\resouces
+
+# Files in each Package/Directory:
+
+* Features folder
+Feature files is what Cucumber uses to write BDD scenarios using Gherkin language. The test scenarios are defined here. Currently, the test scenarios for FlexShopper PP3 can be found under the sub-package: 
+      features/pp3.
+
+* Pages package
+The 'pages' package will contain all the class files for our web pages/page objects. Currently, the pages for FlexShopper PP3. FlexShopper UI and MyFlexlending UI can be found under the sub-packages: 
+      pages/pp3
+      pages/flexshopper and
+      pages/myflexshopper
+
 # Running features
   - Goto project directory.
   - Use "mvn test" command to run features.
