@@ -130,29 +130,69 @@ Feel free to spend some time learning about IntelliJ IDEA here: https://www.jetb
 
 # Packages & Directory Structure
 The framework include the following packages and sub-packages:
-  - # src\main\java
+  # src\main\java
   - src\main\java\pages
   - src\main\java\utils
-  - *src\main\java\utils\drivers
-  - *src\main\java\utils\helpers
-  - *src\main\java\utils\selenium
-  - # src\test\java
+  - src\main\java\utils\drivers
+  - src\main\java\utils\helpers
+  - src\main\java\utils\selenium
+  # src\test\java
   - *src\test\java\features
   - *src\test\java\hooks
   - *src\test\java\stepdefinitions
-  - # src\test\resouces
+  # src\test\resouces
 
 # Files in each Package/Directory:
 
-* Features folder
-Feature files is what Cucumber uses to write BDD scenarios using Gherkin language. The test scenarios are defined here. Currently, the test scenarios for FlexShopper PP3 can be found under the sub-package: 
-      features/pp3.
+* Features package
+Feature files is what Cucumber uses to write BDD scenarios using Gherkin language. The test scenarios are defined here. Currently, the test scenarios for FlexShopper PP3, FlexShopper UI and MyFlexlending UI can be found under the sub-packages: 
+      features/pp3
+      features/flexshopper
+      features/myflexshopper
 
 * Pages package
-The 'pages' package will contain all the class files for our web pages/page objects. Currently, the pages for FlexShopper PP3. FlexShopper UI and MyFlexlending UI can be found under the sub-packages: 
+The 'pages' package will contain all the class files for our web pages/page objects. Currently, the pages for FlexShopper PP3, FlexShopper UI and MyFlexlending UI can be found under the sub-packages: 
       pages/pp3
-      pages/flexshopper and
+      pages/flexshopper
       pages/myflexshopper
+      
+* Step Definitions package
+The steps package will contain all our step definition classes, which will contain our step definitions/glue which links our steps in our test scenarios to the java methods which perform different actions. Currently, the step definitionss for FlexShopper PP3, FlexShopper UI and MyFlexlending UI can be found under the sub-packages: 
+      stepdefinitions/pp3
+      stepdefinitions/flexshopper
+      stepdefinitions/myflexshopper
+      
+* Utils package
+The 'utils' package contains sub-packages and utility classes.
+
+* Drivers package
+The 'drivers' package contains class files for all the different WebDrivers our test framework uses:
+      ChromeWebDriver
+      FirefoxWebDriver
+      AppiumDriver
+
+* Helpers package
+The 'helpers' package will contain class files for all our static methods which can act as helpers to our existing functionality. Currently, the following classes can be found under this package:
+      WebDriverHelpers
+      WebElementHelpers
+      SelectHelpers
+      WaitHelpers
+      ManageEmailTestAddresses
+      RetrieveEmailVerificationCode
+
+* Hooks package
+The 'hooks' package contains classes for all the different hooks we can run before and/or after test runs/suites/scenarios etc.:
+     CucumberHooks
+     StepHooks
+     TestRunHooks
+
+* Selenium package
+The 'selenium' package contains our core WebDriver setup and DriverController instance, as well as a Settings class where we can list public static variables to be used in our project:
+     Driver
+     DriverController
+     Settings
+     
+# Clonning Project     
 
 # Running features
   - Goto project directory.
