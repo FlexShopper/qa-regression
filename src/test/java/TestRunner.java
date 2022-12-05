@@ -3,7 +3,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
         features = "src/test/java/features",
-        glue = {"hooks", "runners", "stepdefinitions"},
+        glue = {"hooks", "stepdefinitions"},
         tags = "@Email",
         plugin = {"html:target/cucumber-reports/cucumberTestReport.html",
                 "json:target/cucumber-reports/CucumberTestReport.json",
