@@ -1,14 +1,12 @@
-import io.cucumber.testng.AbstractTestNGCucumberTests;
-import io.cucumber.testng.CucumberOptions;
+import io.cucumber.testng.*;
 
 @CucumberOptions(
         features = "src/test/java/features",
         glue = {"hooks", "stepdefinitions"},
-        tags = "@Email",
-        plugin = {"html:target/cucumber-reports/cucumberTestReport.html",
+        tags = "@PP3",
+        plugin = {"html:target/cucumber-reports/cucumber-pretty",
                 "json:target/cucumber-reports/CucumberTestReport.json",
-                "rerun:target/cucumber-reports/rerun.txt",
-                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
+                "rerun:target/cucumber-reports/rerun.txt"},
         monochrome = true)
 public class TestRunner extends AbstractTestNGCucumberTests {
 
