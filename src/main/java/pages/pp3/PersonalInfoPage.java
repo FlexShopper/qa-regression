@@ -1,13 +1,9 @@
 package pages.pp3;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-
-import java.util.List;
-
+import utils.helpers.WaitHelpers;
 import static utils.selenium.Driver.browser;
 
 public class PersonalInfoPage extends EmailPage {
@@ -54,10 +50,15 @@ public class PersonalInfoPage extends EmailPage {
     /**
      * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
      */
-    public void verifyPersonalInfoScreen() {
-        waitHelpers.waitPageToLoad(6);
+    public void verifyPersonalInfoScreen() throws InterruptedException {
+        // Wait for screen to load & Ajax to be completed
+        // TODO: WaitHelpers.waitForPageReady(browser(),30);
+        Thread.sleep(15000);
+        // Verify top element for stale state
+        WaitHelpers.waitForStaleEl(dobPP3);
+
         // TODO: Verify PP3's Header
-        // TODO: Verify PP3's Footer
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(profileInfoTab);
         elementHelpers.webElementIsDisplayed(personalInfoTab);
         elementHelpers.webElementIsDisplayed(dobPP3);
@@ -69,6 +70,7 @@ public class PersonalInfoPage extends EmailPage {
         //TODO: elementHelpers.webElementIsDisplayed(telemarketingCheckBox);
         //TODO: elementHelpers.webElementIsDisplayed(telemarketingTxt);
         elementHelpers.webElementIsDisplayed(continueBtn);
+        // TODO: Verify PP3's Footer
     }
 
     /**

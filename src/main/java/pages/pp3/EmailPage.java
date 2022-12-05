@@ -1,7 +1,6 @@
 package pages.pp3;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +9,7 @@ import org.testng.Assert;
 import pages.Page;
 import utils.helpers.*;
 import utils.selenium.Settings;
+import java.util.List;
 import static utils.selenium.Driver.browser;
 
 public class EmailPage extends Page {
@@ -96,7 +96,12 @@ public class EmailPage extends Page {
      * Verify PP3's Header
      */
     public void verifyHeader() {
-        WaitHelpers.waitPageToLoad(6);
+        // Wait for screen to load & Ajax to be completed
+        WaitHelpers.waitForPageReady(browser(),30);
+        // Verify top element for stale state
+        WaitHelpers.waitForStaleEl(headerCloseBtn);
+        WaitHelpers.waitForStaleEl(headerFAQBtn);
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(headerCloseBtn);
         elementHelpers.webElementIsDisplayed(headerFAQBtn);
     }
@@ -105,6 +110,7 @@ public class EmailPage extends Page {
      * Verify PP3's Email Screen
      */
     public void verifyEmailScreen() {
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(flexshopperLogo);
         elementHelpers.webElementIsDisplayed(enterEmailTxt);
         elementHelpers.webElementIsDisplayed(welcomeTxt);
@@ -116,6 +122,7 @@ public class EmailPage extends Page {
      * Verify PP3's Footer
      */
     public void verifyFooter() {
+        // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(flexUSPattenNumber);
         elementHelpers.webElementIsDisplayed(flexCopyright);
         elementHelpers.webElementIsDisplayed(footerAccessibilityBtn);
@@ -165,9 +172,27 @@ public class EmailPage extends Page {
      * emailValidationMessage() - Verifies the customer sees the expected Validation Message
      */
     public void emailValidationMessage(String validationMsg) {
+        //TODO: Move to WebElementHelpers
         WebDriver driver = browser();
-        WebElement validation = driver.findElement(By.cssSelector("span.sc-iELTvK.gbKRND.active"));
-        String validationMsgTxt = validation.getText();
-        Assert.assertEquals("Invalid email address", validationMsgTxt);
+        List<WebElement> spanText = driver.findElements(By.tagName("span"));
+        for(int i = 0; i<spanText.size(); i++){
+            String textFound = spanText.get(i).getText();
+            System.out.println("Value is  ==> " + spanText.get(i).getText());
+            if (textFound.contains("Invalid email address")) {
+                Assert.assertEquals("Invalid email address", spanText.get(i).getText());
+                break;
+            }
+        }
+    }
+
+    /**
+     * emailValidationMessage() - Verifies the customer sees the expected Validation Message
+     */
+    public void emailHTMLValidationMessage(String validationMsg) {
+        //TODO: Move to WebElementHelpers
+        WebDriver driver = browser();
+        WebElement email = driver.findElement(By.name("email"));
+        String htmlvalidationMsg = email.getAttribute("validationMessage");
+        Assert.assertTrue(htmlvalidationMsg.contains(validationMsg));
     }
 }

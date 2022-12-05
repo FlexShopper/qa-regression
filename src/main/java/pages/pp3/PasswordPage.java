@@ -10,6 +10,8 @@ import org.testng.Assert;
 import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 
+import java.util.List;
+
 import static utils.selenium.Driver.browser;
 
 public class PasswordPage extends EmailPage {
@@ -54,8 +56,14 @@ public class PasswordPage extends EmailPage {
     /**
      * verifyPasswordScreen() - Verifies user landed on the Password screen
      */
-    public void verifyPasswordScreen() {
-        WaitHelpers.waitPageToLoad(6);
+    public void verifyPasswordScreen() throws InterruptedException {
+        // Wait for screen to load & Ajax to be completed
+        //TODO: WaitHelpers.waitForPageReady(browser(),30);
+        Thread.sleep(15000);
+        // Verify top element for stale state
+        WaitHelpers.waitForStaleEl(passwordField);
+        // TODO: Verify PP3's Header
+        // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(flexshopperLogo);
         // TODO: elementHelpers.webElementIsDisplayed(existingCustomerTxt);
         elementHelpers.webElementIsDisplayed(enterPasswordTxt);
@@ -64,6 +72,7 @@ public class PasswordPage extends EmailPage {
         elementHelpers.webElementIsDisplayed(passwordField);
         elementHelpers.webElementIsDisplayed(forgotPasswordLnk);
         elementHelpers.webElementIsDisplayed(signInBtn);
+        // TODO: Verify PP3's Footer
     }
 
     /**
@@ -86,17 +95,19 @@ public class PasswordPage extends EmailPage {
      * @param validationMsg
      */
     public void passwordValidationMessage(String validationMsg) {
-        WaitHelpers.waitPageToLoad(6);
-
-        //TODO: Move it to WebElementHelpers
+        // Wait for screen to load & Ajax to be completed
+        WaitHelpers.waitForPageReady(browser(),6);
+        //TODO: Move to WebElementHelpers
         WebDriver driver = browser();
-        //find the element in selenium webdriver
-        WebElement validationMsgTxt = driver.findElement(By.id(("password-input")));
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        //get the text
-        String validationMessage = (String) jsExecutor.executeScript("return arguments[0].value", validationMsgTxt);
-        System.out.println(validationMessage);
-        Assert.assertEquals("Invalid email or password: please check your details and try again", validationMessage);
+        List<WebElement> spanText = driver.findElements(By.tagName("span"));
+        for(int i = 0; i<spanText.size(); i++){
+            String textFound = spanText.get(i).getText();
+            System.out.println("Value is  ==> " + spanText.get(i).getText());
+            if (textFound.contains(validationMsg)) {
+                Assert.assertEquals(validationMsg, spanText.get(i).getText());
+                break;
+            }
+        }
     }
 
     /**
@@ -104,17 +115,19 @@ public class PasswordPage extends EmailPage {
      * @param validationMsg
      */
     public void passwordRequiredMsg(String validationMsg) {
-        WaitHelpers.waitPageToLoad(6);
-
+        // Wait for screen to load & Ajax to be completed
+        WaitHelpers.waitForPageReady(browser(),6);
         //TODO: Move it to WebElementHelpers
         WebDriver driver = browser();
-        //find the element in selenium webdriver
-        WebElement validationMsgTxt = driver.findElement(By.id(("password-input")));
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        //get the text
-        String validationMessage = (String) jsExecutor.executeScript("return arguments[0].value", validationMsgTxt);
-        System.out.println(validationMessage);
-        Assert.assertEquals("Required", validationMessage);
+        List<WebElement> spanText = driver.findElements(By.tagName("span"));
+        for(int i = 0; i<spanText.size(); i++){
+            String textFound = spanText.get(i).getText();
+            System.out.println("Value is  ==> " + spanText.get(i).getText());
+            if (textFound.contains("Required")) {
+                Assert.assertEquals("Required", spanText.get(i).getText());
+                break;
+            }
+        }
     }
 
     /**

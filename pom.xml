@@ -9,9 +9,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <MavenCompiler.version>3.8.1</MavenCompiler.version>
     </properties>
 
     <dependencies>
@@ -19,7 +19,7 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>4.8.0</version>
+            <version>6.9.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -31,7 +31,7 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
-            <version>4.8.0</version>
+            <version>6.9.1</version>
             <scope>compile</scope>
             <exclusions>
                 <exclusion>
@@ -44,13 +44,19 @@
         <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
-            <version>3.8.0</version>
+            <version>5.7.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>3.8.5</version>
         </dependency>
         <!-- Extent Reports -->
         <dependency>
-            <groupId>com.aventstack</groupId>
-            <artifactId>extentreports-testng-adapter</artifactId>
-            <version>1.2.2</version>
+            <groupId>tech.grasshopper</groupId>
+            <artifactId>extentreports-cucumber6-adapter</artifactId>
+            <version>2.14.3</version>
+            <scope>test</scope>
         </dependency>
         <!-- TestNG -->
         <dependency>
@@ -125,6 +131,32 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>5.7.4</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>FlexShopperFramework</projectName>
+                            <skip>false</skip>
+                            <outputDirectory>${project.build.directory}/target/cucumber-reports</outputDirectory>
+                            <inputDirectory>${project.build.directory}/target/cucumber-reports</inputDirectory>
+                            <jsonFiles>
+                                <param>**/*.json</param>
+                            </jsonFiles>
+                            <mergeFeaturesById>false</mergeFeaturesById>
+                            <mergeFeaturesWithRetest>false</mergeFeaturesWithRetest>
+                            <checkBuildResult>false</checkBuildResult>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>com.github.temyers</groupId>
                 <artifactId>cucumber-jvm-parallel-plugin</artifactId>
                 <version>5.0.0</version>
@@ -161,7 +193,7 @@
                 <configuration>
                     <!-- Number of forks we run concurrently. -->
                     <!-- Example: One per feature file. -->
-                    <forkCount>1</forkCount>
+                    <forkCount>4</forkCount>
                     <reuseForks>true</reuseForks>
                     <includes>
                         <include>**/**/TestRunner*.class</include>

@@ -6,7 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
+import utils.helpers.WaitHelpers;
+
 import java.util.List;
+
 import static utils.selenium.Driver.browser;
 
 public class ProfileInfoPage extends EmailPage {
@@ -37,7 +40,7 @@ public class ProfileInfoPage extends EmailPage {
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div/div/div/form/div/div[5]/div/div[2]/div[2]/ul")
     private WebElement suggestedAddresses;
 
-    @FindBy(how = How.ID, using = "enterManualLink")
+    @FindBy(how = How.XPATH, using = "//*[@id=\"enterManualLink\"]")
     private WebElement enterManualLink;
 
     @FindBy(how = How.ID, using = "street2-input")
@@ -85,10 +88,15 @@ public class ProfileInfoPage extends EmailPage {
     /**
      * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
      */
-    public void verifyProfileInfoScreen() {
-        waitHelpers.waitPageToLoad(6);
+    public void verifyProfileInfoScreen() throws InterruptedException {
+        // Wait for screen to load & Ajax to be completed
+        //TODO: WaitHelpers.waitForPageReady(browser(),30);
+        Thread.sleep(30000);
+        // Verify top element for stale state
+        WaitHelpers.waitForStaleEl(firstName);
+
         // TODO: Verify PP3's Header
-        // TODO: Verify PP3's Footer
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(profileInfoTab);
         // TODO: elementHelpers.weElementIsDisplayed(emailAddressTxt);
         elementHelpers.webElementIsDisplayed(notYouBtn);
@@ -99,12 +107,20 @@ public class ProfileInfoPage extends EmailPage {
         elementHelpers.webElementIsDisplayed(enterManualLink);
         // TODO: elementHelpers.weElementIsDisplayed(signMeUpBtn);
         elementHelpers.webElementIsDisplayed(continueBtn);
+        // TODO: Verify PP3's Footer
     }
 
     /**
      * verifyProfileInfoScreenWithHiddenFields() - Verify PP3's Profile Info Screen showing hidden address fields
      */
-    public void verifyProfileInfoScreenWithHiddenFields() {
+    public void verifyProfileInfoScreenWithHiddenFields() throws InterruptedException {
+        // Wait for screen to load & Ajax to be completed
+        //TODO: WaitHelpers.waitForPageReady(browser(),30);
+        Thread.sleep(15000);
+        // Verify top element for stale state
+        WaitHelpers.waitForStaleEl(city);
+
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(profileInfoTab);
         // TODO: elementHelpers.weElementIsDisplayed(emailAddressTxt);
         elementHelpers.webElementIsDisplayed(notYouBtn);
@@ -187,6 +203,7 @@ public class ProfileInfoPage extends EmailPage {
      */
     public void clickOnEnterAddressManuallyLnk(){
         elementHelpers.webClickJSExecutor(enterManualLink);
+
     }
 
     /**

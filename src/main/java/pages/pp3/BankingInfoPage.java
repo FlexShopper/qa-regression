@@ -1,9 +1,14 @@
 package pages.pp3;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-
+import org.testng.Assert;
+import utils.helpers.WaitHelpers;
+import java.util.List;
+import static utils.selenium.Driver.browser;
 public class BankingInfoPage extends EmailPage {
     /**
      * Elements - PP3's Banking Info Screen
@@ -37,17 +42,22 @@ public class BankingInfoPage extends EmailPage {
     /**
      * verifyBankingInfoPage() - Verify PP3's Banking Info Screen
      */
-    public void verifyBankingInfoPage() {
-        waitHelpers.waitPageToLoad(10);
+    public void verifyBankingInfoPage() throws InterruptedException {
+        // Wait for screen to load & Ajax to be completed
+        // TODO: WaitHelpers.waitForPageReady(browser(),30);
+        Thread.sleep(15000);
+        // Verify top element for stale state
+        // TODO: WaitHelpers.waitForStaleEl(routingNumberPP3);
         // TODO: Verify PP3's Header
-        // TODO: Verify PP3's Footer
+        // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(profileInfoTab);
         // TODO: elementHelpers.webElementIsDisplayed(personalInfoTab);
-        elementHelpers.webElementIsDisplayed(bankingInfoTab);
+        // TODO: elementHelpers.webElementIsDisplayed(bankingInfoTab);
         elementHelpers.webElementIsDisplayed(routingNumberPP3);
         elementHelpers.webElementIsDisplayed(accountNumberPP3);
         elementHelpers.webElementIsDisplayed(confirmAccountNumberPP3);
-        // TODO: elementHelpers.webElementIsDisplayed(submitBtn);
+        // TODO: elementHelpers.webElementIsDisplayed(submitBtn); ==> Need to scroll down first!
+        // TODO: Verify PP3's Footer
     }
 
     /**
@@ -72,5 +82,25 @@ public class BankingInfoPage extends EmailPage {
      */
     public void confirmAccountNumber(String confirmAccountNumber) {
         elementHelpers.webSendKeys(confirmAccountNumberPP3, confirmAccountNumber, true);
+    }
+
+    /**
+     * bankNameMsg() - Verifies the customer sees the name of the bank matching the routing number entered
+     * @param bankName
+     */
+    public void bankNameMsg(String bankName) {
+        // Wait for screen to load & Ajax to be completed
+        waitHelpers.waitForPageReady(browser(),6);
+        //TODO: Move it to WebElementHelpers
+        WebDriver driver = browser();
+        List<WebElement> spanText = driver.findElements(By.tagName("span"));
+        for(int i = 0; i<spanText.size(); i++){
+            String textFound = spanText.get(i).getText();
+            System.out.println("Value is  ==> " + spanText.get(i).getText());
+            if (textFound.contains(bankName)) {
+                Assert.assertEquals(bankName, spanText.get(i).getText());
+                break;
+            }
+        }
     }
 }

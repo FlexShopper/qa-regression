@@ -1,5 +1,6 @@
 package stepdefinitions.pp3;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -61,7 +62,7 @@ public class ForgotPasswordSteps extends Page {
     }
 
     @Then("^the user lands on the Change Password screen$")
-    public void theUserLandsOnTheChangePasswordScreen() {
+    public void theUserLandsOnTheChangePasswordScreen() throws InterruptedException {
         System.out.println("Then the user lands on the Change Password screen");
         // Verify user landed on the PP3's Change Password screen
         //TODO: instanceOf(EmailPage.class).verifyHeader();
@@ -76,7 +77,7 @@ public class ForgotPasswordSteps extends Page {
     }
 
     @Then("^the user lands on the Forgot Password screen$")
-    public void theUserLandsOnTheForgotPasswordScreen() {
+    public void theUserLandsOnTheForgotPasswordScreen() throws InterruptedException {
         System.out.println("Then the user lands on the Forgot Password screen");
         // Verify user landed on the PP3's Forgot Password screen
         instanceOf(EmailPage.class).verifyHeader();

@@ -1,18 +1,15 @@
-import com.aventstack.extentreports.testng.listener.ExtentITestListenerAdapter;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
-import org.testng.annotations.Listeners;
 
 @CucumberOptions(
         features = "src/test/java/features",
         glue = {"hooks", "runners", "stepdefinitions"},
-        tags = "@PP3",
-        plugin = {"html:target/cucumber-reports/cucumber-pretty",
+        tags = "@Email",
+        plugin = {"html:target/cucumber-reports/cucumberTestReport.html",
                 "json:target/cucumber-reports/CucumberTestReport.json",
-                "rerun:target/cucumber-reports/rerun.txt"},
+                "rerun:target/cucumber-reports/rerun.txt",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
         monochrome = true)
-@Listeners({ExtentITestListenerAdapter.class})
 public class TestRunner extends AbstractTestNGCucumberTests {
-
 
 }
