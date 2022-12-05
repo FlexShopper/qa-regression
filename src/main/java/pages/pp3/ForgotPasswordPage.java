@@ -3,9 +3,11 @@ package pages.pp3;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
+import static utils.selenium.Driver.browser;
 
 public class ForgotPasswordPage extends EmailPage {
     protected WebElementHelpers elementHelpers = new WebElementHelpers();
@@ -20,36 +22,42 @@ public class ForgotPasswordPage extends EmailPage {
     private WebElement resetYourPasswordTxt;
 
     @FindBy(how = How.XPATH, using = "//p[(.)='Please choose one of the options below:']")
-    public WebElement passwordResetOptionsTxt;
+    private WebElement passwordResetOptionsTxt;
 
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div[2]/div/div/label[1]/div[1]")
-    public WebElement emailRadioBtn;
+    private WebElement emailRadioBtn;
 
     @FindBy(how = How.XPATH, using = "//span[(.)='Send email to:']")
-    public WebElement sendEmailToTxt;
+    private WebElement sendEmailToTxt;
 
     @FindBy(how = How.CSS, using = "span.sc-gVyKpa.dgqWCN")
-    public WebElement emailValueTxt;
+    private WebElement emailValueTxt;
 
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div[2]/div/div/label[2]/div[1]")
-    public WebElement smsRadioBtn;
+    private WebElement smsRadioBtn;
 
     @FindBy(how = How.XPATH, using = "//span[(.)='xxx-xxx-2917']")
-    public WebElement phoneNumberTxt;
+    private WebElement phoneNumberTxt;
 
     @FindBy(how = How.XPATH, using = "//span[(.)='Send SMS text with code to:']")
-    public WebElement sendSMAToTxt;
+    private WebElement sendSMAToTxt;
 
     @FindBy(how = How.XPATH, using = "//a[(.)='Return to Password Sign In']")
-    public WebElement returnToPasswordLnk;
+    private WebElement returnToPasswordLnk;
 
     @FindBy(how = How.ID, using = "formSubmitButton")
     private WebElement submitBtn;
 
     /**
-     * verifyForgotPasswordScreen() - Verifies user landed in the Forgot Password screen
+     * verifyForgotPasswordScreen() - Verifies user landed on the Forgot Password screen
      */
-    public void verifyForgotPasswordScreen() {
+    public void verifyForgotPasswordScreen() throws InterruptedException {
+        // Wait for screen to load & Ajax to be completed
+        //TODO: WaitHelpers.waitForPageReady(browser(), 30);
+        Thread.sleep(15000);
+        WaitHelpers.waitForStaleEl(flexshopperLogo);
+        // TODO: Verify PP3's Header
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(flexshopperLogo);
         elementHelpers.webElementIsDisplayed(resetYourPasswordTxt);
         elementHelpers.webElementIsDisplayed(passwordResetOptionsTxt);
@@ -58,6 +66,7 @@ public class ForgotPasswordPage extends EmailPage {
         //TODO: elementHelpers.webElementIsDisplayed(emailValueTxt);
         elementHelpers.webElementIsDisplayed(returnToPasswordLnk);
         elementHelpers.webElementIsDisplayed(continueBtn);
+        // TODO: Verify PP3's Footer
     }
 
     /**
@@ -78,15 +87,6 @@ public class ForgotPasswordPage extends EmailPage {
         assertTrue(elementHelpers.webElementIsDisplayed(sendSMAToTxt));
         assertTrue(elementHelpers.webElementIsDisplayed(phoneNumberTxt));
         //TODO: assertEquals(WebElementHelpers.webGetText(phoneNumberTxt), phoneNumber);
-    }
-
-    /**
-     * verifySMSOptionsNotShown() - Verifies Phone information is not shown in PP3's Forgot Password screen
-     */
-    public void verifySMSOptionsNotShown(String phoneNumber) {
-        //TODO: assertTrue(elementHelpers.webElementIsInvisible(smsRadioBtn));
-        //TODO: assertTrue(elementHelpers.webElementIsInvisible(sendSMAToTxt));
-        //TODO: assertTrue(elementHelpers.webElementIsInvisible(phoneNumberTxt));
     }
 
     /**

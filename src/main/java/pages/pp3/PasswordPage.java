@@ -1,15 +1,21 @@
 package pages.pp3;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
-import utils.helpers.WebDriverHelpers;
+import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
+
+import java.util.List;
+
+import static utils.selenium.Driver.browser;
 
 public class PasswordPage extends EmailPage {
     protected WebElementHelpers elementHelpers = new WebElementHelpers();
-    protected WebDriverHelpers driverHelpers = new WebDriverHelpers();
 
     /**
      * Elements - PP3's Password Screen
@@ -36,7 +42,7 @@ public class PasswordPage extends EmailPage {
     private WebElement forgotPasswordLnk;
 
     @FindBy(how = How.XPATH, using = "//span[(.)='Sign In']")
-    public WebElement signInBtn;
+    private WebElement signInBtn;
 
     /**
      * Validation Messages
@@ -48,10 +54,17 @@ public class PasswordPage extends EmailPage {
     public WebElement passwordRequiredMsg;
 
     /**
-     * verifyPasswordScreen() - Verifies user landed in the Password screen
+     * verifyPasswordScreen() - Verifies user landed on the Password screen
      */
-    public void verifyPasswordScreen() {
-        elementHelpers.webElementIsDisplayed(flexshopperLogo);
+    public void verifyPasswordScreen() throws InterruptedException {
+        // Wait for screen to load & Ajax to be completed
+        //TODO: WaitHelpers.waitForPageReady(browser(),30);
+        Thread.sleep(15000);
+        // Verify top element for stale state
+        WaitHelpers.waitForStaleEl(passwordField);
+        // TODO: Verify PP3's Header
+        // Verify elements are displayed
+        // TODO: elementHelpers.webElementIsDisplayed(flexshopperLogo);
         // TODO: elementHelpers.webElementIsDisplayed(existingCustomerTxt);
         elementHelpers.webElementIsDisplayed(enterPasswordTxt);
         // TODO: elementHelpers.webElementIsDisplayed(emailTxt);
@@ -59,6 +72,7 @@ public class PasswordPage extends EmailPage {
         elementHelpers.webElementIsDisplayed(passwordField);
         elementHelpers.webElementIsDisplayed(forgotPasswordLnk);
         elementHelpers.webElementIsDisplayed(signInBtn);
+        // TODO: Verify PP3's Footer
     }
 
     /**
@@ -73,7 +87,7 @@ public class PasswordPage extends EmailPage {
      * clickSignInBtn() - Click on the "Sign-In" button
      */
     public void clickOnTheSignInBtn() {
-        elementHelpers.webClick(signInBtn);
+        elementHelpers.webClickJSExecutor(signInBtn);
     }
 
     /**
@@ -81,9 +95,19 @@ public class PasswordPage extends EmailPage {
      * @param validationMsg
      */
     public void passwordValidationMessage(String validationMsg) {
-        elementHelpers.webElementIsDisplayed(passwordValidationMsg);
-        // TODO: Assert using Ignore Case
-        Assert.assertEquals("Invalid email or password: please check your details and try again", passwordValidationMsg.getText());
+        // Wait for screen to load & Ajax to be completed
+        WaitHelpers.waitForPageReady(browser(),6);
+        //TODO: Move to WebElementHelpers
+        WebDriver driver = browser();
+        List<WebElement> spanText = driver.findElements(By.tagName("span"));
+        for(int i = 0; i<spanText.size(); i++){
+            String textFound = spanText.get(i).getText();
+            System.out.println("Value is  ==> " + spanText.get(i).getText());
+            if (textFound.contains(validationMsg)) {
+                Assert.assertEquals(validationMsg, spanText.get(i).getText());
+                break;
+            }
+        }
     }
 
     /**
@@ -91,13 +115,30 @@ public class PasswordPage extends EmailPage {
      * @param validationMsg
      */
     public void passwordRequiredMsg(String validationMsg) {
-        elementHelpers.webElementIsDisplayed(passwordRequiredMsg);
-        // TODO: Assert using Ignore Case
-        Assert.assertEquals("Required", passwordRequiredMsg.getText());
+        // Wait for screen to load & Ajax to be completed
+        WaitHelpers.waitForPageReady(browser(),6);
+        //TODO: Move it to WebElementHelpers
+        WebDriver driver = browser();
+        List<WebElement> spanText = driver.findElements(By.tagName("span"));
+        for(int i = 0; i<spanText.size(); i++){
+            String textFound = spanText.get(i).getText();
+            System.out.println("Value is  ==> " + spanText.get(i).getText());
+            if (textFound.contains("Required")) {
+                Assert.assertEquals("Required", spanText.get(i).getText());
+                break;
+            }
+        }
     }
 
     /**
-     * clickOnTheForgotPasswordLnk() - Click on the "Forgot Password" Link
+     * clickOnTheNotYouLnk() - Clicks on the "Not You?" Link
+     */
+    public void clickOnTheNotYouLnk() {
+        elementHelpers.webClick(notYouTxt);
+    }
+
+    /**
+     * clickOnTheForgotPasswordLnk() - Clicks on the "Forgot Password" Link
      */
     public void clickOnTheForgotPasswordLnk() {
         elementHelpers.webClick(forgotPasswordLnk);

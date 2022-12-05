@@ -1,18 +1,23 @@
 package pages.pp3;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
 import pages.Page;
-import utils.helpers.WebDriverHelpers;
-import utils.helpers.WebElementHelpers;
+import utils.helpers.*;
 import utils.selenium.Settings;
+import java.util.List;
 import static utils.selenium.Driver.browser;
 
 public class EmailPage extends Page {
     protected WebElementHelpers elementHelpers = new WebElementHelpers();
     protected WebDriverHelpers driverHelpers = new WebDriverHelpers();
+    protected WaitHelpers waitHelpers = new WaitHelpers();
+    protected SelectHelpers selectHelpers = new SelectHelpers();
+    protected ManageEmailTestAddresses emailTestAddress = new ManageEmailTestAddresses();
 
     /**
      * Elements - Header
@@ -63,7 +68,7 @@ public class EmailPage extends Page {
      * Validation Messages
      */
     @FindBy(how= How.XPATH, using = "//span[@label='Invalid email address']")
-    public  WebElement invalidEmailAddressErrorMsg;
+    public  WebElement invalidEmailAddress;
 
     /**
      * Navigate to PP3's Base URL
@@ -91,6 +96,12 @@ public class EmailPage extends Page {
      * Verify PP3's Header
      */
     public void verifyHeader() {
+        // Wait for screen to load & Ajax to be completed
+        WaitHelpers.waitForPageReady(browser(),30);
+        // Verify top element for stale state
+        WaitHelpers.waitForStaleEl(headerCloseBtn);
+        WaitHelpers.waitForStaleEl(headerFAQBtn);
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(headerCloseBtn);
         elementHelpers.webElementIsDisplayed(headerFAQBtn);
     }
@@ -99,6 +110,7 @@ public class EmailPage extends Page {
      * Verify PP3's Email Screen
      */
     public void verifyEmailScreen() {
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(flexshopperLogo);
         elementHelpers.webElementIsDisplayed(enterEmailTxt);
         elementHelpers.webElementIsDisplayed(welcomeTxt);
@@ -110,6 +122,7 @@ public class EmailPage extends Page {
      * Verify PP3's Footer
      */
     public void verifyFooter() {
+        // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(flexUSPattenNumber);
         elementHelpers.webElementIsDisplayed(flexCopyright);
         elementHelpers.webElementIsDisplayed(footerAccessibilityBtn);
@@ -141,16 +154,45 @@ public class EmailPage extends Page {
     }
 
     /**
+     * enterEmail() - Enter email in the email address field.
+     * @param email
+     */
+    public void enterNewEmail(String email) {
+        elementHelpers.webSendKeys(emailAddressField, emailTestAddress.createEmailTestAddress(email), true);
+    }
+
+    /**
      * clickContinueBtn() - Click on the "Continue" button
      */
     public void clickOnContinueBtn() {
-        elementHelpers.webClick(continueBtn);
+        elementHelpers.webClickJSExecutor(continueBtn);
     }
 
     /**
      * emailValidationMessage() - Verifies the customer sees the expected Validation Message
      */
     public void emailValidationMessage(String validationMsg) {
-        Assert.assertEquals("Invalid email address", WebElementHelpers.webGetText(invalidEmailAddressErrorMsg));
+        //TODO: Move to WebElementHelpers
+        WebDriver driver = browser();
+        List<WebElement> spanText = driver.findElements(By.tagName("span"));
+        for(int i = 0; i<spanText.size(); i++){
+            String textFound = spanText.get(i).getText();
+            System.out.println("Value is  ==> " + spanText.get(i).getText());
+            if (textFound.contains("Invalid email address")) {
+                Assert.assertEquals("Invalid email address", spanText.get(i).getText());
+                break;
+            }
+        }
+    }
+
+    /**
+     * emailValidationMessage() - Verifies the customer sees the expected Validation Message
+     */
+    public void emailHTMLValidationMessage(String validationMsg) {
+        //TODO: Move to WebElementHelpers
+        WebDriver driver = browser();
+        WebElement email = driver.findElement(By.name("email"));
+        String htmlvalidationMsg = email.getAttribute("validationMessage");
+        Assert.assertTrue(htmlvalidationMsg.contains(validationMsg));
     }
 }

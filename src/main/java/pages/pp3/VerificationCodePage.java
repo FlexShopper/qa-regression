@@ -3,6 +3,9 @@ package pages.pp3;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import utils.helpers.RetrieveEmailVerificationCode;
+import utils.helpers.WaitHelpers;
+import static utils.selenium.Driver.browser;
 
 public class VerificationCodePage extends EmailPage {
     /**
@@ -11,7 +14,7 @@ public class VerificationCodePage extends EmailPage {
     @FindBy(how = How.XPATH, using = "//h1[(.)='We sent you a code']")
     private WebElement codeSentTxt;
 
-    @FindBy(how = How.XPATH, using = "//h1[(.)='Enter verification code we sent to']")
+    @FindBy(how = How.XPATH, using = "//p[text()='Enter verification code we sent to']")
     private WebElement enterCodeTxt;
 
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[3]/div/div/div/div/div/div/p/span")
@@ -29,7 +32,14 @@ public class VerificationCodePage extends EmailPage {
     /**
      * verifyVerificationCodeScreen() - Verifies user landed in the Verification Code screen
      */
-    public void verifyVerificationCodeScreen() {
+    public void verifyVerificationCodeScreen() throws InterruptedException {
+        // Wait for screen to load & Ajax to be completed
+        //TODO: WaitHelpers.waitForPageReady(browser(),10);
+        Thread.sleep(15000);
+        // Verify top element for stale state
+        WaitHelpers.waitForStaleEl(securityCode);
+
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(codeSentTxt);
         elementHelpers.webElementIsDisplayed(enterCodeTxt);
         elementHelpers.webElementIsDisplayed(emailTxt);
@@ -39,10 +49,20 @@ public class VerificationCodePage extends EmailPage {
     }
 
     /**
+     * retrievesTheVerificationCodeFromEmail() - System retrieves the Verification Code from the email
+     */
+    public void retrievesTheVerificationCodeFromEmail() throws InterruptedException {
+        Thread.sleep(5000); //TODO: Replace this with a Java ScheduledExecutorService or other form of wait
+        String PassCode = RetrieveEmailVerificationCode.check("imap.gmail.com", "imap", "FlexShopperAutomation@gmail.com", "wpbpstzzakmrcqgu");
+        System.out.println("PassCode is " + PassCode);
+        elementHelpers.webSendKeys(securityCode, PassCode, true);
+    }
+
+    /**
      * clickOnSubmitBtn() - Click on the Submit button
      */
     public void clickOnSubmitBtn() {
-            elementHelpers.webClick(submitBtn);
+        elementHelpers.webClick(submitBtn);
     }
 
     /**

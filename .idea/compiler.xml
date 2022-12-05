@@ -11,9 +11,5 @@
         <module name="ssss" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="qa-regression" target="1.8" />
-      <module name="UIFramework" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
