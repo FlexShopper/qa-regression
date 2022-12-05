@@ -3,14 +3,15 @@ package hooks;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import utils.selenium.DriverController;
-import java.io.FileInputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 public class CucumberHooks {
     @Before("@Web")
     public void beforeWeb() throws Exception {
         Properties browserProps = new Properties();
-        browserProps.load(new FileInputStream("src/test/resources/config.properties"));
+        browserProps.load(Files.newInputStream(Paths.get("src/test/resources/config.properties")));
 
         String browser = browserProps.getProperty("browserName");
 
@@ -29,23 +30,23 @@ public class CucumberHooks {
     }
 
     @Before("@Chrome")
-    public void beforeChrome() throws Exception {
+    public void beforeChrome() {
         DriverController.instance.startChrome("--disable-extensions");
     }
 
     @Before("@Firefox")
-    public void beforeFirefox() throws Exception {
+    public void beforeFirefox() {
 
         DriverController.instance.startFirefox("--disable-extensions");
     }
 
     @Before("@HeadlessChrome")
-    public void beforeChromeHeadless() throws Exception {
+    public void beforeChromeHeadless() {
         DriverController.instance.startChrome("--headless");
     }
 
     @Before("@HeadlessFirefox")
-    public void beforeHeadlessFirefox() throws Exception {
+    public void beforeHeadlessFirefox() {
         DriverController.instance.startFirefox("--headless");
     }
 
