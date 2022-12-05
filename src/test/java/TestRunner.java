@@ -4,7 +4,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = "src/test/java/features",
         glue = {"hooks", "runners", "stepdefinitions"},
-        tags = "@Email",
+        tags = "@Regression",
         plugin = {"html:target/cucumber-reports/cucumberTestReport.html",
                 "json:target/cucumber-reports/CucumberTestReport.json",
                 "rerun:target/cucumber-reports/rerun.txt",

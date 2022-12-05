@@ -62,7 +62,7 @@ public class VerificationCodePage extends EmailPage {
      * clickOnSubmitBtn() - Click on the Submit button
      */
     public void clickOnSubmitBtn() {
-            elementHelpers.webClick(submitBtn);
+        elementHelpers.webClick(submitBtn);
     }
 
     /**
