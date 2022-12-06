@@ -1,12 +1,7 @@
 package utils.helpers;
 
-import com.sun.mail.smtp.SMTPTransport;
-import javax.activation.DataHandler;
-import javax.activation.FileDataSource;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.Session;
+import javax.activation.*;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
@@ -21,56 +16,58 @@ public class SendEmail {
     private static final SimpleDateFormat testDate = new SimpleDateFormat("dd-MM-yyyy hh:mm");
 
     private static final String SMTP_SERVER = "smtp server";
-    private static final String USERNAME = "";
-    private static final String PASSWORD = "";
+    private static final String USERNAME = "FlexShopperAutomation@gmail.com";
+    private static final String PASSWORD = "wpbpstzzakmrcqgu";
 
     private static final String EMAIL_FROM = "FlexShopperAutomation@gmail.com";
     private static final String EMAIL_TO = "antonio.navas@flexshopper.com, antonio_navas40@hotmail.com";
     private static final String EMAIL_TO_CC = "";
 
     private static final String EMAIL_SUBJECT = "Test Automation Results: " + testDate;
-    private static final String EMAIL_TEXT = "Hello Java Mail \n ABC123";
+    private static final String EMAIL_TEXT = "Test Automation results attached";
 
     public static void main(String[] args) {
-        Properties prop = System.getProperties();
-        prop.put("mail.smtp.auth", "true");
+        Properties properties = new Properties();
+        properties.put("mail.imap.host", "imap.gmail.com");
+        properties.put("mail.imap.port", "993");
+        properties.put("mail.imap.starttls.enable", "true");
+        properties.setProperty("mail.imap.socketFactory.class","javax.net.ssl.SSLSocketFactory");
+        properties.setProperty("mail.imap.socketFactory.fallback", "false");
+        properties.setProperty("mail.imap.socketFactory.port",String.valueOf(993));
 
-        Session session = Session.getInstance(prop, null);
-        Message msg = new MimeMessage(session);
+        Session session = Session.getInstance(properties,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(USERNAME, PASSWORD);
+                    }
+                });
 
         try {
-            msg.setFrom(new InternetAddress(EMAIL_FROM));
-            msg.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse(EMAIL_TO, false));
-            msg.setSubject(EMAIL_SUBJECT);
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(EMAIL_FROM));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(EMAIL_TO));
+            message.setSubject(EMAIL_SUBJECT);
+            message.setText(EMAIL_TEXT);
 
-            // text
-            MimeBodyPart p1 = new MimeBodyPart();
-            p1.setText(EMAIL_TEXT);
+            MimeBodyPart messageBodyPart = new MimeBodyPart();
 
-            // file
-            MimeBodyPart p2 = new MimeBodyPart();
-            FileDataSource fds = new FileDataSource(System.getProperty("user.dir") + "target/cucumber-reports/CucumberExtentReport.pdf");
-            p2.setDataHandler(new DataHandler(fds));
-            p2.setFileName(fds.getName());
+            Multipart multipart = new MimeMultipart();
 
-            Multipart mp = new MimeMultipart();
-            mp.addBodyPart(p1);
-            mp.addBodyPart(p2);
+            String file = System.getProperty("user.dir") + "/target/cucumber-reports";
+            String fileName = "cucumberTestReport.html";
+            DataSource source = new FileDataSource(file);
+            messageBodyPart.setDataHandler(new DataHandler(source));
+            messageBodyPart.setFileName(fileName);
+            multipart.addBodyPart(messageBodyPart);
 
-            msg.setContent(mp);
+            message.setContent(multipart);
 
-            SMTPTransport t = (SMTPTransport) session.getTransport("smtp");
+            System.out.println("Sending");
 
-            // connect
-            t.connect(SMTP_SERVER, USERNAME, PASSWORD);
+            Transport.send(message);
 
-            // send
-            t.sendMessage(msg, msg.getAllRecipients());
-
-            System.out.println("Response: " + t.getLastServerResponse());
-
-            t.close();
+            System.out.println("Done");
         } catch (MessagingException e) {
             e.printStackTrace();
         }
