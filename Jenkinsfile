@@ -41,51 +41,59 @@ podTemplate(label: label,
 ) {
     node(label) {
         container("docker") {
-            stage("Install") {
-                checkout scm
-            }
+            stages {
+                stage("Install") {
+                    checkout scm
+                }
 
-            stage('Clone Repository') {
-                checkout([$class: 'GitSCM', branches: [[name: '*/development']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-ci-user', url: 'https://github.com/FlexShopper/qa-regression.git']]])
-                sh "ls -lart ./*"
-               dir(WORKSPACE + '/qa-regression/') {
-                   sh "pwd"
-               }
-            }
+                stage('Clone Repository') {
+                    checkout([$class: 'GitSCM', branches: [[name: '*/development']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-ci-user', url: 'https://github.com/FlexShopper/qa-regression.git']]])
+                    sh "ls -lart ./*"
+                   dir(WORKSPACE + '/qa-regression/') {
+                       sh "pwd"
+                   }
+                }
 
-            stage("Run PP3 Tests on FlexShopper Staging") {
-                docker.image("registry.flexshopper.xyz:5000/selenium-jenkins-runner-chrome-latest").inside {
-                    withCredentials([string(credentialsId: 'slack-api-token', variable: 'SLACK_TOKEN')]) {
-                        ansiColor('gnome-terminal') {
-                            echo 'Install Java JDK'
-                            sh """
-                                apt-get update && \
-                                apt-get install -y openjdk-8-jdk && \
-                                apt-get install -y ant && \
-                                apt-get clean;
-                                """
-                            sh "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64"
-                            sh "java -version"
-                           if (fileExists('./mvnw')) {
-                                echo 'File mvnw found!'
-                                echo 'Running automation with Maven wrapper'
+                stage("Run PP3 Tests on FlexShopper Staging") {
+                    docker.image("registry.flexshopper.xyz:5000/selenium-jenkins-runner-chrome-latest").inside {
+                        withCredentials([string(credentialsId: 'slack-api-token', variable: 'SLACK_TOKEN')]) {
+                            ansiColor('gnome-terminal') {
+                                echo 'Install Java JDK'
+                                sh """
+                                    apt-get update && \
+                                    apt-get install -y openjdk-8-jdk && \
+                                    apt-get install -y ant && \
+                                    apt-get clean;
+                                    """
+                                sh "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64"
                                 sh "java -version"
-                                sh "chmod -R 777 ./mvnw"
-                                sh "./mvnw clean install"
-                           }
-                           else {
-                                echo 'File mvnw Not found'
-                                echo 'Installing Maven'
-                                sh "apt-get install maven -y"
-                                sh "mvn -v"
-                                sh "export MAVEN_HOME=/usr/share/maven"
-                                sh "export M2_HOME=/home/maven/"
-                                sh "mvn clean install"
-                           }
+                               if (fileExists('./mvnw')) {
+                                    echo 'File mvnw found!'
+                                    echo 'Running automation with Maven wrapper'
+                                    sh "java -version"
+                                    sh "chmod -R 777 ./mvnw"
+                                    sh "./mvnw clean install"
+                               }
+                               else {
+                                    echo 'File mvnw Not found'
+                                    echo 'Installing Maven'
+                                    sh "apt-get install maven -y"
+                                    sh "mvn -v"
+                                    sh "export MAVEN_HOME=/usr/share/maven"
+                                    sh "export M2_HOME=/home/maven/"
+                                    sh "mvn clean install"
+                               }
+                            }
                         }
                     }
                 }
             }
+            post{
+                always{
+                    mail to: "antonio.navas@flexsopper.com",
+                    subject: "Test Email",
+                    body: "Test"
+                }
         }
     }
 }
