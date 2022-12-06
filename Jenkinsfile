@@ -86,16 +86,15 @@ podTemplate(label: label,
                     }
                 }
             }
-            post {
-                always{
-                    archiveArtifacts artifacts: 'cucumberTestReport.html', onlyIfSuccessful: false
-
-                    emailext to: "antonio.navas@flexshopper.com",
-                    subject: "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
-                    body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}",
-                    attachmentsPattern: '*.html'
-                    cleanWs()
-                }
+            
+            stage ('Send Email') {
+                echo "Mail Stage";
+                     mail to: "email@domainxxx.com",
+                     cc: 'manager@domainxxx.com', charset: 'UTF-8',
+                     from: 'noreply@domainxxx.com', mimeType: 'text/html', replyTo: '',
+                     bcc: '',
+                     subject: "CI: Project name -> ${env.JOB_NAME}",
+                     body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}";
             }
         }
     }
