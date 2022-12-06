@@ -91,11 +91,10 @@ podTemplate(label: label,
                 echo "Mail Stage";
                 env.ForEmailPlugin = env.WORKSPACE
                 emailext (
-                         mimeType: 'text/html',
-                         body: '${FILE, path="/target/cucumber-reports/cucumberTestReport.html"}',
-                         subject: currentBuild.currentResult + " : " + env.JOB_NAME,
-                         to: 'antonio.navas@flexshopper.com',
-                         cc: 'antonio_navas40@hotmail.com'
+                      subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                      body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+                        <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
+                      recipientProviders: [[$class: 'DevelopersRecipientProvider']]
                 )
             }
         }
