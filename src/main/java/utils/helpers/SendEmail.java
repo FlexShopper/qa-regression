@@ -20,7 +20,7 @@ import java.util.Properties;
 public class SendEmail {
     private static final SimpleDateFormat testDate = new SimpleDateFormat("dd-MM-yyyy hh:mm");
 
-    private static final String SMTP_SERVER = "smtp server ";
+    private static final String SMTP_SERVER = "smtp server";
     private static final String USERNAME = "";
     private static final String PASSWORD = "";
 
