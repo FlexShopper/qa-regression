@@ -90,10 +90,13 @@ podTemplate(label: label,
             stage ('Send Email') {
                 echo "Mail Stage";
                 env.ForEmailPlugin = env.WORKSPACE
-                emailext mimeType: 'text/html',
+                emailext (
+                         mimeType: 'text/html',
                          body: '${FILE, path="/target/cucumber-reports/cucumberTestReport.html"}',
                          subject: currentBuild.currentResult + " : " + env.JOB_NAME,
-                         to: 'antonio.navas@flexshopper.com'
+                         to: 'antonio.navas@flexshopper.com',
+                         cc: 'antonio_navas40@hotmail.com'
+                )
             }
         }
     }
