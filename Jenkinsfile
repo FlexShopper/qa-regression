@@ -80,7 +80,7 @@ podTemplate(label: label,
                                 sh "mvn -v"
                                 sh "export MAVEN_HOME=/usr/share/maven"
                                 sh "export M2_HOME=/home/maven/"
-                                sh "mvn clean install"
+                                sh "mvn clean install -Dcucumber.options='--tag @Email'"
                            }
                         }
                     }
