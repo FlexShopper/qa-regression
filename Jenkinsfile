@@ -89,14 +89,14 @@ podTemplate(label: label,
 
             stage ('Send Email & Store Artifacts') {
                 echo "Store Artifacts";
-                archiveArtifacts artifacts: 'cucumberTestReport.html', onlyIfSuccessful: false
+                archiveArtifacts artifacts: '/target/cucumber-reports/cucumberTestReport.html', onlyIfSuccessful: false
 
                 echo "Mail Stage";
                 env.ForEmailPlugin = env.WORKSPACE
                 emailext mimeType: 'text/html',
-                body: '${FILE, path="target/cucumber-reports/cucumberTestReport.html"}',
-                subject: currentBuild.currentResult + " : " + env.JOB_NAME,
-                to: 'antonio.navas@flexshopper.com'
+                         body: '${FILE, path="/target/cucumber-reports/cucumberTestReport.html"}',
+                         subject: currentBuild.currentResult + " : " + env.JOB_NAME,
+                         to: 'antonio.navas@flexshopper.com'
             }
         }
     }
