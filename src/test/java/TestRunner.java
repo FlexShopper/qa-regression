@@ -1,10 +1,7 @@
 import com.aventstack.extentreports.testng.listener.ExtentITestListenerAdapter;
-import io.cucumber.java.After;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.Listeners;
-import utils.helpers.SendEmail;
-import static pages.Page.instanceOf;
 
 @CucumberOptions(
         features = "src/test/java/features",
@@ -17,8 +14,4 @@ import static pages.Page.instanceOf;
 @Listeners({ExtentITestListenerAdapter.class})
 public class TestRunner extends AbstractTestNGCucumberTests {
 
-    @After()
-    public void tearDownClass() {
-        instanceOf(SendEmail.class);
-    }
 }
