@@ -5,7 +5,7 @@ import org.testng.annotations.Listeners;
 
 @CucumberOptions(
         features = "src/test/java/features",
-        glue = {"hooks", "runners", "stepdefinitions"},
+        glue = {"hooks", "stepdefinitions"},
         tags = "@PP3",
         plugin = {"html:target/cucumber-reports/cucumber-pretty",
                 "json:target/cucumber-reports/CucumberTestReport.json",

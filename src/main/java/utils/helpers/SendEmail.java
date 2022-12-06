@@ -17,7 +17,7 @@ public class SendEmail {
 
     private static final String SMTP_SERVER = "smtp server";
     private static final String USERNAME = "FlexShopperAutomation@gmail.com";
-    private static final String PASSWORD = "Test@1234";
+    private static final String PASSWORD = "tstcqpyzcqsajfeg";
 
     private static final String EMAIL_FROM = "FlexShopperAutomation@gmail.com";
     private static final String EMAIL_TO = "antonio.navas@flexshopper.com, antonio_navas40@hotmail.com";
@@ -28,12 +28,11 @@ public class SendEmail {
 
     public static void main(String[] args) {
         Properties properties = new Properties();
-        properties.put("mail.imap.host", "imap.gmail.com");
-        properties.put("mail.imap.port", "993");
-        properties.put("mail.imap.starttls.enable", "true");
-        properties.setProperty("mail.imap.socketFactory.class","javax.net.ssl.SSLSocketFactory");
-        properties.setProperty("mail.imap.socketFactory.fallback", "false");
-        properties.setProperty("mail.imap.socketFactory.port",String.valueOf(993));
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.socketFactory.port", "465");
+        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.port", "465");
 
         Session session = Session.getInstance(properties,
                 new javax.mail.Authenticator() {

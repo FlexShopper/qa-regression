@@ -87,9 +87,11 @@ podTemplate(label: label,
                 }
             }
 
-            stage ('Send Email & Store Artifacts') {
+            stage ('Store Artifacts') {
+                echo 'Waiting 3 minutes for the reports to be created prior to storing them'
+                sleep(time:60, unit:"SECONDS")
                 echo "Store Artifacts";
-                archiveArtifacts artifacts: 'target/**/*.html', onlyIfSuccessful: false
+                archiveArtifacts artifacts: 'target/cucumber-reports/*.html', onlyIfSuccessful: false
             }
         }
     }
