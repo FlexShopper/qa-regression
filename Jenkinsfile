@@ -92,6 +92,7 @@ podTemplate(label: label,
                     subject: "Test Email",
                     body: "Test"
                 }
+            }
         }
     }
 }
