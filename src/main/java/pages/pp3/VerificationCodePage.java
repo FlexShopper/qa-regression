@@ -53,7 +53,7 @@ public class VerificationCodePage extends EmailPage {
      */
     public void retrievesTheVerificationCodeFromEmail() throws InterruptedException {
         Thread.sleep(5000); //TODO: Replace this with a Java ScheduledExecutorService or other form of wait
-        String PassCode = RetrieveEmailVerificationCode.check("imap.gmail.com", "imap", "FlexShopperAutomation@gmail.com", "wpbpstzzakmrcqgu");
+        String PassCode = RetrieveEmailVerificationCode.check("imap.gmail.com", "imap", "FlexShopperAutomation@gmail.com", "tstcqpyzcqsajfeg");
         System.out.println("PassCode is " + PassCode);
         elementHelpers.webSendKeys(securityCode, PassCode, true);
     }
