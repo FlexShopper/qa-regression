@@ -86,6 +86,11 @@ podTemplate(label: label,
                     }
                 }
             }
+
+            stage ('Send Email & Store Artifacts') {
+                echo "Store Artifacts";
+                archiveArtifacts artifacts: 'target/cucumber-reports/cucumberTestReport.html', onlyIfSuccessful: false
+            }
         }
     }
 }
