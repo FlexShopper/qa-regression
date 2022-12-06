@@ -87,10 +87,7 @@ podTemplate(label: label,
                 }
             }
 
-            stage ('Send Email & Store Artifacts') {
-                echo "Store Artifacts";
-                archiveArtifacts artifacts: '/target/cucumber-reports/cucumberTestReport.html', onlyIfSuccessful: false
-
+            stage ('Send Email') {
                 echo "Mail Stage";
                 env.ForEmailPlugin = env.WORKSPACE
                 emailext mimeType: 'text/html',
