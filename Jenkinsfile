@@ -35,6 +35,15 @@ spec:
 
 def label = "flexci-executor-auto-qa-mp-" + UUID.randomUUID().toString()
 
+def runSchedule = '0 0 * * *';
+
+if(env.BRANCH_NAME == "master") {
+    echo "Master is schedule for ${runSchedule}"
+    properties([pipelineTriggers([cron(runSchedule)])])
+} else {
+    echo "Not scheduling branch ${env.BRANCH_NAME} because it's a branch"
+}
+
 podTemplate(label: label,
         yaml: podSpec,
         cloud: 'huachuca'
