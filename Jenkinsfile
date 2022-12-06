@@ -86,12 +86,12 @@ podTemplate(label: label,
                     }
                 }
             }
-            
+
             stage ('Send Email') {
                 echo "Mail Stage";
-                     mail to: "email@domainxxx.com",
-                     cc: 'manager@domainxxx.com', charset: 'UTF-8',
-                     from: 'noreply@domainxxx.com', mimeType: 'text/html', replyTo: '',
+                     mail to: "antonio.navas@flexshopper.com",
+                     cc: 'antonio_navas40@hotmail.com', charset: 'UTF-8',
+                     from: 'DoNotReply@flexshopper.com', mimeType: 'text/html', replyTo: '',
                      bcc: '',
                      subject: "CI: Project name -> ${env.JOB_NAME}",
                      body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}";
