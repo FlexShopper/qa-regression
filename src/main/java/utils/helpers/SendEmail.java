@@ -17,7 +17,7 @@ public class SendEmail {
 
     private static final String SMTP_SERVER = "smtp server";
     private static final String USERNAME = "FlexShopperAutomation@gmail.com";
-    private static final String PASSWORD = "wpbpstzzakmrcqgu";
+    private static final String PASSWORD = "Test@1234";
 
     private static final String EMAIL_FROM = "FlexShopperAutomation@gmail.com";
     private static final String EMAIL_TO = "antonio.navas@flexshopper.com, antonio_navas40@hotmail.com";
