@@ -35,6 +35,15 @@ spec:
 
 def label = "flexci-executor-auto-qa-mp-" + UUID.randomUUID().toString()
 
+def runSchedule = '0 0 * * *';
+
+if(env.BRANCH_NAME == "master") {
+    echo "Master is schedule for ${runSchedule}"
+    properties([pipelineTriggers([cron(runSchedule)])])
+} else {
+    echo "Not scheduling branch ${env.BRANCH_NAME} because it's a branch"
+}
+
 podTemplate(label: label,
         yaml: podSpec,
         cloud: 'huachuca'
@@ -80,11 +89,18 @@ podTemplate(label: label,
                                 sh "mvn -v"
                                 sh "export MAVEN_HOME=/usr/share/maven"
                                 sh "export M2_HOME=/home/maven/"
-                                sh "mvn clean install"
+                                sh "mvn clean install -Dcucumber.options=\"--tags @PP3\""
                            }
                         }
                     }
                 }
+            }
+
+            stage ('Store Artifacts') {
+                echo 'Waiting 3 minutes for the reports to be created prior to storing them'
+                sleep(time:60, unit:"SECONDS")
+                echo "Store Artifacts";
+                archiveArtifacts artifacts: 'target/cucumber-reports/*.html', onlyIfSuccessful: false
             }
         }
     }

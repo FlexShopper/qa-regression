@@ -59,14 +59,9 @@ public class RetrieveEmailVerificationCode {
             //close the store and folder objects
             emailFolder.close(false);
             store.close();
-
-                    } catch (NoSuchProviderException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
-                } catch (MessagingException e) {
-                    e.printStackTrace();
-            } catch (Exception e) {
-                e.printStackTrace();
-        }
+                }
 
         return passcode;
     }
