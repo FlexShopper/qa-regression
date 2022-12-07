@@ -25,7 +25,6 @@ Feature: As a customer I should be able to enter the email in the login email
     And the user clicks on the button: "Continue"
     Then the user sees the following validation message: "<validationMsg>"
     Examples:
-      | email                 | errorMsg              |
       | email               | validationMsg         |
       | abcde@flexshopper   | Invalid email address |
       | a.abcde@flexshopper | Invalid email address |
