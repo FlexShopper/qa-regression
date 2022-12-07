@@ -96,7 +96,7 @@ podTemplate(label: label,
             }
 
             stage ('Store Artifacts') {
-                echo 'Waiting 3 minutes for the reports to be created prior to storing them'
+                echo 'Waiting 60 seconds for the reports to be created prior to storing them'
                 sleep(time:60, unit:"SECONDS")
                 echo "Store Artifacts";
                 archiveArtifacts artifacts: 'target/cucumber-reports/*.*', onlyIfSuccessful: false
