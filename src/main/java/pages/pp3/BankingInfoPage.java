@@ -42,12 +42,9 @@ public class BankingInfoPage extends EmailPage {
     /**
      * verifyBankingInfoPage() - Verify PP3's Banking Info Screen
      */
-    public void verifyBankingInfoPage() throws InterruptedException {
-        // Wait for screen to load & Ajax to be completed
-        // TODO: WaitHelpers.waitForPageReady(browser(),30);
-        Thread.sleep(30000);
-        // Verify top element for stale state
-        // TODO: WaitHelpers.waitForStaleEl(routingNumberPP3);
+    public void verifyBankingInfoPage() {
+        driverHelpers.wdIsElementFound(routingNumberPP3, 30);
+
         // TODO: Verify PP3's Header
         // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(profileInfoTab);
