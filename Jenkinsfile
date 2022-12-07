@@ -100,6 +100,7 @@ podTemplate(label: label,
                 sleep(time:60, unit:"SECONDS")
                 echo "Store Artifacts";
                 archiveArtifacts artifacts: 'target/cucumber-reports/*.html', onlyIfSuccessful: false
+                archiveArtifacts artifacts: 'target/cucumber-reports/*.pdf', onlyIfSuccessful: false
             }
         }
     }
