@@ -8,6 +8,7 @@ import org.testng.annotations.Listeners;
         glue = {"hooks", "stepdefinitions"},
         tags = "@PP3",
         plugin = {"html:target/cucumber-reports/cucumber-pretty",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "json:target/cucumber-reports/CucumberTestReport.json",
                 "rerun:target/cucumber-reports/rerun.txt"},
         monochrome = true)

@@ -81,15 +81,14 @@ podTemplate(label: label,
                                 sh "java -version"
                                 sh "chmod -R 777 ./mvnw"
                                 sh "./mvnw clean install"
-                           }
-                           else {
+                           } else {
                                 echo 'File mvnw Not found'
                                 echo 'Installing Maven'
                                 sh "apt-get install maven -y"
                                 sh "mvn -v"
                                 sh "export MAVEN_HOME=/usr/share/maven"
                                 sh "export M2_HOME=/home/maven/"
-                                sh "mvn clean install -Dcucumber.options=\"--tags @Email\""
+                                sh "mvn clean install -Dcucumber.options=\"--tags @PP3\""
                            }
                         }
                     }
