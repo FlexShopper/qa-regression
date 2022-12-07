@@ -7,8 +7,8 @@ Feature: As user I should be able to land on the Profile Info Screen
     When the user clicks on the link: "Not You?"
     Then the user lands on the Email screen
     Examples:
-      | email                       |
-      | profileinfo@flexshopper.com |
+      | email                       | expectedEmail                 |
+      | profileinfo@flexshopper.com | expectedEmail@flexshopper.com |
 
   Scenario Outline: User should see additional fields when the user clicks on the "Enter Address Manually" link
     Given the user is on the Profile Info screen with email: "<email>"

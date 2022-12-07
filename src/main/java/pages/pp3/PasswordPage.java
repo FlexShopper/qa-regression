@@ -57,11 +57,8 @@ public class PasswordPage extends EmailPage {
      * verifyPasswordScreen() - Verifies user landed on the Password screen
      */
     public void verifyPasswordScreen() throws InterruptedException {
-        // Wait for screen to load & Ajax to be completed
-        //TODO: WaitHelpers.waitForPageReady(browser(),30);
-        Thread.sleep(15000);
-        // Verify top element for stale state
-        WaitHelpers.waitForStaleEl(passwordField);
+        driverHelpers.wdIsElementFound(passwordField, 30);
+
         // TODO: Verify PP3's Header
         // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(flexshopperLogo);

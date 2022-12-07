@@ -33,7 +33,7 @@ public class WaitHelpers {
     public static void waitForPageReady(WebDriver driver, int waitTimeout) {
         Wait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(waitTimeout))
-                .pollingEvery(Duration.ofMillis(500))
+                .pollingEvery(Duration.ofMillis(1000))
                 .ignoring(NoSuchElementException.class);
         wait.until((ExpectedCondition<Boolean>) wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
     }

@@ -25,7 +25,7 @@ public class PasswordSteps extends Page {
     }
 
     @Then("^the user lands on the Email screen$")
-    public void theUserLandsOnTheEmailScreen() throws InterruptedException {
+    public void theUserLandsOnTheEmailScreen() {
         System.out.println("Then the user lands on the Email screen");
         // Verify user landed on the PP3's Email screen
         instanceOf(EmailPage.class).verifyHeader();

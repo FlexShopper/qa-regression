@@ -1,5 +1,6 @@
 package pages.pp3;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -45,12 +46,8 @@ public class ChangePasswordPage extends EmailPage {
      * verifyChangePasswordScreen() - Verify Change Password Screen
      */
     public void verifyChangePasswordScreen() throws InterruptedException {
-        // Wait for screen to load & Ajax to be completed
-        //TODO: WaitHelpers.waitForPageReady(browser(), 30);
-        Thread.sleep(15000);
-        // Verify top element for stale state
-        WaitHelpers.waitForStaleEl(newPassword);
-        WaitHelpers.waitForStaleEl(createNewPasswordTxt);
+        driverHelpers.wdIsElementFound(newPassword, 30);
+
         elementHelpers.webElementIsDisplayed(createNewPasswordTxt);
         elementHelpers.webElementIsDisplayed(emailValueTxt);
         elementHelpers.webElementIsDisplayed(notYouLink);

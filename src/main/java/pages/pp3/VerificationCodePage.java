@@ -1,5 +1,6 @@
 package pages.pp3;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -33,9 +34,8 @@ public class VerificationCodePage extends EmailPage {
      * verifyVerificationCodeScreen() - Verifies user landed in the Verification Code screen
      */
     public void verifyVerificationCodeScreen() throws InterruptedException {
-        // Wait for screen to load & Ajax to be completed
-        //TODO: WaitHelpers.waitForPageReady(browser(),10);
-        Thread.sleep(15000);
+        driverHelpers.wdIsElementFound(securityCode, 30);
+
         // Verify top element for stale state
         WaitHelpers.waitForStaleEl(securityCode);
 

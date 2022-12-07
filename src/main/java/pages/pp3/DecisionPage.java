@@ -33,10 +33,9 @@ public class DecisionPage extends EmailPage {
     /**
      * verifyBankingInfoPage() - Verify PP3's Decision Screen
      */
-    public void verifyDecisionScreen() throws InterruptedException {
-        // Wait for screen to load & Ajax to be completed
-        // TODO: WaitHelpers.waitForPageReady(browser(), 120);
-        Thread.sleep(120000);
+    public void verifyDecisionScreen() {
+        driverHelpers.wdIsElementFound(startShoppingBtn, 150);
+
         // TODO: Verify PP3's Header
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(decisionTitleTxt);

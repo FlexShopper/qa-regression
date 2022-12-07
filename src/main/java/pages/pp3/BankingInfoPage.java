@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
-import utils.helpers.WaitHelpers;
 import java.util.List;
 import static utils.selenium.Driver.browser;
+
 public class BankingInfoPage extends EmailPage {
     /**
      * Elements - PP3's Banking Info Screen
@@ -42,12 +42,9 @@ public class BankingInfoPage extends EmailPage {
     /**
      * verifyBankingInfoPage() - Verify PP3's Banking Info Screen
      */
-    public void verifyBankingInfoPage() throws InterruptedException {
-        // Wait for screen to load & Ajax to be completed
-        // TODO: WaitHelpers.waitForPageReady(browser(),30);
-        Thread.sleep(15000);
-        // Verify top element for stale state
-        // TODO: WaitHelpers.waitForStaleEl(routingNumberPP3);
+    public void verifyBankingInfoPage() {
+        driverHelpers.wdIsElementFound(routingNumberPP3, 30);
+
         // TODO: Verify PP3's Header
         // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(profileInfoTab);

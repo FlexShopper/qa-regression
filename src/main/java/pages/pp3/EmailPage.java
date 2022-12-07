@@ -96,11 +96,8 @@ public class EmailPage extends Page {
      * Verify PP3's Header
      */
     public void verifyHeader() {
-        // Wait for screen to load & Ajax to be completed
-        WaitHelpers.waitForPageReady(browser(),30);
-        // Verify top element for stale state
-        WaitHelpers.waitForStaleEl(headerCloseBtn);
-        WaitHelpers.waitForStaleEl(headerFAQBtn);
+        driverHelpers.wdIsElementFound(headerCloseBtn, 30);
+
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(headerCloseBtn);
         elementHelpers.webElementIsDisplayed(headerFAQBtn);
