@@ -1,16 +1,11 @@
 package pages.pp3;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
 import utils.helpers.WaitHelpers;
-
-import java.util.List;
-
-import static utils.selenium.Driver.browser;
 
 public class ProfileInfoPage extends EmailPage {
     /**

@@ -53,9 +53,9 @@ public class PersonalInfoPage extends EmailPage {
     public void verifyPersonalInfoScreen() throws InterruptedException {
         // Wait for screen to load & Ajax to be completed
         // TODO: WaitHelpers.waitForPageReady(browser(),30);
-        Thread.sleep(15000);
+        Thread.sleep(30000);
         // Verify top element for stale state
-        WaitHelpers.waitForStaleEl(dobPP3);
+        //WaitHelpers.waitForStaleEl(dobPP3);
 
         // TODO: Verify PP3's Header
         // Verify elements are displayed

@@ -5,11 +5,67 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cb966fd-ff33-496e-90af-a2506d5afb6f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/flexshopper/com/pageObjects/flexshopper/ApplyPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/flexshopper/com/pageObjects/flexshopper/ApplyPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/flexshopper/com/pageObjects/flexshopper/CartPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/flexshopper/com/pageObjects/flexshopper/CartPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/flexshopper/com/pageObjects/flexshopper/CheckoutPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/flexshopper/com/pageObjects/flexshopper/CheckoutPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/flexshopper/com/pageObjects/flexshopper/ForgotPasswordPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/flexshopper/com/pageObjects/flexshopper/ForgotPasswordPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/flexshopper/FlexShopperHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/flexshopper/FlexShopperHomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/myflexlending/MyFlexLendingHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/myflexlending/MyFlexLendingHomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/BankingInfoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/BankingInfoPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/ChangePasswordPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/ChangePasswordPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/DecisionPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/DecisionPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/EmailPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/EmailPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/ForgotPasswordPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/ForgotPasswordPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/PasswordPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/PasswordPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/PersonalInfoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/PersonalInfoPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/ProfileInfoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/ProfileInfoPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/VerificationCodePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/VerificationCodePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/drivers/ChromeWebDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/drivers/ChromeWebDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/drivers/FirefoxWebDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/drivers/FirefoxWebDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/helpers/ManageEmailTestAddresses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/helpers/ManageEmailTestAddresses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/helpers/RetrieveEmailVerificationCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/helpers/RetrieveEmailVerificationCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/helpers/SelectHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/helpers/SelectHelpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/helpers/SendEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/helpers/SendEmail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/helpers/WaitHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/helpers/WaitHelpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/helpers/WebDriverHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/helpers/WebDriverHelpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/helpers/WebElementHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/helpers/WebElementHelpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/selenium/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/selenium/Driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/selenium/DriverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/selenium/DriverController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/selenium/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/selenium/Settings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/pp3/BankingInfoScreen.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/pp3/BankingInfoScreen.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/pp3/DecisionScreen.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/pp3/DecisionScreen.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/pp3/EmailScreen.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/pp3/EmailScreen.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/pp3/ForgotPasswordScreen.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/pp3/ForgotPasswordScreen.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/pp3/PasswordScreen.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/pp3/PasswordScreen.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/pp3/PersonalInfoScreen.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/pp3/PersonalInfoScreen.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/pp3/ProfileInfoScreen.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/pp3/ProfileInfoScreen.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/hooks/CucumberHooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hooks/CucumberHooks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/hooks/StepHooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hooks/StepHooks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/hooks/TestRunHooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hooks/TestRunHooks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/BankingInfoSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/BankingInfoSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/DecisionSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/DecisionSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/EmailSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/EmailSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/ForgotPasswordSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/ForgotPasswordSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/PasswordSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/PasswordSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/PersonalInfoSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/PersonalInfoSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/ProfileInfoSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/ProfileInfoSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/extent-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/extent-config.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/extent.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/extent.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/log4j2-test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/log4j2-test.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
