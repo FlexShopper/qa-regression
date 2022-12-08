@@ -6,9 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="03b913b2-1033-488f-9f69-f8bf7fbe3866" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/BankingInfoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/BankingInfoPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/ChangePasswordPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/ChangePasswordPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/DecisionPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/DecisionPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/EmailPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/EmailPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/ForgotPasswordPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/ForgotPasswordPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/PasswordPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/PasswordPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/PersonalInfoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/PersonalInfoPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/ProfileInfoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/ProfileInfoPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/features/pp3/ProfileInfoScreen.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/pp3/ProfileInfoScreen.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/VerificationCodePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/VerificationCodePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/helpers/WebDriverHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/helpers/WebDriverHelpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/BankingInfoSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/BankingInfoSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/DecisionSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/DecisionSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/EmailSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/EmailSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/ForgotPasswordSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/ForgotPasswordSteps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/PasswordSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/PasswordSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/PersonalInfoSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/PersonalInfoSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/ProfileInfoSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/ProfileInfoSteps.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

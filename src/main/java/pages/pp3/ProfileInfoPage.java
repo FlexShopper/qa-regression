@@ -1,11 +1,9 @@
 package pages.pp3;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
-import utils.helpers.WaitHelpers;
 
 public class ProfileInfoPage extends EmailPage {
     /**
@@ -84,9 +82,7 @@ public class ProfileInfoPage extends EmailPage {
      * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
      */
     public void verifyProfileInfoScreen() {
-        driverHelpers.wdIsElementFound(firstName, 30);
-
-        // TODO: Verify PP3's Header
+        instanceOf(EmailPage.class).verifyHeader(30);
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(profileInfoTab);
         // TODO: elementHelpers.weElementIsDisplayed(emailAddressTxt);
@@ -104,12 +100,8 @@ public class ProfileInfoPage extends EmailPage {
     /**
      * verifyProfileInfoScreenWithHiddenFields() - Verify PP3's Profile Info Screen showing hidden address fields
      */
-    public void verifyProfileInfoScreenWithHiddenFields() throws InterruptedException {
-        // Wait for screen to load & Ajax to be completed
-        //TODO: WaitHelpers.waitForPageReady(browser(),30);
-        Thread.sleep(15000);
-        // Verify top element for stale state
-        WaitHelpers.waitForStaleEl(city);
+    public void verifyProfileInfoScreenWithHiddenFields() {
+        instanceOf(EmailPage.class).verifyHeader(30);
 
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(profileInfoTab);
@@ -132,7 +124,7 @@ public class ProfileInfoPage extends EmailPage {
      * @param emailEntered
      */
     public void verifyEmailAddressIsNotHis(String emailEntered) {
-        Assert.assertNotEquals(emailEntered, emailEntered);
+        Assert.assertNotEquals(emailEntered, "expectedEmail@flexshopper.com");
     }
 
     /**
@@ -194,7 +186,6 @@ public class ProfileInfoPage extends EmailPage {
      */
     public void clickOnEnterAddressManuallyLnk(){
         elementHelpers.webClickJSExecutor(enterManualLink);
-
     }
 
     /**
@@ -217,7 +208,7 @@ public class ProfileInfoPage extends EmailPage {
      * enterState() - Enter State or Region
      * @param region
      */
-    public void selectState(String region) throws InterruptedException {
+    public void selectState(String region) {
         elementHelpers.webSendKeys(state, region, false);
         selectHelpers.selectFromDropdown(region);
     }

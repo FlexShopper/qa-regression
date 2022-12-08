@@ -1,7 +1,6 @@
 package pages.pp3;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,9 +8,7 @@ import org.openqa.selenium.support.How;
 import org.testng.Assert;
 import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
-
 import java.util.List;
-
 import static utils.selenium.Driver.browser;
 
 public class PasswordPage extends EmailPage {
@@ -56,10 +53,8 @@ public class PasswordPage extends EmailPage {
     /**
      * verifyPasswordScreen() - Verifies user landed on the Password screen
      */
-    public void verifyPasswordScreen() throws InterruptedException {
-        driverHelpers.wdIsElementFound(passwordField, 30);
-
-        // TODO: Verify PP3's Header
+    public void verifyPasswordScreen() {
+        instanceOf(EmailPage.class).verifyHeader(30);
         // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(flexshopperLogo);
         // TODO: elementHelpers.webElementIsDisplayed(existingCustomerTxt);

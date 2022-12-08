@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
-import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 import java.util.List;
 import static utils.selenium.Driver.browser;
@@ -15,11 +14,13 @@ public class DecisionPage extends EmailPage {
     /**
      * Elements - PP3's Decision Screen
      */
-    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]")
+    @FindBy(how=How.XPATH,using="//*[@id='app']")
     private List<WebElement> screenElements;
 
-    @FindBy(how = How.ID, using = "decision-decisionTitle-lease")
+    @FindBy(how = How.XPATH, using = "//*[@id='decision-decisionTitle-lease']")
     private WebElement decisionTitleTxt;
+
+    protected By decisionTitleTxtPP3 = By.xpath("//*[@id='decision-decisionTitle-lease']");
 
     @FindBy(how = How.XPATH, using = "//*[@id='decision-headerDescription-lease']")
     private WebElement decisionDescription;
@@ -34,9 +35,8 @@ public class DecisionPage extends EmailPage {
      * verifyBankingInfoPage() - Verify PP3's Decision Screen
      */
     public void verifyDecisionScreen() {
-        driverHelpers.wdIsElementFound(startShoppingBtn, 150);
-
-        // TODO: Verify PP3's Header
+        instanceOf(EmailPage.class).verifyHeader(240);
+        driverHelpers.wdIsElementFound(decisionTitleTxtPP3, 240);
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(decisionTitleTxt);
         elementHelpers.webElementIsDisplayed(decisionDescription);

@@ -1,7 +1,7 @@
 @Regression @Web @PP3 @BankingInfo
 Feature: As user I should be able to land on the Banking Info Screen
 
-  Scenario Outline: The user can see the bank of the routing number entered
+  Scenario Outline: The user can see the bank name associated with the routing number entered
     Given the user is on the Banking Info screen with email: "decisionscreen@flexshopper.com"
     When the user enters a valid routing number: "<routingNumber>"
     Then the user sees the name of the bank: "<bankName>"
