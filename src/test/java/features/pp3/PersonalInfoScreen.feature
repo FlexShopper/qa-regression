@@ -1,4 +1,4 @@
-@Regression @Web @PP3 @PersonalInfo
+@Regression @Web @PP3
 Feature: As user I should be able to land on the Personal Info Screen
 
   Scenario Outline: The user cannot enter an invalid date of birth
@@ -20,8 +20,9 @@ Feature: As user I should be able to land on the Personal Info Screen
       | 12345678 | Must be 9 characters |
       | 1234     | Must be 9 characters |
 
+  @PersonalInfo
   Scenario Outline: The user should land on Banking info screen when selecting pay frequency: "<payFrequency>"
-    Given the user is on the Personal Info screen with email: "personalinfo@flexshopper.com"
+    Given the user is on the Personal Info screen with email: "<email>"
     And the user enters a valid date of birth: "<DOB>"
     And the user enters a valid SSN: "<SSN>"
     And  the user enters a valid gross income: "<income>"
@@ -30,8 +31,9 @@ Feature: As user I should be able to land on the Personal Info Screen
     When the user clicks on the button: "Continue"
     Then the user lands on the Banking Info Screen
     Examples:
-      | DOB      | SSN       | income | payFrequency |
-      | 01011971 | 362563215 | 1000   | Weekly       |
-      | 01011980 | 078051120 | 2500   | Bi-Weekly    |
-      | 01012000 | 666051120 | 3500   | Semi-Monthly |
-      | 01011951 | 999051120 | 5000   | Monthly      |
+      | email                         | DOB      | SSN       | income | payFrequency |
+      | banking128221@flexshopper.com | 01011971 | 362563215 | 1000   | Weekly       |
+      | banking128222@flexshopper.com | 01011980 | 078051120 | 2500   | Bi-Weekly    |
+      | banking128223@flexshopper.com | 01012000 | 666051120 | 3500   | Semi-Monthly |
+      | banking128224@flexshopper.com | 01011951 | 999051120 | 5000   | Monthly      |
+      | banking128225@flexshopper.com | 01012002 | 357002345 | 8000   | Monthly      |
