@@ -40,13 +40,13 @@ public class WebDriverHelpers {
             for (int i=0; i<timeout; i++) {
                 if(dynamicElement.size() != 0){
                     //If list size is non-zero, element is present
-                    //System.out.println("Element " + element + " was found");
+                    System.out.println("Element " + element + " was found");
                     break;
                 }
                 else{
                     //Else if size is 0, then element is not present
                     Thread.sleep(1000);
-                    //System.out.println( "Iteration number: " + 1 + " - Element " + element + " not found");
+                    System.out.println( "Iteration number: " + 1 + " - Element " + element + " not found");
                 }
             }
         } catch(NoSuchElementException e){

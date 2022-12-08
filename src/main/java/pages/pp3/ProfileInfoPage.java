@@ -127,7 +127,7 @@ public class ProfileInfoPage extends EmailPage {
      * @param emailEntered
      */
     public void verifyEmailAddressIsNotHis(String emailEntered) {
-        Assert.assertNotEquals(emailEntered, emailEntered);
+        Assert.assertNotEquals(emailEntered, "expectedEmail@flexshopper.com");
     }
 
     /**
