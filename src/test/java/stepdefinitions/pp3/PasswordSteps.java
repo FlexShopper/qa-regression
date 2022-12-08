@@ -9,18 +9,17 @@ import pages.Page;
 
 public class PasswordSteps extends Page {
     @Given("^the user is on the Password screen with email: \"([^\"]*)\"$")
-    public void theUserIsOnThePasswordScreenWithEmail(String email) throws InterruptedException {
+    public void theUserIsOnThePasswordScreenWithEmail(String email) {
         System.out.println("Given the user is on the Password screen with email: " + email);
         // Launch browser and navigate to the PP3's Password screen
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
         instanceOf(EmailPage.class).switchToFrame();
-        instanceOf(EmailPage.class).verifyHeader();
+        instanceOf(EmailPage.class).verifyHeader(30);
         instanceOf(EmailPage.class).enterEmail(email);
         instanceOf(EmailPage.class).clickOnContinueBtn();
 
         // Verify user landed on the PP3's Password screen
-        instanceOf(EmailPage.class).verifyHeader();
         instanceOf(PasswordPage.class).verifyPasswordScreen();
         instanceOf(EmailPage.class).verifyFooter();
     }
@@ -29,7 +28,7 @@ public class PasswordSteps extends Page {
     public void theUserLandsOnTheEmailScreen() {
         System.out.println("Then the user lands on the Email screen");
         // Verify user landed on the PP3's Email screen
-        instanceOf(EmailPage.class).verifyHeader();
+        instanceOf(EmailPage.class).verifyHeader(30);
         instanceOf(EmailPage.class).verifyEmailScreen();
         instanceOf(EmailPage.class).verifyFooter();
     }

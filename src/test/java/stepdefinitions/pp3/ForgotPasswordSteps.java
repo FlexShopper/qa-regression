@@ -9,19 +9,18 @@ import pages.pp3.*;
 
 public class ForgotPasswordSteps extends Page {
     @Given("^the user is on the Forgot Password screen with email: \"([^\"]*)\"$")
-    public void theUserIsOnTheForgotPasswordScreenWithEmail(String email) throws InterruptedException {
+    public void theUserIsOnTheForgotPasswordScreenWithEmail(String email) {
         System.out.println("Given the user is on the Forgot Password screen with email: " + email);
         // Launch browser and navigate to the PP3's Forgot Password screen
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
         instanceOf(EmailPage.class).switchToFrame();
-        instanceOf(EmailPage.class).verifyHeader();
+        instanceOf(EmailPage.class).verifyHeader(30);
         instanceOf(EmailPage.class).enterEmail(email);
         instanceOf(EmailPage.class).clickOnContinueBtn();
         instanceOf(PasswordPage.class).clickOnTheForgotPasswordLnk();
 
         // Verify user landed on the PP3's Forgot Password screen
-        instanceOf(EmailPage.class).verifyHeader();
         instanceOf(ForgotPasswordPage.class).verifyForgotPasswordScreen();
         instanceOf(EmailPage.class).verifyFooter();
     }
@@ -45,7 +44,7 @@ public class ForgotPasswordSteps extends Page {
     }
 
     @Then("^the user lands on the Verification Code screen$")
-    public void theUserLandsOnTheVerificationCodeScreen() throws InterruptedException {
+    public void theUserLandsOnTheVerificationCodeScreen() {
         System.out.println("Then the user lands on the Verification Code screen");
         instanceOf(VerificationCodePage.class).verifyVerificationCodeScreen();
     }
@@ -66,7 +65,6 @@ public class ForgotPasswordSteps extends Page {
     public void theUserLandsOnTheChangePasswordScreen() throws InterruptedException {
         System.out.println("Then the user lands on the Change Password screen");
         // Verify user landed on the PP3's Change Password screen
-        //TODO: instanceOf(EmailPage.class).verifyHeader();
         instanceOf(ChangePasswordPage.class).verifyChangePasswordScreen();
         //TODO: instanceOf(EmailPage.class).verifyFooter();
     }
@@ -81,7 +79,6 @@ public class ForgotPasswordSteps extends Page {
     public void theUserLandsOnTheForgotPasswordScreen() throws InterruptedException {
         System.out.println("Then the user lands on the Forgot Password screen");
         // Verify user landed on the PP3's Forgot Password screen
-        instanceOf(EmailPage.class).verifyHeader();
         instanceOf(ForgotPasswordPage.class).verifyForgotPasswordScreen();
         instanceOf(EmailPage.class).verifyFooter();
     }
@@ -111,7 +108,7 @@ public class ForgotPasswordSteps extends Page {
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
         instanceOf(EmailPage.class).switchToFrame();
-        instanceOf(EmailPage.class).verifyHeader();
+        instanceOf(EmailPage.class).verifyHeader(30);
         instanceOf(EmailPage.class).enterEmail(emailAddress);
         instanceOf(EmailPage.class).clickOnContinueBtn();
         instanceOf(PasswordPage.class).clickOnTheForgotPasswordLnk();
@@ -120,7 +117,6 @@ public class ForgotPasswordSteps extends Page {
         instanceOf(VerificationCodePage.class).clickOnSubmitBtn();
 
         // Verify user landed on the PP3's Change Password screen
-        instanceOf(EmailPage.class).verifyHeader();
         instanceOf(ChangePasswordPage.class).verifyChangePasswordScreen();
         instanceOf(EmailPage.class).verifyFooter();
     }
@@ -134,6 +130,5 @@ public class ForgotPasswordSteps extends Page {
     @Then("^the user is able to change the password$")
     public void theUserIsAbleToChangeThePassword() {
         System.out.println("Then the user is able to change the password");
-
     }
 }

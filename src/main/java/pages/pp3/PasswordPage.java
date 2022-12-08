@@ -54,9 +54,7 @@ public class PasswordPage extends EmailPage {
      * verifyPasswordScreen() - Verifies user landed on the Password screen
      */
     public void verifyPasswordScreen() {
-        driverHelpers.wdIsElementFound(passwordField, 30);
-
-        // TODO: Verify PP3's Header
+        instanceOf(EmailPage.class).verifyHeader(30);
         // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(flexshopperLogo);
         // TODO: elementHelpers.webElementIsDisplayed(existingCustomerTxt);
