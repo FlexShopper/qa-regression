@@ -88,7 +88,7 @@ podTemplate(label: label,
                                 sh "mvn -v"
                                 sh "export MAVEN_HOME=/usr/share/maven"
                                 sh "export M2_HOME=/home/maven/"
-                                sh "mvn clean install -Dcucumber.options=\"--tags @PersonalInfo\""
+                                sh "mvn clean install -Dcucumber.options=\"--tags @BankingInfo\""
                            }
                         }
                     }
@@ -96,8 +96,8 @@ podTemplate(label: label,
             }
 
             stage ('Store Artifacts') {
-                echo 'Waiting 90 seconds for the reports to be created prior to storing them'
-                sleep(time:90, unit:"SECONDS")
+                echo 'Waiting 60 seconds for the reports to be created prior to storing them'
+                sleep(time:60, unit:"SECONDS")
                 echo "Store Artifacts";
                 archiveArtifacts artifacts: 'target/cucumber-reports/CucumberExtentReport.html', onlyIfSuccessful: false
             }
