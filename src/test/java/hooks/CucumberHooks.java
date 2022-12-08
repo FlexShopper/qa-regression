@@ -27,6 +27,9 @@ public class CucumberHooks {
         else if (browser.equalsIgnoreCase("headlessFirefox")) {
             DriverController.instance.startFirefox("--headless");
         }
+        else if (browser.equalsIgnoreCase("chromeMobileEmulator")) {
+            DriverController.instance.startChromeMobileEmulator("--disable-extensions");
+        }
     }
 
     @Before("@Chrome")
