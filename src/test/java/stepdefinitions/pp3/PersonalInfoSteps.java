@@ -17,12 +17,14 @@ public class PersonalInfoSteps {
         // Launch browser and navigate to the PP3's Personal Info screen
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
+        instanceOf(EmailPage.class).verifyHeader();
         instanceOf(EmailPage.class).switchToFrame();
         instanceOf(EmailPage.class).enterNewEmail(emailAddress);
         instanceOf(EmailPage.class).clickOnContinueBtn();
 
         // Enters required information in Profile Information
         // TODO: Read data from JSON files
+        instanceOf(ProfileInfoPage.class).verifyProfileInfoScreen();
         instanceOf(ProfileInfoPage.class).enterFirstName("PersonalInfo");
         instanceOf(ProfileInfoPage.class).enterLastName("User");
         instanceOf(ProfileInfoPage.class).enterMobileNumber("18553539289");

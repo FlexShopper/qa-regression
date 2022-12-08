@@ -83,7 +83,7 @@ public class ProfileInfoPage extends EmailPage {
      * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
      */
     public void verifyProfileInfoScreen() {
-        driverHelpers.wdIsElementFound(firstName, 45);
+        driverHelpers.wdIsElementFound(firstName, 30);
 
         // TODO: Verify PP3's Header
         // Verify elements are displayed
@@ -104,7 +104,7 @@ public class ProfileInfoPage extends EmailPage {
      * verifyProfileInfoScreenWithHiddenFields() - Verify PP3's Profile Info Screen showing hidden address fields
      */
     public void verifyProfileInfoScreenWithHiddenFields() {
-        driverHelpers.wdIsElementFound(city, 45);
+        driverHelpers.wdIsElementFound(city, 30);
 
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(profileInfoTab);

@@ -49,7 +49,7 @@ public class PersonalInfoPage extends EmailPage {
      * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
      */
     public void verifyPersonalInfoScreen() {
-        driverHelpers.wdIsElementFound(dobPP3, 45);
+        driverHelpers.wdIsElementFound(dobPP3, 30);
 
         // TODO: Verify PP3's Header
         // Verify elements are displayed

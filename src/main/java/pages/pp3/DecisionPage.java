@@ -33,7 +33,7 @@ public class DecisionPage extends EmailPage {
      * verifyBankingInfoPage() - Verify PP3's Decision Screen
      */
     public void verifyDecisionScreen() {
-        driverHelpers.wdIsElementFound(startShoppingBtn, 180);
+        driverHelpers.wdIsElementFound(startShoppingBtn, 150);
 
         // TODO: Verify PP3's Header
         // Verify elements are displayed

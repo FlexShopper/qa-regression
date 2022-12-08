@@ -43,7 +43,7 @@ public class BankingInfoPage extends EmailPage {
      * verifyBankingInfoPage() - Verify PP3's Banking Info Screen
      */
     public void verifyBankingInfoPage() {
-        driverHelpers.wdIsElementFound(routingNumberPP3, 45);
+        driverHelpers.wdIsElementFound(routingNumberPP3, 30);
 
         // TODO: Verify PP3's Header
         // Verify elements are displayed

@@ -15,6 +15,7 @@ public class PasswordSteps extends Page {
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
         instanceOf(EmailPage.class).switchToFrame();
+        instanceOf(EmailPage.class).verifyHeader();
         instanceOf(EmailPage.class).enterEmail(email);
         instanceOf(EmailPage.class).clickOnContinueBtn();
 
@@ -77,7 +78,7 @@ public class PasswordSteps extends Page {
     }
 
     @Then("^the user should see the validation error message: \"([^\"]*)\"$")
-    public void theUserShouldSeeTheValidationErrorMessage(String validationMsg) throws InterruptedException {
+    public void theUserShouldSeeTheValidationErrorMessage(String validationMsg) {
         System.out.println("Then the user should see the validation error message: " + validationMsg);
         instanceOf(PasswordPage.class).passwordValidationMessage(validationMsg);
     }
@@ -89,7 +90,7 @@ public class PasswordSteps extends Page {
     }
 
     @Then("^the user should see the required validation message: \"([^\"]*)\"$")
-    public void theUserShouldSeeTheRequiredValidationMessage(String validationMsg) throws InterruptedException {
+    public void theUserShouldSeeTheRequiredValidationMessage(String validationMsg) {
         System.out.println("Then the user should see the required validation message: " + validationMsg);
         instanceOf(PasswordPage.class).passwordRequiredMsg(validationMsg);
     }

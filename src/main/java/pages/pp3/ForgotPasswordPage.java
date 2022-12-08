@@ -50,7 +50,7 @@ public class ForgotPasswordPage extends EmailPage {
      * verifyForgotPasswordScreen() - Verifies user landed on the Forgot Password screen
      */
     public void verifyForgotPasswordScreen() {
-        driverHelpers.wdIsElementFound(continueBtn, 45);
+        driverHelpers.wdIsElementFound(continueBtn, 30);
 
         // TODO: Verify PP3's Header
         // Verify elements are displayed

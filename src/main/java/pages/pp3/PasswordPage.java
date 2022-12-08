@@ -54,7 +54,7 @@ public class PasswordPage extends EmailPage {
      * verifyPasswordScreen() - Verifies user landed on the Password screen
      */
     public void verifyPasswordScreen() {
-        driverHelpers.wdIsElementFound(passwordField, 45);
+        driverHelpers.wdIsElementFound(passwordField, 30);
 
         // TODO: Verify PP3's Header
         // Verify elements are displayed

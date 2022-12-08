@@ -32,7 +32,7 @@ public class VerificationCodePage extends EmailPage {
      * verifyVerificationCodeScreen() - Verifies user landed in the Verification Code screen
      */
     public void verifyVerificationCodeScreen() {
-        driverHelpers.wdIsElementFound(securityCode, 45);
+        driverHelpers.wdIsElementFound(securityCode, 30);
 
         // Verify top element for stale state
         WaitHelpers.waitForStaleEl(securityCode);

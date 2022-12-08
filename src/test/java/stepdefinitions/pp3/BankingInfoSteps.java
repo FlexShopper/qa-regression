@@ -15,11 +15,13 @@ public class BankingInfoSteps {
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
         instanceOf(EmailPage.class).switchToFrame();
+        instanceOf(EmailPage.class).verifyHeader();
         instanceOf(EmailPage.class).enterNewEmail(emailAddress);
         instanceOf(EmailPage.class).clickOnContinueBtn();
 
         // Enters required information in Profile Information
         // TODO: Read data from JSON files
+        instanceOf(ProfileInfoPage.class).verifyProfileInfoScreen();
         instanceOf(ProfileInfoPage.class).enterFirstName("PersonalInfo");
         instanceOf(ProfileInfoPage.class).enterLastName("User");
         instanceOf(ProfileInfoPage.class).enterMobileNumber("18553539289");
@@ -33,6 +35,7 @@ public class BankingInfoSteps {
 
         // Enters required information in Personal Information
         // TODO: Read data from JSON files
+        instanceOf(PersonalInfoPage.class).verifyPersonalInfoScreen();
         instanceOf(PersonalInfoPage.class).enterDOB("01011970");
         instanceOf(PersonalInfoPage.class).enterSSN("362563215");
         instanceOf(PersonalInfoPage.class).enterIncome("5000");
