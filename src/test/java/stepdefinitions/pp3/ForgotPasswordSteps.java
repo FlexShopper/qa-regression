@@ -1,6 +1,5 @@
 package stepdefinitions.pp3;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -16,6 +15,7 @@ public class ForgotPasswordSteps extends Page {
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
         instanceOf(EmailPage.class).switchToFrame();
+        instanceOf(EmailPage.class).verifyHeader();
         instanceOf(EmailPage.class).enterEmail(email);
         instanceOf(EmailPage.class).clickOnContinueBtn();
         instanceOf(PasswordPage.class).clickOnTheForgotPasswordLnk();
@@ -111,6 +111,7 @@ public class ForgotPasswordSteps extends Page {
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
         instanceOf(EmailPage.class).switchToFrame();
+        instanceOf(EmailPage.class).verifyHeader();
         instanceOf(EmailPage.class).enterEmail(emailAddress);
         instanceOf(EmailPage.class).clickOnContinueBtn();
         instanceOf(PasswordPage.class).clickOnTheForgotPasswordLnk();
