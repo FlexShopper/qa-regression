@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03b913b2-1033-488f-9f69-f8bf7fbe3866" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/drivers/ChromeWebDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/drivers/ChromeWebDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/helpers/WebDriverHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/helpers/WebDriverHelpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/pp3/PersonalInfoScreen.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/pp3/PersonalInfoScreen.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
