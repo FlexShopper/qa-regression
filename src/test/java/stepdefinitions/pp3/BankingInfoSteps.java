@@ -9,7 +9,7 @@ import static pages.Page.instanceOf;
 
 public class BankingInfoSteps {
     @Given("^the user is on the Banking Info screen with email: \"([^\"]*)\"$")
-    public void theUserIsOnTheBankingInfoScreenWithEmail(String emailAddress) throws InterruptedException {
+    public void theUserIsOnTheBankingInfoScreenWithEmail(String emailAddress) {
         System.out.println("Given the user is in the Personal Info screen with email: " + emailAddress);
         // Launch browser and navigate to the PP3's Personal Info screen
         instanceOf(EmailPage.class).navigateToBaseUrl();
