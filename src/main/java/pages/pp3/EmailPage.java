@@ -96,7 +96,7 @@ public class EmailPage extends Page {
      * Verify PP3's Header
      */
     public void verifyHeader() {
-        driverHelpers.wdIsElementFound(headerCloseBtn, 30);
+        driverHelpers.wdIsElementFound(headerCloseBtn, 45);
 
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(headerCloseBtn);

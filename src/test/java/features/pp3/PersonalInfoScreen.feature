@@ -1,4 +1,4 @@
-@Regression @Web @PP3 @PersonalInfo
+@Regression @Web @PP3
 Feature: As user I should be able to land on the Personal Info Screen
 
   Scenario Outline: The user cannot enter an invalid date of birth
@@ -20,6 +20,7 @@ Feature: As user I should be able to land on the Personal Info Screen
       | 12345678 | Must be 9 characters |
       | 1234     | Must be 9 characters |
 
+  @PersonalInfo
   Scenario Outline: The user should land on Banking info screen
     Given the user is on the Personal Info screen with email: "personalinfo@flexshopper.com"
     And the user enters a valid date of birth: "<DOB>"

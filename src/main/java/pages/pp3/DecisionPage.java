@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
-import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 import java.util.List;
 import static utils.selenium.Driver.browser;
@@ -34,7 +33,7 @@ public class DecisionPage extends EmailPage {
      * verifyBankingInfoPage() - Verify PP3's Decision Screen
      */
     public void verifyDecisionScreen() {
-        driverHelpers.wdIsElementFound(startShoppingBtn, 150);
+        driverHelpers.wdIsElementFound(startShoppingBtn, 180);
 
         // TODO: Verify PP3's Header
         // Verify elements are displayed
