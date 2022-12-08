@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03b913b2-1033-488f-9f69-f8bf7fbe3866" name="Changes" comment="" />
+    <list default="true" id="03b913b2-1033-488f-9f69-f8bf7fbe3866" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/pp3/PersonalInfoScreen.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/pp3/PersonalInfoScreen.feature" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
