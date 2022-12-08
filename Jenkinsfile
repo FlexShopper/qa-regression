@@ -67,7 +67,7 @@ podTemplate(label: label,
                     withCredentials([string(credentialsId: 'slack-api-token', variable: 'SLACK_TOKEN')]) {
                         ansiColor('gnome-terminal') {
                             echo 'Install Java JDK'
-                            sh "java -version"
+                            sh "java --version"
                             sh """
                                 apt-get update && \
                                 apt-get install -y openjdk-8-jdk && \
