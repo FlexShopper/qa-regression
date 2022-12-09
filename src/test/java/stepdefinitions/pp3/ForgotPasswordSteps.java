@@ -15,7 +15,7 @@ public class ForgotPasswordSteps extends Page {
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
         instanceOf(EmailPage.class).switchToFrame();
-        instanceOf(EmailPage.class).verifyHeader(30);
+        instanceOf(EmailPage.class).verifyHeader(45);
         instanceOf(EmailPage.class).enterEmail(email);
         instanceOf(EmailPage.class).clickOnContinueBtn();
         instanceOf(PasswordPage.class).clickOnTheForgotPasswordLnk();
@@ -108,7 +108,7 @@ public class ForgotPasswordSteps extends Page {
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
         instanceOf(EmailPage.class).switchToFrame();
-        instanceOf(EmailPage.class).verifyHeader(30);
+        instanceOf(EmailPage.class).verifyHeader(45);
         instanceOf(EmailPage.class).enterEmail(emailAddress);
         instanceOf(EmailPage.class).clickOnContinueBtn();
         instanceOf(PasswordPage.class).clickOnTheForgotPasswordLnk();

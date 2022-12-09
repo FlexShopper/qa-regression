@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
+import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 
 public class ChangePasswordPage extends EmailPage {
@@ -43,7 +44,7 @@ public class ChangePasswordPage extends EmailPage {
      * verifyChangePasswordScreen() - Verify Change Password Screen
      */
     public void verifyChangePasswordScreen() throws InterruptedException {
-        instanceOf(EmailPage.class).verifyHeader(30);
+        instanceOf(EmailPage.class).verifyHeader(45);
 
         elementHelpers.webElementIsDisplayed(createNewPasswordTxt);
         elementHelpers.webElementIsDisplayed(emailValueTxt);

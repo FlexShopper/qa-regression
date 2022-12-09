@@ -15,7 +15,7 @@ public class PasswordSteps extends Page {
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
         instanceOf(EmailPage.class).switchToFrame();
-        instanceOf(EmailPage.class).verifyHeader(30);
+        instanceOf(EmailPage.class).verifyHeader(45);
         instanceOf(EmailPage.class).enterEmail(email);
         instanceOf(EmailPage.class).clickOnContinueBtn();
 
@@ -28,7 +28,7 @@ public class PasswordSteps extends Page {
     public void theUserLandsOnTheEmailScreen() {
         System.out.println("Then the user lands on the Email screen");
         // Verify user landed on the PP3's Email screen
-        instanceOf(EmailPage.class).verifyHeader(30);
+        instanceOf(EmailPage.class).verifyHeader(45);
         instanceOf(EmailPage.class).verifyEmailScreen();
         instanceOf(EmailPage.class).verifyFooter();
     }

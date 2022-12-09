@@ -49,7 +49,7 @@ public class PersonalInfoPage extends EmailPage {
      * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
      */
     public void verifyPersonalInfoScreen() {
-        instanceOf(EmailPage.class).verifyHeader(30);
+        instanceOf(EmailPage.class).verifyHeader(45);
 
         // TODO: Verify PP3's Header
         // Verify elements are displayed

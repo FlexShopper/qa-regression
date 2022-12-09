@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
+import utils.helpers.WaitHelpers;
 
 public class ProfileInfoPage extends EmailPage {
     /**
@@ -82,7 +83,8 @@ public class ProfileInfoPage extends EmailPage {
      * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
      */
     public void verifyProfileInfoScreen() {
-        instanceOf(EmailPage.class).verifyHeader(30);
+        instanceOf(EmailPage.class).verifyHeader(45);
+
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(profileInfoTab);
         // TODO: elementHelpers.weElementIsDisplayed(emailAddressTxt);
@@ -101,10 +103,10 @@ public class ProfileInfoPage extends EmailPage {
      * verifyProfileInfoScreenWithHiddenFields() - Verify PP3's Profile Info Screen showing hidden address fields
      */
     public void verifyProfileInfoScreenWithHiddenFields() {
-        instanceOf(EmailPage.class).verifyHeader(30);
+        instanceOf(EmailPage.class).verifyHeader(45);
 
         // Verify elements are displayed
-        elementHelpers.webElementIsDisplayed(profileInfoTab);
+        elementHelpers.webElementIsDisplayed(unitNumber);
         // TODO: elementHelpers.weElementIsDisplayed(emailAddressTxt);
         elementHelpers.webElementIsDisplayed(notYouBtn);
         elementHelpers.webElementIsDisplayed(firstName);

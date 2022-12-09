@@ -54,7 +54,8 @@ public class PasswordPage extends EmailPage {
      * verifyPasswordScreen() - Verifies user landed on the Password screen
      */
     public void verifyPasswordScreen() {
-        instanceOf(EmailPage.class).verifyHeader(30);
+        instanceOf(EmailPage.class).verifyHeader(45);
+
         // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(flexshopperLogo);
         // TODO: elementHelpers.webElementIsDisplayed(existingCustomerTxt);
@@ -89,6 +90,7 @@ public class PasswordPage extends EmailPage {
     public void passwordValidationMessage(String validationMsg) {
         // Wait for screen to load & Ajax to be completed
         WaitHelpers.waitForPageReady(browser(),6);
+
         //TODO: Move to WebElementHelpers
         WebDriver driver = browser();
         List<WebElement> spanText = driver.findElements(By.tagName("span"));
@@ -109,7 +111,8 @@ public class PasswordPage extends EmailPage {
     public void passwordRequiredMsg(String validationMsg) {
         // Wait for screen to load & Ajax to be completed
         WaitHelpers.waitForPageReady(browser(),6);
-        //TODO: Move it to WebElementHelpers
+
+        //TODO: Move code below to WebElementHelpers
         WebDriver driver = browser();
         List<WebElement> spanText = driver.findElements(By.tagName("span"));
         for(int i = 0; i<spanText.size(); i++){

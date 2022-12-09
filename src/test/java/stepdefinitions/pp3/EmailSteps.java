@@ -17,7 +17,7 @@ public class EmailSteps extends Page {
         instanceOf(EmailPage.class).switchToFrame();
 
         // Verify user landed on the PP3's Email screen
-        instanceOf(EmailPage.class).verifyHeader(30);
+        instanceOf(EmailPage.class).verifyHeader(45);
         instanceOf(EmailPage.class).verifyEmailScreen();
         instanceOf(EmailPage.class).verifyFooter();
     }
@@ -53,7 +53,7 @@ public class EmailSteps extends Page {
     @Then("^the user lands on the Password screen$")
     public void theUserLandsOnThePasswordScreen() {
         System.out.println("Then the user lands on the Password screen");
-        instanceOf(EmailPage.class).verifyHeader(30);
+        instanceOf(EmailPage.class).verifyHeader(45);
         instanceOf(PasswordPage.class).verifyPasswordScreen();
         instanceOf(EmailPage.class).verifyFooter();
     }
@@ -67,7 +67,7 @@ public class EmailSteps extends Page {
     @Then("^the user lands on the Profile Info screen$")
     public void theUserLandsOnTheProfileInfoScreen() {
         System.out.println("Then the user lands on the Profile Info screen");
-        instanceOf(EmailPage.class).verifyHeader(30);
+        instanceOf(EmailPage.class).verifyHeader(45);
         instanceOf(ProfileInfoPage.class).verifyProfileInfoScreen();
         instanceOf(EmailPage.class).verifyFooter();
     }

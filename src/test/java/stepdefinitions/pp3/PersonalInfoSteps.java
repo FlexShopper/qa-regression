@@ -18,7 +18,7 @@ public class PersonalInfoSteps {
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
         instanceOf(EmailPage.class).switchToFrame();
-        instanceOf(EmailPage.class).verifyHeader(30);
+        instanceOf(EmailPage.class).verifyHeader(45);
         instanceOf(EmailPage.class).enterNewEmail(emailAddress);
         instanceOf(EmailPage.class).clickOnContinueBtn();
 
