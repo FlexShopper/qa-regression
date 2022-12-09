@@ -15,21 +15,11 @@ public class WaitHelpers {
      */
     public static void waitForStaleEl(WebElement element) {
         WebDriver driver = browser();
-        WebDriverWait waitFor = new WebDriverWait(driver, 3);
-
-        int repeat = 0;
-        while (repeat <= 30) {
-            try {
-                waitFor.until(ExpectedConditions.stalenessOf(element));
-                break;
-            } catch (StaleElementReferenceException st) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            break;
+        WebDriverWait waitFor = new WebDriverWait(driver, 45);
+        try {
+            waitFor.until(ExpectedConditions.stalenessOf(element));
+        } catch (StaleElementReferenceException e) {
+            e.printStackTrace();
         }
     }
 
