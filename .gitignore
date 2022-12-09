@@ -5,10 +5,14 @@ target/
 out/
 
 ### IntelliJ IDEA ###
+<<<<<<< HEAD
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+=======
+.idea/*.xml
+>>>>>>> 87d0e1f2447d134844d72f3404132342cb585f6b
 *.iws
 *.iml
 *.ipr

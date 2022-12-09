@@ -3,6 +3,7 @@ package pages.pp3;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
@@ -27,6 +28,9 @@ public class EmailPage extends Page {
 
     @FindBy(how = How.ID, using = "headerPanel-faq-button") // FAQ Button
     private WebElement headerFAQBtn;
+
+    @FindBy(how = How.XPATH, using = "//*[@id='headerPanel']")
+    public static By headerPanelPP3 = By.xpath("//*[@id='headerPanel']");
 
     /**
      * Elements - PP3's Email Screen
@@ -95,8 +99,8 @@ public class EmailPage extends Page {
     /**
      * Verify PP3's Header
      */
-    public void verifyHeader() {
-        driverHelpers.wdIsElementFound(headerCloseBtn, 30);
+    public void verifyHeader(int timeOut) {
+        driverHelpers.wdIsElementFound(headerPanelPP3, timeOut);
 
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(headerCloseBtn);

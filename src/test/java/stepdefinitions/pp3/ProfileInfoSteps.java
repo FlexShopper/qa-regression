@@ -11,13 +11,14 @@ import static pages.Page.instanceOf;
 
 public class ProfileInfoSteps {
     @Given("^the user is on the Profile Info screen with email: \"([^\"]*)\"$")
-    public void theUserIsOnTheProfileInfoScreenWithEmail(String emailAddress) throws InterruptedException {
+    public void theUserIsOnTheProfileInfoScreenWithEmail(String emailAddress) {
         System.out.println("Given the user is on the Profile screen with email: " + emailAddress);
 
         // Launch browser and navigate to the PP3's Profile Info screen
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
         instanceOf(EmailPage.class).switchToFrame();
+        instanceOf(EmailPage.class).verifyHeader(30);
         instanceOf(EmailPage.class).enterNewEmail(emailAddress);
         instanceOf(EmailPage.class).clickOnContinueBtn();
 
@@ -32,7 +33,7 @@ public class ProfileInfoSteps {
     }
 
     @Then("^the user should see the hidden address fields$")
-    public void theUserShouldSeeTheHiddenAddressFields() throws InterruptedException {
+    public void theUserShouldSeeTheHiddenAddressFields() {
         System.out.println("Then the user should see the hidden address fields");
         instanceOf(ProfileInfoPage.class).verifyProfileInfoScreenWithHiddenFields();
     }
@@ -62,7 +63,7 @@ public class ProfileInfoSteps {
     }
 
     @When("^the user enters an invalid zip code: \"([^\"]*)\"$")
-    public void theUserEntersAnInvalidZipCode(String zipCode) throws InterruptedException {
+    public void theUserEntersAnInvalidZipCode(String zipCode) {
         System.out.println("When the user enters an invalid zip code: " + zipCode);
         instanceOf(ProfileInfoPage.class).enterZipCode(zipCode);
     }
@@ -116,7 +117,7 @@ public class ProfileInfoSteps {
     }
 
     @Then("^the user lands on the Personal Info screen$")
-    public void theUserLandsOnThePersonalInfoScreen() throws InterruptedException {
+    public void theUserLandsOnThePersonalInfoScreen() {
         System.out.println("Then the user lands on the Personal Info screen");
         instanceOf(PersonalInfoPage.class).verifyPersonalInfoScreen();
     }
@@ -134,13 +135,13 @@ public class ProfileInfoSteps {
     }
 
     @And("^the user selects a valid state: \"([^\"]*)\"$")
-    public void theUserSelectsAValidState(String state) throws InterruptedException {
+    public void theUserSelectsAValidState(String state) {
         System.out.println("And the user selects a valid state: " + state);
         instanceOf(ProfileInfoPage.class).selectState(state);
     }
 
     @And("^the user enters a valid zip code: \"([^\"]*)\"$")
-    public void theUserEntersAValidZipCode(String zipCode) throws InterruptedException {
+    public void theUserEntersAValidZipCode(String zipCode) {
         System.out.println("Then the user lands on the Personal Info screen");
         instanceOf(ProfileInfoPage.class).enterZipCode(zipCode);
     }

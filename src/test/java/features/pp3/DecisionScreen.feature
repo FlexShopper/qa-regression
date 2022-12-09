@@ -15,7 +15,7 @@ Feature: As user I should be able to apply for a lease/loan and land on the deci
       | 011401533     | 1357924680    | 1357924680       | You were approved for a spending limit of |
       | 011401533     | 1234567890    | 1234567890       | You were approved for a spending limit of |
 
-  Scenario Outline: The user should be able to apply whit different pay frequencies
+  Scenario Outline: The user should be able to apply with different pay frequencies: "<payFrequency>"
     Given the user is on the Personal Info screen with email: "decisionscreen@flexshopper.com"
     And the user completes the Personal Info screen with pay frequency: "<payFrequency>"
     And the user completes the Banking Info screen
