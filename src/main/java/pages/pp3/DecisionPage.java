@@ -6,10 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
-import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import static utils.selenium.Driver.browser;
 
 public class DecisionPage extends EmailPage {
@@ -36,12 +34,9 @@ public class DecisionPage extends EmailPage {
     /**
      * verifyBankingInfoPage() - Verify PP3's Decision Screen
      */
-    public void verifyDecisionScreen() throws ExecutionException, InterruptedException {
+    public void verifyDecisionScreen() {
         driverHelpers.wdIsElementFound(decisionTitleTxtPP3, 320);
-        // TODO: instanceOf(EmailPage.class).verifyHeader(45);
-
-        // Wait for elements to be displayed
-        WaitHelpers.waitForStaleElement(startShoppingBtn);
+        instanceOf(EmailPage.class).verifyHeader(60);
 
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(decisionTitleTxt);

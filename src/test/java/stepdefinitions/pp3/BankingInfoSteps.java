@@ -5,20 +5,17 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.pp3.*;
-
-import java.util.concurrent.ExecutionException;
-
 import static pages.Page.instanceOf;
 
 public class BankingInfoSteps {
     @Given("^the user is on the Banking Info screen with email: \"([^\"]*)\"$")
-    public void theUserIsOnTheBankingInfoScreenWithEmail(String emailAddress) throws ExecutionException, InterruptedException {
+    public void theUserIsOnTheBankingInfoScreenWithEmail(String emailAddress) {
         System.out.println("Given the user is in the Personal Info screen with email: " + emailAddress);
         // Launch browser and navigate to the PP3's Personal Info screen
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
         instanceOf(EmailPage.class).switchToFrame();
-        instanceOf(EmailPage.class).verifyHeader(45);
+        instanceOf(EmailPage.class).verifyHeader(60);
         instanceOf(EmailPage.class).enterNewEmail(emailAddress);
         instanceOf(EmailPage.class).clickOnContinueBtn();
 

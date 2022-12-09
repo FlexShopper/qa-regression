@@ -8,7 +8,6 @@ import org.openqa.selenium.support.How;
 import org.testng.Assert;
 import utils.helpers.WaitHelpers;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import static utils.selenium.Driver.browser;
 
 public class BankingInfoPage extends EmailPage {
@@ -44,11 +43,8 @@ public class BankingInfoPage extends EmailPage {
     /**
      * verifyBankingInfoPage() - Verify PP3's Banking Info Screen
      */
-    public void verifyBankingInfoPage() throws ExecutionException, InterruptedException {
-        // TODO: instanceOf(EmailPage.class).verifyHeader(45);
-
-        // Wait for elements to be displayed
-        WaitHelpers.waitForStaleElement(routingNumberPP3);
+    public void verifyBankingInfoPage() {
+        instanceOf(EmailPage.class).verifyHeader(60);
 
         // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(profileInfoTab);

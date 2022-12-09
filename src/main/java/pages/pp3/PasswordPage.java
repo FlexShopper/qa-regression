@@ -9,8 +9,6 @@ import org.testng.Assert;
 import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-
 import static utils.selenium.Driver.browser;
 
 public class PasswordPage extends EmailPage {
@@ -55,11 +53,8 @@ public class PasswordPage extends EmailPage {
     /**
      * verifyPasswordScreen() - Verifies user landed on the Password screen
      */
-    public void verifyPasswordScreen() throws ExecutionException, InterruptedException {
-        // TODO: instanceOf(EmailPage.class).verifyHeader(45);
-
-        // Wait for elements to be displayed
-        WaitHelpers.waitForStaleElement(passwordField);
+    public void verifyPasswordScreen() {
+        instanceOf(EmailPage.class).verifyHeader(60);
 
         // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(flexshopperLogo);

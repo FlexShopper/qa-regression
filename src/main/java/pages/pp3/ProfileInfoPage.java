@@ -4,8 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
-import utils.helpers.WaitHelpers;
-import java.util.concurrent.ExecutionException;
 
 public class ProfileInfoPage extends EmailPage {
     /**
@@ -83,11 +81,8 @@ public class ProfileInfoPage extends EmailPage {
     /**
      * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
      */
-    public void verifyProfileInfoScreen() throws ExecutionException, InterruptedException {
-        // TODO: instanceOf(EmailPage.class).verifyHeader(45);
-
-        // Wait for elements to be displayed
-        WaitHelpers.waitForStaleElement(firstName);
+    public void verifyProfileInfoScreen() {
+        instanceOf(EmailPage.class).verifyHeader(60);
 
         // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(profileInfoTab);
@@ -106,11 +101,8 @@ public class ProfileInfoPage extends EmailPage {
     /**
      * verifyProfileInfoScreenWithHiddenFields() - Verify PP3's Profile Info Screen showing hidden address fields
      */
-    public void verifyProfileInfoScreenWithHiddenFields() throws ExecutionException, InterruptedException {
-        // TODO: instanceOf(EmailPage.class).verifyHeader(45);
-
-        // Wait for elements to be displayed
-        WaitHelpers.waitForStaleElement(city);
+    public void verifyProfileInfoScreenWithHiddenFields() {
+        instanceOf(EmailPage.class).verifyHeader(60);
 
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(unitNumber);
