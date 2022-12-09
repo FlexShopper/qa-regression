@@ -3,7 +3,6 @@ package pages.pp3;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
@@ -173,7 +172,7 @@ public class EmailPage extends Page {
      * emailValidationMessage() - Verifies the customer sees the expected Validation Message
      */
     public void emailValidationMessage(String validationMsg) {
-        //TODO: Move to WebElementHelpers
+        //TODO: Move code below to WebElementHelpers
         WebDriver driver = browser();
         List<WebElement> spanText = driver.findElements(By.tagName("span"));
         for(int i = 0; i<spanText.size(); i++){
@@ -190,7 +189,7 @@ public class EmailPage extends Page {
      * emailValidationMessage() - Verifies the customer sees the expected Validation Message
      */
     public void emailHTMLValidationMessage(String validationMsg) {
-        //TODO: Move to WebElementHelpers
+        //TODO: Move code below to WebElementHelpers
         WebDriver driver = browser();
         WebElement email = driver.findElement(By.name("email"));
         String htmlvalidationMsg = email.getAttribute("validationMessage");

@@ -6,7 +6,6 @@ import org.openqa.selenium.support.How;
 import utils.helpers.WebElementHelpers;
 import static org.testng.Assert.assertTrue;
 
-
 public class ForgotPasswordPage extends EmailPage {
     protected WebElementHelpers elementHelpers = new WebElementHelpers();
 
@@ -50,9 +49,8 @@ public class ForgotPasswordPage extends EmailPage {
      * verifyForgotPasswordScreen() - Verifies user landed on the Forgot Password screen
      */
     public void verifyForgotPasswordScreen() {
-        instanceOf(EmailPage.class).verifyHeader(30);
+        instanceOf(EmailPage.class).verifyHeader(60);
 
-        // TODO: Verify PP3's Header
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(flexshopperLogo);
         elementHelpers.webElementIsDisplayed(resetYourPasswordTxt);

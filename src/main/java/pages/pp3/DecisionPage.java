@@ -35,8 +35,9 @@ public class DecisionPage extends EmailPage {
      * verifyBankingInfoPage() - Verify PP3's Decision Screen
      */
     public void verifyDecisionScreen() {
-        instanceOf(EmailPage.class).verifyHeader(240);
-        driverHelpers.wdIsElementFound(decisionTitleTxtPP3, 240);
+        driverHelpers.wdIsElementFound(decisionTitleTxtPP3, 320);
+        instanceOf(EmailPage.class).verifyHeader(60);
+
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(decisionTitleTxt);
         elementHelpers.webElementIsDisplayed(decisionDescription);

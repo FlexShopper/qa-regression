@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import pages.pp3.EmailPage;
 import pages.pp3.PersonalInfoPage;
 import pages.pp3.ProfileInfoPage;
+import java.util.concurrent.ExecutionException;
 import static pages.Page.instanceOf;
 
 public class ProfileInfoSteps {
@@ -18,7 +19,7 @@ public class ProfileInfoSteps {
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
         instanceOf(EmailPage.class).switchToFrame();
-        instanceOf(EmailPage.class).verifyHeader(30);
+        instanceOf(EmailPage.class).verifyHeader(60);
         instanceOf(EmailPage.class).enterNewEmail(emailAddress);
         instanceOf(EmailPage.class).clickOnContinueBtn();
 

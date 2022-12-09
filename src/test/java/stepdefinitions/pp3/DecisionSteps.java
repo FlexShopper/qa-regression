@@ -11,7 +11,7 @@ import static pages.Page.instanceOf;
 public class DecisionSteps {
 
     @Then("^the user lands on the Decision Screen with decision: \"([^\"]*)\"$")
-    public void theUserLandsOnTheDecisionScreenWithDecision(String decision) throws InterruptedException {
+    public void theUserLandsOnTheDecisionScreenWithDecision(String decision) {
         System.out.println("Then the user lands on the Decision Screen with decision: " + decision);
         instanceOf(DecisionPage.class).verifyDecisionScreen();
         instanceOf(DecisionPage.class).verifyDecision();

@@ -42,9 +42,10 @@ public class ChangePasswordPage extends EmailPage {
     /**
      * verifyChangePasswordScreen() - Verify Change Password Screen
      */
-    public void verifyChangePasswordScreen() throws InterruptedException {
-        instanceOf(EmailPage.class).verifyHeader(30);
+    public void verifyChangePasswordScreen() {
+        instanceOf(EmailPage.class).verifyHeader(60);
 
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(createNewPasswordTxt);
         elementHelpers.webElementIsDisplayed(emailValueTxt);
         elementHelpers.webElementIsDisplayed(notYouLink);
