@@ -15,11 +15,13 @@ public class DecisionPage extends EmailPage {
     /**
      * Elements - PP3's Decision Screen
      */
-    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]")
+    @FindBy(how=How.XPATH,using="//*[@id='app']")
     private List<WebElement> screenElements;
 
-    @FindBy(how = How.ID, using = "decision-decisionTitle-lease")
+    @FindBy(how = How.XPATH, using = "//*[@id='decision-decisionTitle-lease']")
     private WebElement decisionTitleTxt;
+
+    protected By decisionTitleTxtPP3 = By.xpath("//*[@id='decision-decisionTitle-lease']");
 
     @FindBy(how = How.XPATH, using = "//*[@id='decision-headerDescription-lease']")
     private WebElement decisionDescription;
@@ -33,11 +35,10 @@ public class DecisionPage extends EmailPage {
     /**
      * verifyBankingInfoPage() - Verify PP3's Decision Screen
      */
-    public void verifyDecisionScreen() throws InterruptedException {
-        // Wait for screen to load & Ajax to be completed
-        // TODO: WaitHelpers.waitForPageReady(browser(), 120);
-        Thread.sleep(120000);
-        // TODO: Verify PP3's Header
+    public void verifyDecisionScreen() {
+        driverHelpers.wdIsElementFound(decisionTitleTxtPP3, 240);
+        instanceOf(EmailPage.class).verifyHeader(45);
+
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(decisionTitleTxt);
         elementHelpers.webElementIsDisplayed(decisionDescription);

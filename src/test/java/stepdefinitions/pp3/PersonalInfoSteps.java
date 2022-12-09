@@ -12,17 +12,19 @@ import static pages.Page.instanceOf;
 
 public class PersonalInfoSteps {
     @Given("^the user is on the Personal Info screen with email: \"([^\"]*)\"$")
-    public void theUserIsOnThePersonalInfoScreenWithEmail(String emailAddress) throws InterruptedException {
+    public void theUserIsOnThePersonalInfoScreenWithEmail(String emailAddress) {
         System.out.println("Given the user is in the Personal Info screen with email: " + emailAddress);
         // Launch browser and navigate to the PP3's Personal Info screen
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
         instanceOf(EmailPage.class).switchToFrame();
+        instanceOf(EmailPage.class).verifyHeader(45);
         instanceOf(EmailPage.class).enterNewEmail(emailAddress);
         instanceOf(EmailPage.class).clickOnContinueBtn();
 
         // Enters required information in Profile Information
         // TODO: Read data from JSON files
+        instanceOf(ProfileInfoPage.class).verifyProfileInfoScreen();
         instanceOf(ProfileInfoPage.class).enterFirstName("PersonalInfo");
         instanceOf(ProfileInfoPage.class).enterLastName("User");
         instanceOf(ProfileInfoPage.class).enterMobileNumber("18553539289");
@@ -70,7 +72,7 @@ public class PersonalInfoSteps {
     }
 
     @And("^the user selects a valid pay frequency: \"([^\"]*)\"$")
-    public void theUserSelectsAValidPayFrequency(String payFrequency) throws InterruptedException {
+    public void theUserSelectsAValidPayFrequency(String payFrequency) {
         System.out.println("And the user selects a valid pay frequency: " + payFrequency);
         instanceOf(PersonalInfoPage.class).selectPayFrequency(payFrequency);
     }
@@ -82,7 +84,7 @@ public class PersonalInfoSteps {
     }
 
     @Then("^the user lands on the Banking Info Screen")
-    public void theUserLandsOnTheBankingInfoScreen() throws InterruptedException {
+    public void theUserLandsOnTheBankingInfoScreen() {
         System.out.println("Then the user lands on the Banking Info Screen");
         instanceOf(BankingInfoPage.class).verifyBankingInfoPage();
     }

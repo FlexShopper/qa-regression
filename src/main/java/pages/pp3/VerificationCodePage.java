@@ -1,11 +1,11 @@
 package pages.pp3;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import utils.helpers.RetrieveEmailVerificationCode;
 import utils.helpers.WaitHelpers;
-import static utils.selenium.Driver.browser;
 
 public class VerificationCodePage extends EmailPage {
     /**
@@ -23,6 +23,8 @@ public class VerificationCodePage extends EmailPage {
     @FindBy(how = How.ID,using = "code-input")
     private WebElement securityCode;
 
+    protected By securityCodePP3 = By.xpath("//*[@id='code-input']");
+
     @FindBy(how = How.XPATH, using = "//button[(.)='No code received?']")
     private WebElement noCodeLink;
 
@@ -32,10 +34,9 @@ public class VerificationCodePage extends EmailPage {
     /**
      * verifyVerificationCodeScreen() - Verifies user landed in the Verification Code screen
      */
-    public void verifyVerificationCodeScreen() throws InterruptedException {
-        // Wait for screen to load & Ajax to be completed
-        //TODO: WaitHelpers.waitForPageReady(browser(),10);
-        Thread.sleep(15000);
+    public void verifyVerificationCodeScreen() {
+        driverHelpers.wdIsElementFound(securityCodePP3, 45);
+
         // Verify top element for stale state
         WaitHelpers.waitForStaleEl(securityCode);
 
@@ -63,6 +64,7 @@ public class VerificationCodePage extends EmailPage {
      */
     public void clickOnSubmitBtn() {
         elementHelpers.webClick(submitBtn);
+
     }
 
     /**

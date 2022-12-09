@@ -1,16 +1,10 @@
 package pages.pp3;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
 import utils.helpers.WaitHelpers;
-
-import java.util.List;
-
-import static utils.selenium.Driver.browser;
 
 public class ProfileInfoPage extends EmailPage {
     /**
@@ -88,14 +82,9 @@ public class ProfileInfoPage extends EmailPage {
     /**
      * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
      */
-    public void verifyProfileInfoScreen() throws InterruptedException {
-        // Wait for screen to load & Ajax to be completed
-        //TODO: WaitHelpers.waitForPageReady(browser(),30);
-        Thread.sleep(30000);
-        // Verify top element for stale state
-        WaitHelpers.waitForStaleEl(firstName);
+    public void verifyProfileInfoScreen() {
+        instanceOf(EmailPage.class).verifyHeader(45);
 
-        // TODO: Verify PP3's Header
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(profileInfoTab);
         // TODO: elementHelpers.weElementIsDisplayed(emailAddressTxt);
@@ -113,15 +102,11 @@ public class ProfileInfoPage extends EmailPage {
     /**
      * verifyProfileInfoScreenWithHiddenFields() - Verify PP3's Profile Info Screen showing hidden address fields
      */
-    public void verifyProfileInfoScreenWithHiddenFields() throws InterruptedException {
-        // Wait for screen to load & Ajax to be completed
-        //TODO: WaitHelpers.waitForPageReady(browser(),30);
-        Thread.sleep(15000);
-        // Verify top element for stale state
-        WaitHelpers.waitForStaleEl(city);
+    public void verifyProfileInfoScreenWithHiddenFields() {
+        instanceOf(EmailPage.class).verifyHeader(45);
 
         // Verify elements are displayed
-        elementHelpers.webElementIsDisplayed(profileInfoTab);
+        elementHelpers.webElementIsDisplayed(unitNumber);
         // TODO: elementHelpers.weElementIsDisplayed(emailAddressTxt);
         elementHelpers.webElementIsDisplayed(notYouBtn);
         elementHelpers.webElementIsDisplayed(firstName);
@@ -203,7 +188,6 @@ public class ProfileInfoPage extends EmailPage {
      */
     public void clickOnEnterAddressManuallyLnk(){
         elementHelpers.webClickJSExecutor(enterManualLink);
-
     }
 
     /**
@@ -226,7 +210,7 @@ public class ProfileInfoPage extends EmailPage {
      * enterState() - Enter State or Region
      * @param region
      */
-    public void selectState(String region) throws InterruptedException {
+    public void selectState(String region) {
         elementHelpers.webSendKeys(state, region, false);
         selectHelpers.selectFromDropdown(region);
     }

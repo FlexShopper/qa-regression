@@ -6,7 +6,6 @@ import org.openqa.selenium.support.How;
 import org.testng.Assert;
 import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
-import static utils.selenium.Driver.browser;
 
 public class ChangePasswordPage extends EmailPage {
     protected WebElementHelpers elementHelpers = new WebElementHelpers();
@@ -45,12 +44,8 @@ public class ChangePasswordPage extends EmailPage {
      * verifyChangePasswordScreen() - Verify Change Password Screen
      */
     public void verifyChangePasswordScreen() throws InterruptedException {
-        // Wait for screen to load & Ajax to be completed
-        //TODO: WaitHelpers.waitForPageReady(browser(), 30);
-        Thread.sleep(15000);
-        // Verify top element for stale state
-        WaitHelpers.waitForStaleEl(newPassword);
-        WaitHelpers.waitForStaleEl(createNewPasswordTxt);
+        instanceOf(EmailPage.class).verifyHeader(45);
+
         elementHelpers.webElementIsDisplayed(createNewPasswordTxt);
         elementHelpers.webElementIsDisplayed(emailValueTxt);
         elementHelpers.webElementIsDisplayed(notYouLink);

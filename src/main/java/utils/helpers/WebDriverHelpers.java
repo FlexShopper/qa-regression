@@ -3,6 +3,8 @@ package utils.helpers;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.pp3.EmailPage;
+
 import java.util.List;
 import static utils.selenium.Driver.browser;
 import static utils.selenium.Settings.wdHighlightedColour;
@@ -33,21 +35,21 @@ public class WebDriverHelpers {
 
     public void wdIsElementFound(By locator, int timeout) {
         WebDriver driver = browser();
-        List<WebElement> dynamicElement = driver.findElements(locator);
-        try{
+        try {
             for (int i=0; i<timeout; i++) {
+                List<WebElement> dynamicElement = driver.findElements(locator);
                 if(dynamicElement.size() != 0){
                     //If list size is non-zero, element is present
-                    System.out.println("Element was found");
+                    //System.out.println("Element " + locator + " was found");
                     break;
                 }
                 else{
                     //Else if size is 0, then element is not present
                     Thread.sleep(1000);
-                    //System.out.println("Element not present");
+                    //System.out.println( "Iteration number: " + i + " - Element " + locator + " not found");
                 }
             }
-        } catch(NoSuchElementException e){
+        } catch (NoSuchElementException e){
             e.printStackTrace();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);

@@ -3,7 +3,7 @@ Feature: As user I should be able to land on the Profile Info Screen
 
   Scenario Outline: User can navigate back to the Email screen if the email shown is not his
     Given the user is on the Profile Info screen with email: "<email>"
-    And the email address shown is not his: "<expectedEmail>"
+    And the email address shown is not his: "<email>"
     When the user clicks on the link: "Not You?"
     Then the user lands on the Email screen
     Examples:

@@ -28,6 +28,9 @@ public class EmailPage extends Page {
     @FindBy(how = How.ID, using = "headerPanel-faq-button") // FAQ Button
     private WebElement headerFAQBtn;
 
+    @FindBy(how = How.XPATH, using = "//*[@id='headerPanel']")
+    public static By headerPanelPP3 = By.xpath("//*[@id='headerPanel']");
+
     /**
      * Elements - PP3's Email Screen
      */
@@ -95,12 +98,9 @@ public class EmailPage extends Page {
     /**
      * Verify PP3's Header
      */
-    public void verifyHeader() {
-        // Wait for screen to load & Ajax to be completed
-        WaitHelpers.waitForPageReady(browser(),30);
-        // Verify top element for stale state
-        WaitHelpers.waitForStaleEl(headerCloseBtn);
-        WaitHelpers.waitForStaleEl(headerFAQBtn);
+    public void verifyHeader(int timeOut) {
+        driverHelpers.wdIsElementFound(headerPanelPP3, timeOut);
+
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(headerCloseBtn);
         elementHelpers.webElementIsDisplayed(headerFAQBtn);

@@ -20,8 +20,8 @@ Feature: As user I should be able to land on the Personal Info Screen
       | 12345678 | Must be 9 characters |
       | 1234     | Must be 9 characters |
 
-  Scenario Outline: The user should land on Banking info screen
-    Given the user is on the Personal Info screen with email: "personalinfo@flexshopper.com"
+  Scenario Outline: The user should land on Banking info screen when selecting pay frequency: "<payFrequency>"
+    Given the user is on the Personal Info screen with email: "banking@flexshopper.com"
     And the user enters a valid date of birth: "<DOB>"
     And the user enters a valid SSN: "<SSN>"
     And  the user enters a valid gross income: "<income>"
