@@ -13,8 +13,8 @@ public class WaitHelpers {
      * @param element
      */
     public static void waitForStaleEl(WebElement element) {
-        int y = 0;
-        while (y <= 30) {
+        int repeat = 0;
+        while (repeat <= 30) {
             try {
                 element.isDisplayed();
                 break;

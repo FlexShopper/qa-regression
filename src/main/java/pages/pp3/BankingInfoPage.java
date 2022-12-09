@@ -47,8 +47,8 @@ public class BankingInfoPage extends EmailPage {
         instanceOf(EmailPage.class).verifyHeader(45);
 
         // Verify elements are displayed
-        elementHelpers.webElementIsDisplayed(profileInfoTab);
-        elementHelpers.webElementIsDisplayed(personalInfoTab);
+        // TODO: elementHelpers.webElementIsDisplayed(profileInfoTab);
+        // TODO: elementHelpers.webElementIsDisplayed(personalInfoTab);
         elementHelpers.webElementIsDisplayed(bankingInfoTab);
         elementHelpers.webElementIsDisplayed(routingNumberPP3);
         elementHelpers.webElementIsDisplayed(accountNumberPP3);

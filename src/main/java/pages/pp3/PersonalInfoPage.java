@@ -53,7 +53,7 @@ public class PersonalInfoPage extends EmailPage {
 
         // TODO: Verify PP3's Header
         // Verify elements are displayed
-        elementHelpers.webElementIsDisplayed(profileInfoTab);
+        //TODO: elementHelpers.webElementIsDisplayed(profileInfoTab);
         elementHelpers.webElementIsDisplayed(personalInfoTab);
         elementHelpers.webElementIsDisplayed(dobPP3);
         elementHelpers.webElementIsDisplayed(ssnPP3);
