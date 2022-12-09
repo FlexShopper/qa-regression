@@ -3,8 +3,6 @@ package utils.helpers;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.pp3.EmailPage;
-
 import java.util.List;
 import static utils.selenium.Driver.browser;
 import static utils.selenium.Settings.wdHighlightedColour;

@@ -6,6 +6,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
+import static utils.selenium.Driver.browser;
 
 public class WaitHelpers {
     /**
@@ -13,10 +14,13 @@ public class WaitHelpers {
      * @param element
      */
     public static void waitForStaleEl(WebElement element) {
+        WebDriver driver = browser();
+        WebDriverWait waitFor = new WebDriverWait(driver, 3);
+
         int repeat = 0;
         while (repeat <= 30) {
             try {
-                element.isDisplayed();
+                waitFor.until(ExpectedConditions.stalenessOf(element));
                 break;
             } catch (StaleElementReferenceException st) {
                 try {
@@ -41,6 +45,12 @@ public class WaitHelpers {
         wait.until((ExpectedCondition<Boolean>) wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
     }
 
+    /**
+     * waitForStaleElScheduledExecutor() - Wait for Stale State Exception to end using the SingleThreadScheduledExecutor()
+     * @param element
+     * @throws InterruptedException
+     * @throws ExecutionException
+     */
     public static void waitForStaleElScheduledExecutor(WebElement element) throws InterruptedException, ExecutionException {
         int iCount = 30, iDelay = 1;
         ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
