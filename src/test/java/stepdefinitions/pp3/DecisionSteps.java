@@ -6,12 +6,13 @@ import pages.pp3.BankingInfoPage;
 import pages.pp3.DecisionPage;
 import pages.pp3.EmailPage;
 import pages.pp3.PersonalInfoPage;
+import java.util.concurrent.ExecutionException;
 import static pages.Page.instanceOf;
 
 public class DecisionSteps {
 
     @Then("^the user lands on the Decision Screen with decision: \"([^\"]*)\"$")
-    public void theUserLandsOnTheDecisionScreenWithDecision(String decision) {
+    public void theUserLandsOnTheDecisionScreenWithDecision(String decision) throws ExecutionException, InterruptedException {
         System.out.println("Then the user lands on the Decision Screen with decision: " + decision);
         instanceOf(DecisionPage.class).verifyDecisionScreen();
         instanceOf(DecisionPage.class).verifyDecision();

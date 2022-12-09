@@ -3,6 +3,8 @@ package pages.pp3;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import utils.helpers.WaitHelpers;
+import java.util.concurrent.ExecutionException;
 
 public class PersonalInfoPage extends EmailPage {
     /**
@@ -48,13 +50,15 @@ public class PersonalInfoPage extends EmailPage {
     /**
      * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
      */
-    public void verifyPersonalInfoScreen() {
-        instanceOf(EmailPage.class).verifyHeader(45);
+    public void verifyPersonalInfoScreen() throws ExecutionException, InterruptedException {
+        // TODO: instanceOf(EmailPage.class).verifyHeader(45);
 
-        // TODO: Verify PP3's Header
+        // Wait for elements to be displayed
+        WaitHelpers.waitForStaleElement(dobPP3);
+
         // Verify elements are displayed
         //TODO: elementHelpers.webElementIsDisplayed(profileInfoTab);
-        elementHelpers.webElementIsDisplayed(personalInfoTab);
+        //TODO: elementHelpers.webElementIsDisplayed(personalInfoTab);
         elementHelpers.webElementIsDisplayed(dobPP3);
         elementHelpers.webElementIsDisplayed(ssnPP3);
         elementHelpers.webElementIsDisplayed(grossMonthlyIncome);

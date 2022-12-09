@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import utils.helpers.RetrieveEmailVerificationCode;
 import utils.helpers.WaitHelpers;
+import java.util.concurrent.ExecutionException;
 
 public class VerificationCodePage extends EmailPage {
     /**
@@ -34,11 +35,11 @@ public class VerificationCodePage extends EmailPage {
     /**
      * verifyVerificationCodeScreen() - Verifies user landed in the Verification Code screen
      */
-    public void verifyVerificationCodeScreen() {
-        driverHelpers.wdIsElementFound(securityCodePP3, 45);
+    public void verifyVerificationCodeScreen() throws ExecutionException, InterruptedException {
+        // TODO: driverHelpers.wdIsElementFound(securityCodePP3, 45);
 
-        // Verify top element for stale state
-        WaitHelpers.waitForStaleEl(securityCode);
+        // Wait for elements to be displayed
+        WaitHelpers.waitForStaleElement(securityCode);
 
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(codeSentTxt);

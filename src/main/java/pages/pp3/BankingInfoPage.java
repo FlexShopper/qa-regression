@@ -8,6 +8,7 @@ import org.openqa.selenium.support.How;
 import org.testng.Assert;
 import utils.helpers.WaitHelpers;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import static utils.selenium.Driver.browser;
 
 public class BankingInfoPage extends EmailPage {
@@ -43,13 +44,16 @@ public class BankingInfoPage extends EmailPage {
     /**
      * verifyBankingInfoPage() - Verify PP3's Banking Info Screen
      */
-    public void verifyBankingInfoPage() {
-        instanceOf(EmailPage.class).verifyHeader(45);
+    public void verifyBankingInfoPage() throws ExecutionException, InterruptedException {
+        // TODO: instanceOf(EmailPage.class).verifyHeader(45);
+
+        // Wait for elements to be displayed
+        WaitHelpers.waitForStaleElement(routingNumberPP3);
 
         // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(profileInfoTab);
         // TODO: elementHelpers.webElementIsDisplayed(personalInfoTab);
-        elementHelpers.webElementIsDisplayed(bankingInfoTab);
+        // TODO: elementHelpers.webElementIsDisplayed(bankingInfoTab);
         elementHelpers.webElementIsDisplayed(routingNumberPP3);
         elementHelpers.webElementIsDisplayed(accountNumberPP3);
         elementHelpers.webElementIsDisplayed(confirmAccountNumberPP3);
@@ -88,7 +92,8 @@ public class BankingInfoPage extends EmailPage {
     public void bankNameMsg(String bankName) {
         // Wait for screen to load & Ajax to be completed
         WaitHelpers.waitForPageReady(browser(),6);
-        //TODO: Move it to WebElementHelpers
+
+        //TODO: Move code below to WebElementHelpers
         WebDriver driver = browser();
         List<WebElement> spanText = driver.findElements(By.tagName("span"));
         for(int i = 0; i<spanText.size(); i++){

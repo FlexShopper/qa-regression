@@ -6,6 +6,7 @@ import org.openqa.selenium.support.How;
 import org.testng.Assert;
 import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
+import java.util.concurrent.ExecutionException;
 
 public class ChangePasswordPage extends EmailPage {
     protected WebElementHelpers elementHelpers = new WebElementHelpers();
@@ -43,9 +44,13 @@ public class ChangePasswordPage extends EmailPage {
     /**
      * verifyChangePasswordScreen() - Verify Change Password Screen
      */
-    public void verifyChangePasswordScreen() throws InterruptedException {
-        instanceOf(EmailPage.class).verifyHeader(45);
+    public void verifyChangePasswordScreen() throws InterruptedException, ExecutionException {
+        //TODO: instanceOf(EmailPage.class).verifyHeader(45);
 
+        // Wait for elements to be displayed
+        WaitHelpers.waitForStaleElement(newPassword);
+
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(createNewPasswordTxt);
         elementHelpers.webElementIsDisplayed(emailValueTxt);
         elementHelpers.webElementIsDisplayed(notYouLink);

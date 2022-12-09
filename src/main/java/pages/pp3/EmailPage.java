@@ -10,6 +10,7 @@ import pages.Page;
 import utils.helpers.*;
 import utils.selenium.Settings;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import static utils.selenium.Driver.browser;
 
 public class EmailPage extends Page {
@@ -109,7 +110,10 @@ public class EmailPage extends Page {
     /**
      * Verify PP3's Email Screen
      */
-    public void verifyEmailScreen() {
+    public void verifyEmailScreen() throws ExecutionException, InterruptedException {
+        // Wait for elements to be displayed
+        WaitHelpers.waitForStaleElement(emailAddressField);
+
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(flexshopperLogo);
         elementHelpers.webElementIsDisplayed(enterEmailTxt);
@@ -172,7 +176,7 @@ public class EmailPage extends Page {
      * emailValidationMessage() - Verifies the customer sees the expected Validation Message
      */
     public void emailValidationMessage(String validationMsg) {
-        //TODO: Move to WebElementHelpers
+        //TODO: Move code below to WebElementHelpers
         WebDriver driver = browser();
         List<WebElement> spanText = driver.findElements(By.tagName("span"));
         for(int i = 0; i<spanText.size(); i++){
@@ -189,7 +193,7 @@ public class EmailPage extends Page {
      * emailValidationMessage() - Verifies the customer sees the expected Validation Message
      */
     public void emailHTMLValidationMessage(String validationMsg) {
-        //TODO: Move to WebElementHelpers
+        //TODO: Move code below to WebElementHelpers
         WebDriver driver = browser();
         WebElement email = driver.findElement(By.name("email"));
         String htmlvalidationMsg = email.getAttribute("validationMessage");
