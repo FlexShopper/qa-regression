@@ -10,13 +10,13 @@ import java.util.concurrent.ExecutionException;
 
 public class PasswordSteps extends Page {
     @Given("^the user is on the Password screen with email: \"([^\"]*)\"$")
-    public void theUserIsOnThePasswordScreenWithEmail(String email) {
+    public void theUserIsOnThePasswordScreenWithEmail(String email) throws ExecutionException, InterruptedException {
         System.out.println("Given the user is on the Password screen with email: " + email);
         // Launch browser and navigate to the PP3's Password screen
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
         instanceOf(EmailPage.class).switchToFrame();
-        instanceOf(EmailPage.class).verifyHeader(60);
+        instanceOf(EmailPage.class).verifyEmailScreen();
         instanceOf(EmailPage.class).enterEmail(email);
         instanceOf(EmailPage.class).clickOnContinueBtn();
 
@@ -26,10 +26,10 @@ public class PasswordSteps extends Page {
     }
 
     @Then("^the user lands on the Email screen$")
-    public void theUserLandsOnTheEmailScreen() {
+    public void theUserLandsOnTheEmailScreen() throws ExecutionException, InterruptedException {
         System.out.println("Then the user lands on the Email screen");
         // Verify user landed on the PP3's Email screen
-        instanceOf(EmailPage.class).verifyHeader(60);
+        instanceOf(EmailPage.class).verifyHeader();
         instanceOf(EmailPage.class).verifyEmailScreen();
         instanceOf(EmailPage.class).verifyFooter();
     }

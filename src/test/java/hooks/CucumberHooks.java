@@ -36,7 +36,6 @@ public class CucumberHooks {
 
     @Before("@Firefox")
     public void beforeFirefox() {
-
         DriverController.instance.startFirefox("--disable-extensions");
     }
 

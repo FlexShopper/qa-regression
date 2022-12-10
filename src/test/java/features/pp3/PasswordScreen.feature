@@ -1,4 +1,4 @@
-@Regression @Web @Password @PP3
+@Chrome @Web @Password @PP3 @Regression
 Feature: As an existing customer I should be able to enter the password in the password screen
 
   Scenario Outline: Existing Customer lands on the Homepage as logged in user

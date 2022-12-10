@@ -12,14 +12,14 @@ import static pages.Page.instanceOf;
 
 public class ProfileInfoSteps {
     @Given("^the user is on the Profile Info screen with email: \"([^\"]*)\"$")
-    public void theUserIsOnTheProfileInfoScreenWithEmail(String emailAddress) {
+    public void theUserIsOnTheProfileInfoScreenWithEmail(String emailAddress) throws ExecutionException, InterruptedException {
         System.out.println("Given the user is on the Profile screen with email: " + emailAddress);
 
         // Launch browser and navigate to the PP3's Profile Info screen
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
         instanceOf(EmailPage.class).switchToFrame();
-        instanceOf(EmailPage.class).verifyHeader(60);
+        instanceOf(EmailPage.class).verifyEmailScreen();
         instanceOf(EmailPage.class).enterNewEmail(emailAddress);
         instanceOf(EmailPage.class).clickOnContinueBtn();
 
@@ -34,7 +34,7 @@ public class ProfileInfoSteps {
     }
 
     @Then("^the user should see the hidden address fields$")
-    public void theUserShouldSeeTheHiddenAddressFields() {
+    public void theUserShouldSeeTheHiddenAddressFields() throws ExecutionException, InterruptedException {
         System.out.println("Then the user should see the hidden address fields");
         instanceOf(ProfileInfoPage.class).verifyProfileInfoScreenWithHiddenFields();
     }
@@ -118,7 +118,7 @@ public class ProfileInfoSteps {
     }
 
     @Then("^the user lands on the Personal Info screen$")
-    public void theUserLandsOnThePersonalInfoScreen() {
+    public void theUserLandsOnThePersonalInfoScreen() throws ExecutionException, InterruptedException {
         System.out.println("Then the user lands on the Personal Info screen");
         instanceOf(PersonalInfoPage.class).verifyPersonalInfoScreen();
     }

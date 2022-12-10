@@ -1,4 +1,4 @@
-@Regression @Web @PP3 @PersonalInfo
+@Chrome @Web @PersonalInfo @PP3 @Regression
 Feature: As user I should be able to land on the Personal Info Screen
 
   Scenario Outline: The user cannot enter an invalid date of birth
