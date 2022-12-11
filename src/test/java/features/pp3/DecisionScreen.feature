@@ -1,4 +1,4 @@
-@Regression @Web @PP3 @Decision
+@Chrome @Web @Decision @PP3 @Regression
 Feature: As user I should be able to apply for a lease/loan and land on the decision screen
 
   Scenario Outline: The user should land on the Decision Screen with an approval decision

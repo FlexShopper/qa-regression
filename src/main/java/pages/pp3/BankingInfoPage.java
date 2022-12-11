@@ -8,6 +8,7 @@ import org.openqa.selenium.support.How;
 import org.testng.Assert;
 import utils.helpers.WaitHelpers;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import static utils.selenium.Driver.browser;
 
 public class BankingInfoPage extends EmailPage {
@@ -43,8 +44,10 @@ public class BankingInfoPage extends EmailPage {
     /**
      * verifyBankingInfoPage() - Verify PP3's Banking Info Screen
      */
-    public void verifyBankingInfoPage() {
-        instanceOf(EmailPage.class).verifyHeader(60);
+    public void verifyBankingInfoPage() throws ExecutionException, InterruptedException {
+        WaitHelpers.waitFluentWait(routingNumberPP3, 240);
+        WaitHelpers.waitForStaleElement(routingNumberPP3);
+        instanceOf(EmailPage.class).verifyHeader();
 
         // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(profileInfoTab);
@@ -87,7 +90,7 @@ public class BankingInfoPage extends EmailPage {
      */
     public void bankNameMsg(String bankName) {
         // Wait for screen to load & Ajax to be completed
-        WaitHelpers.waitForPageReady(browser(),6);
+        utils.helpers.WaitHelpers.waitForPageReady(6);
 
         //TODO: Move code below to WebElementHelpers
         WebDriver driver = browser();

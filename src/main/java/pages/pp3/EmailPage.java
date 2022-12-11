@@ -10,12 +10,12 @@ import pages.Page;
 import utils.helpers.*;
 import utils.selenium.Settings;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import static utils.selenium.Driver.browser;
 
 public class EmailPage extends Page {
     protected WebElementHelpers elementHelpers = new WebElementHelpers();
     protected WebDriverHelpers driverHelpers = new WebDriverHelpers();
-    protected WaitHelpers waitHelpers = new WaitHelpers();
     protected SelectHelpers selectHelpers = new SelectHelpers();
     protected ManageEmailTestAddresses emailTestAddress = new ManageEmailTestAddresses();
 
@@ -98,8 +98,8 @@ public class EmailPage extends Page {
     /**
      * Verify PP3's Header
      */
-    public void verifyHeader(int timeOut) {
-        driverHelpers.wdIsElementFound(headerPanelPP3, timeOut);
+    public void verifyHeader() throws ExecutionException, InterruptedException {
+        WaitHelpers.waitFluentWait(headerCloseBtn, 240);
 
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(headerCloseBtn);
@@ -109,7 +109,10 @@ public class EmailPage extends Page {
     /**
      * Verify PP3's Email Screen
      */
-    public void verifyEmailScreen() {
+    public void verifyEmailScreen() throws ExecutionException, InterruptedException {
+        WaitHelpers.waitFluentWait(emailAddressField, 240);
+        WaitHelpers.waitForStaleElement(emailAddressField);
+
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(flexshopperLogo);
         elementHelpers.webElementIsDisplayed(enterEmailTxt);
@@ -192,7 +195,7 @@ public class EmailPage extends Page {
         //TODO: Move code below to WebElementHelpers
         WebDriver driver = browser();
         WebElement email = driver.findElement(By.name("email"));
-        String htmlvalidationMsg = email.getAttribute("validationMessage");
-        Assert.assertTrue(htmlvalidationMsg.contains(validationMsg));
+        String htmlValidationMsg = email.getAttribute("validationMessage");
+        Assert.assertTrue(htmlValidationMsg.contains(validationMsg));
     }
 }
