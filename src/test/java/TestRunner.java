@@ -6,7 +6,7 @@ import org.testng.annotations.Listeners;
 @CucumberOptions(
         features = "src/test/java/features",
         glue = {"hooks", "stepdefinitions"},
-        tags = "@PP3",
+        tags = "@Web",
         plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "json:target/cucumber-reports/CucumberTestReport.json"},
         monochrome = true)
