@@ -51,7 +51,7 @@ public class PersonalInfoPage extends EmailPage {
      * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
      */
     public void verifyPersonalInfoScreen() throws ExecutionException, InterruptedException {
-        WaitHelpers.waitFluentWait(dobPP3, 60);
+        WaitHelpers.waitFluentWait(dobPP3, 240);
         WaitHelpers.waitForStaleElement(dobPP3);
         instanceOf(EmailPage.class).verifyHeader();
 

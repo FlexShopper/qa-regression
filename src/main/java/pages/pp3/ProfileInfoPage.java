@@ -84,7 +84,7 @@ public class ProfileInfoPage extends EmailPage {
      * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
      */
     public void verifyProfileInfoScreen() throws ExecutionException, InterruptedException {
-        WaitHelpers.waitFluentWait(firstName, 60);
+        WaitHelpers.waitFluentWait(firstName, 240);
         WaitHelpers.waitForStaleElement(firstName);
         instanceOf(EmailPage.class).verifyHeader();
 
@@ -106,7 +106,7 @@ public class ProfileInfoPage extends EmailPage {
      * verifyProfileInfoScreenWithHiddenFields() - Verify PP3's Profile Info Screen showing hidden address fields
      */
     public void verifyProfileInfoScreenWithHiddenFields() throws ExecutionException, InterruptedException {
-        WaitHelpers.waitFluentWait(city, 60);
+        WaitHelpers.waitFluentWait(city, 240);
         WaitHelpers.waitForStaleElement(city);
         instanceOf(EmailPage.class).verifyHeader();
 

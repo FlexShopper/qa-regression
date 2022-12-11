@@ -35,7 +35,7 @@ public class DecisionPage extends EmailPage {
      * verifyBankingInfoPage() - Verify PP3's Decision Screen
      */
     public void verifyDecisionScreen() throws ExecutionException, InterruptedException {
-        WaitHelpers.waitFluentWait(startShoppingBtn, 320);
+        WaitHelpers.waitFluentWait(startShoppingBtn, 300);
         WaitHelpers.waitForStaleElement(startShoppingBtn);
         instanceOf(EmailPage.class).verifyHeader();
 

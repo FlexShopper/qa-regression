@@ -55,7 +55,7 @@ public class PasswordPage extends EmailPage {
      * verifyPasswordScreen() - Verifies user landed on the Password screen
      */
     public void verifyPasswordScreen() throws ExecutionException, InterruptedException {
-        WaitHelpers.waitFluentWait(passwordField, 60);
+        WaitHelpers.waitFluentWait(passwordField, 240);
         WaitHelpers.waitForStaleElement(passwordField);
         instanceOf(EmailPage.class).verifyHeader();
 

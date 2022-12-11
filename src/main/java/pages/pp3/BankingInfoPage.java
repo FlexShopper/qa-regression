@@ -45,7 +45,7 @@ public class BankingInfoPage extends EmailPage {
      * verifyBankingInfoPage() - Verify PP3's Banking Info Screen
      */
     public void verifyBankingInfoPage() throws ExecutionException, InterruptedException {
-        WaitHelpers.waitFluentWait(routingNumberPP3, 120);
+        WaitHelpers.waitFluentWait(routingNumberPP3, 240);
         WaitHelpers.waitForStaleElement(routingNumberPP3);
         instanceOf(EmailPage.class).verifyHeader();
 

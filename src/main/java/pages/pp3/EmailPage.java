@@ -99,7 +99,7 @@ public class EmailPage extends Page {
      * Verify PP3's Header
      */
     public void verifyHeader() throws ExecutionException, InterruptedException {
-        WaitHelpers.waitFluentWait(headerCloseBtn, 60);
+        WaitHelpers.waitFluentWait(headerCloseBtn, 240);
 
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(headerCloseBtn);
@@ -110,7 +110,7 @@ public class EmailPage extends Page {
      * Verify PP3's Email Screen
      */
     public void verifyEmailScreen() throws ExecutionException, InterruptedException {
-        WaitHelpers.waitFluentWait(emailAddressField, 60);
+        WaitHelpers.waitFluentWait(emailAddressField, 240);
         WaitHelpers.waitForStaleElement(emailAddressField);
 
         // Verify elements are displayed
