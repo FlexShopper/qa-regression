@@ -177,7 +177,7 @@
                 <configuration>
                     <!-- Number of forks we run concurrently. -->
                     <!-- Example: One per feature file. -->
-                    <forkCount>1</forkCount>
+                    <forkCount>2</forkCount>
                     <reuseForks>true</reuseForks>
                     <includes>
                         <include>**/**/TestRunner*.class</include>
