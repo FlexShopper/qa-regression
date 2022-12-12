@@ -3,6 +3,9 @@ package utils.helpers;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 import static utils.selenium.Driver.browser;
 import static utils.selenium.Settings.weHighlightedColour;
 
@@ -53,6 +56,17 @@ public class WebElementHelpers {
                 staleException.printStackTrace();
             }
             attempts++;
+        }
+
+        CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+            while (element.isDisplayed()) {
+                //do nothing
+            }
+        });
+        try {
+            future.get(3, TimeUnit.SECONDS);
+        } catch (InterruptedException | TimeoutException | ExecutionException | java.util.concurrent.TimeoutException e) {
+            e.printStackTrace();
         }
     }
 
