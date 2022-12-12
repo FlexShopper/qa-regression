@@ -15,7 +15,7 @@ import java.util.Properties;
 public class SendEmail {
     private static final SimpleDateFormat testDate = new SimpleDateFormat("dd-MM-yyyy hh:mm");
 
-    private static final String SMTP_SERVER = "smtp server";
+    private static final String HOST = "imap.gmail.com";
     private static final String USERNAME = "FlexShopperAutomation@gmail.com";
     private static final String PASSWORD = "tstcqpyzcqsajfeg";
 
@@ -26,23 +26,27 @@ public class SendEmail {
     private static final String EMAIL_SUBJECT = "Test Automation Results: " + testDate;
     private static final String EMAIL_TEXT = "Test Automation results attached";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MessagingException {
         Properties properties = new Properties();
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.socketFactory.port", "465");
-        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.port", "465");
+        properties.put("mail.imap.host", HOST);
+        properties.put("mail.imap.port", "993");
+        properties.put("mail.imap.starttls.enable", "true");
+        properties.setProperty("mail.imap.socketFactory.class","javax.net.ssl.SSLSocketFactory");
+        properties.setProperty("mail.imap.socketFactory.fallback", "false");
+        properties.setProperty("mail.imap.socketFactory.port", String.valueOf(993));
+        Session emailSession = Session.getDefaultInstance(properties);
 
-        Session session = Session.getInstance(properties,
-                new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(USERNAME, PASSWORD);
-                    }
-                });
+        //create the IMAP store object and connect with the IMAP server
+        Store store = emailSession.getStore("imap");
+
+        store.connect(HOST, USERNAME, PASSWORD);
+
+        //create the folder object and open it
+        Folder emailFolder = store.getFolder("INBOX");
+        emailFolder.open(Folder.READ_WRITE);
 
         try {
-            Message message = new MimeMessage(session);
+            Message message = new MimeMessage(emailSession);
             message.setFrom(new InternetAddress(EMAIL_FROM));
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(EMAIL_TO));
