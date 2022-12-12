@@ -57,17 +57,6 @@ public class WebElementHelpers {
             }
             attempts++;
         }
-
-        CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
-            while (element.isDisplayed()) {
-                //do nothing
-            }
-        });
-        try {
-            future.get(3, TimeUnit.SECONDS);
-        } catch (InterruptedException | TimeoutException | ExecutionException | java.util.concurrent.TimeoutException e) {
-            e.printStackTrace();
-        }
     }
 
     public void webClickJSExecutor(WebElement element) {
