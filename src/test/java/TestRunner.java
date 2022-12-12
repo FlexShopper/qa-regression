@@ -6,7 +6,7 @@ import org.testng.annotations.Listeners;
 @CucumberOptions(
         features = "src/test/java/features",
         glue = {"hooks", "stepdefinitions"},
-        tags = "@Web",
+        tags = "@Web and @ForgotPassword",
         plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "json:target/cucumber-reports/CucumberTestReport.json",
                 "rerun:target/cucumber-reports/rerun.txt"},
