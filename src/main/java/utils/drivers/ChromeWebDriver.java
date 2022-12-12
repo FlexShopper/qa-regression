@@ -20,6 +20,13 @@ public class ChromeWebDriver {
 
         // Chrome needs to run in Headless mode in the Jenkins CI to solve error: "DevToolsActivePort file doesn't exist"
         ChromeOptions options = new ChromeOptions();
+        // Following arguments were added to solve error: "DevToolsActivePort file doesn't exist"
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-setuid-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--disable-extensions");
+        options.addArguments("start-maximized");
         options.addArguments(chromeArgument);
 
         driver = new ChromeDriver(driverService, options);
