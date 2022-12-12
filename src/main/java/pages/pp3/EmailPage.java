@@ -99,7 +99,7 @@ public class EmailPage extends Page {
      * Verify PP3's Header
      */
     public void verifyHeader() throws ExecutionException, InterruptedException {
-        WaitHelpers.waitFluentWait(headerCloseBtn, 300);
+        WaitHelpers.waitFluentWait(headerCloseBtn, 240);
 
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(headerCloseBtn);

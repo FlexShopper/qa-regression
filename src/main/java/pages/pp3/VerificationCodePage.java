@@ -33,7 +33,7 @@ public class VerificationCodePage extends EmailPage {
      * verifyVerificationCodeScreen() - Verifies user landed in the Verification Code screen
      */
     public void verifyVerificationCodeScreen() throws ExecutionException, InterruptedException {
-        WaitHelpers.waitFluentWait(securityCode, 300);
+        WaitHelpers.waitFluentWait(securityCode, 240);
         WaitHelpers.waitForStaleElement(securityCode);
 
         // Verify elements are displayed
