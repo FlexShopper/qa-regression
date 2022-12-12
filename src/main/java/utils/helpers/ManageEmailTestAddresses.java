@@ -8,7 +8,7 @@ import java.util.Date;
 public class ManageEmailTestAddresses {
 
     public String createEmailTestAddress(String emailAddress) {
-        return splitEmailAddress(emailAddress) + currentDate() + "@flexshopper.com";
+        return splitEmailAddress(emailAddress) + currentDate() + ".approve@flexshopper.com";
     }
 
     public String splitEmailAddress(String emailAddress) {
