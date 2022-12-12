@@ -51,7 +51,7 @@ public class ForgotPasswordPage extends EmailPage {
      * verifyForgotPasswordScreen() - Verifies user landed on the Forgot Password screen
      */
     public void verifyForgotPasswordScreen() throws ExecutionException, InterruptedException {
-        WaitHelpers.waitFluentWait(continueBtn, 240);
+        WaitHelpers.waitFluentWait(continueBtn, 300);
         WaitHelpers.waitForStaleElement(continueBtn);
         instanceOf(EmailPage.class).verifyHeader();
 

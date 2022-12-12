@@ -45,7 +45,7 @@ public class ChangePasswordPage extends EmailPage {
      * verifyChangePasswordScreen() - Verify Change Password Screen
      */
     public void verifyChangePasswordScreen() throws ExecutionException, InterruptedException {
-        WaitHelpers.waitFluentWait(newPassword, 240);
+        WaitHelpers.waitFluentWait(newPassword, 300);
         WaitHelpers.waitForStaleElement(newPassword);
         instanceOf(EmailPage.class).verifyHeader();
 
