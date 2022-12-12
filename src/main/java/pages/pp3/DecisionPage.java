@@ -9,6 +9,7 @@ import org.testng.Assert;
 import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import static utils.selenium.Driver.browser;
 
 public class DecisionPage extends EmailPage {
@@ -20,8 +21,6 @@ public class DecisionPage extends EmailPage {
 
     @FindBy(how = How.XPATH, using = "//*[@id='decision-decisionTitle-lease']")
     private WebElement decisionTitleTxt;
-
-    protected By decisionTitleTxtPP3 = By.xpath("//*[@id='decision-decisionTitle-lease']");
 
     @FindBy(how = How.XPATH, using = "//*[@id='decision-headerDescription-lease']")
     private WebElement decisionDescription;
@@ -35,9 +34,10 @@ public class DecisionPage extends EmailPage {
     /**
      * verifyBankingInfoPage() - Verify PP3's Decision Screen
      */
-    public void verifyDecisionScreen() {
-        driverHelpers.wdIsElementFound(decisionTitleTxtPP3, 240);
-        instanceOf(EmailPage.class).verifyHeader(45);
+    public void verifyDecisionScreen() throws ExecutionException, InterruptedException {
+        WaitHelpers.waitFluentWait(startShoppingBtn, 300);
+        WaitHelpers.waitForStaleElement(startShoppingBtn);
+        instanceOf(EmailPage.class).verifyHeader();
 
         // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(decisionTitleTxt);

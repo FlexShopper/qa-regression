@@ -1,4 +1,4 @@
-@Regression @Web @PP3 @ProfileInfo
+@Chrome @Web @ProfileInfo @PP3  @Regression
 Feature: As user I should be able to land on the Profile Info Screen
 
   Scenario Outline: User can navigate back to the Email screen if the email shown is not his

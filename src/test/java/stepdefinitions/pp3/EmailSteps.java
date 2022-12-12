@@ -7,9 +7,11 @@ import io.cucumber.java.en.When;
 import pages.pp3.*;
 import pages.Page;
 
+import java.util.concurrent.ExecutionException;
+
 public class EmailSteps extends Page {
     @Given("^the user is on the Email screen$")
-    public void theUserIsOnTheEmailScreen() {
+    public void theUserIsOnTheEmailScreen() throws ExecutionException, InterruptedException {
         System.out.println("Given the user is on the Email screen");
         // Launch browser and navigate to the PP3's Email screen
         instanceOf(EmailPage.class).navigateToBaseUrl();
@@ -17,7 +19,7 @@ public class EmailSteps extends Page {
         instanceOf(EmailPage.class).switchToFrame();
 
         // Verify user landed on the PP3's Email screen
-        instanceOf(EmailPage.class).verifyHeader(45);
+        instanceOf(EmailPage.class).verifyHeader();
         instanceOf(EmailPage.class).verifyEmailScreen();
         instanceOf(EmailPage.class).verifyFooter();
     }
@@ -51,9 +53,9 @@ public class EmailSteps extends Page {
     }
 
     @Then("^the user lands on the Password screen$")
-    public void theUserLandsOnThePasswordScreen() {
+    public void theUserLandsOnThePasswordScreen() throws ExecutionException, InterruptedException {
         System.out.println("Then the user lands on the Password screen");
-        instanceOf(EmailPage.class).verifyHeader(45);
+        instanceOf(EmailPage.class).verifyHeader();
         instanceOf(PasswordPage.class).verifyPasswordScreen();
         instanceOf(EmailPage.class).verifyFooter();
     }
@@ -65,9 +67,9 @@ public class EmailSteps extends Page {
     }
 
     @Then("^the user lands on the Profile Info screen$")
-    public void theUserLandsOnTheProfileInfoScreen() {
+    public void theUserLandsOnTheProfileInfoScreen() throws ExecutionException, InterruptedException {
         System.out.println("Then the user lands on the Profile Info screen");
-        instanceOf(EmailPage.class).verifyHeader(45);
+        instanceOf(EmailPage.class).verifyHeader();
         instanceOf(ProfileInfoPage.class).verifyProfileInfoScreen();
         instanceOf(EmailPage.class).verifyFooter();
     }

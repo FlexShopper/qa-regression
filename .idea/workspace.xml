@@ -5,29 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03b913b2-1033-488f-9f69-f8bf7fbe3866" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/FailedRunnerTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/BankingInfoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/BankingInfoPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/ChangePasswordPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/ChangePasswordPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/DecisionPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/DecisionPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/EmailPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/EmailPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/ForgotPasswordPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/ForgotPasswordPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/PasswordPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/PasswordPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/PersonalInfoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/PersonalInfoPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/ProfileInfoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/ProfileInfoPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/VerificationCodePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/VerificationCodePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/helpers/WaitHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/helpers/WaitHelpers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/BankingInfoSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/BankingInfoSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/DecisionSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/DecisionSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/EmailSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/EmailSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/ForgotPasswordSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/ForgotPasswordSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/PasswordSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/PasswordSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/PersonalInfoSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/PersonalInfoSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/ProfileInfoSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/ProfileInfoSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestRunner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,6 +35,9 @@
     </option>
   </component>
   <component name="ProjectId" id="2IbF1oUrtKKQT2nTqia5xRlbINV" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -51,7 +46,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/TestAutomation/workspace/qa-regression-development&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/TestAutomation/workspace/Java-Web-Selenium-Maven-master&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.19238281&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.65617436&quot;,

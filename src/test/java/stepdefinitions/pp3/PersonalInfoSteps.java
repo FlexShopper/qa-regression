@@ -8,17 +8,18 @@ import pages.pp3.BankingInfoPage;
 import pages.pp3.EmailPage;
 import pages.pp3.PersonalInfoPage;
 import pages.pp3.ProfileInfoPage;
+import java.util.concurrent.ExecutionException;
 import static pages.Page.instanceOf;
 
 public class PersonalInfoSteps {
     @Given("^the user is on the Personal Info screen with email: \"([^\"]*)\"$")
-    public void theUserIsOnThePersonalInfoScreenWithEmail(String emailAddress) {
+    public void theUserIsOnThePersonalInfoScreenWithEmail(String emailAddress) throws ExecutionException, InterruptedException {
         System.out.println("Given the user is in the Personal Info screen with email: " + emailAddress);
         // Launch browser and navigate to the PP3's Personal Info screen
         instanceOf(EmailPage.class).navigateToBaseUrl();
         instanceOf(EmailPage.class).browserFullScreen();
         instanceOf(EmailPage.class).switchToFrame();
-        instanceOf(EmailPage.class).verifyHeader(45);
+        instanceOf(EmailPage.class).verifyEmailScreen();
         instanceOf(EmailPage.class).enterNewEmail(emailAddress);
         instanceOf(EmailPage.class).clickOnContinueBtn();
 
@@ -84,7 +85,7 @@ public class PersonalInfoSteps {
     }
 
     @Then("^the user lands on the Banking Info Screen")
-    public void theUserLandsOnTheBankingInfoScreen() {
+    public void theUserLandsOnTheBankingInfoScreen() throws ExecutionException, InterruptedException {
         System.out.println("Then the user lands on the Banking Info Screen");
         instanceOf(BankingInfoPage.class).verifyBankingInfoPage();
     }

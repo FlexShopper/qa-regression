@@ -1,4 +1,4 @@
-@Regression @Web @PP3 @BankingInfo
+@Chrome @Web @BankingInfo @PP3 @Regression
 Feature: As user I should be able to land on the Banking Info Screen
 
   Scenario Outline: The user can see the bank name associated with the routing number entered

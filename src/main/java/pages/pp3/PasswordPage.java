@@ -9,6 +9,7 @@ import org.testng.Assert;
 import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import static utils.selenium.Driver.browser;
 
 public class PasswordPage extends EmailPage {
@@ -53,8 +54,10 @@ public class PasswordPage extends EmailPage {
     /**
      * verifyPasswordScreen() - Verifies user landed on the Password screen
      */
-    public void verifyPasswordScreen() {
-        instanceOf(EmailPage.class).verifyHeader(45);
+    public void verifyPasswordScreen() throws ExecutionException, InterruptedException {
+        WaitHelpers.waitFluentWait(passwordField, 240);
+        WaitHelpers.waitForStaleElement(passwordField);
+        instanceOf(EmailPage.class).verifyHeader();
 
         // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(flexshopperLogo);
@@ -89,9 +92,9 @@ public class PasswordPage extends EmailPage {
      */
     public void passwordValidationMessage(String validationMsg) {
         // Wait for screen to load & Ajax to be completed
-        WaitHelpers.waitForPageReady(browser(),6);
+        WaitHelpers.waitForPageReady(6);
 
-        //TODO: Move to WebElementHelpers
+        //TODO: Move code below to WebElementHelpers
         WebDriver driver = browser();
         List<WebElement> spanText = driver.findElements(By.tagName("span"));
         for(int i = 0; i<spanText.size(); i++){
@@ -110,7 +113,7 @@ public class PasswordPage extends EmailPage {
      */
     public void passwordRequiredMsg(String validationMsg) {
         // Wait for screen to load & Ajax to be completed
-        WaitHelpers.waitForPageReady(browser(),6);
+        WaitHelpers.waitForPageReady(6);
 
         //TODO: Move code below to WebElementHelpers
         WebDriver driver = browser();

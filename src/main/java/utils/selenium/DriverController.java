@@ -26,13 +26,6 @@ public class DriverController {
                 instance.webDriver = ChromeWebDriver.loadChromeDriver(arg);
             }
         }
-
-        /**
-        * TODO: To be added when Docker support is added again
-        *    else if(System.getenv("LOCAL").trim().equals("false")) {
-        *         instance.webDriver = ChromeRemoteWebDriver.loadChromeDriver(arg);
-         *   }
-        */
     }
 
     public void startFirefox(String arg) {
@@ -46,13 +39,6 @@ public class DriverController {
                 instance.webDriver = FirefoxWebDriver.loadFirefoxDriver(arg);
             }
         }
-
-        /**
-         * TODO: To be added when Docker support gets added again
-         *    else if(System.getenv("LOCAL").trim().equals("false")) {
-         *        instance.webDriver = FirefoxRemoteWebDriver.loadFirefoxDriver(arg);
-         *    }
-         */
     }
 
     public void stopWebDriver() {
