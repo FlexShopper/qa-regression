@@ -8,7 +8,8 @@ import org.testng.annotations.Listeners;
         glue = {"hooks", "stepdefinitions"},
         tags = "@Web",
         plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-                "json:target/cucumber-reports/CucumberTestReport.json"},
+                "json:target/cucumber-reports/CucumberTestReport.json",
+                "rerun:target/cucumber-reports/rerun.txt"},
         monochrome = true)
 @Listeners({ExtentITestListenerAdapter.class})
 public class TestRunner extends AbstractTestNGCucumberTests {
