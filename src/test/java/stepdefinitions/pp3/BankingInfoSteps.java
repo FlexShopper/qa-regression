@@ -37,8 +37,8 @@ public class BankingInfoSteps {
         // Enters required information in Personal Information
         // TODO: Read data from JSON files
         instanceOf(PersonalInfoPage.class).verifyPersonalInfoScreen();
-        instanceOf(PersonalInfoPage.class).enterDOB("01011970");
-        instanceOf(PersonalInfoPage.class).enterSSN("362563215");
+        instanceOf(PersonalInfoPage.class).enterDOB("11031956");
+        instanceOf(PersonalInfoPage.class).enterSSN("478724725");
         instanceOf(PersonalInfoPage.class).enterIncome("5000");
         instanceOf(PersonalInfoPage.class).selectPayFrequency("Weekly");
         instanceOf(PersonalInfoPage.class).selectAgreementCheckBox();
