@@ -35,3 +35,16 @@ Feature: As user I should be able to apply for a lease/loan and land on the deci
     Examples:
       | routingNumber | accountNumber | confirmAccNumber | decision                                 |
       | 325070760     | 3333333333    | 3333333333       | You did not qualify for a spending limit |
+
+  # Fix for JIRA ticket FPAY-2178 Fix double login when customer gets decision
+  #Scenario Outline: The user should land in the homepage as a logged in user after receiving an approval decision
+
+  #Scenario Outline: The user should land in the homepage as a logged in user after receiving a denial decision
+
+  #Scenario Outline: The user should land in the homepage as a logged in user after receiving a manual verification decision
+
+  # Check the following URLs:
+  # https://pp3-pr2287.staging.flexint.net/direct-lending
+  # https://pp3-pr2287.staging.flexint.net/omni-app
+  # https://pp3-pr2287.staging.flexint.net/loans
+  # https://pp3-pr2287.staging.flexint.net/central
