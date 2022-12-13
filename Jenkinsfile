@@ -99,7 +99,7 @@ podTemplate(label: label,
                 echo 'Waiting 60 seconds for the reports to be created prior to storing them'
                 sleep(time:60, unit:"SECONDS")
                 echo "Store Artifacts";
-                archiveArtifacts artifacts: 'target/cucumber-reports/CucumberExtentReport.html'
+                archiveArtifacts artifacts: 'target/cucumber-reports/CucumberExtentReport.html', allowEmptyArchive : true, onlyIfSuccessful: false
             }
         }
     }
