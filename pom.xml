@@ -11,6 +11,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+
+        <cucumber.version>6.8.1</cucumber.version>
+        <cucumber-reporting.version>5.7.4</cucumber-reporting.version>
+        <testng.version>7.4.0</testng.version>
+        <junit.version>4.13.2</junit.version>
+        <log4j.version>2.11.0</log4j.version>
+        <selenium-java.version>3.141.59</selenium-java.version>
     </properties>
 
     <dependencies>
@@ -18,8 +25,20 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>4.8.0</version>
+            <version>${cucumber.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/gherkin -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>gherkin</artifactId>
+            <version>15.0.2</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -30,7 +49,7 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
-            <version>4.8.0</version>
+            <version>${cucumber.version}</version>
             <scope>compile</scope>
             <exclusions>
                 <exclusion>
@@ -43,43 +62,39 @@
         <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
-            <version>5.7.4</version>
+            <version>${cucumber-reporting.version}</version>
         </dependency>
         <!-- Extent Reports -->
         <dependency>
             <groupId>com.aventstack</groupId>
-            <artifactId>extentreports-testng-adapter</artifactId>
-            <version>1.2.2</version>
-        </dependency>
-        <dependency>
-            <groupId>com.aventstack</groupId>
-            <artifactId>extentreports-cucumber4-adapter</artifactId>
-            <version>1.2.1</version>
+            <artifactId>extentreports</artifactId>
+            <version>5.0.4</version>
         </dependency>
         <dependency>
             <groupId>tech.grasshopper</groupId>
-            <artifactId>extent-pdf-report</artifactId>
-            <version>2.9.1</version>
+            <artifactId>extentreports-cucumber6-adapter</artifactId>
+            <version>2.0.0</version>
+            <scope>test</scope>
         </dependency>
         <!-- TestNG -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.4.0</version>
+            <version>${testng.version}</version>
             <scope>compile</scope>
         </dependency>
         <!-- JUnit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.2</version>
+            <version>${junit.version}</version>
             <scope>compile</scope>
         </dependency>
         <!-- Selenium -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.12.0</version>
+            <version>${selenium-java.version}</version>
         </dependency>
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
@@ -114,17 +129,17 @@
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
-            <version>2.11.0</version>
+            <version>${log4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.11.0</version>
+            <version>${log4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j-impl</artifactId>
-            <version>2.11.0</version>
+            <version>${log4j.version}</version>
         </dependency>
         <!-- javax.mail - sends messages over a specific protocol -->
         <dependency>
@@ -183,19 +198,6 @@
                         <include>**/**/TestRunner*.class</include>
                     </includes>
                 </configuration>
-            </plugin>
-            <plugin>
-                <!-- Build an executable JAR -->
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.1.2</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>test-jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

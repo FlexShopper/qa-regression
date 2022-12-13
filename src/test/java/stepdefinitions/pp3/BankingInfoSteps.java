@@ -9,6 +9,7 @@ import java.util.concurrent.ExecutionException;
 import static pages.Page.instanceOf;
 
 public class BankingInfoSteps {
+
     @Given("^the user is on the Banking Info screen with email: \"([^\"]*)\"$")
     public void theUserIsOnTheBankingInfoScreenWithEmail(String emailAddress) throws ExecutionException, InterruptedException {
         System.out.println("Given the user is in the Personal Info screen with email: " + emailAddress);
