@@ -6,9 +6,7 @@ import pages.pp3.BankingInfoPage;
 import pages.pp3.DecisionPage;
 import pages.pp3.EmailPage;
 import pages.pp3.PersonalInfoPage;
-
 import java.util.concurrent.ExecutionException;
-
 import static pages.Page.instanceOf;
 
 public class DecisionSteps {
