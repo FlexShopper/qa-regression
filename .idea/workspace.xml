@@ -5,15 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4044b242-ae7c-4346-80aa-58cd06a203fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/PP3TestRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hooks/CucumberHooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hooks/CucumberHooks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hooks/StepHooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hooks/StepHooks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/DecisionPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/DecisionPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/PP3TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PP3TestRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/pp3/DecisionScreen.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/pp3/DecisionScreen.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/BankingInfoSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/BankingInfoSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/extent.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/extent.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/DecisionSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/DecisionSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/config.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,6 +117,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Scenario: The user should land on the Decision Screen with a denied decision" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/features/pp3/DecisionScreen.feature" />
+      <option name="GLUE" value="hooks stepdefinitions.pp3" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="FlexShopperFramework" />
+      <option name="NAME_FILTER" value="^The user should land on the Decision Screen with a denied decision$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^The user should land on the Decision Screen with a denied decision$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: The user should land on the Decision Screen with a denied decision" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PP3TestRunner" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="FlexShopperFramework" />
       <option name="PACKAGE_NAME" value="" />
@@ -152,6 +170,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Cucumber Java.Scenario: The user should land on the Decision Screen with a denied decision" />
       <item itemvalue="Cucumber Java.Feature: EmailScreen" />
       <item itemvalue="TestNG.PP3TestRunner" />
       <item itemvalue="TestNG.TestRunner" />
@@ -159,6 +178,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="TestNG.PP3TestRunner" />
+        <item itemvalue="Cucumber Java.Scenario: The user should land on the Decision Screen with a denied decision" />
         <item itemvalue="TestNG.TestRunner" />
         <item itemvalue="Cucumber Java.Feature: EmailScreen" />
       </list>

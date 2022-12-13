@@ -14,8 +14,8 @@ public class DecisionSteps {
     @Then("^the user lands on the Decision Screen with decision: \"([^\"]*)\"$")
     public void theUserLandsOnTheDecisionScreenWithDecision(String decision) throws ExecutionException, InterruptedException {
         System.out.println("Then the user lands on the Decision Screen with decision: " + decision);
-        instanceOf(DecisionPage.class).verifyDecisionScreen();
-        instanceOf(DecisionPage.class).verifyDecision();
+        instanceOf(DecisionPage.class).verifyDecisionScreen(decision);
+        instanceOf(DecisionPage.class).verifyDecision(decision);
     }
 
     @And("^the user completes the Personal Info screen with pay frequency: \"([^\"]*)\"$")
