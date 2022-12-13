@@ -9,6 +9,7 @@ import java.util.concurrent.ExecutionException;
 import static pages.Page.instanceOf;
 
 public class BankingInfoSteps {
+
     @Given("^the user is on the Banking Info screen with email: \"([^\"]*)\"$")
     public void theUserIsOnTheBankingInfoScreenWithEmail(String emailAddress) throws ExecutionException, InterruptedException {
         System.out.println("Given the user is in the Personal Info screen with email: " + emailAddress);
@@ -23,24 +24,42 @@ public class BankingInfoSteps {
         // Enters required information in Profile Information
         // TODO: Read data from JSON files
         instanceOf(ProfileInfoPage.class).verifyProfileInfoScreen();
-        instanceOf(ProfileInfoPage.class).enterFirstName("PersonalInfo");
+        instanceOf(ProfileInfoPage.class).enterFirstName("BankingInfo");
         instanceOf(ProfileInfoPage.class).enterLastName("User");
         instanceOf(ProfileInfoPage.class).enterMobileNumber("18553539289");
         instanceOf(ProfileInfoPage.class).clickOnEnterAddressManuallyLnk();
-        instanceOf(ProfileInfoPage.class).enterAddress("901 Yamato Rd");
-        instanceOf(ProfileInfoPage.class).enterUnitNumber("260");
-        instanceOf(ProfileInfoPage.class).enterCity("Boca Raton");
-        instanceOf(ProfileInfoPage.class).selectState("FL");
-        instanceOf(ProfileInfoPage.class).enterZipCode("33431");
+
+        if(emailAddress.contains("deny")) {
+            instanceOf(ProfileInfoPage.class).enterAddress("ABC 123 XYZ");
+            instanceOf(ProfileInfoPage.class).enterCity("PALMS");
+            instanceOf(ProfileInfoPage.class).selectState("CA");
+            instanceOf(ProfileInfoPage.class).enterZipCode("92274");
+        } else {
+            instanceOf(ProfileInfoPage.class).enterAddress("901 Yamato Rd");
+            instanceOf(ProfileInfoPage.class).enterUnitNumber("260");
+            instanceOf(ProfileInfoPage.class).enterCity("Boca Raton");
+            instanceOf(ProfileInfoPage.class).selectState("FL");
+            instanceOf(ProfileInfoPage.class).enterZipCode("33431");
+        }
+
         instanceOf(EmailPage.class).clickOnContinueBtn();
 
         // Enters required information in Personal Information
         // TODO: Read data from JSON files
         instanceOf(PersonalInfoPage.class).verifyPersonalInfoScreen();
-        instanceOf(PersonalInfoPage.class).enterDOB("11031956");
-        instanceOf(PersonalInfoPage.class).enterSSN("478724725");
-        instanceOf(PersonalInfoPage.class).enterIncome("5000");
-        instanceOf(PersonalInfoPage.class).selectPayFrequency("Weekly");
+
+        if(emailAddress.contains("deny")) {
+            instanceOf(PersonalInfoPage.class).enterDOB("01011965");
+            instanceOf(PersonalInfoPage.class).enterSSN("527684727");
+            instanceOf(PersonalInfoPage.class).enterIncome("1500");
+            instanceOf(PersonalInfoPage.class).selectPayFrequency("Bi-Weekly");
+        } else {
+            instanceOf(PersonalInfoPage.class).enterDOB("11031956");
+            instanceOf(PersonalInfoPage.class).enterSSN("478724725");
+            instanceOf(PersonalInfoPage.class).enterIncome("5000");
+            instanceOf(PersonalInfoPage.class).selectPayFrequency("Weekly");
+        }
+
         instanceOf(PersonalInfoPage.class).selectAgreementCheckBox();
         instanceOf(EmailPage.class).clickOnContinueBtn();
 

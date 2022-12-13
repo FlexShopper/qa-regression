@@ -9,6 +9,6 @@ import io.cucumber.testng.CucumberOptions;
                 "json:target/cucumber-reports/CucumberTestReport.json",
                 "rerun:target/cucumber-reports/rerun.txt"},
         monochrome = true)
-public class TestRunner extends AbstractTestNGCucumberTests {
+public class PP3TestRunner extends AbstractTestNGCucumberTests {
 
 }
