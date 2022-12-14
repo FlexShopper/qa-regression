@@ -1,11 +1,16 @@
 package hooks;
 
 import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import utils.selenium.DriverController;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Properties;
+import static utils.selenium.Driver.browser;
 
 public class CucumberHooks {
     @Before("@Web")
@@ -47,6 +52,15 @@ public class CucumberHooks {
     @Before("@HeadlessFirefox")
     public void beforeHeadlessFirefox() {
         DriverController.instance.startFirefox("--headless");
+    }
+
+    @AfterStep
+    public void addScreenshot(Scenario scenario) {
+        //validate if scenario has failed
+        if(scenario.isFailed()) {
+            final byte[] screenshot = ((TakesScreenshot) browser()).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", "image");
+        }
     }
 
     @After
