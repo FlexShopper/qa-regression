@@ -8,18 +8,6 @@ import java.util.Date;
 public class ManageEmailTestAddresses {
 
     public String createEmailTestAddress(String emailAddress) {
-        if(emailAddress.contains("approve")) {
-            return currentDate() + ".approve@flexshopper.com";
-        }
-
-        if (emailAddress.contains("deny")) {
-            return currentDate() + ".deny@flexshopper.com";
-        }
-
-        if (emailAddress.contains("qamanual")) {
-            return currentDate() + ".qamanual@flexshopper.com";
-        }
-
         return splitEmailAddress(emailAddress) + currentDate() + ".approve@flexshopper.com";
     }
 
