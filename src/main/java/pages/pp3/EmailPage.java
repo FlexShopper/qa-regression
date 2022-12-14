@@ -11,6 +11,7 @@ import utils.helpers.*;
 import utils.selenium.Settings;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+
 import static utils.selenium.Driver.browser;
 
 public class EmailPage extends Page {

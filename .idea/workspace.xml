@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4044b242-ae7c-4346-80aa-58cd06a203fd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hooks/CucumberHooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hooks/CucumberHooks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/extent.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/extent.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/EmailPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/EmailPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/FailedRunnerTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,13 +147,16 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="03b913b2-1033-488f-9f69-f8bf7fbe3866" name="Changes" comment="" />
+      <changelist id="4044b242-ae7c-4346-80aa-58cd06a203fd" name="Changes" comment="" />
       <created>1670442165548</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670442165548</updated>
     </task>
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName=".env" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
