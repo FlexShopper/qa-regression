@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="4044b242-ae7c-4346-80aa-58cd06a203fd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/DecisionPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/DecisionPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/PP3TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PP3TestRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/features/pp3/DecisionScreen.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/pp3/DecisionScreen.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/BankingInfoSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/BankingInfoSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/DecisionSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/DecisionSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/config.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
