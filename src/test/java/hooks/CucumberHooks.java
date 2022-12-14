@@ -12,6 +12,8 @@ import java.nio.file.Paths;
 import java.util.Properties;
 import static utils.selenium.Driver.browser;
 
+import static utils.selenium.Driver.browser;
+
 public class CucumberHooks {
     @Before("@Web")
     public void beforeWeb() throws Exception {
