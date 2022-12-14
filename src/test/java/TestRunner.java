@@ -4,7 +4,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = "src/test/java/features",
         glue = {"hooks", "stepdefinitions"},
-        tags = "@Web and @Decision",
+        tags = "@Web",
         plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "json:target/cucumber-reports/CucumberTestReport.json",
                 "rerun:target/cucumber-reports/rerun.txt"},
