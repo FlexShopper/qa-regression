@@ -81,12 +81,6 @@
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>5.3.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.google.guava</groupId>
-                    <artifactId>guava</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <!-- java-dotenv - Environment configuration for the JVM -->
         <dependency>
@@ -95,11 +89,7 @@
             <version>5.2.2</version>
         </dependency>
         <!-- guava - It provides utilities for working with Java collections -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>25.0-jre</version>
-        </dependency>
+
         <!-- gson - It converts Java Objects into their JSON representation -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
