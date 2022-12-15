@@ -6,6 +6,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
         glue = {"hooks", "stepdefinitions"},
         tags = "@Email",
         plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+                "html:target/cucumber-reports/cucumber-pretty",
                 "json:target/cucumber-reports/CucumberTestReport.json",
                 "rerun:target/cucumber-reports/rerun.txt"
         },

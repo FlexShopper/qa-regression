@@ -11,16 +11,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-
-        <log4j.version>2.11.0</log4j.version>
-        <selenium-java.version>3.141.59</selenium-java.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.2.3</version>
+            <version>4.8.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -32,7 +29,8 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
-            <version>7.2.3</version>
+            <version>4.8.0</version>
+            <scope>compile</scope>
             <exclusions>
                 <exclusion>
                     <groupId>junit</groupId>
@@ -41,20 +39,44 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>3.141.59</version>
-        </dependency>
-        <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
             <version>5.7.4</version>
+        </dependency>
+        <!-- Extent Reports -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports-testng-adapter</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports-cucumber4-adapter</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.grasshopper</groupId>
+            <artifactId>extent-pdf-report</artifactId>
+            <version>2.9.1</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.4.0</version>
-            <scope>test</scope>
+            <scope>compile</scope>
+        </dependency>
+        <!-- JUnit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Selenium -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.12.0</version>
         </dependency>
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
@@ -99,17 +121,17 @@
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
-            <version>2.19.0</version>
+            <version>2.11.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.19.0</version>
+            <version>2.11.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j-impl</artifactId>
-            <version>2.19.0</version>
+            <version>2.11.0</version>
         </dependency>
         <!-- javax.mail - sends messages over a specific protocol -->
         <dependency>
@@ -161,7 +183,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.14.1</version>
                 <configuration>
-                    <forkCount>4</forkCount>
+                    <!-- Number of forks we run concurrently. -->
+                    <!-- Example: One per feature file. -->
+                    <forkCount>2</forkCount>
                     <reuseForks>true</reuseForks>
                     <includes>
                         <include>**/**/TestRunner*.class</include>
