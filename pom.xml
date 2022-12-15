@@ -137,36 +137,6 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>com.github.temyers</groupId>
-                <artifactId>cucumber-jvm-parallel-plugin</artifactId>
-                <version>5.0.0</version>
-                <executions>
-                    <execution>
-                        <id>generateRunners</id>
-                        <phase>generate-test-sources</phase>
-                        <goals>
-                            <goal>generateRunners</goal>
-                        </goals>
-                        <configuration>
-                            <glue>
-                                <package>utils.hooks</package>
-                                <package>steps</package>
-                            </glue>
-                            <featuresDirectory>src/test/resources/features/</featuresDirectory>
-                            <cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
-                            <useTestNG>true</useTestNG>
-                            <namingScheme>pattern</namingScheme>
-                            <namingPattern>BaseTestRunner{c}</namingPattern>
-                            <plugins>
-                                <plugin>
-                                    <name>json</name>
-                                </plugin>
-                            </plugins>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.14.1</version>
