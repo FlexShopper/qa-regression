@@ -3,6 +3,7 @@ package hooks;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import utils.selenium.DriverController;
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Properties;
@@ -26,6 +27,9 @@ public class CucumberHooks {
         }
         else if (browser.equalsIgnoreCase("headlessFirefox")) {
             DriverController.instance.startFirefox("--headless");
+        }
+        else if (browser.equalsIgnoreCase("chromeMobileEmulator")) {
+            DriverController.instance.startChromeMobileEmulator("--disable-extensions");
         }
     }
 

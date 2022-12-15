@@ -3,6 +3,8 @@ package utils.helpers;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 import java.util.List;
 import static utils.selenium.Driver.browser;
 import static utils.selenium.Settings.wdHighlightedColour;

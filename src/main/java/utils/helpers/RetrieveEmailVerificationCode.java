@@ -35,7 +35,7 @@ public class RetrieveEmailVerificationCode {
 
             // retrieve the messages from the folder in an array and perform email fetching actions
             Message[] messages = emailFolder.getMessages();
-            //System.out.println("messages.length---" + messages.length);
+            System.out.println("messages.length---" + messages.length);
             int n=messages.length;
             for (int i = 0; i<n; i++) {
                 Message message = messages[i];
@@ -43,7 +43,7 @@ public class RetrieveEmailVerificationCode {
                 Multipart multipart = (Multipart) message.getContent();
                 BodyPart part = multipart.getBodyPart(0);
                 String responseMessage = part.getContent().toString();
-                //System.out.println("================"+responseMessage);
+                System.out.println("================"+responseMessage);
                 if((message.getMessageNumber()==n)&&message.getSubject().contains("Your verification code")); {
                     Pattern p1 = Pattern.compile("code:         [^a-zA-Z0-9](\\s*.*)");
                     Matcher m1 = p1.matcher(responseMessage);
