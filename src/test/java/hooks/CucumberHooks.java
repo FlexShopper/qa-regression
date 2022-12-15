@@ -2,11 +2,15 @@ package hooks;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import utils.selenium.DriverController;
-
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Properties;
+
+import static utils.selenium.Driver.browser;
 
 public class CucumberHooks {
     @Before("@Web")
@@ -50,7 +54,16 @@ public class CucumberHooks {
         DriverController.instance.startFirefox("--headless");
     }
 
-    @After
+    @After(order = 1)
+    public void takeScreenShotOnFailedScenario(Scenario scenario) {
+        System.out.println("This is from After hook, order=1");
+        if ((scenario.isFailed())) {
+            final byte[] screenshot = ((TakesScreenshot) browser()).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", scenario.getName());
+        }
+    }
+
+    @After(order = 0)
     public void stopWebDriver() {
         DriverController.instance.stopWebDriver();
     }
