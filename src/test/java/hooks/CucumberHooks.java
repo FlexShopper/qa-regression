@@ -12,8 +12,6 @@ import java.nio.file.Paths;
 import java.util.Properties;
 import static utils.selenium.Driver.browser;
 
-import static utils.selenium.Driver.browser;
-
 public class CucumberHooks {
     @Before("@Web")
     public void beforeWeb() throws Exception {
@@ -59,10 +57,10 @@ public class CucumberHooks {
     @AfterStep
     public void addScreenshot(Scenario scenario) {
         //validate if scenario has failed
-        if(scenario.isFailed()) {
-            final byte[] screenshot = ((TakesScreenshot) browser()).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot, "image/png", "image");
-        }
+        //if(scenario.isFailed()) {
+        //    final byte[] screenshot = ((TakesScreenshot) browser()).getScreenshotAs(OutputType.BYTES);
+        //    scenario.attach(screenshot, "image/png", "image");
+        //}
     }
 
     @After
