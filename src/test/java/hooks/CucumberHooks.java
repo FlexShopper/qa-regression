@@ -7,10 +7,10 @@ import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import utils.selenium.DriverController;
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Properties;
-import static utils.selenium.Driver.browser;
 
 import static utils.selenium.Driver.browser;
 

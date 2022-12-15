@@ -28,7 +28,7 @@ public class WaitHelpers {
         WebDriver driver = browser();
         Actions move2Element = new Actions(driver);
         Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(waitTimeout))
-                .pollingEvery(1, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+                .pollingEvery(Duration.ofSeconds(1)).ignoring(NoSuchElementException.class);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
