@@ -24,7 +24,6 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-jvm-deps</artifactId>
             <version>1.0.6</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
