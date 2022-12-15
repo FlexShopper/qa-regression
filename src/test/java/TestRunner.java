@@ -6,10 +6,9 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
         glue = {"hooks", "stepdefinitions"},
         tags = "@Email",
         plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-                "html:target/cucumber-reports/cucumber-pretty",
+                "html:target/cucumber-reports/cucumberExtentReport.html",
                 "json:target/cucumber-reports/CucumberTestReport.json",
-                "rerun:target/cucumber-reports/rerun.txt"
-        },
+                "rerun:target/cucumber-reports/rerun.txt"},
         monochrome = true)
 public class TestRunner extends AbstractTestNGCucumberTests {
 
