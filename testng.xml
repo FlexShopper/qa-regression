@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="FlexShopper PP3 Test Suite" verbose="1" configfailurepolicy="continue">
-    <test name="FlexShopper PP3 Acceptance Tests" annotations="JDK" preserve-order="true">
-        <classes>
-            <class name="TestRunner"/>
-        </classes>
-    </test>
-</suite>
