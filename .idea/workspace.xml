@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86f519d5-c5b4-4902-9346-5500015499a4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/helpers/WaitHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/helpers/WaitHelpers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/helpers/WebDriverHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/helpers/WebDriverHelpers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/helpers/WebElementHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/helpers/WebElementHelpers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PP3TestRunner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hooks/CucumberHooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hooks/CucumberHooks.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +26,9 @@
     </option>
   </component>
   <component name="ProjectId" id="2Iw3YkhmDcX92ahqxeea2yoyFf8" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
