@@ -144,7 +144,7 @@
                     <properties>
                         <property>
                             <name>dataproviderthreadcount</name>
-                            <value>threadcount2</value>
+                            <value>2</value>
                         </property>
                     </properties>
                     <suiteXmlFiles>
