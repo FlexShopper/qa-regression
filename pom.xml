@@ -11,12 +11,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <exclusions>
-            <exclusion>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-            </exclusion>
-        </exclusions>
 
         <log4j.version>2.11.0</log4j.version>
         <selenium-java.version>3.141.59</selenium-java.version>
@@ -27,6 +21,12 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>7.6.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -144,7 +144,7 @@
                         </goals>
                         <configuration>
                             <glue>
-                                <package>utils.hooks</package>
+                                <package>hooks</package>
                                 <package>steps</package>
                             </glue>
                             <featuresDirectory>src/test/java/features</featuresDirectory>
