@@ -3,10 +3,10 @@ package pages.pp3;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.testng.Assert;
 import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 import java.util.concurrent.ExecutionException;
-import static org.testng.Assert.assertTrue;
 
 public class ForgotPasswordPage extends EmailPage {
     protected WebElementHelpers elementHelpers = new WebElementHelpers();
@@ -71,8 +71,8 @@ public class ForgotPasswordPage extends EmailPage {
      * verifyEmailOptions() - Verifies Email information is shown in PP3's Forgot Password screen
      */
     public void verifyEmailOptions(String email) {
-        assertTrue(elementHelpers.webElementIsDisplayed(emailRadioBtn));
-        assertTrue(elementHelpers.webElementIsDisplayed(sendEmailToTxt));
+        Assert.assertTrue(elementHelpers.webElementIsDisplayed(emailRadioBtn));
+        Assert.assertTrue(elementHelpers.webElementIsDisplayed(sendEmailToTxt));
         //TODO: assertTrue(elementHelpers.webElementIsDisplayed(emailValueTxt));
         //TODO: assertEquals(WebElementHelpers.webGetText(emailValueTxt), email);
     }
@@ -81,9 +81,9 @@ public class ForgotPasswordPage extends EmailPage {
      * verifySMSOptions() - Verifies Phone information is shown in PP3's Forgot Password screen
      */
     public void verifySMSOptions(String phoneNumber) {
-        assertTrue(elementHelpers.webElementIsDisplayed(smsRadioBtn));
-        assertTrue(elementHelpers.webElementIsDisplayed(sendSMAToTxt));
-        assertTrue(elementHelpers.webElementIsDisplayed(phoneNumberTxt));
+        Assert.assertTrue(elementHelpers.webElementIsDisplayed(smsRadioBtn));
+        Assert.assertTrue(elementHelpers.webElementIsDisplayed(sendSMAToTxt));
+        Assert.assertTrue(elementHelpers.webElementIsDisplayed(phoneNumberTxt));
         //TODO: assertEquals(WebElementHelpers.webGetText(phoneNumberTxt), phoneNumber);
     }
 
