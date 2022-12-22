@@ -84,7 +84,7 @@ public class DecisionPage extends EmailPage {
             Assert.assertEquals("You were approved for a spending limit of", WebElementHelpers.webGetText(validation));
         } else if(decision.contains("did not qualify")) {
             //TODO: Use elementHelpers.webGetText()
-            WebElement validation = browser().findElement(By.xpath("//*[@id='denied-denialDescription']/div[1]"));
+            WebElement validation = browser().findElement(By.xpath("//*[@id='denied-denialDescription']"));
             boolean expectedText = WebElementHelpers.webGetText(validation).contains("You did not qualify for a spending limit");
             Assert.assertTrue(expectedText);
         }

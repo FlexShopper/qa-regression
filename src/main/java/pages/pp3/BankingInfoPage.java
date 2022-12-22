@@ -29,13 +29,13 @@ public class BankingInfoPage extends EmailPage {
 
     // TODO: Assert Text: After you receive your order, your weekly payments will be deducted from this account.
 
-    @FindBy(how = How.ID, using = "routingNumber-input")
+    @FindBy(how = How.NAME, using = "routingNumber")
     private WebElement routingNumberPP3;
 
-    @FindBy(how = How.ID, using = "accountNumber-input")
+    @FindBy(how = How.NAME, using = "accountNumber")
     private WebElement accountNumberPP3;
 
-    @FindBy(how = How.ID, using = "confirmAccountNumber-input")
+    @FindBy(how = How.NAME, using = "confirmAccountNumber")
     private WebElement confirmAccountNumberPP3;
 
     @FindBy(how = How.XPATH, using = "formSubmitButton")
