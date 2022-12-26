@@ -44,7 +44,7 @@ public class ProfileInfoPage extends EmailPage {
     @FindBy(how = How.ID, using = "city-input")
     private WebElement city;
 
-    @FindBy(how = How.ID, using = "region-input")
+    @FindBy(how = How.NAME, using = "region")
     private WebElement state;
 
     @FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div[2]/div/div/div/div/div/div/form/div/div[5]/div/div[2]/div[2]/div[1]/div[2]/div[2]/ul")
