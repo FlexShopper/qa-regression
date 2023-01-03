@@ -5,7 +5,7 @@ target/
 out/
 
 ### IntelliJ IDEA ###
-.dea/workspace.xml
+.idea/workspace.xml
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
@@ -19,4 +19,3 @@ out/
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
-.idea/workspace.xml

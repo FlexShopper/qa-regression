@@ -89,7 +89,7 @@ podTemplate(label: label,
                                 sh "export MAVEN_HOME=/usr/share/maven"
                                 sh "export M2_HOME=/home/maven/"
                                 sh "export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8"
-                                sh "mvn clean install -e -X"
+                                sh "mvn test -e -X"
                            }
                         }
                     }
