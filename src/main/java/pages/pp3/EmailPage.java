@@ -57,7 +57,7 @@ public class EmailPage extends Page {
     @FindBy(how = How.XPATH, using = "//footer[(.)='U.S. Pat. Nos. 10,089,682 & 10,282,779']") // FlexShopper's US Patten
     private WebElement flexUSPattenNumber;
 
-    @FindBy(how = How.XPATH, using = "//span[(.)='© 2022 FlexShopper, LLC']") // FlexShopper's Copyright
+    @FindBy(how = How.XPATH, using = "//span[(.)='© 2023 FlexShopper, LLC']") // FlexShopper's Copyright
     private WebElement flexCopyright;
 
     @FindBy(how = How.ID, using = "footer-accessibility-button") // Accessibility button
