@@ -159,7 +159,7 @@
                                 <package>stepdefinitions</package>
                             </glue>
                             <outputDirectory>${project.build.directory}/generated-test-sources/cucumber</outputDirectory>
-                            <featuresDirectory>features</featuresDirectory>
+                            <featuresDirectory>/src/test/java/features</featuresDirectory>
                             <cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
                             <plugins>
                                 <plugin>
