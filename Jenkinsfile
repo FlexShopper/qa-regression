@@ -69,11 +69,11 @@ podTemplate(label: label,
                             echo 'Install Java JDK'
                             sh """
                                 apt-get update && \
-                                apt-get install -y openjdk-12-jdk && \
+                                apt-get install -y default-jdk && \
                                 apt-get install -y ant && \
                                 apt-get clean;
                                 """
-                            sh "export JAVA_HOME=/usr/lib/jvm/java-12-openjdk-amd64"
+                            sh "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64"
                             sh "java -version"
                            if (fileExists('./mvnw')) {
                                 echo 'File mvnw found!'
