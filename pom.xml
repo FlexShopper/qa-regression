@@ -18,7 +18,7 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.10.1</version>
+            <version>6.11.0</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -29,7 +29,7 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
-            <version>7.10.1</version>
+            <version>6.11.0</version>
             <scope>compile</scope>
             <exclusions>
                 <exclusion>
@@ -47,7 +47,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.7.0</version>
+            <version>7.4.0</version>
             <scope>compile</scope>
         </dependency>
         <!-- JUnit -->
