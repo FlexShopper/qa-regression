@@ -149,10 +149,8 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>default-testCompile</id>
-                        <phase>compile</phase>
                         <goals>
-                            <goal>com.github.temyers:cucumber-jvm-parallel-plugin:5.0.0:generateRunners (generateRunners)</goal>
+                            <goal>generateRunners</goal>
                         </goals>
                         <configuration>
                             <skip>true</skip>
