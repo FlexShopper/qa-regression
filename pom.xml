@@ -143,65 +143,6 @@
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <id>add-source</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>src/main/java/</source>
-                                <source>src/main/resources/</source>
-                                <source>/src/test/java/features</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>com.github.temyers</groupId>
-                <artifactId>cucumber-jvm-parallel-plugin</artifactId>
-                <version>5.0.0</version>
-                <executions>
-                    <execution>
-                        <id>generateRunners</id>
-                        <phase>generate-test-sources</phase>
-                        <goals>
-                            <goal>generateRunners</goal>
-                        </goals>
-                        <configuration>
-                            <glue>
-                                <package>stepdefinitions</package>
-                            </glue>
-                            <outputDirectory>${project.build.directory}/generated-test-sources/cucumber</outputDirectory>
-                            <featuresDirectory>/src/test/java/features</featuresDirectory>
-                            <cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
-                            <plugins>
-                                <plugin>
-                                    <name>json</name>
-                                </plugin>
-                            </plugins>
-                            <strict>true</strict>
-                            <monochrome>true</monochrome>
-                            <tags>
-                                <tag>~@ignore</tag>
-                            </tags>
-                            <!-- <tags> <tag>${tags}</tag> <tag>~@ignore</tag> </tags> -->
-                            <useTestNG>false</useTestNG>
-                            <namingScheme>simple</namingScheme>
-                            <namingPattern>Parallel{c}IT</namingPattern>
-                            <parallelScheme>FEATURE</parallelScheme>
-                            <customVmTemplate></customVmTemplate>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 </project>
