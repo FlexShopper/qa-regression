@@ -1,20 +1,16 @@
 package pages.pp3;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import utils.helpers.WaitHelpers;
+import utils.helpers.WebElementHelpers;
 
 import java.util.concurrent.ExecutionException;
 
-public class ChangePasswordPage {
-    //protected WebElementHelpers elementHelpers = new WebElementHelpers();
-
-    public ChangePasswordPage (WebDriver driver) {
-        PageFactory.initElements(driver, this);
-    }
+public class ChangePasswordPage extends EmailPage {
+    protected WebElementHelpers elementHelpers = new WebElementHelpers();
 
     /**
      * Elements - PP3's Verification Change Password Screen
@@ -50,17 +46,17 @@ public class ChangePasswordPage {
      * verifyChangePasswordScreen() - Verify Change Password Screen
      */
     public void verifyChangePasswordScreen() throws ExecutionException, InterruptedException {
-        //WaitHelpers.waitFluentWait(newPassword, 240);
+        WaitHelpers.waitFluentWait(newPassword, 240);
         WaitHelpers.waitForStaleElement(newPassword);
-        //TODO: instanceOf(EmailPage.class).verifyHeader();
+        instanceOf(EmailPage.class).verifyHeader();
 
         // Verify elements are displayed
-        createNewPasswordTxt.isDisplayed();
-        emailValueTxt.isDisplayed();
-        notYouLink.isDisplayed();
-        newPassword.isDisplayed();
-        passwordRequirementsTxt.isDisplayed();
-        changePasswordBtn.isDisplayed();
+        elementHelpers.webElementIsDisplayed(createNewPasswordTxt);
+        elementHelpers.webElementIsDisplayed(emailValueTxt);
+        elementHelpers.webElementIsDisplayed(notYouLink);
+        elementHelpers.webElementIsDisplayed(newPassword);
+        elementHelpers.webElementIsDisplayed(passwordRequirementsTxt);
+        elementHelpers.webElementIsDisplayed(changePasswordBtn);
     }
 
     /**
@@ -68,22 +64,20 @@ public class ChangePasswordPage {
      * @param password
      */
     public void enterNewPassword(String password) {
-        //elementHelpers.webSendKeys(newPassword, password, true);
-        newPassword.sendKeys(password);
+        elementHelpers.webSendKeys(newPassword, password, true);
     }
 
     /**
      * clickOnChangePasswordBtn() - Clicks on the "Change Password" button
      */
     public void clickOnChangePasswordBtn() {
-        //elementHelpers.webClick(changePasswordBtn);
-        changePasswordBtn.click();
+        elementHelpers.webClick(changePasswordBtn);
     }
 
     /**
      * passwordChangedMsg() - Verifies "Password Changed Successfully" message is shown
      */
     public void passwordChangedMsg() {
-        //Assert.assertEquals("Password changed successfully", WebElementHelpers.webGetText(passwordChangedTxt));
+        Assert.assertEquals("Password changed successfully", WebElementHelpers.webGetText(passwordChangedTxt));
     }
 }

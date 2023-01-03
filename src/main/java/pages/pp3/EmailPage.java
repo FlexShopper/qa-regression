@@ -5,22 +5,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
-import utils.helpers.ManageEmailTestAddresses;
-import utils.helpers.WaitHelpers;
+import org.testng.Assert;
+import pages.Page;
+import utils.helpers.*;
 import utils.selenium.Settings;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class EmailPage {
-    public WebDriver driver;
-    protected ManageEmailTestAddresses emailTestAddress = new ManageEmailTestAddresses();
+import static utils.selenium.Driver.browser;
 
-    public EmailPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
+public class EmailPage extends Page {
+    protected WebElementHelpers elementHelpers = new WebElementHelpers();
+    protected WebDriverHelpers driverHelpers = new WebDriverHelpers();
+    protected SelectHelpers selectHelpers = new SelectHelpers();
+    protected ManageEmailTestAddresses emailTestAddress = new ManageEmailTestAddresses();
 
     /**
      * Elements - Header
@@ -58,7 +57,7 @@ public class EmailPage {
     @FindBy(how = How.XPATH, using = "//footer[(.)='U.S. Pat. Nos. 10,089,682 & 10,282,779']") // FlexShopper's US Patten
     private WebElement flexUSPattenNumber;
 
-    @FindBy(how = How.XPATH, using = "//span[(.)='© 2023 FlexShopper, LLC']") // FlexShopper's Copyright
+    @FindBy(how = How.XPATH, using = "//span[(.)='© 2022 FlexShopper, LLC']") // FlexShopper's Copyright
     private WebElement flexCopyright;
 
     @FindBy(how = How.ID, using = "footer-accessibility-button") // Accessibility button
@@ -81,57 +80,47 @@ public class EmailPage {
      */
     public void navigateToBaseUrl() {
         String baseUrl = Settings.baseUrl;
-        driver.navigate().to(baseUrl);
+        browser().navigate().to(baseUrl);
     }
 
     /**
      * Navigate to PP3's Base URL
      */
     public void browserFullScreen() {
-        driver.manage().window().fullscreen();;
+        driverHelpers.wdDriverFullScreen();
     }
 
     /**
      * switchToFrame() - Switches to PP3's Frame
      */
     public void switchToFrame() {
-        driver.switchTo().frame(0);
-        driver.switchTo().frame(0);
+        driverHelpers.wdSwitchToFrame();
     }
 
     /**
      * Verify PP3's Header
      */
-    public void verifyHeader() throws InterruptedException {
-        //WaitHelpers.waitFluentWait(headerCloseBtn, 240);
-        Thread.sleep(20);
+    public void verifyHeader() throws ExecutionException, InterruptedException {
+        WaitHelpers.waitFluentWait(headerCloseBtn, 240);
 
         // Verify elements are displayed
-        //elementHelpers.webElementIsDisplayed(headerCloseBtn);
-        //elementHelpers.webElementIsDisplayed(headerFAQBtn);
-        headerCloseBtn.isDisplayed();
-        headerFAQBtn.isDisplayed();
+        elementHelpers.webElementIsDisplayed(headerCloseBtn);
+        elementHelpers.webElementIsDisplayed(headerFAQBtn);
     }
 
     /**
      * Verify PP3's Email Screen
      */
     public void verifyEmailScreen() throws ExecutionException, InterruptedException {
-        //WaitHelpers.waitFluentWait(emailAddressField, 240);
-        Thread.sleep(20);
+        WaitHelpers.waitFluentWait(emailAddressField, 240);
         WaitHelpers.waitForStaleElement(emailAddressField);
 
         // Verify elements are displayed
-        //elementHelpers.webElementIsDisplayed(flexshopperLogo);
-        //elementHelpers.webElementIsDisplayed(enterEmailTxt);
-        //elementHelpers.webElementIsDisplayed(welcomeTxt);
-        //elementHelpers.webElementIsDisplayed(emailAddressField);
-        //elementHelpers.webElementIsDisplayed(continueBtn);
-        flexshopperLogo.isDisplayed();
-        enterEmailTxt.isDisplayed();
-        welcomeTxt.isDisplayed();
-        emailAddressField.isDisplayed();
-        continueBtn.isDisplayed();
+        elementHelpers.webElementIsDisplayed(flexshopperLogo);
+        elementHelpers.webElementIsDisplayed(enterEmailTxt);
+        elementHelpers.webElementIsDisplayed(welcomeTxt);
+        elementHelpers.webElementIsDisplayed(emailAddressField);
+        elementHelpers.webElementIsDisplayed(continueBtn);
     }
 
     /**
@@ -140,12 +129,9 @@ public class EmailPage {
     public void verifyFooter() {
         // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(flexUSPattenNumber);
-        //elementHelpers.webElementIsDisplayed(flexCopyright);
-        //elementHelpers.webElementIsDisplayed(footerAccessibilityBtn);
-        //elementHelpers.webElementIsDisplayed(footerPrivacyBtn);
-        flexCopyright.isDisplayed();
-        footerAccessibilityBtn.isDisplayed();
-        footerPrivacyBtn.isDisplayed();
+        elementHelpers.webElementIsDisplayed(flexCopyright);
+        elementHelpers.webElementIsDisplayed(footerAccessibilityBtn);
+        elementHelpers.webElementIsDisplayed(footerPrivacyBtn);
         // TODO: assertFlexUSPattenNumber();
         // TODO: assertFlexUSCopyrightInfo();
     }
@@ -154,14 +140,14 @@ public class EmailPage {
      * Assert FlexShopper's US Patten Number
      */
     public void assertFlexUSPattenNumber() {
-        //Assert.assertTrue((WebElementHelpers.webGetAttribute(flexUSPattenNumber,"value")).contains("U.S. Pat. Nos. 10,089,682 & 10,282,779"));
+        Assert.assertTrue((WebElementHelpers.webGetAttribute(flexUSPattenNumber,"value")).contains("U.S. Pat. Nos. 10,089,682 & 10,282,779"));
     }
 
     /**
      * Assert FlexShopper's Copyright Information
      */
     public void assertFlexUSCopyrightInfo() {
-        //Assert.assertTrue((WebElementHelpers.webGetAttribute(flexCopyright,"value")).contains("© 2022 FlexShopper, LLC"));
+        Assert.assertTrue((WebElementHelpers.webGetAttribute(flexCopyright,"value")).contains("© 2022 FlexShopper, LLC"));
     }
 
     /**
@@ -169,8 +155,7 @@ public class EmailPage {
      * @param email
      */
     public void enterEmail(String email) {
-        //elementHelpers.webSendKeys(emailAddressField, email, true);
-        emailAddressField.sendKeys(email);
+        elementHelpers.webSendKeys(emailAddressField, email, true);
     }
 
     /**
@@ -178,17 +163,14 @@ public class EmailPage {
      * @param email
      */
     public void enterNewEmail(String email) {
-        //elementHelpers.webSendKeys(emailAddressField, emailTestAddress.createEmailTestAddress(email), true);
-        String Email2Send = emailTestAddress.createEmailTestAddress(email);
-        emailAddressField.sendKeys(Email2Send);
+        elementHelpers.webSendKeys(emailAddressField, emailTestAddress.createEmailTestAddress(email), true);
     }
 
     /**
      * clickContinueBtn() - Click on the "Continue" button
      */
     public void clickOnContinueBtn() {
-        //elementHelpers.webClickJSExecutor(continueBtn);
-        continueBtn.click();
+        elementHelpers.webClickJSExecutor(continueBtn);
     }
 
     /**
@@ -196,12 +178,13 @@ public class EmailPage {
      */
     public void emailValidationMessage(String validationMsg) {
         //TODO: Move code below to WebElementHelpers
+        WebDriver driver = browser();
         List<WebElement> spanText = driver.findElements(By.tagName("span"));
         for(int i = 0; i<spanText.size(); i++){
             String textFound = spanText.get(i).getText();
             System.out.println("Value is  ==> " + spanText.get(i).getText());
             if (textFound.contains("Invalid email address")) {
-                //Assert.assertEquals("Invalid email address", spanText.get(i).getText());
+                Assert.assertEquals("Invalid email address", spanText.get(i).getText());
                 break;
             }
         }
@@ -212,8 +195,9 @@ public class EmailPage {
      */
     public void emailHTMLValidationMessage(String validationMsg) {
         //TODO: Move code below to WebElementHelpers
+        WebDriver driver = browser();
         WebElement email = driver.findElement(By.name("email"));
         String htmlValidationMsg = email.getAttribute("validationMessage");
-        //Assert.assertTrue(htmlValidationMsg.contains(validationMsg));
+        Assert.assertTrue(htmlValidationMsg.contains(validationMsg));
     }
 }

@@ -4,72 +4,48 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import pages.Page;
 import pages.pp3.*;
 
-import java.time.Duration;
 import java.util.concurrent.ExecutionException;
 
-public class EmailSteps {
-    WebDriver driver;
-    EmailPage emailPage;
-    PasswordPage passwordPage;
-    ChangePasswordPage changePasswordPage;
-    VerificationCodePage verificationCodePage;
-    ProfileInfoPage profileInfoPage;
-
+public class EmailSteps extends Page {
     @Given("^the user is on the Email screen$")
     public void theUserIsOnTheEmailScreen() throws ExecutionException, InterruptedException {
         System.out.println("Given the user is on the Email screen");
         // Launch browser and navigate to the PP3's Email screen
-        //declare the chrome driver from the local machine location
-        System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\drivers\\chromedriver.exe");
-        //create object of chrome options
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("headless"); //add the headless argument
-
-        driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        emailPage = new EmailPage(driver);
-        emailPage.navigateToBaseUrl();
-        emailPage.browserFullScreen();
-        emailPage.switchToFrame();
+        instanceOf(EmailPage.class).navigateToBaseUrl();
+        instanceOf(EmailPage.class).browserFullScreen();
+        instanceOf(EmailPage.class).switchToFrame();
 
         // Verify user landed on the PP3's Email screen
-        emailPage.verifyHeader();
-        emailPage.verifyEmailScreen();
-        emailPage.verifyFooter();
+        instanceOf(EmailPage.class).verifyHeader();
+        instanceOf(EmailPage.class).verifyEmailScreen();
+        instanceOf(EmailPage.class).verifyFooter();
     }
 
     @When("^the user enters a valid existing email address: \"([^\"]*)\"$")
     public void theUserEntersAValidExistingEmailAddress(String email) {
         System.out.println("Then the user should see the email: " + email);
-        emailPage.enterEmail(email);
+        instanceOf(EmailPage.class).enterEmail(email);
     }
 
     @And("^the user clicks on the button: \"([^\"]*)\"$")
     public void theUserClicksOnTheButton(String button) {
         System.out.println("And the user clicks on the button: " + button);
-        passwordPage = new PasswordPage(driver);
-        verificationCodePage = new VerificationCodePage(driver);
-        changePasswordPage = new ChangePasswordPage(driver);
         switch (button) {
             case "Continue":
             case "Submit Application":
-                emailPage.clickOnContinueBtn();
+                instanceOf(EmailPage.class).clickOnContinueBtn();
                 break;
             case "Sign In":
-                passwordPage.clickOnTheSignInBtn();
+                instanceOf(PasswordPage.class).clickOnTheSignInBtn();
                 break;
             case "Submit":
-                verificationCodePage.clickOnSubmitBtn();
+                instanceOf(VerificationCodePage.class).clickOnSubmitBtn();
                 break;
             case "Change Password":
-                changePasswordPage.clickOnChangePasswordBtn();
+                instanceOf(ChangePasswordPage.class).clickOnChangePasswordBtn();
                 break;
             default:
                 System.out.println("Button " + button + "was not found!");
@@ -79,48 +55,39 @@ public class EmailSteps {
     @Then("^the user lands on the Password screen$")
     public void theUserLandsOnThePasswordScreen() throws ExecutionException, InterruptedException {
         System.out.println("Then the user lands on the Password screen");
-        emailPage.verifyHeader();
-        passwordPage.verifyPasswordScreen();
-        emailPage.verifyFooter();
-
-        driver.quit();
+        instanceOf(EmailPage.class).verifyHeader();
+        instanceOf(PasswordPage.class).verifyPasswordScreen();
+        instanceOf(EmailPage.class).verifyFooter();
     }
 
     @When("^the user enters a valid no-registered email address: \"([^\"]*)\"$")
     public void theUserEntersAValidNoRegisteredEmailAddress(String email) {
         System.out.println("When the user enters a valid no-registered email address: " + email);
-        emailPage.enterEmail(email);
+        instanceOf(EmailPage.class).enterEmail(email);
     }
 
     @Then("^the user lands on the Profile Info screen$")
-    public void theUserLandsOnTheProfileInfoScreen() throws InterruptedException {
+    public void theUserLandsOnTheProfileInfoScreen() throws ExecutionException, InterruptedException {
         System.out.println("Then the user lands on the Profile Info screen");
-        profileInfoPage = new ProfileInfoPage(driver);
-        //TODO: profileInfoPage.verifyProfileInfoScreen();
-        emailPage.verifyHeader();
-        emailPage.verifyFooter();
-
-        driver.quit();
+        instanceOf(EmailPage.class).verifyHeader();
+        instanceOf(ProfileInfoPage.class).verifyProfileInfoScreen();
+        instanceOf(EmailPage.class).verifyFooter();
     }
 
     @When("^the user enters an invalid email address: \"([^\"]*)\"$")
     public void theUserEntersAnInvalidEmailAddress(String email) {
         System.out.println("When the user enters an invalid email address: " + email);
-        emailPage.enterEmail(email);
+        instanceOf(EmailPage.class).enterEmail(email);
     }
 
     @Then("^the user sees the following validation message: \"([^\"]*)\"$")
     public void theUserSeesTheFollowingValidationMessage(String validationMsg) {
         System.out.println("Then the user should see the email: " + validationMsg);
-        emailPage.emailValidationMessage(validationMsg);
-
-        driver.quit();
+        instanceOf(EmailPage.class).emailValidationMessage(validationMsg);
     }
 
     @Then("^the user sees the following HTML validation message: \"([^\"]*)\"$")
     public void theUserSeesTheFollowingHTMLValidationMessage(String validationMsg) {
         System.out.println("Then the user sees the following HTML validation message: " + validationMsg);
-
-        driver.quit();
     }
 }

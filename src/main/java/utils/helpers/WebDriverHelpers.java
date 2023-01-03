@@ -7,25 +7,35 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
+import static utils.selenium.Driver.browser;
+import static utils.selenium.Settings.wdHighlightedColour;
 
 public class WebDriverHelpers {
 
-    public Object wdElementIsDisplayed(WebDriver driver, By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public Object wdHighlight(By locator) {
+        WebDriver driver = browser();
+        WebElement myLocator = driver.findElement(locator);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        return js.executeScript(wdHighlightedColour, myLocator);
+    }
+
+    public Object wdElementIsDisplayed(By locator) {
+        WebDriverWait wait = new WebDriverWait(browser(), 10);
         return wait.until(ExpectedConditions.visibilityOf((WebElement) locator));
     }
 
-    public void wdElementToDisappear(WebDriver driver, By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    public void wdElementToDisappear(By locator) {
+        WebDriverWait wait = new WebDriverWait(browser(), 5);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 
-    public WebElement wdFindElement(WebDriver driver, By locator) {
-        wdElementIsDisplayed(driver, locator);
-        return driver.findElement(locator);
+    public WebElement wdFindElement(By locator) {
+        wdElementIsDisplayed(locator);
+        return browser().findElement(locator);
     }
 
-    public void wdIsElementFound(WebDriver driver, By locator, int timeout) {
+    public void wdIsElementFound(By locator, int timeout) {
+        WebDriver driver = browser();
         try {
             for (int i=0; i<timeout; i++) {
                 List<WebElement> dynamicElement = driver.findElements(locator);
@@ -47,25 +57,28 @@ public class WebDriverHelpers {
         }
     }
 
-    public void wdClick(WebDriver driver, By locator) {
-        wdFindElement(driver, locator).click();
+    public void wdClick(By locator) {
+        wdFindElement(locator).click();
     }
 
-    public void wdSendKeys(WebDriver driver, By locator, String text, boolean clearFirst) {
-        if (clearFirst) wdClick(driver, locator);
-        wdFindElement(driver, locator).sendKeys(text);
+    public void wdSendKeys(By locator, String text, boolean clearFirst) {
+        if (clearFirst) wdClick(locator);
+        wdFindElement(locator).sendKeys(text);
     }
 
-    public void wdSwitchToFrame(WebDriver driver) {
+    public void wdSwitchToFrame() {
+        WebDriver driver = browser();
         driver.switchTo().frame(0);
         driver.switchTo().frame(0);
     }
 
-    public Alert wdSwitchToAlert(WebDriver driver) {
+    public Alert wdSwitchToAlert() {
+        WebDriver driver = browser();
         return driver.switchTo().alert();
     }
 
-    public void wdDriverFullScreen(WebDriver driver) {
+    public void wdDriverFullScreen() {
+        WebDriver driver = browser();
         driver.manage().window().fullscreen();
     }
 }

@@ -1,20 +1,17 @@
 package pages.pp3;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 import utils.helpers.WaitHelpers;
+import utils.helpers.WebElementHelpers;
 
 import java.util.concurrent.ExecutionException;
 
-public class ForgotPasswordPage {
-    //protected WebElementHelpers elementHelpers = new WebElementHelpers();
+import static org.testng.Assert.assertTrue;
 
-    public ForgotPasswordPage (WebDriver driver) {
-        PageFactory.initElements(driver, this);
-    }
+public class ForgotPasswordPage extends EmailPage {
+    protected WebElementHelpers elementHelpers = new WebElementHelpers();
 
     /**
      * Elements - PP3's Forgot Password Screen
@@ -56,19 +53,19 @@ public class ForgotPasswordPage {
      * verifyForgotPasswordScreen() - Verifies user landed on the Forgot Password screen
      */
     public void verifyForgotPasswordScreen() throws ExecutionException, InterruptedException {
-        //WaitHelpers.waitFluentWait(continueBtn, 240);
-        WaitHelpers.waitForStaleElement(submitBtn);
-        //TODO: instanceOf(EmailPage.class).verifyHeader();
+        WaitHelpers.waitFluentWait(continueBtn, 240);
+        WaitHelpers.waitForStaleElement(continueBtn);
+        instanceOf(EmailPage.class).verifyHeader();
 
         // Verify elements are displayed
         //TODO: elementHelpers.webElementIsDisplayed(flexshopperLogo);
         //TODO: elementHelpers.webElementIsDisplayed(resetYourPasswordTxt);
         //TODO: elementHelpers.webElementIsDisplayed(passwordResetOptionsTxt);
         //TODO: elementHelpers.webElementIsDisplayed(emailRadioBtn);
-        sendEmailToTxt.isDisplayed();
+        elementHelpers.webElementIsDisplayed(sendEmailToTxt);
         //TODO: elementHelpers.webElementIsDisplayed(emailValueTxt);
-        returnToPasswordLnk.isDisplayed();
-        submitBtn.isDisplayed();
+        elementHelpers.webElementIsDisplayed(returnToPasswordLnk);
+        elementHelpers.webElementIsDisplayed(continueBtn);
         // TODO: Verify PP3's Footer
     }
 
@@ -76,8 +73,8 @@ public class ForgotPasswordPage {
      * verifyEmailOptions() - Verifies Email information is shown in PP3's Forgot Password screen
      */
     public void verifyEmailOptions(String email) {
-        //Assert.assertTrue(elementHelpers.webElementIsDisplayed(emailRadioBtn));
-        //Assert.assertTrue(elementHelpers.webElementIsDisplayed(sendEmailToTxt));
+        assertTrue(elementHelpers.webElementIsDisplayed(emailRadioBtn));
+        assertTrue(elementHelpers.webElementIsDisplayed(sendEmailToTxt));
         //TODO: assertTrue(elementHelpers.webElementIsDisplayed(emailValueTxt));
         //TODO: assertEquals(WebElementHelpers.webGetText(emailValueTxt), email);
     }
@@ -86,9 +83,9 @@ public class ForgotPasswordPage {
      * verifySMSOptions() - Verifies Phone information is shown in PP3's Forgot Password screen
      */
     public void verifySMSOptions(String phoneNumber) {
-        //Assert.assertTrue(elementHelpers.webElementIsDisplayed(smsRadioBtn));
-        //Assert.assertTrue(elementHelpers.webElementIsDisplayed(sendSMAToTxt));
-        //Assert.assertTrue(elementHelpers.webElementIsDisplayed(phoneNumberTxt));
+        assertTrue(elementHelpers.webElementIsDisplayed(smsRadioBtn));
+        assertTrue(elementHelpers.webElementIsDisplayed(sendSMAToTxt));
+        assertTrue(elementHelpers.webElementIsDisplayed(phoneNumberTxt));
         //TODO: assertEquals(WebElementHelpers.webGetText(phoneNumberTxt), phoneNumber);
     }
 
@@ -96,23 +93,20 @@ public class ForgotPasswordPage {
      * clickOnReturnToPasswordLink() - Clicks on the Return to Password Sign In link
      */
     public void clickOnReturnToPasswordLink() {
-        //elementHelpers.webClick(returnToPasswordLnk);
-        returnToPasswordLnk.click();
+        elementHelpers.webClick(returnToPasswordLnk);
     }
 
     /**
      * verifyEmailRadioButtonIsSelected() - Verifies if the Email radio button is selected or not
      */
     public void verifyEmailRadioButtonIsSelected() {
-        //elementHelpers.webElementIsSelected(emailRadioBtn);
-        emailRadioBtn.isSelected();
+        elementHelpers.webElementIsSelected(emailRadioBtn);
     }
 
     /**
      * verifySMSRadioButtonIsSelected() - Verifies if the SMS radio button is selected or not
      */
     public void verifySMSRadioButtonIsSelected() {
-        //elementHelpers.webElementIsSelected(smsRadioBtn);
-        smsRadioBtn.isSelected();
+        elementHelpers.webElementIsSelected(smsRadioBtn);
     }
 }

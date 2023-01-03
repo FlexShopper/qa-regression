@@ -1,58 +1,40 @@
 package utils.helpers;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
+import static utils.selenium.Driver.browser;
+
 public class WaitHelpers {
-    /**
-     * waits for backgrounds processes on the browser to complete
-     * @param driver
-     */
-    public void checkPageIsReady(WebDriver driver) {
-        JavascriptExecutor js = (JavascriptExecutor)driver;
-
-        //Initially bellow given if condition will check ready state of page.
-        if (js.executeScript("return document.readyState").toString().equals("complete")){
-            System.out.println("Page Is loaded.");
-            return;
-        }
-
-        //This loop will rotate for 30 times to check If page Is ready after every 1 second.
-        for (int i=0; i<30; i++){
-            try {
-                Thread.sleep(1000);
-            }catch (InterruptedException e) {}
-            //To check page ready state.
-            if (js.executeScript("return document.readyState").toString().equals("complete")){
-                break;
-            }
-        }
-    }
-
     /**
      * waits for backgrounds processes on the browser to complete
      * @param waitTimeout
      */
     public static void waitForPageReady(int waitTimeout) {
-        //Wait<WebDriver> wait = new FluentWait<>(driver)
-        //        .withTimeout(Duration.ofSeconds(waitTimeout))
-        //        .pollingEvery(Duration.ofMillis(1000))
-        //        .ignoring(NoSuchElementException.class);
-        //wait.until((ExpectedCondition<Boolean>) wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
+        WebDriver driver = browser();
+        Wait<WebDriver> wait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(waitTimeout))
+                .pollingEvery(Duration.ofMillis(1000))
+                .ignoring(NoSuchElementException.class);
+        wait.until((ExpectedCondition<Boolean>) wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
     }
 
     @SuppressWarnings( "deprecation" )
-    public static void waitFluentWait(WebDriver driver, WebElement element, int waitTimeout) {
-        //Actions move2Element = new Actions(driver);
-        //Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(waitTimeout))
-        //        .pollingEvery(Duration.ofSeconds(1)).ignoring(NoSuchElementException.class);
-        //wait.until(ExpectedConditions.visibilityOf(element));
+    public static void waitFluentWait(WebElement element, int waitTimeout) {
+        WebDriver driver = browser();
+        Actions move2Element = new Actions(driver);
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(waitTimeout))
+                .pollingEvery(Duration.ofSeconds(1)).ignoring(NoSuchElementException.class);
+        wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     /**
@@ -80,20 +62,5 @@ public class WaitHelpers {
             e.get();
         }
         //System.out.println("Complete");
-    }
-
-    public boolean retryingFindClick(WebElement element) {
-        boolean result = false;
-        int attempts = 0;
-        while(attempts < 60) {
-            try {
-                element.click();
-                result = true;
-                break;
-            } catch(StaleElementReferenceException e) {
-            }
-            attempts++;
-        }
-        return result;
     }
 }
