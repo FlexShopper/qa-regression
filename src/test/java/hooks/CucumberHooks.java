@@ -4,8 +4,9 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import utils.selenium.DriverController;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 public class CucumberHooks {
@@ -32,7 +33,7 @@ public class CucumberHooks {
     @Before("@Web")
     public void beforeWeb() throws IOException {
         Properties browserProps = new Properties();
-        browserProps.load(new FileInputStream("src/test/resources/config.properties"));
+        browserProps.load(Files.newInputStream(Paths.get("src/test/resources/config.properties")));
 
         String browser = browserProps.getProperty("browserName");
 

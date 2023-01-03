@@ -1,4 +1,4 @@
-@Chrome @Web @Email @PP3 @Regression
+@Chrome @HeadlessChrome @Web @Email @PP3 @Regression
 Feature: As a customer I should be able to enter the email in the login email
 
   Scenario Outline: Existing Customer lands on the Password screen
