@@ -16,20 +16,31 @@ public class WaitHelpers {
      */
     public static void waitForPageReady(int waitTimeout) {
         WebDriver driver = browser();
-        Wait<WebDriver> wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(waitTimeout))
-                .pollingEvery(Duration.ofMillis(1000))
-                .ignoring(NoSuchElementException.class);
-        wait.until((ExpectedCondition<Boolean>) wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        //Initially bellow given if condition will check ready state of page.
+        if (js.executeScript("return document.readyState").toString().equals("complete")){
+            System.out.println("Page Is loaded.");
+            return;
+        }
+
+        //This loop will rotate for n times to check If page Is ready after every 1 second.
+        //You can replace your value with 25 If you wants to Increase or decrease wait time.
+        for (int i=0; i<waitTimeout; i++){
+            try {
+                Thread.sleep(1000);
+            }catch (InterruptedException e) {}
+            //To check page ready state.
+            if (js.executeScript("return document.readyState").toString().equals("complete")){
+                break;
+            }
+        }
     }
 
     @SuppressWarnings( "deprecation" )
-    public static void waitFluentWait(WebElement element, int waitTimeout) {
+    public static void waitFluentWait(WebElement element, int waitTimeout) throws InterruptedException {
         WebDriver driver = browser();
-        Actions move2Element = new Actions(driver);
-        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(waitTimeout))
-                .pollingEvery(Duration.ofSeconds(1)).ignoring(NoSuchElementException.class);
-        wait.until(ExpectedConditions.visibilityOf(element));
+        Thread.sleep(waitTimeout);
     }
 
     /**
@@ -38,24 +49,18 @@ public class WaitHelpers {
      * @throws InterruptedException
      * @throws ExecutionException
      */
-    public static void waitForStaleElement(WebElement element) throws InterruptedException, ExecutionException {
-        int iCount = 60, iDelay = 1;
-        ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
-        //System.out.println("Start");
-        List<Future<Integer>> futures = new ArrayList<>(iCount);
-        for (int i =0; i< iCount; i++) {
+    public static boolean waitForStaleElement(WebElement element) throws InterruptedException, ExecutionException {
+        boolean staleElement = true;
+        int repeat = 60;
+        while(repeat <=60) {
             try {
-                element.isDisplayed();
-                break;
-            } catch (StaleElementReferenceException st) {
-                int j = i;
-                futures.add(scheduler.schedule(() -> j, iDelay, TimeUnit.SECONDS));
+                element.click();
+                staleElement = false;
+            } catch (StaleElementReferenceException exception) {
+                exception.printStackTrace();
             }
+            repeat++;
         }
-
-        for (Future<Integer> e : futures) {
-            e.get();
-        }
-        //System.out.println("Complete");
+        return staleElement;
     }
 }
