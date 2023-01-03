@@ -1,4 +1,4 @@
-package utilities.hooks;
+package hooks;
 
 public class StepHooks {
 }

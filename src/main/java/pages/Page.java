@@ -1,10 +1,10 @@
 package pages;
 
 import org.openqa.selenium.support.PageFactory;
-import static utilities.selenium.Driver.browser;
+import utils.selenium.Driver;
 
 public class Page {
     public static <T extends BasePage> T instanceOf(Class<T> clazz) {
-        return PageFactory.initElements(browser(), clazz);
+        return PageFactory.initElements(Driver.browser(), clazz);
     }
 }
