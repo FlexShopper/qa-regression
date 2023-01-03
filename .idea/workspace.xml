@@ -5,8 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86f519d5-c5b4-4902-9346-5500015499a4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/managers/PageObjectManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/runners/TestRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/Page.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/flexshopper/FlexShopperHomePage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/myflexlending/MyFlexLendingHomePage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/BankingInfoPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/ChangePasswordPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/ChangePasswordPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/DecisionPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/EmailPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/EmailPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/ForgotPasswordPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/ForgotPasswordPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/PasswordPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/PasswordPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/PersonalInfoPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/ProfileInfoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/ProfileInfoPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/pp3/VerificationCodePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/pp3/VerificationCodePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/drivers/ChromeWebDriver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/drivers/FirefoxWebDriver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/helpers/SelectHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/helpers/SelectHelpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/helpers/WaitHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/helpers/WaitHelpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/helpers/WebDriverHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/helpers/WebDriverHelpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/helpers/WebElementHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/helpers/WebElementHelpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/selenium/Driver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/selenium/DriverController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/selenium/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/selenium/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestRunner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/pp3/BankingInfoScreen.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/pp3/DecisionScreen.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/pp3/ForgotPasswordScreen.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/pp3/PasswordScreen.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/pp3/PersonalInfoScreen.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/pp3/ProfileInfoScreen.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/hooks/CucumberHooks.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/hooks/StepHooks.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/hooks/TestRunHooks.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/BankingInfoSteps.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/DecisionSteps.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/EmailSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/EmailSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/ForgotPasswordSteps.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/PasswordSteps.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/PersonalInfoSteps.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/pp3/ProfileInfoSteps.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,9 +68,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Jenkinsfile" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/test/java/TestRunner.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/test/java/hooks/CucumberHooks.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -59,19 +99,28 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/TestAutomation/workspace/qa-regression-development/src/test/resources/features.pp3",
-    "project.structure.last.edited": "Libraries",
+    "last_opened_file_path": "C:/TestAutomation/workspace/qa-regression-development",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.19238281",
     "project.structure.side.proportion": "0.43341404",
-    "settings.editor.selected.configurable": "MavenSettings"
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\TestAutomation\workspace\qa-regression-development" />
+      <recent name="C:\TestAutomation\workspace\qa-regression-development\src\test\java\features\pp3" />
+      <recent name="C:\TestAutomation\workspace\qa-regression-development\src\main\java\utils\helpers" />
+      <recent name="C:\TestAutomation\workspace\qa-regression-development\src\main\java\pages\pp3" />
       <recent name="C:\TestAutomation\workspace\qa-regression-development\src\test\resources\features.pp3" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="runners" />
+      <recent name="stepdefinitions.pp3" />
+      <recent name="managers" />
+    </key>
   </component>
-  <component name="RunManager" selected="TestNG.TestRunner">
+  <component name="RunManager" selected="JUnit.TestRunner (1)">
     <configuration default="true" type="AZURE_FUNCTION_SUPPORT" factoryName="Run Functions">
       <option name="appName" />
       <option name="appServicePlanName" />
@@ -136,6 +185,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestRunner (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FlexShopperFramework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="runners.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="runners" />
+      <option name="MAIN_CLASS_NAME" value="runners.TestRunner" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestRunner" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FlexShopperFramework" />
       <option name="PACKAGE_NAME" value="" />
@@ -172,11 +236,13 @@
     <list>
       <item itemvalue="Cucumber Java.FlexShopper" />
       <item itemvalue="Cucumber Java.Feature: EmailScreen" />
+      <item itemvalue="JUnit.TestRunner (1)" />
       <item itemvalue="JUnit.TestRunner" />
       <item itemvalue="TestNG.TestRunner" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestRunner (1)" />
         <item itemvalue="TestNG.TestRunner" />
         <item itemvalue="Cucumber Java.Feature: EmailScreen" />
         <item itemvalue="JUnit.TestRunner" />

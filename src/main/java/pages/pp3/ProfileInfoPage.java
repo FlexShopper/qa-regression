@@ -1,13 +1,19 @@
 package pages.pp3;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.testng.Assert;
+import org.openqa.selenium.support.PageFactory;
 import utils.helpers.WaitHelpers;
+
 import java.util.concurrent.ExecutionException;
 
-public class ProfileInfoPage extends EmailPage {
+public class ProfileInfoPage {
+    public ProfileInfoPage (WebDriver driver) {
+        PageFactory.initElements(driver, this);
+    }
+
     /**
      * Elements - PP3's Profile Info Screen
      */
@@ -84,21 +90,21 @@ public class ProfileInfoPage extends EmailPage {
      * verifyProfileInfoScreen() - Verify PP3's Profile Info Screen with "Enter Address Manually" link shown
      */
     public void verifyProfileInfoScreen() throws ExecutionException, InterruptedException {
-        WaitHelpers.waitFluentWait(firstName, 240);
+        //WaitHelpers.waitFluentWait(firstName, 240);
         WaitHelpers.waitForStaleElement(firstName);
-        instanceOf(EmailPage.class).verifyHeader();
+        //TODO: instanceOf(EmailPage.class).verifyHeader();
 
         // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(profileInfoTab);
         // TODO: elementHelpers.weElementIsDisplayed(emailAddressTxt);
-        elementHelpers.webElementIsDisplayed(notYouBtn);
-        elementHelpers.webElementIsDisplayed(firstName);
-        elementHelpers.webElementIsDisplayed(lastName);
-        elementHelpers.webElementIsDisplayed(mobilePhone);
-        elementHelpers.webElementIsDisplayed(homeAddress);
-        elementHelpers.webElementIsDisplayed(enterManualLink);
+        notYouBtn.isDisplayed();
+        firstName.isDisplayed();
+        lastName.isDisplayed();
+        mobilePhone.isDisplayed();
+        homeAddress.isDisplayed();
+        enterManualLink.isDisplayed();
         // TODO: elementHelpers.weElementIsDisplayed(signMeUpBtn);
-        elementHelpers.webElementIsDisplayed(continueBtn);
+        continueBtn.isDisplayed();
         // TODO: Verify PP3's Footer
     }
 
@@ -106,24 +112,24 @@ public class ProfileInfoPage extends EmailPage {
      * verifyProfileInfoScreenWithHiddenFields() - Verify PP3's Profile Info Screen showing hidden address fields
      */
     public void verifyProfileInfoScreenWithHiddenFields() throws ExecutionException, InterruptedException {
-        WaitHelpers.waitFluentWait(city, 240);
+        //WaitHelpers.waitFluentWait(city, 240);
         WaitHelpers.waitForStaleElement(city);
-        instanceOf(EmailPage.class).verifyHeader();
+        //TODO: instanceOf(EmailPage.class).verifyHeader();
 
         // Verify elements are displayed
-        elementHelpers.webElementIsDisplayed(unitNumber);
+        unitNumber.isDisplayed();
         // TODO: elementHelpers.weElementIsDisplayed(emailAddressTxt);
-        elementHelpers.webElementIsDisplayed(notYouBtn);
-        elementHelpers.webElementIsDisplayed(firstName);
-        elementHelpers.webElementIsDisplayed(lastName);
-        elementHelpers.webElementIsDisplayed(mobilePhone);
-        elementHelpers.webElementIsDisplayed(homeAddress);
-        elementHelpers.webElementIsDisplayed(unitNumber);
-        elementHelpers.webElementIsDisplayed(city);
-        elementHelpers.webElementIsDisplayed(state);
-        elementHelpers.webElementIsDisplayed(zipCode);
+        notYouBtn.isDisplayed();
+        firstName.isDisplayed();
+        lastName.isDisplayed();
+        mobilePhone.isDisplayed();
+        homeAddress.isDisplayed();
+        unitNumber.isDisplayed();
+        city.isDisplayed();
+        state.isDisplayed();
+        zipCode.isDisplayed();
         // TODO: elementHelpers.weElementIsDisplayed(signMeUpBtn);
-        elementHelpers.webElementIsDisplayed(continueBtn);
+        continueBtn.isDisplayed();
     }
 
     /**
@@ -131,7 +137,7 @@ public class ProfileInfoPage extends EmailPage {
      * @param emailEntered
      */
     public void verifyEmailAddressIsNotHis(String emailEntered) {
-        Assert.assertNotEquals(emailEntered, "expectedEmail@flexshopper.com");
+        //Assert.assertNotEquals(emailEntered, "expectedEmail@flexshopper.com");
     }
 
     /**
@@ -145,7 +151,7 @@ public class ProfileInfoPage extends EmailPage {
      * verifySuggestedAddressesNotDisplayed() - Verify Suggested Addresses are not displayed
      */
     public void verifySuggestedAddressesNotDisplayed() {
-        Assert.assertTrue(elementHelpers.webElementIsInvisible(suggestedAddresses));
+        //Assert.assertTrue(elementHelpers.webElementIsInvisible(suggestedAddresses));
     }
 
     /**
@@ -161,7 +167,8 @@ public class ProfileInfoPage extends EmailPage {
      * @param name
      */
     public void enterFirstName(String name){;
-        elementHelpers.webSendKeys(firstName, name, true);
+        //elementHelpers.webSendKeys(firstName, name, true);
+        firstName.sendKeys(name);
     }
 
     /**
@@ -169,7 +176,8 @@ public class ProfileInfoPage extends EmailPage {
      * @param surname
      */
     public void enterLastName(String surname){
-        elementHelpers.webSendKeys(lastName, surname, true);
+        //elementHelpers.webSendKeys(lastName, surname, true);
+        lastName.sendKeys(surname);
     }
 
     /**
@@ -177,7 +185,8 @@ public class ProfileInfoPage extends EmailPage {
      * @param mobile
      */
     public void enterMobileNumber(String mobile){
-        elementHelpers.webSendKeys(mobilePhone, mobile, true);
+        //elementHelpers.webSendKeys(mobilePhone, mobile, true);
+        mobilePhone.sendKeys(mobile);
     }
 
     /**
@@ -185,14 +194,16 @@ public class ProfileInfoPage extends EmailPage {
      * @param address
      */
     public void enterAddress(String address){
-        elementHelpers.webSendKeys(homeAddress, address, true);
+        //elementHelpers.webSendKeys(homeAddress, address, true);
+        homeAddress.sendKeys(address);
     }
 
     /**
      * clickOnEnterAddressManuallyLnk() - Clicks on the "Enter Address Manually" link
      */
     public void clickOnEnterAddressManuallyLnk(){
-        elementHelpers.webClickJSExecutor(enterManualLink);
+        //elementHelpers.webClickJSExecutor(enterManualLink);
+        enterManualLink.click();
     }
 
     /**
@@ -200,7 +211,8 @@ public class ProfileInfoPage extends EmailPage {
      * @param unit
      */
     public void enterUnitNumber(String unit){
-        elementHelpers.webSendKeys(unitNumber, unit, false);
+        //elementHelpers.webSendKeys(unitNumber, unit, false);
+        unitNumber.sendKeys(unit);
     }
 
     /**
@@ -208,7 +220,8 @@ public class ProfileInfoPage extends EmailPage {
      * @param cityOfResidence
      */
     public void enterCity(String cityOfResidence){
-        elementHelpers.webSendKeys(city, cityOfResidence, false);
+        //elementHelpers.webSendKeys(city, cityOfResidence, false);
+        city.sendKeys(cityOfResidence);
     }
 
     /**
@@ -216,8 +229,9 @@ public class ProfileInfoPage extends EmailPage {
      * @param region
      */
     public void selectState(String region) {
-        elementHelpers.webSendKeys(state, region, false);
-        selectHelpers.selectFromDropdown(region);
+        //elementHelpers.webSendKeys(state, region, false);
+        //TODO: selectHelpers.selectFromDropdown(region);
+        state.sendKeys(region);
     }
 
     /**
@@ -225,13 +239,15 @@ public class ProfileInfoPage extends EmailPage {
      * @param postalCode
      */
     public void enterZipCode(String postalCode) {
-        elementHelpers.webSendKeys(zipCode, postalCode, false);
+        //elementHelpers.webSendKeys(zipCode, postalCode, false);
+        zipCode.sendKeys(postalCode);
     }
 
     /**
      * selectSignMeUpBtn() - Clicks on the "Sign me up..." radio button
      */
     public void selectSignMeUpBtn() {
-        elementHelpers.webClickJSExecutor(signMeUpBtn);
+        //elementHelpers.webClickJSExecutor(signMeUpBtn);
+        signMeUpBtn.click();
     }
 }

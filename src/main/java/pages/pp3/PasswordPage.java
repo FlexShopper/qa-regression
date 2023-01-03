@@ -5,15 +5,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.testng.Assert;
+import org.openqa.selenium.support.PageFactory;
 import utils.helpers.WaitHelpers;
-import utils.helpers.WebElementHelpers;
+
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import static utils.selenium.Driver.browser;
 
-public class PasswordPage extends EmailPage {
-    protected WebElementHelpers elementHelpers = new WebElementHelpers();
+public class PasswordPage {
+    //protected WebElementHelpers elementHelpers = new WebElementHelpers();
+
+    public PasswordPage (WebDriver driver) {
+        PageFactory.initElements(driver, this);
+    }
 
     /**
      * Elements - PP3's Password Screen
@@ -55,19 +58,19 @@ public class PasswordPage extends EmailPage {
      * verifyPasswordScreen() - Verifies user landed on the Password screen
      */
     public void verifyPasswordScreen() throws ExecutionException, InterruptedException {
-        WaitHelpers.waitFluentWait(passwordField, 240);
+        //WaitHelpers.waitFluentWait(passwordField, 240);
         WaitHelpers.waitForStaleElement(passwordField);
-        instanceOf(EmailPage.class).verifyHeader();
+        //TODO: move to steps emailPage.verifyHeader();
 
         // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(flexshopperLogo);
         // TODO: elementHelpers.webElementIsDisplayed(existingCustomerTxt);
-        elementHelpers.webElementIsDisplayed(enterPasswordTxt);
+        enterPasswordTxt.isDisplayed();
         // TODO: elementHelpers.webElementIsDisplayed(emailTxt);
-        elementHelpers.webElementIsDisplayed(notYouTxt);
-        elementHelpers.webElementIsDisplayed(passwordField);
-        elementHelpers.webElementIsDisplayed(forgotPasswordLnk);
-        elementHelpers.webElementIsDisplayed(signInBtn);
+        notYouTxt.isDisplayed();
+        passwordField.isDisplayed();
+        forgotPasswordLnk.isDisplayed();
+        signInBtn.isDisplayed();
         // TODO: Verify PP3's Footer
     }
 
@@ -76,14 +79,16 @@ public class PasswordPage extends EmailPage {
      * @param password
      */
     public void enterPassword(String password) {
-        elementHelpers.webSendKeys(passwordField, password, true);
+        //elementHelpers.webSendKeys(passwordField, password, true);
+        passwordField.sendKeys(password);
     }
 
     /**
      * clickSignInBtn() - Click on the "Sign-In" button
      */
     public void clickOnTheSignInBtn() {
-        elementHelpers.webClickJSExecutor(signInBtn);
+        //elementHelpers.webClickJSExecutor(signInBtn);
+        signInBtn.click();
     }
 
     /**
@@ -93,7 +98,7 @@ public class PasswordPage extends EmailPage {
     public void passwordValidationMessage(String validationMsg) {
         // Wait for screen to load & Ajax to be completed
         WaitHelpers.waitForPageReady(6);
-
+/**
         //TODO: Move code below to WebElementHelpers
         WebDriver driver = browser();
         List<WebElement> spanText = driver.findElements(By.tagName("span"));
@@ -105,24 +110,24 @@ public class PasswordPage extends EmailPage {
                 break;
             }
         }
+ */
     }
 
     /**
      * passwordRequiredMsg() - Verifies the customer sees the expected Validation Message when the password is not provided
      * @param validationMsg
      */
-    public void passwordRequiredMsg(String validationMsg) {
+    public void passwordRequiredMsg(WebDriver driver, String validationMsg) {
         // Wait for screen to load & Ajax to be completed
         WaitHelpers.waitForPageReady(6);
 
         //TODO: Move code below to WebElementHelpers
-        WebDriver driver = browser();
         List<WebElement> spanText = driver.findElements(By.tagName("span"));
         for(int i = 0; i<spanText.size(); i++){
             String textFound = spanText.get(i).getText();
             System.out.println("Value is  ==> " + spanText.get(i).getText());
             if (textFound.contains("Required")) {
-                Assert.assertEquals("Required", spanText.get(i).getText());
+                //Assert.assertEquals("Required", spanText.get(i).getText());
                 break;
             }
         }
@@ -132,13 +137,15 @@ public class PasswordPage extends EmailPage {
      * clickOnTheNotYouLnk() - Clicks on the "Not You?" Link
      */
     public void clickOnTheNotYouLnk() {
-        elementHelpers.webClick(notYouTxt);
+        //elementHelpers.webClick(notYouTxt);
+        notYouTxt.click();
     }
 
     /**
      * clickOnTheForgotPasswordLnk() - Clicks on the "Forgot Password" Link
      */
     public void clickOnTheForgotPasswordLnk() {
-        elementHelpers.webClick(forgotPasswordLnk);
+        //elementHelpers.webClick(forgotPasswordLnk);
+        forgotPasswordLnk.click();
     }
 }

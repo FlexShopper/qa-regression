@@ -1,32 +1,23 @@
 package utils.helpers;
 
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import static utils.selenium.Driver.browser;
-import static utils.selenium.Settings.weHighlightedColour;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebElement;
 
 public class WebElementHelpers {
 
-    public WebDriverWait webWaitForSeconds() {
-        return new WebDriverWait(browser(), 20);
+    public void webWaitForSeconds(int timeOut) throws InterruptedException {
+        Thread.sleep(timeOut);
+        //WebDriverWait wait = new WebDriverWait(driver, timeOut);
+        //return wait;
     }
 
-    public WebDriverWait webWaitForSeconds(int timeOut) {
-        return new WebDriverWait(browser(), timeOut);
-    }
-
-    public boolean webElementIsDisplayed(WebElement element) {
-        webWaitForSeconds().until(ExpectedConditions.visibilityOf(element));
+    public boolean webElementIsDisplayed(WebElement element) throws InterruptedException {
+        //webWaitForSeconds(20).until(ExpectedConditions.visibilityOf(element));
+        webWaitForSeconds(10);
         return element.isDisplayed();
     }
 
-    public void webElementIsSelected(WebElement element) {
+    public void webElementIsSelected(WebElement element) throws InterruptedException {
         webElementIsDisplayed(element);
         boolean selectState = element.isSelected();
 
@@ -36,18 +27,15 @@ public class WebElementHelpers {
         }
     }
 
-    public void webWaitForClickable(WebElement element) {
-        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
+    public void webWaitForClickable(WebElement element) throws InterruptedException {
+        //webWaitForSeconds(20).until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
+        webWaitForSeconds(10);
         element.isEnabled();
     }
 
-    public void webHighlightElement(WebElement element) {
-        JavascriptExecutor js = (JavascriptExecutor) browser();
-        js.executeScript(weHighlightedColour, element);
-    }
-
-    public void webClick(WebElement element) {
-        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
+    public void webClick(WebElement element) throws InterruptedException {
+        //webWaitForSeconds(20).until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
+        webWaitForSeconds(10);
         int attempts = 0;
         while(attempts < 10) {
             try {
@@ -65,8 +53,8 @@ public class WebElementHelpers {
         int attempts = 0;
         while(attempts < 5) {
             try {
-                JavascriptExecutor js = (JavascriptExecutor) browser();
-                js.executeScript("arguments[0].click();", element);
+                //JavascriptExecutor js = (JavascriptExecutor) driver;
+                //js.executeScript("arguments[0].click();", element);
                 break;
             }
             catch(StaleElementReferenceException staleException) {
@@ -76,14 +64,16 @@ public class WebElementHelpers {
         }
     }
 
-    public void webSendKeys(WebElement element, String text, boolean clearFirst) {
-        webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
+    public void webSendKeys(WebElement element, String text, boolean clearFirst) throws InterruptedException {
+        //webWaitForSeconds(20).until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
+        webWaitForSeconds(10);
         if (clearFirst) webClick(element);
         element.sendKeys(text);
     }
 
-    public boolean webElementIsInvisible(WebElement element) {
-        webWaitForSeconds().until(ExpectedConditions.invisibilityOf(element));
+    public boolean webElementIsInvisible(WebElement element) throws InterruptedException {
+        //webWaitForSeconds(20).until(ExpectedConditions.invisibilityOf(element));
+        webWaitForSeconds(10);
         return !element.isDisplayed();
     }
 

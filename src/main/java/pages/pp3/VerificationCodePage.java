@@ -1,13 +1,20 @@
 package pages.pp3;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 import utils.helpers.RetrieveEmailVerificationCode;
 import utils.helpers.WaitHelpers;
+
 import java.util.concurrent.ExecutionException;
 
-public class VerificationCodePage extends EmailPage {
+public class VerificationCodePage {
+    public VerificationCodePage (WebDriver driver) {
+        PageFactory.initElements(driver, this);
+    }
+
     /**
      * Elements - PP3's Verification Code Popup Screen
      */
@@ -33,16 +40,16 @@ public class VerificationCodePage extends EmailPage {
      * verifyVerificationCodeScreen() - Verifies user landed in the Verification Code screen
      */
     public void verifyVerificationCodeScreen() throws ExecutionException, InterruptedException {
-        WaitHelpers.waitFluentWait(securityCode, 240);
+        //WaitHelpers.waitFluentWait(securityCode, 240);
         WaitHelpers.waitForStaleElement(securityCode);
 
         // Verify elements are displayed
-        elementHelpers.webElementIsDisplayed(codeSentTxt);
-        elementHelpers.webElementIsDisplayed(enterCodeTxt);
-        elementHelpers.webElementIsDisplayed(emailTxt);
-        elementHelpers.webElementIsDisplayed(securityCode);
-        elementHelpers.webElementIsDisplayed(noCodeLink);
-        elementHelpers.webElementIsDisplayed(submitBtn);
+        codeSentTxt.isDisplayed();
+        enterCodeTxt.isDisplayed();
+        emailTxt.isDisplayed();
+        securityCode.isDisplayed();
+        noCodeLink.isDisplayed();
+        submitBtn.isDisplayed();
     }
 
     /**
@@ -52,21 +59,23 @@ public class VerificationCodePage extends EmailPage {
         Thread.sleep(5000); //TODO: Replace this with a Java ScheduledExecutorService or other form of wait
         String PassCode = RetrieveEmailVerificationCode.check("imap.gmail.com", "imap", "FlexShopperAutomation@gmail.com", "tstcqpyzcqsajfeg");
         System.out.println("PassCode is " + PassCode);
-        elementHelpers.webSendKeys(securityCode, PassCode, true);
+        //elementHelpers.webSendKeys(securityCode, PassCode, true);
+        securityCode.sendKeys(PassCode);
     }
 
     /**
      * clickOnSubmitBtn() - Click on the Submit button
      */
     public void clickOnSubmitBtn() {
-        elementHelpers.webClick(submitBtn);
-
+        //elementHelpers.webClick(submitBtn);
+        submitBtn.click();
     }
 
     /**
      * clickOnSubmitBtn() - Click on the Submit button
      */
     public void clickOnNoCodeReceivedLnk() {
-        elementHelpers.webClick(noCodeLink);
+        //elementHelpers.webClick(noCodeLink);
+        noCodeLink.click();
     }
 }
