@@ -146,7 +146,6 @@
                     <source>18</source>
                     <target>18</target>
                     <encoding>UTF-8</encoding>
-                    <useIncrementalCompilation>false</useIncrementalCompilation>
                 </configuration>
             </plugin>
         </plugins>
