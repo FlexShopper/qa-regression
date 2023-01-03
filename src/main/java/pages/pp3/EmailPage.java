@@ -147,7 +147,7 @@ public class EmailPage extends Page {
      * Assert FlexShopper's Copyright Information
      */
     public void assertFlexUSCopyrightInfo() {
-        Assert.assertTrue((WebElementHelpers.webGetAttribute(flexCopyright,"value")).contains("© 2022 FlexShopper, LLC"));
+        Assert.assertTrue((WebElementHelpers.webGetAttribute(flexCopyright,"value")).contains("© 2023 FlexShopper, LLC"));
     }
 
     /**
