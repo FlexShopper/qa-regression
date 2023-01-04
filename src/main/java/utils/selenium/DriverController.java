@@ -54,4 +54,24 @@ public class DriverController {
         instance.webDriver = null;
         log.debug(":: WebDriver stopped");
     }
+
+    public void startChromeMobileEmulator(String arg) {
+        if(instance.webDriver != null) return;
+        if (System.getenv("LOCAL")==null) {
+            String local = dotenv.get("LOCAL");
+            assert local != null;
+            if (local.equals("true")) {
+                // Added to solve error: " [SEVERE]: bind() failed: Cannot assign requested address (99)."
+                System.setProperty("webdriver.chrome.whitelistedIps", "");
+                instance.webDriver = ChromeWebDriver.loadChromeMobileEmulatorDriver(arg);
+            }
+        }
+
+        /**
+         * TODO: To be added when Docker support is added again
+         *    else if(System.getenv("LOCAL").trim().equals("false")) {
+         *         instance.webDriver = ChromeRemoteWebDriver.loadChromeMobileEmulatorDriver(arg);
+         *   }
+         */
+    }
 }
