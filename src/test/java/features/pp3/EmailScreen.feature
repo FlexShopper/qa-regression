@@ -57,4 +57,3 @@ Feature: As a customer I should be able to enter the email in the login email
   # Scenario: User can navigate to Terms of Use
   # Scenario: User can return to the PP3's screen after closing Terms of Use
   # Scenario: User can return to the PP3's screen after closing Privacy Policy
-

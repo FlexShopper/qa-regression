@@ -11,13 +11,11 @@ import utils.helpers.*;
 import utils.selenium.Settings;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-
 import static utils.selenium.Driver.browser;
 
 public class EmailPage extends Page {
     protected WebElementHelpers elementHelpers = new WebElementHelpers();
     protected WebDriverHelpers driverHelpers = new WebDriverHelpers();
-    protected SelectHelpers selectHelpers = new SelectHelpers();
     protected ManageEmailTestAddresses emailTestAddress = new ManageEmailTestAddresses();
 
     /**
@@ -56,7 +54,7 @@ public class EmailPage extends Page {
     @FindBy(how = How.XPATH, using = "//footer[(.)='U.S. Pat. Nos. 10,089,682 & 10,282,779']") // FlexShopper's US Patten
     private WebElement flexUSPattenNumber;
 
-    @FindBy(how = How.XPATH, using = "//span[(.)='© 2022 FlexShopper, LLC']") // FlexShopper's Copyright
+    @FindBy(how = How.XPATH, using = "//span[(.)='© 2023 FlexShopper, LLC']") // FlexShopper's Copyright
     private WebElement flexCopyright;
 
     @FindBy(how = How.ID, using = "footer-accessibility-button") // Accessibility button
@@ -146,7 +144,7 @@ public class EmailPage extends Page {
      * Assert FlexShopper's Copyright Information
      */
     public void assertFlexUSCopyrightInfo() {
-        Assert.assertTrue((WebElementHelpers.webGetAttribute(flexCopyright,"value")).contains("© 2022 FlexShopper, LLC"));
+        Assert.assertTrue((WebElementHelpers.webGetAttribute(flexCopyright,"value")).contains("© 2023 FlexShopper, LLC"));
     }
 
     /**

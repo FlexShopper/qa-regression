@@ -3,11 +3,11 @@ package stepdefinitions.pp3;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.Page;
 import pages.pp3.*;
 import java.util.concurrent.ExecutionException;
+import static pages.Page.instanceOf;
 
-public class ForgotPasswordSteps extends Page {
+public class ForgotPasswordSteps {
     @Given("^the user is on the Forgot Password screen with email: \"([^\"]*)\"$")
     public void theUserIsOnTheForgotPasswordScreenWithEmail(String email) throws ExecutionException, InterruptedException {
         System.out.println("Given the user is on the Forgot Password screen with email: " + email);

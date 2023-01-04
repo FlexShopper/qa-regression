@@ -2,10 +2,7 @@ package stepdefinitions.pp3;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import pages.pp3.BankingInfoPage;
-import pages.pp3.DecisionPage;
-import pages.pp3.EmailPage;
-import pages.pp3.PersonalInfoPage;
+import pages.pp3.*;
 import java.util.concurrent.ExecutionException;
 import static pages.Page.instanceOf;
 

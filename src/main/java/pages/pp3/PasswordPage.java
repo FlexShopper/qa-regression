@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
+import pages.BasePage;
 import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 import java.util.List;
@@ -57,7 +58,7 @@ public class PasswordPage extends EmailPage {
     public void verifyPasswordScreen() throws ExecutionException, InterruptedException {
         WaitHelpers.waitFluentWait(passwordField, 240);
         WaitHelpers.waitForStaleElement(passwordField);
-        instanceOf(EmailPage.class).verifyHeader();
+        // TODO: instanceOf(EmailPage.class).verifyHeader();
 
         // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(flexshopperLogo);

@@ -1,24 +1,23 @@
 package utils.helpers;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
+
 import static utils.selenium.Driver.browser;
-import static utils.selenium.Settings.weHighlightedColour;
 
 public class WebElementHelpers {
 
     public WebDriverWait webWaitForSeconds() {
-        return new WebDriverWait(browser(), 20);
+        return new WebDriverWait(browser(), Duration.ofSeconds(20));
     }
 
     public WebDriverWait webWaitForSeconds(int timeOut) {
-        return new WebDriverWait(browser(), timeOut);
+        return new WebDriverWait(browser(), Duration.ofSeconds(timeOut));
     }
 
     public boolean webElementIsDisplayed(WebElement element) {
@@ -39,11 +38,6 @@ public class WebElementHelpers {
     public void webWaitForClickable(WebElement element) {
         webWaitForSeconds().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
         element.isEnabled();
-    }
-
-    public void webHighlightElement(WebElement element) {
-        JavascriptExecutor js = (JavascriptExecutor) browser();
-        js.executeScript(weHighlightedColour, element);
     }
 
     public void webClick(WebElement element) {

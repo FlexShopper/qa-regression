@@ -3,10 +3,13 @@ package pages.pp3;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import utils.helpers.SelectHelpers;
 import utils.helpers.WaitHelpers;
 import java.util.concurrent.ExecutionException;
 
 public class PersonalInfoPage extends EmailPage {
+    protected SelectHelpers selectHelpers = new SelectHelpers();
+
     /**
      * Elements - PP3's Personal Info Screen
      */

@@ -6,6 +6,7 @@ import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import utils.selenium.DriverController;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Properties;
@@ -13,8 +14,28 @@ import java.util.Properties;
 import static utils.selenium.Driver.browser;
 
 public class CucumberHooks {
+    @Before("@Chrome")
+    public void beforeChrome(){
+        DriverController.instance.startChrome("--disable-extensions");
+    }
+
+    @Before("@Firefox")
+    public void beforeFirefox() {
+        DriverController.instance.startFirefox("--disable-extensions");
+    }
+
+    @Before("@HeadlessChrome")
+    public void beforeChromeHeadless() {
+        DriverController.instance.startChrome("--headless");
+    }
+
+    @Before("@HeadlessFirefox")
+    public void beforeHeadlessFirefox() {
+        DriverController.instance.startFirefox("--headless");
+    }
+
     @Before("@Web")
-    public void beforeWeb() throws Exception {
+    public void beforeWeb() throws IOException {
         Properties browserProps = new Properties();
         browserProps.load(Files.newInputStream(Paths.get("src/test/resources/config.properties")));
 
@@ -37,36 +58,7 @@ public class CucumberHooks {
         }
     }
 
-    @Before("@Chrome")
-    public void beforeChrome() {
-        DriverController.instance.startChrome("--disable-extensions");
-    }
-
-    @Before("@Firefox")
-    public void beforeFirefox() {
-        DriverController.instance.startFirefox("--disable-extensions");
-    }
-
-    @Before("@HeadlessChrome")
-    public void beforeChromeHeadless() {
-        DriverController.instance.startChrome("--headless");
-    }
-
-    @Before("@HeadlessFirefox")
-    public void beforeHeadlessFirefox() {
-        DriverController.instance.startFirefox("--headless");
-    }
-
-    @After(order=1)
-    public void addScreenshot(Scenario scenario) {
-        //validate if scenario has failed
-        if(scenario.isFailed()) {
-            final byte[] screenshot = ((TakesScreenshot) browser()).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot, "image/png", "image");
-        }
-    }
-
-    @After(order=0)
+    @After
     public void stopWebDriver() {
         DriverController.instance.stopWebDriver();
     }

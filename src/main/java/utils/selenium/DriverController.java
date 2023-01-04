@@ -46,6 +46,7 @@ public class DriverController {
 
         try {
             instance.webDriver.quit();
+            instance.webDriver.close();
         } catch (Exception e) {
             log.error(e + "::WebDriver stop error");
         }

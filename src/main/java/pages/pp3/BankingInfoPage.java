@@ -9,6 +9,7 @@ import org.testng.Assert;
 import utils.helpers.WaitHelpers;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import static pages.Page.instanceOf;
 import static utils.selenium.Driver.browser;
 
 public class BankingInfoPage extends EmailPage {
@@ -90,7 +91,7 @@ public class BankingInfoPage extends EmailPage {
      */
     public void bankNameMsg(String bankName) {
         // Wait for screen to load & Ajax to be completed
-        utils.helpers.WaitHelpers.waitForPageReady(6);
+        WaitHelpers.waitForPageReady(6);
 
         //TODO: Move code below to WebElementHelpers
         WebDriver driver = browser();
