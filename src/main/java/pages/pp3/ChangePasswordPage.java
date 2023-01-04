@@ -7,7 +7,6 @@ import org.testng.Assert;
 import pages.BasePage;
 import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
-
 import java.util.concurrent.ExecutionException;
 
 public class ChangePasswordPage extends BasePage {

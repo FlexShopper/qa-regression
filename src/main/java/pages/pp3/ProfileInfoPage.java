@@ -8,7 +8,6 @@ import pages.BasePage;
 import utils.helpers.SelectHelpers;
 import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
-
 import java.util.concurrent.ExecutionException;
 
 public class ProfileInfoPage extends BasePage {

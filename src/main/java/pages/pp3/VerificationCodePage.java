@@ -7,7 +7,6 @@ import pages.BasePage;
 import utils.helpers.RetrieveEmailVerificationCode;
 import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
-
 import java.util.concurrent.ExecutionException;
 
 public class VerificationCodePage extends BasePage {

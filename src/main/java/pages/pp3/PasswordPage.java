@@ -11,7 +11,6 @@ import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-
 import static utils.selenium.Driver.browser;
 
 public class PasswordPage extends BasePage {
