@@ -38,10 +38,23 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- Cucumber Reporting -->
         <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
             <version>5.7.4</version>
+        </dependency>
+        <!-- Extent Reports -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>5.0.9</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.grasshopper</groupId>
+            <artifactId>extentreports-cucumber6-adapter</artifactId>
+            <version>2.14.3</version>
+            <scope>test</scope>
         </dependency>
         <!-- TestNG -->
         <dependency>
