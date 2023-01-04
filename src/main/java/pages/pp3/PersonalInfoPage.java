@@ -6,7 +6,6 @@ import org.openqa.selenium.support.How;
 import utils.helpers.SelectHelpers;
 import utils.helpers.WaitHelpers;
 import java.util.concurrent.ExecutionException;
-import static pages.Page.instanceOf;
 
 public class PersonalInfoPage extends EmailPage {
     protected SelectHelpers selectHelpers = new SelectHelpers();
@@ -105,7 +104,7 @@ public class PersonalInfoPage extends EmailPage {
      */
     public void selectPayFrequency(String paymentFrequency) {
         elementHelpers.webClick(payFrequency);
-        selectHelpers.selectFromDropdownOptionTag(paymentFrequency);
+        selectHelpers.selectFromDropdown(paymentFrequency);
     }
 
     /**

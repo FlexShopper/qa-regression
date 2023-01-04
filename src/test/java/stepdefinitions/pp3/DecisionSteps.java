@@ -2,11 +2,11 @@ package stepdefinitions.pp3;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import pages.Page;
 import pages.pp3.*;
 import java.util.concurrent.ExecutionException;
+import static pages.Page.instanceOf;
 
-public class DecisionSteps extends Page {
+public class DecisionSteps {
 
     @Then("^the user lands on the Decision Screen with decision: \"([^\"]*)\"$")
     public void theUserLandsOnTheDecisionScreenWithDecision(String decision) throws ExecutionException, InterruptedException {

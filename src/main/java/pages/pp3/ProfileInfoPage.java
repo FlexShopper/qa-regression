@@ -4,13 +4,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
-import pages.BasePage;
 import utils.helpers.SelectHelpers;
 import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 import java.util.concurrent.ExecutionException;
 
-public class ProfileInfoPage extends BasePage {
+public class ProfileInfoPage extends EmailPage {
     protected WebElementHelpers elementHelpers = new WebElementHelpers();
     protected SelectHelpers selectHelpers = new SelectHelpers();
 

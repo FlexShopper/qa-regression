@@ -4,12 +4,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
-import pages.BasePage;
 import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 import java.util.concurrent.ExecutionException;
 
-public class ChangePasswordPage extends BasePage {
+public class ChangePasswordPage extends EmailPage {
     protected WebElementHelpers elementHelpers = new WebElementHelpers();
 
     /**

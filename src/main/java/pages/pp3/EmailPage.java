@@ -6,14 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
-import pages.BasePage;
+import pages.Page;
 import utils.helpers.*;
 import utils.selenium.Settings;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import static utils.selenium.Driver.browser;
 
-public class EmailPage extends BasePage {
+public class EmailPage extends Page {
     protected WebElementHelpers elementHelpers = new WebElementHelpers();
     protected WebDriverHelpers driverHelpers = new WebDriverHelpers();
     protected ManageEmailTestAddresses emailTestAddress = new ManageEmailTestAddresses();

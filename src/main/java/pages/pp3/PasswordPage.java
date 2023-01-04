@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 import static utils.selenium.Driver.browser;
 
-public class PasswordPage extends BasePage {
+public class PasswordPage extends EmailPage {
     protected WebElementHelpers elementHelpers = new WebElementHelpers();
 
     /**

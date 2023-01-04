@@ -4,11 +4,11 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.Page;
 import pages.pp3.*;
 import java.util.concurrent.ExecutionException;
+import static pages.Page.instanceOf;
 
-public class PersonalInfoSteps extends Page {
+public class PersonalInfoSteps {
     @Given("^the user is on the Personal Info screen with email: \"([^\"]*)\"$")
     public void theUserIsOnThePersonalInfoScreenWithEmail(String emailAddress) throws ExecutionException, InterruptedException {
         System.out.println("Given the user is in the Personal Info screen with email: " + emailAddress);

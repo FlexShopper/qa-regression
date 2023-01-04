@@ -3,13 +3,12 @@ package pages.pp3;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import pages.BasePage;
 import utils.helpers.RetrieveEmailVerificationCode;
 import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 import java.util.concurrent.ExecutionException;
 
-public class VerificationCodePage extends BasePage {
+public class VerificationCodePage extends EmailPage {
     protected WebElementHelpers elementHelpers = new WebElementHelpers();
 
     /**

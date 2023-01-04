@@ -4,11 +4,11 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.Page;
 import pages.pp3.*;
 import java.util.concurrent.ExecutionException;
+import static pages.Page.instanceOf;
 
-public class BankingInfoSteps extends Page {
+public class BankingInfoSteps {
 
     @Given("^the user is on the Banking Info screen with email: \"([^\"]*)\"$")
     public void theUserIsOnTheBankingInfoScreenWithEmail(String emailAddress) throws ExecutionException, InterruptedException {

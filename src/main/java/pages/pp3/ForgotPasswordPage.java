@@ -7,7 +7,6 @@ import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 import java.util.concurrent.ExecutionException;
 import static org.testng.Assert.assertTrue;
-import static pages.Page.instanceOf;
 
 public class ForgotPasswordPage extends EmailPage {
     protected WebElementHelpers elementHelpers = new WebElementHelpers();
