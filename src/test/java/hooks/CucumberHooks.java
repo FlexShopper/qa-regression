@@ -2,11 +2,16 @@ package hooks;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import utils.selenium.DriverController;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Properties;
+
+import static utils.selenium.Driver.browser;
 
 public class CucumberHooks {
     @Before("@Chrome")
@@ -47,6 +52,9 @@ public class CucumberHooks {
         }
         else if (browser.equalsIgnoreCase("headlessFirefox")) {
             DriverController.instance.startFirefox("--headless");
+        }
+        else if (browser.equalsIgnoreCase("chromeMobileEmulator")) {
+            DriverController.instance.startChromeMobileEmulator("--disable-extensions");
         }
     }
 

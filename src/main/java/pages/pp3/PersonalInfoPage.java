@@ -104,7 +104,7 @@ public class PersonalInfoPage extends EmailPage {
      */
     public void selectPayFrequency(String paymentFrequency) {
         elementHelpers.webClick(payFrequency);
-        selectHelpers.selectFromDropdown(paymentFrequency);
+        selectHelpers.selectFromDropdownOptionTag(paymentFrequency);
     }
 
     /**
