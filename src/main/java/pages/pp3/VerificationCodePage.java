@@ -5,9 +5,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import utils.helpers.RetrieveEmailVerificationCode;
 import utils.helpers.WaitHelpers;
+import utils.helpers.WebElementHelpers;
 import java.util.concurrent.ExecutionException;
 
 public class VerificationCodePage extends EmailPage {
+    protected WebElementHelpers elementHelpers = new WebElementHelpers();
+
     /**
      * Elements - PP3's Verification Code Popup Screen
      */

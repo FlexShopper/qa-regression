@@ -3,10 +3,13 @@ package pages.pp3;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import utils.helpers.SelectHelpers;
 import utils.helpers.WaitHelpers;
 import java.util.concurrent.ExecutionException;
 
 public class PersonalInfoPage extends EmailPage {
+    protected SelectHelpers selectHelpers = new SelectHelpers();
+
     /**
      * Elements - PP3's Personal Info Screen
      */
@@ -16,7 +19,7 @@ public class PersonalInfoPage extends EmailPage {
     @FindBy(how = How.XPATH, using = "//h2[text()='Personal Info']")
     private WebElement personalInfoTab;
 
-    @FindBy(how = How.ID, using = "dob-input")
+    @FindBy(how = How.NAME, using = "dob")
     private WebElement dobPP3;
 
     @FindBy(how = How.ID, using = "ssn-input")
@@ -25,7 +28,7 @@ public class PersonalInfoPage extends EmailPage {
     @FindBy(how = How.ID, using = "monthlyIncome-input")
     private WebElement grossMonthlyIncome;
 
-    @FindBy(how = How.ID, using = "payFrequency-input")
+    @FindBy(how = How.NAME, using = "payFrequency")
     private WebElement payFrequency;
 
     @FindBy(how=How.ID, using = "isLegalTermsChecked-checkBoxRadio")
@@ -101,7 +104,7 @@ public class PersonalInfoPage extends EmailPage {
      */
     public void selectPayFrequency(String paymentFrequency) {
         elementHelpers.webClick(payFrequency);
-        selectHelpers.selectFromDropdown(paymentFrequency);
+        selectHelpers.selectFromDropdownOptionTag(paymentFrequency);
     }
 
     /**

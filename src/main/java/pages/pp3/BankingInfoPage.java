@@ -9,6 +9,7 @@ import org.testng.Assert;
 import utils.helpers.WaitHelpers;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import static pages.Page.instanceOf;
 import static utils.selenium.Driver.browser;
 
 public class BankingInfoPage extends EmailPage {
@@ -29,13 +30,13 @@ public class BankingInfoPage extends EmailPage {
 
     // TODO: Assert Text: After you receive your order, your weekly payments will be deducted from this account.
 
-    @FindBy(how = How.ID, using = "routingNumber-input")
+    @FindBy(how = How.NAME, using = "routingNumber")
     private WebElement routingNumberPP3;
 
-    @FindBy(how = How.ID, using = "accountNumber-input")
+    @FindBy(how = How.NAME, using = "accountNumber")
     private WebElement accountNumberPP3;
 
-    @FindBy(how = How.ID, using = "confirmAccountNumber-input")
+    @FindBy(how = How.NAME, using = "confirmAccountNumber")
     private WebElement confirmAccountNumberPP3;
 
     @FindBy(how = How.XPATH, using = "formSubmitButton")
@@ -90,7 +91,7 @@ public class BankingInfoPage extends EmailPage {
      */
     public void bankNameMsg(String bankName) {
         // Wait for screen to load & Ajax to be completed
-        utils.helpers.WaitHelpers.waitForPageReady(6);
+        WaitHelpers.waitForPageReady(6);
 
         //TODO: Move code below to WebElementHelpers
         WebDriver driver = browser();

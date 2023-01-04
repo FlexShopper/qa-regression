@@ -4,9 +4,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.pp3.*;
 import pages.Page;
-
+import pages.pp3.*;
 import java.util.concurrent.ExecutionException;
 
 public class EmailSteps extends Page {
@@ -49,7 +48,7 @@ public class EmailSteps extends Page {
                 break;
             default:
                 System.out.println("Button " + button + "was not found!");
-       }
+        }
     }
 
     @Then("^the user lands on the Password screen$")

@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
 import pages.pp3.EmailPage;
+
 import static utils.selenium.Driver.browser;
 
 public class FlexShopperHomePage extends EmailPage {

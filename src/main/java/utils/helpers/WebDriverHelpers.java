@@ -7,24 +7,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 import static utils.selenium.Driver.browser;
-import static utils.selenium.Settings.wdHighlightedColour;
 
 public class WebDriverHelpers {
 
-    public Object wdHighlight(By locator) {
-        WebDriver driver = browser();
-        WebElement myLocator = driver.findElement(locator);
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        return js.executeScript(wdHighlightedColour, myLocator);
-    }
-
     public Object wdElementIsDisplayed(By locator) {
-        WebDriverWait wait = new WebDriverWait(browser(), 10);
+        WebDriverWait wait = new WebDriverWait(browser(), Duration.ofSeconds(10));
         return wait.until(ExpectedConditions.visibilityOf((WebElement) locator));
     }
 
     public void wdElementToDisappear(By locator) {
-        WebDriverWait wait = new WebDriverWait(browser(), 5);
+        WebDriverWait wait = new WebDriverWait(browser(), Duration.ofSeconds(5));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 

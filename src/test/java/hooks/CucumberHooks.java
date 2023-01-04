@@ -2,15 +2,40 @@ package hooks;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import utils.selenium.DriverController;
-
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Properties;
 
+import static utils.selenium.Driver.browser;
+
 public class CucumberHooks {
+    @Before("@Chrome")
+    public void beforeChrome(){
+        DriverController.instance.startChrome("--disable-extensions");
+    }
+
+    @Before("@Firefox")
+    public void beforeFirefox() {
+        DriverController.instance.startFirefox("--disable-extensions");
+    }
+
+    @Before("@HeadlessChrome")
+    public void beforeChromeHeadless() {
+        DriverController.instance.startChrome("--headless");
+    }
+
+    @Before("@HeadlessFirefox")
+    public void beforeHeadlessFirefox() {
+        DriverController.instance.startFirefox("--headless");
+    }
+
     @Before("@Web")
-    public void beforeWeb() throws Exception {
+    public void beforeWeb() throws IOException {
         Properties browserProps = new Properties();
         browserProps.load(Files.newInputStream(Paths.get("src/test/resources/config.properties")));
 
@@ -31,26 +56,6 @@ public class CucumberHooks {
         else if (browser.equalsIgnoreCase("chromeMobileEmulator")) {
             DriverController.instance.startChromeMobileEmulator("--disable-extensions");
         }
-    }
-
-    @Before("@Chrome")
-    public void beforeChrome() {
-        DriverController.instance.startChrome("--disable-extensions");
-    }
-
-    @Before("@Firefox")
-    public void beforeFirefox() {
-        DriverController.instance.startFirefox("--disable-extensions");
-    }
-
-    @Before("@HeadlessChrome")
-    public void beforeChromeHeadless() {
-        DriverController.instance.startChrome("--headless");
-    }
-
-    @Before("@HeadlessFirefox")
-    public void beforeHeadlessFirefox() {
-        DriverController.instance.startFirefox("--headless");
     }
 
     @After

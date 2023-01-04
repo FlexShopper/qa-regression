@@ -55,7 +55,7 @@ podTemplate(label: label,
             }
 
             stage('Clone Repository') {
-                checkout([$class: 'GitSCM', branches: [[name: '*/development']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-ci-user', url: 'https://github.com/FlexShopper/qa-regression.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: env.BRANCH_NAME]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-ci-user', url: 'https://github.com/FlexShopper/qa-regression.git']]])
                 sh "ls -lart ./*"
                dir(WORKSPACE + '/qa-regression/') {
                    sh "pwd"
@@ -88,7 +88,7 @@ podTemplate(label: label,
                                 sh "mvn -v"
                                 sh "export MAVEN_HOME=/usr/share/maven"
                                 sh "export M2_HOME=/home/maven/"
-                                sh "mvn clean install"
+                                sh "mvn clean install -e -X -Dcucumber.options='--tags @PP3'"
                            }
                         }
                     }
@@ -99,7 +99,8 @@ podTemplate(label: label,
                 echo 'Waiting 60 seconds for the reports to be created prior to storing them'
                 sleep(time:60, unit:"SECONDS")
                 echo "Store Artifacts";
-                archiveArtifacts artifacts: 'target/cucumber-reports/CucumberExtentReport.html', allowEmptyArchive : true, onlyIfSuccessful: false
+                archiveArtifacts artifacts: 'target/cucumber-reports/*.html', allowEmptyArchive: true, onlyIfSuccessful: false
+                archiveArtifacts artifacts: 'target/cucumber-reports/*.pdf', allowEmptyArchive: true, onlyIfSuccessful: false
                 archiveArtifacts artifacts: 'target/cucumber-reports/screenshots/*.png', allowEmptyArchive : true, onlyIfSuccessful: false
             }
         }
