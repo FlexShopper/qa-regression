@@ -9,7 +9,6 @@ import utils.helpers.WaitHelpers;
 import utils.helpers.WebElementHelpers;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import static pages.Page.instanceOf;
 import static utils.selenium.Driver.browser;
 
 public class DecisionPage extends EmailPage {
@@ -32,6 +31,21 @@ public class DecisionPage extends EmailPage {
     private WebElement startShoppingBtn;
 
     /**
+     * Elements - PP3's Decision Screen - Denied - You Still Have an Option popup
+     */
+    @FindBy(how = How.XPATH, using = "//h2[text()='You Still Have an Option']")
+    private WebElement decisionStillHaveAnOptionTxt;
+
+    @FindBy(how = How.XPATH, using = "//h3[text()='Big Picture Loans']")
+    private WebElement decisionBigPictureLoansTxt;
+
+    @FindBy(how = How.XPATH, using = "//p[text()='You can get funds as fast as tomorrow click continue to apply today!']")
+    private WebElement decisionGetFundsTomorrowTxt;
+
+    @FindBy(how = How.XPATH, using = "//span[text()='Continue']")
+    private WebElement decisionContinueBtn;
+
+    /**
      * Elements - PP3's Decision Screen - Denied
      */
     @FindBy(how = How.XPATH, using = "//h2[text()='Thank You For Applying.']")
@@ -40,8 +54,8 @@ public class DecisionPage extends EmailPage {
     @FindBy(how = How.ID, using = "denied-denialDescription")
     private WebElement denialDescriptionTxt;
 
-    @FindBy(how = How.ID, using = "denied-okayBtn-lease")
-    private WebElement deniedOkayBtn;
+    @FindBy(how = How.ID, using = "referral-exitBtn-lease")
+    private WebElement deniedReferralExitBtn;
 
     @FindBy(how = How.ID, using = "denied-arbitrationLink-lease")
     private WebElement arbitrationAgreementLnk;
@@ -54,8 +68,8 @@ public class DecisionPage extends EmailPage {
             WaitHelpers.waitFluentWait(startShoppingBtn, 240);
             WaitHelpers.waitForStaleElement(startShoppingBtn);
         } else if(decision.contains("did not qualify")) {
-            WaitHelpers.waitFluentWait(deniedOkayBtn, 240);
-            WaitHelpers.waitForStaleElement(deniedOkayBtn);
+            WaitHelpers.waitFluentWait(deniedReferralExitBtn, 240);
+            WaitHelpers.waitForStaleElement(deniedReferralExitBtn);
         }
         instanceOf(EmailPage.class).verifyHeader();
 
@@ -66,9 +80,15 @@ public class DecisionPage extends EmailPage {
             elementHelpers.webElementIsDisplayed(decisionAmount);
             elementHelpers.webElementIsDisplayed(startShoppingBtn);
         } else if(decision.contains("did not qualify")) {
+            // PP3's Decision Screen - Denied - Referral popup
+            elementHelpers.webElementIsDisplayed(decisionStillHaveAnOptionTxt);
+            elementHelpers.webElementIsDisplayed(decisionBigPictureLoansTxt);
+            elementHelpers.webElementIsDisplayed(decisionGetFundsTomorrowTxt);
+            elementHelpers.webElementIsDisplayed(decisionContinueBtn);
+            // PP3's Decision Screen - Denied
             elementHelpers.webElementIsDisplayed(decisionThankYouTxt);
             elementHelpers.webElementIsDisplayed(denialDescriptionTxt);
-            elementHelpers.webElementIsDisplayed(deniedOkayBtn);
+            elementHelpers.webElementIsDisplayed(deniedReferralExitBtn);
             elementHelpers.webElementIsDisplayed(arbitrationAgreementLnk);
         }
 
