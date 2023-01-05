@@ -2,11 +2,13 @@ package stepdefinitions.pp3;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import pages.Page;
 import pages.pp3.*;
-import java.util.concurrent.ExecutionException;
-import static pages.Page.instanceOf;
 
-public class DecisionSteps {
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+
+public class DecisionSteps extends Page {
 
     @Then("^the user lands on the Decision Screen with decision: \"([^\"]*)\"$")
     public void theUserLandsOnTheDecisionScreenWithDecision(String decision) throws ExecutionException, InterruptedException {
@@ -16,7 +18,7 @@ public class DecisionSteps {
     }
 
     @And("^the user completes the Personal Info screen with pay frequency: \"([^\"]*)\"$")
-    public void theUserCompletesThePersonalInfoScreenWithPayFrequency(String payFrequency) {
+    public void theUserCompletesThePersonalInfoScreenWithPayFrequency(String payFrequency) throws IOException {
         System.out.println("And the user completes the Personal Info screen with pay frequency: " + payFrequency);
         // Enters required information in Personal Information
         // TODO: Read data from JSON files

@@ -8,9 +8,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.HashMap;
 import java.util.Map;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class ChromeWebDriver {
     private static WebDriver driver;
 
@@ -26,7 +23,6 @@ public class ChromeWebDriver {
         // Chrome needs to run in Headless mode in the Jenkins CI to solve error: "DevToolsActivePort file doesn't exist"
         ChromeOptions options = new ChromeOptions();
         // Following arguments were added to solve error: "DevToolsActivePort file doesn't exist"
-        options.addArguments("--headless");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-setuid-sandbox");
         options.addArguments("--disable-dev-shm-usage");
