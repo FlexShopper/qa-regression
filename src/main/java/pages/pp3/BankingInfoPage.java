@@ -9,7 +9,6 @@ import org.testng.Assert;
 import utils.helpers.WaitHelpers;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import static pages.Page.instanceOf;
 import static utils.selenium.Driver.browser;
 
 public class BankingInfoPage extends EmailPage {

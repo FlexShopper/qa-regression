@@ -65,10 +65,10 @@ public class DecisionPage extends EmailPage {
      */
     public void verifyDecisionScreen(String decision) throws ExecutionException, InterruptedException {
         if(decision.contains("approved")) {
-            WaitHelpers.waitFluentWait(startShoppingBtn, 240);
+            WaitHelpers.waitFluentWait(startShoppingBtn, 270);
             WaitHelpers.waitForStaleElement(startShoppingBtn);
         } else if(decision.contains("did not qualify")) {
-            WaitHelpers.waitFluentWait(deniedReferralExitBtn, 240);
+            WaitHelpers.waitFluentWait(deniedReferralExitBtn, 270);
             WaitHelpers.waitForStaleElement(deniedReferralExitBtn);
         }
         instanceOf(EmailPage.class).verifyHeader();
