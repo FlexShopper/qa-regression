@@ -4,8 +4,9 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = "src/test/java/features",
         glue = {"hooks", "stepdefinitions"},
-        tags = "@PP3",
-        plugin = {"html:target/cucumber-reports/cucumber-pretty",
+        tags = "@Web and @PP3",
+        plugin = {"html:target/cucumber-reports/cucumberExtentReport.html",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "json:target/cucumber-reports/CucumberTestReport.json",
                 "rerun:target/cucumber-reports/rerun.txt"})
 public class TestRunner extends AbstractTestNGCucumberTests {

@@ -69,11 +69,11 @@ podTemplate(label: label,
                             echo 'Install Java JDK'
                             sh """
                                 apt-get update && \
-                                apt-get install -y openjdk-8-jdk && \
+                                apt-get install -y openjdk-11-jdk && \
                                 apt-get install -y ant && \
                                 apt-get clean;
                                 """
-                            sh "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64"
+                            sh "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64"
                             sh "java -version"
                            if (fileExists('./mvnw')) {
                                 echo 'File mvnw found!'
@@ -88,7 +88,7 @@ podTemplate(label: label,
                                 sh "mvn -v"
                                 sh "export MAVEN_HOME=/usr/share/maven"
                                 sh "export M2_HOME=/home/maven/"
-                                sh "mvn clean install -e -X -Dcucumber.options='--tags @PP3'"
+                                sh "mvn clean install -Dcucumber.options='--tags @PP3'"
                            }
                         }
                     }

@@ -66,12 +66,5 @@ public class DriverController {
                 instance.webDriver = ChromeWebDriver.loadChromeMobileEmulatorDriver(arg);
             }
         }
-
-        /**
-         * TODO: To be added when Docker support is added again
-         *    else if(System.getenv("LOCAL").trim().equals("false")) {
-         *         instance.webDriver = ChromeRemoteWebDriver.loadChromeMobileEmulatorDriver(arg);
-         *   }
-         */
     }
 }

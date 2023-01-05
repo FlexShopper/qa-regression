@@ -3,12 +3,13 @@ package stepdefinitions.pp3;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pages.Page;
 import pages.flexshopper.FlexShopperHomePage;
 import pages.pp3.*;
 import java.util.concurrent.ExecutionException;
 import static pages.Page.instanceOf;
 
-public class PasswordSteps {
+public class PasswordSteps extends Page {
     @Given("^the user is on the Password screen with email: \"([^\"]*)\"$")
     public void theUserIsOnThePasswordScreenWithEmail(String email) throws ExecutionException, InterruptedException {
         System.out.println("Given the user is on the Password screen with email: " + email);
