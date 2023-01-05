@@ -5,10 +5,16 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import utils.helpers.SelectHelpers;
 import utils.helpers.WaitHelpers;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 
 public class PersonalInfoPage extends EmailPage {
     protected SelectHelpers selectHelpers = new SelectHelpers();
+    Properties browserProps = new Properties();
 
     /**
      * Elements - PP3's Personal Info Screen
@@ -102,9 +108,15 @@ public class PersonalInfoPage extends EmailPage {
      * selectPayFrequency() - Selects Pay Frequency
      * @param paymentFrequency
      */
-    public void selectPayFrequency(String paymentFrequency) {
+    public void selectPayFrequency(String paymentFrequency) throws IOException {
         elementHelpers.webClick(payFrequency);
-        selectHelpers.selectFromDropdownOptionTag(paymentFrequency);
+        browserProps.load(Files.newInputStream(Paths.get("src/test/resources/config.properties")));
+        String browser = browserProps.getProperty("browserName");
+        if (browser.toLowerCase().contains("chromeMobileEmulator".toLowerCase())) {
+                selectHelpers.selectFromDropdownOptionTag(paymentFrequency);
+        } else {
+            selectHelpers.selectFromDropdown(paymentFrequency);
+        }
     }
 
     /**

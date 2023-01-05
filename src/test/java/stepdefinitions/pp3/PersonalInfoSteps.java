@@ -4,11 +4,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pages.Page;
 import pages.pp3.*;
-import java.util.concurrent.ExecutionException;
-import static pages.Page.instanceOf;
 
-public class PersonalInfoSteps {
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+
+public class PersonalInfoSteps extends Page {
     @Given("^the user is on the Personal Info screen with email: \"([^\"]*)\"$")
     public void theUserIsOnThePersonalInfoScreenWithEmail(String emailAddress) throws ExecutionException, InterruptedException {
         System.out.println("Given the user is in the Personal Info screen with email: " + emailAddress);
@@ -70,7 +72,7 @@ public class PersonalInfoSteps {
     }
 
     @And("^the user selects a valid pay frequency: \"([^\"]*)\"$")
-    public void theUserSelectsAValidPayFrequency(String payFrequency) {
+    public void theUserSelectsAValidPayFrequency(String payFrequency) throws IOException {
         System.out.println("And the user selects a valid pay frequency: " + payFrequency);
         instanceOf(PersonalInfoPage.class).selectPayFrequency(payFrequency);
     }
