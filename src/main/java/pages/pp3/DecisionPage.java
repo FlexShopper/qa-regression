@@ -114,7 +114,14 @@ public class DecisionPage extends EmailPage {
     /**
      * clickOnStartShopping() - clicks on the "Start Shopping" button
      */
-    public void clickOnStartShopping() {
+    public void clickOnStartShoppingBtn() {
         elementHelpers.webClickJSExecutor(startShoppingBtn);
+    }
+
+    /**
+     * clickOnExitApplicationBtn() - clicks on the "Exit Application" button
+     */
+    public void clickOnExitApplicationBtn() {
+        elementHelpers.webClickJSExecutor(deniedReferralExitBtn);
     }
 }

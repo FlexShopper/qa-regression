@@ -56,7 +56,7 @@ Feature: As user I should be able to land on the Banking Info Screen
       | 123           | 4 characters or more |
 
   #Scenario: The user cannot submit the agreement without entering a valid Account Number (10? or 3/17 characters?)
-  ### NOTE: There's no validation for long account numbers
+  ### NOTE: There's no validation for long account numbers ###
 
   Scenario Outline: The user cannot submit the agreement if the Account Number and the Confirm Account Number provided are not a match
     Given the user is on the Banking Info screen with email: "decisionscreen@flexshopper.com"

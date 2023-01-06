@@ -1,16 +1,15 @@
 package pages.flexshopper;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
 import pages.pp3.EmailPage;
 
-import static utils.selenium.Driver.browser;
+import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 
 public class FlexShopperHomePage extends EmailPage {
-    public WebDriver driver = browser();
 
     /**
      * Elements - FlexShopper's Home Page
@@ -21,7 +20,9 @@ public class FlexShopperHomePage extends EmailPage {
     /**
      * verifyFlexShopperHomePage() - Verify Customer lands in the FlexShopper's Homepage
      */
-    public void verifyFlexShopperHomePage() {
+    public void verifyFlexShopperHomePage() throws ExecutionException, InterruptedException {
+        waitHelpers.waitFluentWait(myAccountHeader, 60);
+        waitHelpers.waitForStaleElement(myAccountHeader);
         validatePageUrl("https://fmweb.staging.flexint.net/?do=pp3");
         validatePageTitle("FlexShopper Lease-to-Own | Top Brands & Retailers");
     }
@@ -61,6 +62,6 @@ public class FlexShopperHomePage extends EmailPage {
     public void verifyUserLoggedIn(String userName) {
         //TODO: Assert using Ignore Case
         //TODO: Wait until PP3 is closed & change focus to browser
-        //TODO: Assert.assertEquals("stanislav kuleshov", myAccountHeader.getText());
+        Assert.assertEquals(userName.toLowerCase(), myAccountHeader.getText().toLowerCase());
     }
 }

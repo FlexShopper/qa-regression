@@ -46,6 +46,12 @@ public class EmailSteps extends Page {
             case "Change Password":
                 instanceOf(ChangePasswordPage.class).clickOnChangePasswordBtn();
                 break;
+            case "Start Shopping":
+                instanceOf(DecisionPage.class).clickOnStartShoppingBtn();
+                break;
+            case "Exit Application":
+                instanceOf(DecisionPage.class).clickOnExitApplicationBtn();
+                break;
             default:
                 System.out.println("Button " + button + "was not found!");
         }

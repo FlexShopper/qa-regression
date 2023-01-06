@@ -2,7 +2,7 @@
 Feature: As user I should be able to apply for a lease/loan and land on the decision screen
 
   Scenario Outline: The user should land on the Decision Screen with an approval decision
-    Given the user is on the Banking Info screen with email: "decisionscreen@flexshopper.com"
+    Given the user is on the Banking Info screen with email: "decisionscreen.approve@flexshopper.com"
     And the user enters a valid routing number: "<routingNumber>"
     And the user enters a valid account number: "<accountNumber>"
     And the user enters a matching account number: "<confirmAccNumber>"
@@ -13,7 +13,7 @@ Feature: As user I should be able to apply for a lease/loan and land on the deci
       | 325070760     | 3333333333    | 3333333333       | You were approved for a spending limit of |
 
   Scenario Outline: The user should be able to apply with different pay frequencies: "<payFrequency>"
-    Given the user is on the Personal Info screen with email: "decisionscreen@flexshopper.com"
+    Given the user is on the Personal Info screen with email: "decisionscreen.approve@flexshopper.com"
     And the user completes the Personal Info screen with pay frequency: "<payFrequency>"
     And the user completes the Banking Info screen
     When the user clicks on the button: "Submit Application"
@@ -37,9 +37,21 @@ Feature: As user I should be able to apply for a lease/loan and land on the deci
       | 325070760     | 3333333333    | 3333333333       | You did not qualify for a spending limit |
 
   # Fix for JIRA ticket FPAY-2178 Fix double login when customer gets decision
-  #Scenario Outline: The user should land in the homepage as a logged in user after receiving an approval decision
+  Scenario: The user should land in the homepage as a logged in user after receiving an approval decision
+    Given the user is on the Decision screen with email: "decisionscreen.approve@flexshopper.com"
+    And the user application decision is: "You were approved for a spending limit of"
+    When the user clicks on the button: "Start Shopping"
+    Then the user lands on the Homepage as logged in user: "Decision User"
 
-  #Scenario Outline: The user should land in the homepage as a logged in user after receiving a denial decision
+  Scenario: The user should land in the homepage as a logged in user after receiving a denial decision
+    Given the user is on the Decision screen with email: "decisionscreen.deny@flexshopper.com"
+    And the user application decision is: "You did not qualify for a spending limit"
+    When the user clicks on the button: "Exit Application"
+    Then the user lands on the Homepage as logged in user: "Decision User"
+
+  #Scenario Outline: The user whose application was denied should be able to see the Arbitration Agreement
+
+  #Scenario Outline: The user whose application was denied should be able to transfer to Big Picture Loans
 
   #Scenario Outline: The user should land in the homepage as a logged in user after receiving a manual verification decision
 

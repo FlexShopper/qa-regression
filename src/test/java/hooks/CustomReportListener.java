@@ -19,14 +19,14 @@ import io.cucumber.plugin.event.HookTestStep;
 import java.util.HashMap;
 import java.util.Map;
 
-public class customReportListener implements EventListener {
+public class CustomReportListener implements EventListener {
     private ExtentSparkReporter spark;
     private ExtentReports extent;
     Map<String, ExtentTest> feature = new HashMap<String, ExtentTest>();
     ExtentTest scenario;
     ExtentTest step;
 
-    public customReportListener() {
+    public CustomReportListener() {
     };
 
     @Override

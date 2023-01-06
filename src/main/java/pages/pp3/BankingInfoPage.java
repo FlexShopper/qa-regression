@@ -12,6 +12,8 @@ import java.util.concurrent.ExecutionException;
 import static utils.selenium.Driver.browser;
 
 public class BankingInfoPage extends EmailPage {
+    protected WaitHelpers waitHelpers = new WaitHelpers();
+
     /**
      * Elements - PP3's Banking Info Screen
      */
@@ -45,8 +47,8 @@ public class BankingInfoPage extends EmailPage {
      * verifyBankingInfoPage() - Verify PP3's Banking Info Screen
      */
     public void verifyBankingInfoPage() throws ExecutionException, InterruptedException {
-        WaitHelpers.waitFluentWait(routingNumberPP3, 240);
-        WaitHelpers.waitForStaleElement(routingNumberPP3);
+        waitHelpers.waitFluentWait(routingNumberPP3, 240);
+        waitHelpers.waitForStaleElement(routingNumberPP3);
         instanceOf(EmailPage.class).verifyHeader();
 
         // Verify elements are displayed
@@ -90,7 +92,7 @@ public class BankingInfoPage extends EmailPage {
      */
     public void bankNameMsg(String bankName) {
         // Wait for screen to load & Ajax to be completed
-        WaitHelpers.waitForPageReady(6);
+        waitHelpers.waitForPageReady(6);
 
         //TODO: Move code below to WebElementHelpers
         WebDriver driver = browser();
