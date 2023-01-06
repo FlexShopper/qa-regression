@@ -5,10 +5,9 @@ import org.testng.annotations.DataProvider;
 @CucumberOptions(
         features = "src/test/java/features",
         glue = {"hooks", "stepdefinitions"},
-        tags = "@Web and @Decision",
+        tags = "@Web and @PP3",
         plugin = {"html:target/cucumber-reports/cucumberExtentReport.html",
-                "hooks.customReportListener",
-                "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "json:target/cucumber-reports/CucumberTestReport.json",
                 "rerun:target/cucumber-reports/rerun.txt"},
         monochrome = true)
