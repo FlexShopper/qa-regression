@@ -91,8 +91,9 @@ Feature: As user I should be able to land on the Profile Info Screen
   #  Then the user lands on the Personal Info screen
   #  Examples:
   #    | firstName    | lastName | mobileNumber | partialAddress      | withText |
-  #    | PersonalInfo | User     | 12345678900  | 2700 N Military Trl | 33409    |
-  #    | Personal     | InfoUser | 12345678910  | 6503 N Military Trl | Apt 2700 |
+  #    | PersonalInfo | InfoUser | 12345678900  | 2700 N Military Trl | 33409    |
+  #    | Personal     | InfoUser | 12345678910  | 2700 N Military Trl | 33496    |
+  #    | Personal     | InfoUser | 12345678910  | 2700 N Military Trl | 33431    |
 
   Scenario Outline: User should land on the Personal Info screen when the address is entered manually
     Given the user is on the Profile Info screen with email: "personalinfo@flexshopper.com"

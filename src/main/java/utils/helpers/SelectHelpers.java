@@ -17,7 +17,7 @@ public class SelectHelpers {
             List<WebElement> optionToSelect = driver.findElements(By.tagName("li"));
             for(WebElement option : optionToSelect) {
                 //System.out.println("Text: " + element.getText());
-                if (option.getText().equals(textToSelect)) {
+                if (option.getText().contains(textToSelect)) {
                     System.out.println("Trying to select: " + textToSelect);
                     option.click();
                     break;

@@ -85,10 +85,12 @@ podTemplate(label: label,
                                 echo 'File mvnw Not found'
                                 echo 'Installing Maven'
                                 sh "apt-get install maven -y"
+                                sh "unset DISPLAY"
                                 sh "mvn -v"
                                 sh "export MAVEN_HOME=/usr/share/maven"
                                 sh "export M2_HOME=/home/maven/"
-                                sh "mvn clean install -Dcucumber.options='--tags @PP3'"
+                                sh "mvn -U clean"
+                                sh "mvn clean install -Dcucumber.filter.tags='@PP3'"
                            }
                         }
                     }
