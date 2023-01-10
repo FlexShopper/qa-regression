@@ -89,7 +89,8 @@ podTemplate(label: label,
                                 sh "mvn -v"
                                 sh "export MAVEN_HOME=/usr/share/maven"
                                 sh "export M2_HOME=/home/maven/"
-                                sh "mvn clean install -Dcucumber.filter.tags='@PP3'"
+                                sh "mvn -U clean"
+                                sh "mvn clean install -Dcucumber.filter.tags='@Email'"
                            }
                         }
                     }
