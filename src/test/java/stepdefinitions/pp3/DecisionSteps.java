@@ -106,4 +106,10 @@ public class DecisionSteps extends Page {
         instanceOf(DecisionPage.class).verifyDecisionScreen(decision);
         instanceOf(DecisionPage.class).verifyDecision(decision);
     }
+
+    @Then("^the user lands on the Decision Screen without referral$")
+    public void theUserLandsOnTheDecisionScreenWithoutReferral() throws ExecutionException, InterruptedException {
+        System.out.println("Then the user lands on the Decision Screen without referral");
+        instanceOf(DecisionPage.class).verifyDecisionScreenWithoutReferral();
+    }
 }

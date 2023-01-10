@@ -30,7 +30,7 @@ public class EmailSteps extends Page {
     }
 
     @And("^the user clicks on the button: \"([^\"]*)\"$")
-    public void theUserClicksOnTheButton(String button) {
+    public void theUserClicksOnTheButton(String button) throws ExecutionException, InterruptedException {
         System.out.println("And the user clicks on the button: " + button);
         switch (button) {
             case "Continue":

@@ -95,6 +95,22 @@ public class DecisionPage extends EmailPage {
         // TODO: Verify PP3's Footer
     }
 
+    public void verifyDecisionScreenWithoutReferral() throws ExecutionException, InterruptedException {
+        WaitHelpers.waitFluentWait(deniedReferralExitBtn, 270);
+        WaitHelpers.waitForStaleElement(deniedReferralExitBtn);
+
+        instanceOf(EmailPage.class).verifyHeader();
+
+        // Verify elements are displayed
+        // PP3's Decision Screen - Denied
+        elementHelpers.webElementIsDisplayed(decisionThankYouTxt);
+        elementHelpers.webElementIsDisplayed(denialDescriptionTxt);
+        elementHelpers.webElementIsDisplayed(deniedReferralExitBtn);
+        elementHelpers.webElementIsDisplayed(arbitrationAgreementLnk);
+
+        // TODO: Verify PP3's Footer
+    }
+
     /**
      * verifyDecision() - Verify decision displayed in PP3's Decision Screen
      */
