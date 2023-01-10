@@ -65,10 +65,10 @@ public class DecisionPage extends EmailPage {
      */
     public void verifyDecisionScreen(String decision) throws ExecutionException, InterruptedException {
         if(decision.contains("approved")) {
-            WaitHelpers.waitFluentWait(startShoppingBtn, 240);
+            WaitHelpers.waitFluentWait(startShoppingBtn, 270);
             WaitHelpers.waitForStaleElement(startShoppingBtn);
         } else if(decision.contains("did not qualify")) {
-            WaitHelpers.waitFluentWait(deniedReferralExitBtn, 240);
+            WaitHelpers.waitFluentWait(deniedReferralExitBtn, 270);
             WaitHelpers.waitForStaleElement(deniedReferralExitBtn);
         }
         instanceOf(EmailPage.class).verifyHeader();
@@ -95,6 +95,22 @@ public class DecisionPage extends EmailPage {
         // TODO: Verify PP3's Footer
     }
 
+    public void verifyDecisionScreenWithoutReferral() throws ExecutionException, InterruptedException {
+        WaitHelpers.waitFluentWait(deniedReferralExitBtn, 270);
+        WaitHelpers.waitForStaleElement(deniedReferralExitBtn);
+
+        instanceOf(EmailPage.class).verifyHeader();
+
+        // Verify elements are displayed
+        // PP3's Decision Screen - Denied
+        elementHelpers.webElementIsDisplayed(decisionThankYouTxt);
+        elementHelpers.webElementIsDisplayed(denialDescriptionTxt);
+        elementHelpers.webElementIsDisplayed(deniedReferralExitBtn);
+        elementHelpers.webElementIsDisplayed(arbitrationAgreementLnk);
+
+        // TODO: Verify PP3's Footer
+    }
+
     /**
      * verifyDecision() - Verify decision displayed in PP3's Decision Screen
      */
@@ -114,7 +130,14 @@ public class DecisionPage extends EmailPage {
     /**
      * clickOnStartShopping() - clicks on the "Start Shopping" button
      */
-    public void clickOnStartShopping() {
+    public void clickOnStartShoppingBtn() {
         elementHelpers.webClickJSExecutor(startShoppingBtn);
+    }
+
+    /**
+     * clickOnExitApplicationBtn() - clicks on the "Exit Application" button
+     */
+    public void clickOnExitApplicationBtn() {
+        elementHelpers.webClickJSExecutor(deniedReferralExitBtn);
     }
 }

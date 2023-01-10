@@ -158,7 +158,7 @@ public class ProfileInfoPage extends EmailPage {
      * @param withText
      */
     public void selectFromSuggestedAddresses(String withText) {
-        // TODO: selectHelpers.selectFromDropdown(suggestedAddresses, withText);
+        selectHelpers.selectFromDropdown(withText);
     }
 
     /**
