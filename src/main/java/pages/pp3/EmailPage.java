@@ -1,18 +1,25 @@
 package pages.pp3;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
 import pages.Page;
-import utils.helpers.WebDriverHelpers;
-import utils.helpers.WebElementHelpers;
+import utils.helpers.*;
+import utils.selenium.Driver;
 import utils.selenium.Settings;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 import static utils.selenium.Driver.browser;
 
 public class EmailPage extends Page {
     protected WebElementHelpers elementHelpers = new WebElementHelpers();
     protected WebDriverHelpers driverHelpers = new WebDriverHelpers();
+    protected WaitHelpers waitHelpers = new WaitHelpers();
+    protected ManageEmailTestAddresses emailTestAddress = new ManageEmailTestAddresses();
+    public WebDriver driver = Driver.browser();
 
     /**
      * Elements - Header
@@ -22,6 +29,9 @@ public class EmailPage extends Page {
 
     @FindBy(how = How.ID, using = "headerPanel-faq-button") // FAQ Button
     private WebElement headerFAQBtn;
+
+    @FindBy(how = How.XPATH, using = "//*[@id='headerPanel']")
+    public static By headerPanelPP3 = By.xpath("//*[@id='headerPanel']");
 
     /**
      * Elements - PP3's Email Screen
@@ -47,7 +57,7 @@ public class EmailPage extends Page {
     @FindBy(how = How.XPATH, using = "//footer[(.)='U.S. Pat. Nos. 10,089,682 & 10,282,779']") // FlexShopper's US Patten
     private WebElement flexUSPattenNumber;
 
-    @FindBy(how = How.XPATH, using = "//span[(.)='© 2022 FlexShopper, LLC']") // FlexShopper's Copyright
+    @FindBy(how = How.XPATH, using = "//span[(.)='© 2023 FlexShopper, LLC']") // FlexShopper's Copyright
     private WebElement flexCopyright;
 
     @FindBy(how = How.ID, using = "footer-accessibility-button") // Accessibility button
@@ -63,7 +73,7 @@ public class EmailPage extends Page {
      * Validation Messages
      */
     @FindBy(how= How.XPATH, using = "//span[@label='Invalid email address']")
-    public  WebElement invalidEmailAddressErrorMsg;
+    public  WebElement invalidEmailAddress;
 
     /**
      * Navigate to PP3's Base URL
@@ -90,7 +100,10 @@ public class EmailPage extends Page {
     /**
      * Verify PP3's Header
      */
-    public void verifyHeader() {
+    public void verifyHeader() throws ExecutionException, InterruptedException {
+        waitHelpers.waitFluentWait(headerCloseBtn, 240);
+
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(headerCloseBtn);
         elementHelpers.webElementIsDisplayed(headerFAQBtn);
     }
@@ -98,7 +111,11 @@ public class EmailPage extends Page {
     /**
      * Verify PP3's Email Screen
      */
-    public void verifyEmailScreen() {
+    public void verifyEmailScreen() throws ExecutionException, InterruptedException {
+        waitHelpers.waitFluentWait(emailAddressField, 240);
+        waitHelpers.waitForStaleElement(emailAddressField);
+
+        // Verify elements are displayed
         elementHelpers.webElementIsDisplayed(flexshopperLogo);
         elementHelpers.webElementIsDisplayed(enterEmailTxt);
         elementHelpers.webElementIsDisplayed(welcomeTxt);
@@ -110,6 +127,7 @@ public class EmailPage extends Page {
      * Verify PP3's Footer
      */
     public void verifyFooter() {
+        // Verify elements are displayed
         // TODO: elementHelpers.webElementIsDisplayed(flexUSPattenNumber);
         elementHelpers.webElementIsDisplayed(flexCopyright);
         elementHelpers.webElementIsDisplayed(footerAccessibilityBtn);
@@ -129,7 +147,7 @@ public class EmailPage extends Page {
      * Assert FlexShopper's Copyright Information
      */
     public void assertFlexUSCopyrightInfo() {
-        Assert.assertTrue((WebElementHelpers.webGetAttribute(flexCopyright,"value")).contains("© 2022 FlexShopper, LLC"));
+        Assert.assertTrue((WebElementHelpers.webGetAttribute(flexCopyright,"value")).contains("© 2023 FlexShopper, LLC"));
     }
 
     /**
@@ -141,16 +159,45 @@ public class EmailPage extends Page {
     }
 
     /**
+     * enterEmail() - Enter email in the email address field.
+     * @param email
+     */
+    public void enterNewEmail(String email) {
+        elementHelpers.webSendKeys(emailAddressField, emailTestAddress.createEmailTestAddress(email), true);
+    }
+
+    /**
      * clickContinueBtn() - Click on the "Continue" button
      */
     public void clickOnContinueBtn() {
-        elementHelpers.webClick(continueBtn);
+        elementHelpers.webClickJSExecutor(continueBtn);
     }
 
     /**
      * emailValidationMessage() - Verifies the customer sees the expected Validation Message
      */
     public void emailValidationMessage(String validationMsg) {
-        Assert.assertEquals("Invalid email address", WebElementHelpers.webGetText(invalidEmailAddressErrorMsg));
+        //TODO: Move code below to WebElementHelpers
+        WebDriver driver = browser();
+        List<WebElement> spanText = driver.findElements(By.tagName("span"));
+        for(int i = 0; i<spanText.size(); i++){
+            String textFound = spanText.get(i).getText();
+            System.out.println("Value is  ==> " + spanText.get(i).getText());
+            if (textFound.contains("Invalid email address")) {
+                Assert.assertEquals("Invalid email address", spanText.get(i).getText());
+                break;
+            }
+        }
+    }
+
+    /**
+     * emailValidationMessage() - Verifies the customer sees the expected Validation Message
+     */
+    public void emailHTMLValidationMessage(String validationMsg) {
+        //TODO: Move code below to WebElementHelpers
+        WebDriver driver = browser();
+        WebElement email = driver.findElement(By.name("email"));
+        String htmlValidationMsg = email.getAttribute("validationMessage");
+        Assert.assertTrue(htmlValidationMsg.contains(validationMsg));
     }
 }
